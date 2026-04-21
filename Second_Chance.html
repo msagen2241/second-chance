@@ -585,7 +585,7 @@
 
 <script>
 // ============================================================
-// GAME DATA — 17 questions from your Test 1 review
+// GAME DATA — 41 questions from your Test 1 review
 // ============================================================
 const QUESTIONS = [
   {
@@ -683,6 +683,216 @@ const QUESTIONS = [
     correct: "Rollback plan",
     distractors: ["Risk analysis", "Budget approval document", "Technician training schedule"],
     explain: "Every change needs a rollback plan so it can be reversed if it goes sideways. Risk analysis is important but the rollback is the critical safety net."
+  },
+  {
+    q: "Edward can access his company email but cannot reach the network file share that hosted his shared inbox folders. He can reach other network shares. What's the MOST likely cause?",
+    correct: "The network file share's permission has been modified",
+    distractors: ["The internet security options in his email client have been modified", "The domain controller's DNS settings were changed", "The OS update installed an incompatible email driver"],
+    explain: "The file share's permissions have likely changed during Edward's vacation. Since he can still send/receive email, his account permissions are fine. Internet security options would affect sending/receiving, and OS updates wouldn't affect network file shares."
+  },
+  {
+    q: "A technician needs to make a Windows computer visible to other PCs on a workgroup network. Which setting should be enabled?",
+    correct: "Network discovery",
+    distractors: ["File and folder sharing", "Printer sharing", "Guest account access"],
+    explain: "Network discovery allows Windows to find other computers on a network. File sharing is separate — it's about making your files accessible, not finding other PCs."
+  },
+  {
+    q: "A file server must remain running during a power outage until the backup generator starts. Which device provides the needed buffer?",
+    correct: "An uninterruptible power supply (UPS)",
+    distractors: ["A line conditioner", "A surge protector", "A voltage regulator"],
+    explain: "A UPS provides battery backup during power outages (until the generator kicks in). A line conditioner only adjusts voltage levels but can't keep the server running during a complete power failure."
+  },
+  {
+    q: "A Linux administrator needs to change a user's password from the command line. Which command should they use?",
+    correct: "passwd",
+    distractors: ["pwd", "chpasswd", "usermod"],
+    explain: "passwd changes a user's password. pwd displays the present working directory."
+  },
+  {
+    q: "An FTP server currently sits on the internal network. To improve security, where should it be placed?",
+    correct: "Migrate the FTP server from the internal network to a screened subnet",
+    distractors: ["Add a deny rule to the firewall's ACL that blocks port 21 outbound", "Place the FTP server in the same VLAN as the web server", "Restrict FTP access to only the IT department"],
+    explain: "A screened subnet (DMZ) isolates public-facing servers from the internal network. Blocking outbound port 21 wouldn't prevent exploitation of the FTP server itself."
+  },
+  {
+    q: "Which file type can be executed on Linux, macOS, and Windows without modification?",
+    correct: ".py",
+    distractors: [".sh", ".bat", ".cmd"],
+    explain: "Python (.py) scripts run on Linux, macOS, and Windows. Shell scripts (.sh) are Linux/macOS only."
+  },
+  {
+    q: "A company uses Cisco infrastructure for AAA authentication. Which protocol was developed by Cisco for this purpose?",
+    correct: "TACACS+",
+    distractors: ["RADIUS", "Kerberos", "LDAP"],
+    explain: "TACACS+ was developed by Cisco as a proprietary protocol for AAA. RADIUS is a general protocol."
+  },
+  {
+    q: "What is the most likely way a user's Android tablet could be compromised by a malicious actor?",
+    correct: "Use social engineering to trick a user into opening a malicious APK",
+    distractors: ["Use a tool like ICSSPLOIT to target specific vulnerabilities", "Exploit a known kernel vulnerability remotely", "Install a malicious app from the Google Play Store"],
+    explain: "Social engineering (malicious APK) is the most likely attack vector for Android devices."
+  },
+  {
+    q: "How should a system administrator schedule a vulnerability scan to run automatically every Sunday at 2:00 AM?",
+    correct: "Task scheduler",
+    distractors: ["Event viewer", "Services console", "Device Manager"],
+    explain: "Task scheduler runs tasks automatically at specified times. Event viewer logs events."
+  },
+  {
+    q: "A company wants to deploy Windows and Office settings across 500 devices in Active Directory. Which tool should they use?",
+    correct: "GPO",
+    distractors: ["HIPS", "MFA", "DHCP"],
+    explain: "Group Policy Objects (GPO) deploy settings across many devices in Active Directory."
+  },
+  {
+    q: "Which Linux command installs software on an RPM-based distribution?",
+    correct: "yum",
+    distractors: ["nano", "apt-get", "pacman"],
+    explain: "yum installs software on RPM-based Linux. nano is a text editor."
+  },
+  {
+    q: "A Linux administrator needs to edit a configuration file from the command line. Which command launches a text editor?",
+    correct: "nano",
+    distractors: ["cat", "ls", "grep"],
+    explain: "nano is a command-line text editor. cat creates/displays files but doesn't edit them."
+  },
+  {
+    q: "A chat application has too many users in one conversation, making important messages hard to find. What's the BEST way to organize messages?",
+    correct: "Use dedicated channels to keep messages organized.",
+    distractors: ["Reduce the number of users in each conversation.", "Enable read receipts for all users.", "Increase the font size in the chat window."],
+    explain: "Dedicated channels organize messages so important updates aren't lost."
+  },
+  {
+    q: "A user reports sudden internet connectivity loss and a warning about high network traffic. What's the BEST first step?",
+    correct: "Investigate for malware and run a full security scan on the device",
+    distractors: ["Turn on airplane mode for a few seconds, then turn it back off", "Reset the router to factory settings", "Reinstall the network drivers"],
+    explain: "Sudden connectivity loss + high traffic warning = possible malware."
+  },
+  {
+    q: "Which Windows account type can install and remove programs, modify system files, and change permissions?",
+    correct: "Administrator",
+    distractors: ["Power User", "Standard User", "Guest"],
+    explain: "An Administrator can install/remove programs, modify system files, and change permissions."
+  },
+  {
+    q: "A user's Google homepage is in a foreign language. They haven't changed their browser settings. What should you check first?",
+    correct: "Remove any proxy servers configured in their web browser",
+    distractors: ["Verify the user's date and time zone are correctly listed in Windows", "Reinstall the web browser", "Change the search engine to Bing"],
+    explain: "A proxy in a foreign country would cause Google to display in that country's language."
+  },
+  {
+    q: "After registering the Windows Update service's DLL files, what should a technician do next?",
+    correct: "Reboot the computer",
+    distractors: ["Register the Windows Update service's DLL files", "Uninstall the latest Windows update", "Run a system restore"],
+    explain: "After registering DLL files, reboot the computer for changes to take effect."
+  },
+  {
+    q: "A Windows installation reports 'Operating System Not Found.' Which bootrec command rebuilds the Boot Configuration Data?",
+    correct: "bootrec /rebuildbcd",
+    distractors: ["bootrec /fixmbr", "bootrec /fixboot", "bootrec /scanos"],
+    explain: "bootrec /rebuildbcd rebuilds the Boot Configuration Data to detect Windows installations."
+  },
+  {
+    q: "Which technical control BEST prevents virus outbreaks by closing known vulnerabilities?",
+    correct: "Patch management",
+    distractors: ["Acceptable use policies", "Antivirus software", "Firewall rules"],
+    explain: "Patch management is a technical control that prevents known vulnerabilities from being exploited."
+  },
+  {
+    q: "After a security update, a workstation fails to boot. What should a technician do first?",
+    correct: "Reboot the workstation into safe mode and roll back the recent security update",
+    distractors: ["Reboot the workstation into the BIOS and reconfigure boot options", "Perform a clean installation of Windows", "Replace the hard drive"],
+    explain: "Roll back the problematic update via Safe Mode."
+  },
+  {
+    q: "A company wants physical access control for its server room. Which device is designed for this purpose?",
+    correct: "Server lock",
+    distractors: ["Smart card", "Biometric scanner", "Door alarm system"],
+    explain: "A server lock is a physical locking mechanism for server cabinets."
+  },
+  {
+    q: "What security measure has the best ROI for reducing the risk of successful attacks against an organization?",
+    correct: "User training and awareness",
+    distractors: ["Penetration testing", "Firewall appliances", "Intrusion detection systems"],
+    explain: "End users are the most vulnerable attack vector; training has the best ROI."
+  },
+  {
+    q: "Which statement about virtual machines and physical servers is TRUE regarding downtime?",
+    correct: "A virtual machine has less downtime than a physical server",
+    distractors: ["A virtual machine has more downtime than a physical server", "They have equivalent downtime", "Virtual machines cannot be restored after failure"],
+    explain: "VMs can be restored much faster than physical servers."
+  },
+  {
+    q: "Before granting remote access to a server, what is the MOST important security measure to implement?",
+    correct: "Install the latest security updates and patches to the server",
+    distractors: ["Set the server's anti-virus software to automatically update itself and perform a full scan every Saturday night", "Enable two-factor authentication on the admin account", "Configure a firewall rule to allow only specific IP addresses"],
+    explain: "Keeping the server patched is the most important security measure before granting remote access."
+  },
+  {
+    q: "An AI tool is generating responses with incorrect or outdated information. What is this issue called?",
+    correct: "Inaccuracies",
+    distractors: ["Hallucination", "Bias", "Overfitting"],
+    explain: "The issue involves incorrect/outdated AI-generated content, not fabrication of false details."
+  },
+  {
+    q: "What are the BEST security measures to protect data on a smartphone that could be lost or stolen?",
+    correct: "Configure the ability to perform a remote wipe, Enable full device encryption",
+    distractors: ["Require complex passwords, Enable a pattern lock", "Install a VPN, Enable two-factor authentication", "Enable a firewall, Update the operating system"],
+    explain: "Full encryption protects data if the device is lost; remote wipe erases data before a thief can access it."
+  },
+  {
+    q: "A single Android app crashes repeatedly. What's the least disruptive first step?",
+    correct: "Clear the application's cache and data",
+    distractors: ["Restart the smartphone to refresh the operating system", "Factory reset the device", "Reinstall the app from the Play Store"],
+    explain: "Cache corruption is the most common cause of single-app crashes; clearing cache/data is the least disruptive first step."
+  },
+  {
+    q: "Which two factors MOST commonly compromise wireless networks?",
+    correct: "WPS enabled, Router with outdated firmware",
+    distractors: ["Default administrative login credentials, Router with outdated firmware", "WEP encryption, Weak passwords", "Open networks, Default SSIDs"],
+    explain: "WPS PINs are vulnerable to brute force attacks; outdated firmware is another common vulnerability."
+  },
+  {
+    q: "Which Windows 10 edition supports up to 4 physical CPUs and 6 TB of RAM?",
+    correct: "Pro for Workstations",
+    distractors: ["Pro", "Home", "Enterprise"],
+    explain: "Windows 10 Pro for Workstations supports up to 4 physical CPUs and 6 TB RAM."
+  },
+  {
+    q: "A company wants to prevent USB-based malware attacks and password-based compromises. Which two measures should they implement?",
+    correct: "Lockout the account after 3 failed login attempts, Change the default credentials on the servers",
+    distractors: ["Modify the AutoRun settings, Install the operating system security updates", "Enable a firewall, Use complex passwords", "Install antivirus, Enable full disk encryption"],
+    explain: "AutoRun settings prevent USB attacks; account lockout and changing default credentials prevent password attacks."
+  },
+  {
+    q: "Which type of data is regulated under privacy laws such as GDPR and PCI-DSS?",
+    correct: "PII",
+    distractors: ["DRM", "API keys", "Source code"],
+    explain: "PII (Personally Identifiable Information) is regulated data along with PCI, GDPR, and PHI."
+  },
+  {
+    q: "An attacker uses a list of common passwords to try to crack a user's account. What type of attack is this?",
+    correct: "Dictionary",
+    distractors: ["Brute-force", "Rainbow table", "Man-in-the-middle"],
+    explain: "A dictionary attack uses a list of common passwords; brute-force tries all possible combinations."
+  },
+  {
+    q: "Which type of network hides your computer and prevents file sharing?",
+    correct: "Public",
+    distractors: ["Private", "Workgroup", "Domain"],
+    explain: "A public network hides your computer and prevents file sharing."
+  },
+  {
+    q: "An instructor wants only their IoT device to connect to a classroom wireless network while blocking students' devices. Which control should they use?",
+    correct: "MAC filtering",
+    distractors: ["NAT", "Port forwarding", "QoS"],
+    explain: "MAC filtering allows specific devices (instructors') while blocking others (students)."
+  },
+  {
+    q: "A Windows system administrator needs to scan for and restore corrupted system files. Which command should they use?",
+    correct: "sfc",
+    distractors: ["chkdsk", "defrag", "diskpart"],
+    explain: "sfc (System File Checker) scans for and restores corrupted Windows system files. chkdsk checks the file system."
   }
 ];
 
@@ -771,7 +981,7 @@ function renderStart() {
       <div class="logo-sub">CompTIA Redemption Run</div>
 
       <div class="stat-row">
-        <div class="stat-chip"><b>16</b>QUESTIONS</div>
+        <div class="stat-chip"><b>41</b>QUESTIONS</div>
         <div class="stat-chip"><b>3</b>LIVES</div>
         <div class="stat-chip"><b>∞</b>STREAK BONUS</div>
       </div>
