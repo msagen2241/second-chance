@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SECOND CHANCE // CompTIA Redemption Run</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a14;
+    --bg-2: #10101c;
+    --ink: #e8e8f0;
+    --ink-dim: #8a8aa0;
+    --cyan: #00f0ff;
+    --pink: #ff2e8a;
+    --green: #b8ff2e;
+    --yellow: #ffd60a;
+    --red: #ff3b3b;
+    --grid: rgba(255,255,255,0.035);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: -1px -1px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(0,240,255,0.08), transparent 60%),
+                radial-gradient(circle at 80% 100%, rgba(255,46,138,0.06), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .stage {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 780px;
+  }
+
+  /* ============ START SCREEN ============ */
+  .start {
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .logo-top {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    letter-spacing: 6px;
+    color: var(--cyan);
+    margin-bottom: 12px;
+    opacity: 0.85;
+  }
+
+  .logo-main {
+    font-family: 'VT323', monospace;
+    font-size: clamp(56px, 12vw, 120px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    background: linear-gradient(180deg, #fff 0%, var(--cyan) 60%, var(--pink) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+    filter: drop-shadow(0 0 30px rgba(0,240,255,0.25));
+  }
+
+  .logo-sub {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--ink-dim);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    background: var(--bg-2);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--ink-dim);
+  }
+
+  .stat-chip b {
+    color: var(--cyan);
+    font-weight: 700;
+    margin-right: 6px;
+  }
+
+  .hi-score {
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    color: var(--yellow);
+    margin-bottom: 28px;
+    letter-spacing: 3px;
+  }
+
+  .hi-score .label {
+    color: var(--ink-dim);
+    font-size: 14px;
+    letter-spacing: 4px;
+  }
+
+  .btn-start {
+    font-family: 'VT323', monospace;
+    font-size: 32px;
+    letter-spacing: 6px;
+    background: var(--green);
+    color: var(--bg);
+    border: none;
+    padding: 18px 48px;
+    cursor: pointer;
+    font-weight: 700;
+    position: relative;
+    transition: transform 0.08s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 0 0 var(--green), 0 8px 0 0 rgba(0,0,0,0.4);
+  }
+
+  .btn-start:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px 0 rgba(184,255,46,0.6), 0 10px 0 0 rgba(0,0,0,0.4);
+  }
+
+  .btn-start:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 20px 0 rgba(184,255,46,0.4), 0 4px 0 0 rgba(0,0,0,0.4);
+  }
+
+  .hint {
+    margin-top: 24px;
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 2px;
+  }
+
+  /* ============ GAME SCREEN ============ */
+  .hud {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--bg-2);
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 16px;
+  }
+
+  .lives {
+    display: flex;
+    gap: 6px;
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .heart {
+    color: var(--pink);
+    filter: drop-shadow(0 0 8px rgba(255,46,138,0.5));
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .heart.lost {
+    color: #333;
+    opacity: 0.4;
+    filter: none;
+    transform: scale(0.85);
+  }
+
+  .score-box {
+    text-align: center;
+  }
+
+  .score-box .label {
+    font-size: 9px;
+    color: var(--ink-dim);
+    letter-spacing: 3px;
+  }
+
+  .score-box .value {
+    font-family: 'VT323', monospace;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--cyan);
+    letter-spacing: 2px;
+  }
+
+  .streak-box {
+    text-align: right;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    color: var(--yellow);
+  }
+
+  .streak-box .icon {
+    display: inline-block;
+    animation: flicker 0.8s infinite alternate;
+  }
+
+  @keyframes flicker {
+    from { opacity: 0.8; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(-2px); }
+  }
+
+  .streak-box.cold {
+    color: var(--ink-dim);
+  }
+
+  .streak-box.cold .icon { animation: none; }
+
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+  }
+
+  .q-header .q-num {
+    color: var(--cyan);
+    font-weight: 700;
+  }
+
+  .progress-track {
+    height: 4px;
+    background: var(--bg-2);
+    margin-bottom: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cyan), var(--pink));
+    transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .question-card {
+    background: var(--bg-2);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 28px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .question-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 20px; height: 20px;
+    border-top: 2px solid var(--cyan);
+    border-left: 2px solid var(--cyan);
+  }
+
+  .question-card::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 20px; height: 20px;
+    border-bottom: 2px solid var(--pink);
+    border-right: 2px solid var(--pink);
+  }
+
+  .question-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 560px) {
+    .answers { grid-template-columns: 1fr; }
+    .hud { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .streak-box { grid-column: 1 / -1; text-align: center; }
+  }
+
+  .answer-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+    background: var(--bg-2);
+    color: var(--ink);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    min-height: 72px;
+  }
+
+  .answer-btn:hover:not(:disabled) {
+    border-color: var(--cyan);
+    background: rgba(0,240,255,0.05);
+    transform: translateY(-1px);
+  }
+
+  .answer-btn .key {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--cyan);
+    border: 1px solid rgba(0,240,255,0.3);
+  }
+
+  .answer-btn .text { flex: 1; padding-top: 3px; }
+
+  .answer-btn.correct {
+    background: rgba(184,255,46,0.12);
+    border-color: var(--green);
+    color: var(--green);
+    animation: correctPulse 0.4s ease;
+  }
+
+  .answer-btn.correct .key {
+    background: var(--green);
+    color: var(--bg);
+    border-color: var(--green);
+  }
+
+  .answer-btn.wrong {
+    background: rgba(255,59,59,0.12);
+    border-color: var(--red);
+    color: var(--red);
+    animation: wrongShake 0.4s ease;
+  }
+
+  .answer-btn.wrong .key {
+    background: var(--red);
+    color: var(--bg);
+    border-color: var(--red);
+  }
+
+  .answer-btn:disabled { cursor: default; }
+  .answer-btn:disabled:not(.correct):not(.wrong) { opacity: 0.4; }
+
+  @keyframes correctPulse {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.03); box-shadow: 0 0 30px rgba(184,255,46,0.4); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes wrongShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+
+  .feedback {
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--bg-2);
+    border-left: 3px solid var(--cyan);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-dim);
+    opacity: 0;
+    animation: fadeIn 0.4s 0.3s ease forwards;
+  }
+
+  .feedback.correct-fb { border-left-color: var(--green); }
+  .feedback.wrong-fb { border-left-color: var(--red); }
+
+  .feedback strong {
+    display: block;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  .feedback.correct-fb strong { color: var(--green); }
+  .feedback.wrong-fb strong { color: var(--red); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ END SCREEN ============ */
+  .end {
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .end-title {
+    font-family: 'VT323', monospace;
+    font-size: clamp(48px, 10vw, 96px);
+    letter-spacing: 4px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .end-title.win { color: var(--green); filter: drop-shadow(0 0 20px rgba(184,255,46,0.4)); }
+  .end-title.lose { color: var(--red); filter: drop-shadow(0 0 20px rgba(255,59,59,0.4)); }
+
+  .end-sub {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--ink-dim);
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .grade-card {
+    display: inline-block;
+    padding: 24px 48px;
+    background: var(--bg-2);
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 32px;
+  }
+
+  .grade-card .g-label {
+    font-size: 10px;
+    color: var(--ink-dim);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  .grade-card .grade {
+    font-family: 'VT323', monospace;
+    font-size: 96px;
+    line-height: 0.9;
+    letter-spacing: 2px;
+  }
+
+  .end-stats {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .end-stat {
+    background: var(--bg-2);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 24px;
+    min-width: 120px;
+  }
+
+  .end-stat .l {
+    font-size: 9px;
+    color: var(--ink-dim);
+    letter-spacing: 3px;
+  }
+
+  .end-stat .v {
+    font-family: 'VT323', monospace;
+    font-size: 32px;
+    color: var(--cyan);
+    line-height: 1;
+  }
+
+  .new-hi {
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    color: var(--yellow);
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .end-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-retry {
+    font-family: 'VT323', monospace;
+    font-size: 24px;
+    letter-spacing: 4px;
+    background: var(--cyan);
+    color: var(--bg);
+    border: none;
+    padding: 14px 32px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.08s, box-shadow 0.2s;
+  }
+
+  .btn-retry:hover {
+    box-shadow: 0 0 30px rgba(0,240,255,0.5);
+  }
+
+  .btn-retry:active { transform: scale(0.97); }
+
+  .btn-secondary {
+    font-family: 'VT323', monospace;
+    font-size: 24px;
+    letter-spacing: 4px;
+    background: transparent;
+    color: var(--ink-dim);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 14px 32px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-secondary:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  /* Screen shake on wrong answer */
+  .shake { animation: screenShake 0.3s ease; }
+  @keyframes screenShake {
+    0%, 100% { transform: translate(0,0); }
+    25% { transform: translate(-3px, 1px); }
+    50% { transform: translate(2px, -1px); }
+    75% { transform: translate(-1px, 2px); }
+  }
+
+  .flash-correct { animation: flashGreen 0.3s ease; }
+  .flash-wrong { animation: flashRed 0.3s ease; }
+
+  @keyframes flashGreen {
+    0% { background-color: rgba(184,255,46,0.1); }
+    100% { background-color: transparent; }
+  }
+  @keyframes flashRed {
+    0% { background-color: rgba(255,59,59,0.1); }
+    100% { background-color: transparent; }
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage"></div>
+
+<script>
+// ============================================================
+// GAME DATA — 17 questions from your Test 1 review
+// ============================================================
+const QUESTIONS = [
+  {
+    q: "An IT department is implementing a change management process. They need to classify changes based on impact and urgency (e.g., a routine printer driver update vs. a major network infrastructure upgrade). Which of the following would BEST help categorize these items?",
+    correct: "Identifying the change type",
+    distractors: ["Performing a security audit", "Conducting a cost-benefit analysis", "Scheduling a maintenance window"],
+    explain: "Identifying the change type categorizes changes by complexity, risk, and urgency — routine, standard, or emergency."
+  },
+  {
+    q: "A small doctor's office wants the highest level of wireless security AND desktop authentication. They only use cloud-based SaaS apps. Which combination should you implement?",
+    correct: "WPA2 + Multifactor Authentication",
+    distractors: ["WEP + WPS", "WPA + Single-factor password", "Open network + Biometrics only"],
+    explain: "WPA2 uses AES with CCMP encryption. Multifactor requires 2+ factors (know / have / are / do). WEP is broken, WPS is brute-forceable."
+  },
+  {
+    q: "David needs to see diagnostic information about an Android app and its network connections while debugging it on a tablet. Which of the following should he enable on the device?",
+    correct: "Developer mode",
+    distractors: ["Rooting", "Safe mode", "Factory reset"],
+    explain: "Developer mode exposes diagnostic info for apps and network connections. Rooting grants admin rights but isn't needed just for diagnostics."
+  },
+  {
+    q: "Which command is used in the Linux terminal to change the permissions of a file?",
+    correct: "chmod",
+    distractors: ["chown", "chgrp", "chattr"],
+    explain: "chmod = change mode (permissions). chown changes owner. chgrp changes group. chattr changes attributes."
+  },
+  {
+    q: "Abagail's Microsoft Word crashes every time she opens one specific document. Other documents open fine, no recent changes. She needs the content. What's the BEST next step?",
+    correct: "Attempt to open the document in Safe Mode",
+    distractors: ["Replace the document with a new blank file", "Reinstall Microsoft Office", "Perform a Windows system restore"],
+    explain: "Safe Mode bypasses add-ins and corrupt settings — often the quickest path to recovering the document's content."
+  },
+  {
+    q: "Daily Linux server backups are saved to a local NAS. You need to ensure backups will actually work when needed for restoration. What should you recommend?",
+    correct: "Attempt to restore to a test server from one of the backup files",
+    distractors: ["Set up scripts to automatically reattempt failed backup jobs", "Verify the file sizes of each backup match the source", "Increase the frequency of backups to twice daily"],
+    explain: "The ONLY way to be sure a backup is good is to actually restore from it. Size checks and retries don't prove recoverability."
+  },
+  {
+    q: "Which section of the Control Panel should a technician use to edit the account profile related to a user's Microsoft Outlook client?",
+    correct: "Mail",
+    distractors: ["User Accounts", "Programs and Features", "Credential Manager"],
+    explain: "The Mail applet is specifically for viewing, editing, and removing Outlook profile settings for the logged-in user."
+  },
+  {
+    q: "A user logs into Windows 11 and sees a black screen with just a movable cursor — no icons, no taskbar. What's the BEST initial fix to try?",
+    correct: "Restart the Windows Explorer process using Task Manager",
+    distractors: ["Boot into Safe Mode and perform a system restore", "Reinstall Windows", "Check the monitor cables and display settings"],
+    explain: "A black screen + cursor usually means explorer.exe didn't start. Restarting it is the least invasive fix and works most of the time."
+  },
+  {
+    q: "The server room humidity is at 10%. Which of the following risks to the servers could occur due to this low humidity level?",
+    correct: "Accidental static discharge",
+    distractors: ["Corrosion of the servers", "Overheating of the CPUs", "Increased fire hazard"],
+    explain: "Low humidity allows static buildup → discharge damages components. Corrosion is a HIGH-humidity problem. Target: 40-60% RH."
+  },
+  {
+    q: "What type of structure is 'IF THEN ELSE' in scripting?",
+    correct: "Branch",
+    distractors: ["Variable", "Loop", "Function"],
+    explain: "A branch controls program flow based on a logic condition — classically IF / THEN / ELSE. Variables hold values; loops repeat; functions encapsulate."
+  },
+  {
+    q: "Dion Training wants governance for password length, complexity, and expiration. Which policy should this be documented within?",
+    correct: "Password policy",
+    distractors: ["Acceptable use policy", "Remote access policy", "Data retention policy"],
+    explain: "Password policies define complexity, length, expiration, and protection rules for knowledge-based authentication. AUPs govern use of company resources."
+  },
+  {
+    q: "An attacker is using a precomputed table of hash values to attempt to crack your Windows password. What type of password attack is this?",
+    correct: "Rainbow table attack",
+    distractors: ["Brute-force attack", "Dictionary attack", "Phishing attack"],
+    explain: "Rainbow tables precompute hashes for fast lookup. Brute-force tries combinations live. Dictionary uses word lists. Phishing tricks users."
+  },
+  {
+    q: "A Windows 10 workstation won't boot. The technician needs to replace the OS files with a new copy of the SAME version, without touching user data or installed apps. Which type of installation should they use?",
+    correct: "Repair installation",
+    distractors: ["In-place upgrade", "Clean install", "Reset this PC"],
+    explain: "A repair install replaces system files of the same version while preserving data, settings, and apps. An in-place upgrade installs a NEW version."
+  },
+  {
+    q: "You run 'ipconfig /all' and see your IP is 169.254.34.12. Why can't you reach the internet?",
+    correct: "The workstation couldn't reach the DHCP server",
+    distractors: ["The workstation couldn't reach the DNS server", "The default gateway is misconfigured", "The subnet mask is wrong"],
+    explain: "169.254.x.x is an APIPA address — assigned automatically when no DHCP server responds. DNS issues wouldn't give you an APIPA address."
+  },
+  {
+    q: "Which security control would be the BEST way to prevent unauthorized users from booting a workstation from an external USB drive?",
+    correct: "BIOS password required",
+    distractors: ["Full disk encryption", "Antivirus software", "A strong Windows login password"],
+    explain: "A BIOS password prevents changing the boot order. Encryption protects data at rest but doesn't stop the boot itself. OS passwords are bypassed entirely if you boot from USB."
+  },
+  {
+    q: "Your team is finalizing a change request to install 20 new APs for a college campus. Locations are documented. What's the MOST important thing to add to the scope of work before approval?",
+    correct: "Rollback plan",
+    distractors: ["Risk analysis", "Budget approval document", "Technician training schedule"],
+    explain: "Every change needs a rollback plan so it can be reversed if it goes sideways. Risk analysis is important but the rollback is the critical safety net."
+  }
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let state = {
+  screen: 'start',
+  deck: [],
+  idx: 0,
+  score: 0,
+  lives: 3,
+  streak: 0,
+  correctCount: 0,
+  answered: null,   // { pickedIdx, correctIdx, options }
+  currentOptions: null,
+  hiScore: 0,
+  newHi: false
+};
+
+// ============================================================
+// STORAGE
+// ============================================================
+async function loadHi() {
+  try {
+    const r = await window.storage.get('hiscore_v1');
+    if (r && r.value) state.hiScore = parseInt(r.value) || 0;
+  } catch (e) { /* no saved score */ }
+}
+
+async function saveHi(score) {
+  try {
+    await window.storage.set('hiscore_v1', String(score));
+  } catch (e) { /* silent */ }
+}
+
+// ============================================================
+// HELPERS
+// ============================================================
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildOptions(question) {
+  const all = [question.correct, ...question.distractors];
+  const shuffled = shuffle(all);
+  const correctIdx = shuffled.indexOf(question.correct);
+  return { options: shuffled, correctIdx };
+}
+
+function streakBonus(streak) {
+  return Math.min(streak * 20, 100);
+}
+
+function gradeFor(correct, total) {
+  const pct = correct / total;
+  if (pct >= 0.9) return { letter: 'S', color: 'var(--yellow)', msg: 'FLAWLESS VICTORY' };
+  if (pct >= 0.8) return { letter: 'A', color: 'var(--green)', msg: 'CERT-READY' };
+  if (pct >= 0.7) return { letter: 'B', color: 'var(--cyan)', msg: 'STRONG RUN' };
+  if (pct >= 0.6) return { letter: 'C', color: 'var(--cyan)', msg: 'KEEP GRINDING' };
+  if (pct >= 0.4) return { letter: 'D', color: 'var(--pink)', msg: 'BACK TO THE BOOKS' };
+  return { letter: 'F', color: 'var(--red)', msg: 'RESPAWN REQUIRED' };
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+const stage = document.getElementById('stage');
+
+function render() {
+  if (state.screen === 'start') renderStart();
+  else if (state.screen === 'game') renderGame();
+  else if (state.screen === 'end') renderEnd();
+}
+
+function renderStart() {
+  stage.innerHTML = `
+    <div class="start">
+      <div class="logo-top">// INITIALIZE</div>
+      <h1 class="logo-main">SECOND<br>CHANCE</h1>
+      <div class="logo-sub">CompTIA Redemption Run</div>
+
+      <div class="stat-row">
+        <div class="stat-chip"><b>16</b>QUESTIONS</div>
+        <div class="stat-chip"><b>3</b>LIVES</div>
+        <div class="stat-chip"><b>∞</b>STREAK BONUS</div>
+      </div>
+
+      ${state.hiScore > 0 ? `
+        <div class="hi-score">
+          <div class="label">HIGH SCORE</div>
+          ${state.hiScore.toLocaleString()}
+        </div>
+      ` : ''}
+
+      <button class="btn-start" id="startBtn">▶ PRESS START</button>
+      <div class="hint">TIP: press 1-4 to answer · ENTER to continue</div>
+    </div>
+  `;
+  document.getElementById('startBtn').addEventListener('click', startGame);
+}
+
+function renderGame() {
+  const q = state.deck[state.idx];
+  const { options, correctIdx } = state.currentOptions;
+
+  const progress = ((state.idx) / state.deck.length) * 100;
+
+  stage.innerHTML = `
+    <div class="hud">
+      <div class="lives">
+        ${[0,1,2].map(i => `<span class="heart ${i >= state.lives ? 'lost' : ''}">♥</span>`).join('')}
+      </div>
+      <div class="score-box">
+        <div class="label">SCORE</div>
+        <div class="value" id="scoreVal">${state.score.toLocaleString()}</div>
+      </div>
+      <div class="streak-box ${state.streak === 0 ? 'cold' : ''}">
+        <span class="icon">${state.streak === 0 ? '·' : '⚡'}</span>
+        <span>×${state.streak}</span>
+      </div>
+    </div>
+
+    <div class="q-header">
+      <span>QUESTION <span class="q-num">${state.idx + 1}</span> / ${state.deck.length}</span>
+      <span>${state.streak >= 3 ? `+${streakBonus(state.streak)} streak bonus` : '&nbsp;'}</span>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" style="width: ${progress}%"></div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-text">${q.q}</div>
+    </div>
+
+    <div class="answers" id="answers">
+      ${options.map((opt, i) => `
+        <button class="answer-btn" data-idx="${i}">
+          <span class="key">${i + 1}</span>
+          <span class="text">${opt}</span>
+        </button>
+      `).join('')}
+    </div>
+
+    <div id="feedbackSlot"></div>
+  `;
+
+  document.querySelectorAll('.answer-btn').forEach(btn => {
+    btn.addEventListener('click', () => handleAnswer(parseInt(btn.dataset.idx)));
+  });
+}
+
+function handleAnswer(pickedIdx) {
+  if (state.answered) return;
+
+  const q = state.deck[state.idx];
+  const { correctIdx } = state.currentOptions;
+  const isCorrect = pickedIdx === correctIdx;
+  state.answered = { pickedIdx, correctIdx };
+
+  const buttons = document.querySelectorAll('.answer-btn');
+  buttons.forEach(b => b.disabled = true);
+
+  // Mark correct answer always
+  buttons[correctIdx].classList.add('correct');
+  // Mark wrong pick if applicable
+  if (!isCorrect) buttons[pickedIdx].classList.add('wrong');
+
+  if (isCorrect) {
+    state.streak += 1;
+    state.correctCount += 1;
+    const base = 100;
+    const bonus = streakBonus(state.streak);
+    const gained = base + bonus;
+    state.score += gained;
+    document.body.classList.add('flash-correct');
+    setTimeout(() => document.body.classList.remove('flash-correct'), 300);
+    animateScore(state.score - gained, state.score);
+  } else {
+    state.streak = 0;
+    state.lives -= 1;
+    document.body.classList.add('shake', 'flash-wrong');
+    setTimeout(() => document.body.classList.remove('shake', 'flash-wrong'), 400);
+  }
+
+  // Update HUD live
+  const streakBox = document.querySelector('.streak-box');
+  if (streakBox) {
+    streakBox.className = `streak-box ${state.streak === 0 ? 'cold' : ''}`;
+    streakBox.innerHTML = `<span class="icon">${state.streak === 0 ? '·' : '⚡'}</span><span>×${state.streak}</span>`;
+  }
+  document.querySelectorAll('.heart').forEach((h, i) => {
+    h.classList.toggle('lost', i >= state.lives);
+  });
+
+  // Show feedback
+  const fb = document.getElementById('feedbackSlot');
+  fb.innerHTML = `
+    <div class="feedback ${isCorrect ? 'correct-fb' : 'wrong-fb'}">
+      <strong>${isCorrect ? '> ACCESS GRANTED' : '> SYSTEM ERROR'}</strong>
+      ${q.explain}
+      <div style="margin-top: 10px; font-size: 11px; color: var(--ink-dim); letter-spacing: 2px;">
+        ${isCorrect
+          ? `+${100 + streakBonus(state.streak - 1 >= 0 ? state.streak : 0)} PTS · PRESS ENTER TO CONTINUE`
+          : 'PRESS ENTER TO CONTINUE'}
+      </div>
+    </div>
+  `;
+}
+
+function animateScore(from, to) {
+  const el = document.getElementById('scoreVal');
+  if (!el) return;
+  const steps = 20;
+  const delta = (to - from) / steps;
+  let cur = from;
+  let i = 0;
+  const iv = setInterval(() => {
+    cur += delta;
+    i++;
+    el.textContent = Math.round(cur).toLocaleString();
+    if (i >= steps) {
+      clearInterval(iv);
+      el.textContent = to.toLocaleString();
+    }
+  }, 20);
+}
+
+function advance() {
+  if (!state.answered) return;
+  state.answered = null;
+  state.idx += 1;
+
+  if (state.lives <= 0 || state.idx >= state.deck.length) {
+    endGame();
+    return;
+  }
+
+  state.currentOptions = buildOptions(state.deck[state.idx]);
+  renderGame();
+}
+
+function endGame() {
+  state.screen = 'end';
+  if (state.score > state.hiScore) {
+    state.newHi = true;
+    state.hiScore = state.score;
+    saveHi(state.score);
+  } else {
+    state.newHi = false;
+  }
+  renderEnd();
+}
+
+function renderEnd() {
+  const survived = state.lives > 0 && state.idx >= state.deck.length;
+  const g = gradeFor(state.correctCount, state.deck.length);
+
+  stage.innerHTML = `
+    <div class="end">
+      <h1 class="end-title ${survived ? 'win' : 'lose'}">${survived ? 'RUN COMPLETE' : 'GAME OVER'}</h1>
+      <div class="end-sub">${g.msg}</div>
+
+      <div class="grade-card">
+        <div class="g-label">FINAL GRADE</div>
+        <div class="grade" style="color: ${g.color};">${g.letter}</div>
+      </div>
+
+      <div class="end-stats">
+        <div class="end-stat"><div class="l">SCORE</div><div class="v">${state.score.toLocaleString()}</div></div>
+        <div class="end-stat"><div class="l">CORRECT</div><div class="v">${state.correctCount}/${state.deck.length}</div></div>
+        <div class="end-stat"><div class="l">HI-SCORE</div><div class="v">${state.hiScore.toLocaleString()}</div></div>
+      </div>
+
+      ${state.newHi ? `<div class="new-hi">★ NEW HIGH SCORE ★</div>` : ''}
+
+      <div class="end-buttons">
+        <button class="btn-retry" id="retryBtn">▶ PLAY AGAIN</button>
+        <button class="btn-secondary" id="menuBtn">MENU</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('retryBtn').addEventListener('click', startGame);
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    state.screen = 'start';
+    render();
+  });
+}
+
+// ============================================================
+// GAME FLOW
+// ============================================================
+function startGame() {
+  state.deck = shuffle(QUESTIONS);
+  state.idx = 0;
+  state.score = 0;
+  state.lives = 3;
+  state.streak = 0;
+  state.correctCount = 0;
+  state.answered = null;
+  state.newHi = false;
+  state.currentOptions = buildOptions(state.deck[0]);
+  state.screen = 'game';
+  render();
+}
+
+// ============================================================
+// KEYBOARD
+// ============================================================
+document.addEventListener('keydown', (e) => {
+  if (state.screen === 'start') {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startGame(); }
+  } else if (state.screen === 'game') {
+    if (!state.answered) {
+      const n = parseInt(e.key);
+      if (n >= 1 && n <= 4 && n <= state.currentOptions.options.length) {
+        handleAnswer(n - 1);
+      }
+    } else {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); advance(); }
+    }
+  } else if (state.screen === 'end') {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startGame(); }
+  }
+});
+
+// ============================================================
+// INIT
+// ============================================================
+loadHi().then(render);
+</script>
+</body>
+</html>
