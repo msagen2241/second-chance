@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 16 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
+A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 51 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
 
 ### Features
 
@@ -15,7 +15,7 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 
 ### Game Data
 
-The quiz questions are embedded directly in the `<script>` block as the `QUESTIONS` constant (17 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, and password attacks).
+The quiz questions are embedded directly in the `<script>` block as the `QUESTIONS` constant (51 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, password attacks, and more).
 
 ## How to Play
 
@@ -24,7 +24,7 @@ Open `Second_Chance.html` in any modern browser. No server or build step require
 1. Click **▶ PRESS START** (or press `Enter`/`Space`)
 2. Answer each question by clicking an option or pressing `1-4`
 3. Read the feedback, then press `Enter` to advance
-4. Lose all 3 hearts → Game Over; survive all 16 → Victory
+4. Lose all 3 hearts → Game Over; survive all 51 → Victory
 5. Beat your high score to appear on the leaderboard
 
 ## File Structure
@@ -58,7 +58,7 @@ Second Chance/
 }
 ```
 
-4. Update the stat chip on the start screen from `16` to the new count.
+4. Update the stat chip on the start screen from `51` to the new count.
 
 ## Building & Running
 
