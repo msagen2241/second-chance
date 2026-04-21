@@ -1272,12 +1272,12 @@ document.addEventListener('keydown', (e) => {
 class TouchManager {
   constructor() {
     this.stage = document.getElementById('stage');
-    this.hammer = new Hammer.Manager(this.stage, {
-      recognizers: [
-        [Hammer.SWIPE, { direction: Hammer.DIRECTION_LEFT, velocity: 0.3 }],
-        [Hammer.TAP, { event: 'tap', taps: 1 }],
-      ],
-    });
+    this.hammer = new Hammer.Manager(this.stage);
+
+    this.hammer.add([
+      new Hammer.Swipe({ direction: Hammer.DIRECTION_LEFT, velocity: 0.3 }),
+      new Hammer.Tap({ event: 'tap', taps: 1 }),
+    ]);
 
     this.hammer.on('swipeleft', (ev) => {
       if (state.screen === 'game' && state.answered) {
@@ -1289,8 +1289,7 @@ class TouchManager {
     this.hammer.on('tap', (ev) => {
       const target = ev.srcEvent.target;
       if (target.matches('.answer-btn') && !target.disabled) {
-        const btn = target;
-        const idx = parseInt(btn.dataset.idx);
+        const idx = parseInt(target.dataset.idx);
         if (idx != null) {
           handleAnswer(idx - 1);
         }
