@@ -1267,9 +1267,52 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================================
+// TOUCH MANAGER
+// ============================================================
+class TouchManager {
+  constructor() {
+    this.stage = document.getElementById('stage');
+    this.hammer = new Hammer.Manager(this.stage, {
+      recognizers: [
+        [Hammer.SWIPE, { direction: Hammer.DIRECTION_LEFT, velocity: 0.3 }],
+        [Hammer.TAP, { event: 'tap', taps: 1 }],
+      ],
+    });
+
+    this.hammer.on('swipeleft', (ev) => {
+      if (state.screen === 'game' && state.answered) {
+        ev.gesture.srcEvent.preventDefault();
+        advance();
+      }
+    });
+
+    this.hammer.on('tap', (ev) => {
+      const target = ev.srcEvent.target;
+      if (target.matches('.answer-btn') && !target.disabled) {
+        const btn = target;
+        const idx = parseInt(btn.dataset.idx);
+        if (idx != null) {
+          handleAnswer(idx - 1);
+        }
+      }
+    });
+  }
+}
+
+function initTouch() {
+  const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  if (isTouch) {
+    document.body.classList.add('touch-device');
+    window.IS_TOUCH = true;
+    new TouchManager();
+  }
+}
+
+// ============================================================
 // INIT
 // ============================================================
 loadHi().then(render);
+initTouch();
 </script>
 </body>
 </html>
