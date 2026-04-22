@@ -1069,7 +1069,8 @@ let state = {
   currentOptions: null,
   hiScore: 0,
   newHi: false,
-  missed: []        // indices of wrong answers (normal mode only)
+  missed: [],
+  categoryStats: {}  // { "Operating Systems": { correct: 0, missed: 0 }, ... }
 };
 
 // ============================================================
@@ -1248,6 +1249,7 @@ function handleAnswer(pickedIdx) {
   if (isCorrect) {
     state.streak += 1;
     state.correctCount += 1;
+    state.categoryStats[q.category].correct += 1;
     const base = 100;
     const bonus = streakBonus(state.streak);
     const gained = base + bonus;
@@ -1259,6 +1261,7 @@ function handleAnswer(pickedIdx) {
     state.streak = 0;
     state.lives -= 1;
     state.missed.push(state.idx);
+    state.categoryStats[q.category].missed += 1;
     document.body.classList.add('shake', 'flash-wrong');
     setTimeout(() => document.body.classList.remove('shake', 'flash-wrong'), 400);
     if (state.mode === 'streak') {
@@ -1432,6 +1435,12 @@ function startReview() {
   state.answered = null;
   state.newHi = false;
   state.missed = [];
+  state.categoryStats = {
+    "Operating Systems": { correct: 0, missed: 0 },
+    "Security": { correct: 0, missed: 0 },
+    "Software Troubleshooting": { correct: 0, missed: 0 },
+    "Operational Procedures": { correct: 0, missed: 0 }
+  };
   state.currentOptions = buildOptions(state.deck[0]);
   state.screen = 'game';
   render();
@@ -1447,6 +1456,12 @@ function startGame() {
   state.answered = null;
   state.newHi = false;
   state.missed = [];
+  state.categoryStats = {
+    "Operating Systems": { correct: 0, missed: 0 },
+    "Security": { correct: 0, missed: 0 },
+    "Software Troubleshooting": { correct: 0, missed: 0 },
+    "Operational Procedures": { correct: 0, missed: 0 }
+  };
   state.currentOptions = buildOptions(state.deck[0]);
   state.screen = 'game';
   render();
