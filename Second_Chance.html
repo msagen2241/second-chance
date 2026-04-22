@@ -1284,10 +1284,11 @@ function handleAnswer(pickedIdx) {
 
   const q = state.deck[state.idx];
   const { correctIdx } = state.currentOptions;
+  const buttons = document.querySelectorAll('.answer-btn');
+  if (pickedIdx < 0 || pickedIdx >= buttons.length) return;
   const isCorrect = pickedIdx === correctIdx;
   state.answered = { pickedIdx, correctIdx };
 
-  const buttons = document.querySelectorAll('.answer-btn');
   buttons.forEach(b => b.disabled = true);
 
   // Mark correct answer always
@@ -1599,18 +1600,23 @@ class TouchManager {
 
     this.hammer.on('swipeleft', (ev) => {
       if (state.screen === 'game' && state.answered) {
-        ev.gesture.srcEvent.preventDefault();
+        ev.srcEvent.preventDefault();
         advance();
       }
     });
 
     this.hammer.on('tap', (ev) => {
       const target = ev.srcEvent.target;
-      if (target.matches('.answer-btn') && !target.disabled) {
-        const idx = parseInt(target.dataset.idx);
-        if (idx != null) {
-          handleAnswer(idx - 1);
-        }
+      const answerBtn = target.closest('.answer-btn');
+      if (answerBtn && !answerBtn.disabled) {
+        const idx = Number(answerBtn.dataset.idx);
+        if (Number.isInteger(idx)) handleAnswer(idx);
+        return;
+      }
+
+      const nextBtn = target.closest('#nextBtn');
+      if (nextBtn) {
+        advance();
       }
     });
   }
