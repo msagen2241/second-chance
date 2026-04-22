@@ -1336,7 +1336,7 @@ function handleAnswer(pickedIdx) {
       ${q.explain}
       <div style="margin-top: 10px; font-size: 11px; color: var(--ink-dim); letter-spacing: 2px;">
         ${isCorrect
-          ? `+${100 + streakBonus(state.streak - 1 >= 0 ? state.streak : 0)} PTS`
+          ? `+${100 + streakBonus(state.streak - 1)} PTS`
           : ''}
       </div>
       <button class="btn-next" id="nextBtn">NEXT ▸</button>
@@ -1517,6 +1517,11 @@ function renderEnd() {
 // GAME FLOW
 // ============================================================
 function startReview() {
+  if (state.missed.length === 0) {
+    state.screen = 'end';
+    render();
+    return;
+  }
   state.mode = 'review';
   state.deck = shuffle(state.missed.map(i => QUESTIONS[i]));
   state.idx = 0;
