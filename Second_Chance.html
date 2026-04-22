@@ -696,306 +696,357 @@
 const QUESTIONS = [
   {
     q: "An IT department is implementing a change management process. They need to classify changes based on impact and urgency (e.g., a routine printer driver update vs. a major network infrastructure upgrade). Which of the following would BEST help categorize these items?",
+    category: "Operational Procedures",
     correct: "Identifying the change type",
     distractors: ["Performing a security audit", "Conducting a cost-benefit analysis", "Scheduling a maintenance window"],
     explain: "Identifying the change type categorizes changes by complexity, risk, and urgency — routine, standard, or emergency."
   },
   {
     q: "A small doctor's office wants the highest level of wireless security AND desktop authentication. They only use cloud-based SaaS apps. Which combination should you implement?",
+    category: "Security",
     correct: "WPA2 + Multifactor Authentication",
     distractors: ["WEP + WPS", "WPA + Single-factor password", "Open network + Biometrics only"],
     explain: "WPA2 uses AES with CCMP encryption. Multifactor requires 2+ factors (know / have / are / do). WEP is broken, WPS is brute-forceable."
   },
   {
     q: "David needs to see diagnostic information about an Android app and its network connections while debugging it on a tablet. Which of the following should he enable on the device?",
+    category: "Software Troubleshooting",
     correct: "Developer mode",
     distractors: ["Rooting", "Safe mode", "Factory reset"],
     explain: "Developer mode exposes diagnostic info for apps and network connections. Rooting grants admin rights but isn't needed just for diagnostics."
   },
   {
     q: "Which command is used in the Linux terminal to change the permissions of a file?",
+    category: "Operating Systems",
     correct: "chmod",
     distractors: ["chown", "chgrp", "chattr"],
     explain: "chmod = change mode (permissions). chown changes owner. chgrp changes group. chattr changes attributes."
   },
   {
     q: "Abagail's Microsoft Word crashes every time she opens one specific document. Other documents open fine, no recent changes. She needs the content. What's the BEST next step?",
+    category: "Software Troubleshooting",
     correct: "Attempt to open the document in Safe Mode",
     distractors: ["Replace the document with a new blank file", "Reinstall Microsoft Office", "Perform a Windows system restore"],
     explain: "Safe Mode bypasses add-ins and corrupt settings — often the quickest path to recovering the document's content."
   },
   {
     q: "Daily Linux server backups are saved to a local NAS. You need to ensure backups will actually work when needed for restoration. What should you recommend?",
+    category: "Operational Procedures",
     correct: "Attempt to restore to a test server from one of the backup files",
     distractors: ["Set up scripts to automatically reattempt failed backup jobs", "Verify the file sizes of each backup match the source", "Increase the frequency of backups to twice daily"],
     explain: "The ONLY way to be sure a backup is good is to actually restore from it. Size checks and retries don't prove recoverability."
   },
   {
     q: "Which section of the Control Panel should a technician use to edit the account profile related to a user's Microsoft Outlook client?",
+    category: "Software Troubleshooting",
     correct: "Mail",
     distractors: ["User Accounts", "Programs and Features", "Credential Manager"],
     explain: "The Mail applet is specifically for viewing, editing, and removing Outlook profile settings for the logged-in user."
   },
   {
     q: "A user logs into Windows 11 and sees a black screen with just a movable cursor — no icons, no taskbar. What's the BEST initial fix to try?",
+    category: "Software Troubleshooting",
     correct: "Restart the Windows Explorer process using Task Manager",
     distractors: ["Boot into Safe Mode and perform a system restore", "Reinstall Windows", "Check the monitor cables and display settings"],
     explain: "A black screen + cursor usually means explorer.exe didn't start. Restarting it is the least invasive fix and works most of the time."
   },
   {
     q: "The server room humidity is at 10%. Which of the following risks to the servers could occur due to this low humidity level?",
+    category: "Operational Procedures",
     correct: "Accidental static discharge",
     distractors: ["Corrosion of the servers", "Overheating of the CPUs", "Increased fire hazard"],
     explain: "Low humidity allows static buildup → discharge damages components. Corrosion is a HIGH-humidity problem. Target: 40-60% RH."
   },
   {
     q: "What type of structure is 'IF THEN ELSE' in scripting?",
+    category: "Operating Systems",
     correct: "Branch",
     distractors: ["Variable", "Loop", "Function"],
     explain: "A branch controls program flow based on a logic condition — classically IF / THEN / ELSE. Variables hold values; loops repeat; functions encapsulate."
   },
   {
     q: "Dion Training wants governance for password length, complexity, and expiration. Which policy should this be documented within?",
+    category: "Security",
     correct: "Password policy",
     distractors: ["Acceptable use policy", "Remote access policy", "Data retention policy"],
     explain: "Password policies define complexity, length, expiration, and protection rules for knowledge-based authentication. AUPs govern use of company resources."
   },
   {
     q: "An attacker is using a precomputed table of hash values to attempt to crack your Windows password. What type of password attack is this?",
+    category: "Security",
     correct: "Rainbow table attack",
     distractors: ["Brute-force attack", "Dictionary attack", "Phishing attack"],
     explain: "Rainbow tables precompute hashes for fast lookup. Brute-force tries combinations live. Dictionary uses word lists. Phishing tricks users."
   },
   {
     q: "A Windows 10 workstation won't boot. The technician needs to replace the OS files with a new copy of the SAME version, without touching user data or installed apps. Which type of installation should they use?",
+    category: "Operating Systems",
     correct: "Repair installation",
     distractors: ["In-place upgrade", "Clean install", "Reset this PC"],
     explain: "A repair install replaces system files of the same version while preserving data, settings, and apps. An in-place upgrade installs a NEW version."
   },
   {
     q: "You run 'ipconfig /all' and see your IP is 169.254.34.12. Why can't you reach the internet?",
+    category: "Operating Systems",
     correct: "The workstation couldn't reach the DHCP server",
     distractors: ["The workstation couldn't reach the DNS server", "The default gateway is misconfigured", "The subnet mask is wrong"],
     explain: "169.254.x.x is an APIPA address — assigned automatically when no DHCP server responds. DNS issues wouldn't give you an APIPA address."
   },
   {
     q: "Which security control would be the BEST way to prevent unauthorized users from booting a workstation from an external USB drive?",
+    category: "Security",
     correct: "BIOS password required",
     distractors: ["Full disk encryption", "Antivirus software", "A strong Windows login password"],
     explain: "A BIOS password prevents changing the boot order. Encryption protects data at rest but doesn't stop the boot itself. OS passwords are bypassed entirely if you boot from USB."
   },
   {
     q: "Your team is finalizing a change request to install 20 new APs for a college campus. Locations are documented. What's the MOST important thing to add to the scope of work before approval?",
+    category: "Operational Procedures",
     correct: "Rollback plan",
     distractors: ["Risk analysis", "Budget approval document", "Technician training schedule"],
     explain: "Every change needs a rollback plan so it can be reversed if it goes sideways. Risk analysis is important but the rollback is the critical safety net."
   },
   {
     q: "Edward can access his company email but cannot reach the network file share that hosted his shared inbox folders. He can reach other network shares. What's the MOST likely cause?",
+    category: "Operating Systems",
     correct: "The network file share's permission has been modified",
     distractors: ["The internet security options in his email client have been modified", "The domain controller's DNS settings were changed", "The OS update installed an incompatible email driver"],
     explain: "The file share's permissions have likely changed during Edward's vacation. Since he can still send/receive email, his account permissions are fine. Internet security options would affect sending/receiving, and OS updates wouldn't affect network file shares."
   },
   {
     q: "A technician needs to make a Windows computer visible to other PCs on a workgroup network. Which setting should be enabled?",
+    category: "Operating Systems",
     correct: "Network discovery",
     distractors: ["File and folder sharing", "Printer sharing", "Guest account access"],
     explain: "Network discovery allows Windows to find other computers on a network. File sharing is separate — it's about making your files accessible, not finding other PCs."
   },
   {
     q: "A file server must remain running during a power outage until the backup generator starts. Which device provides the needed buffer?",
+    category: "Operational Procedures",
     correct: "An uninterruptible power supply (UPS)",
     distractors: ["A line conditioner", "A surge protector", "A voltage regulator"],
     explain: "A UPS provides battery backup during power outages (until the generator kicks in). A line conditioner only adjusts voltage levels but can't keep the server running during a complete power failure."
   },
   {
     q: "A Linux administrator needs to change a user's password from the command line. Which command should they use?",
+    category: "Operating Systems",
     correct: "passwd",
     distractors: ["pwd", "chpasswd", "usermod"],
     explain: "passwd changes a user's password. pwd displays the present working directory."
   },
   {
     q: "An FTP server currently sits on the internal network. To improve security, where should it be placed?",
+    category: "Operating Systems",
     correct: "Migrate the FTP server from the internal network to a screened subnet",
     distractors: ["Add a deny rule to the firewall's ACL that blocks port 21 outbound", "Place the FTP server in the same VLAN as the web server", "Restrict FTP access to only the IT department"],
     explain: "A screened subnet (DMZ) isolates public-facing servers from the internal network. Blocking outbound port 21 wouldn't prevent exploitation of the FTP server itself."
   },
   {
     q: "Which file type can be executed on Linux, macOS, and Windows without modification?",
+    category: "Operating Systems",
     correct: ".py",
     distractors: [".sh", ".bat", ".cmd"],
     explain: "Python (.py) scripts run on Linux, macOS, and Windows. Shell scripts (.sh) are Linux/macOS only."
   },
   {
     q: "A company uses Cisco infrastructure for AAA authentication. Which protocol was developed by Cisco for this purpose?",
+    category: "Security",
     correct: "TACACS+",
     distractors: ["RADIUS", "Kerberos", "LDAP"],
     explain: "TACACS+ was developed by Cisco as a proprietary protocol for AAA. RADIUS is a general protocol."
   },
   {
     q: "What is the most likely way a user's Android tablet could be compromised by a malicious actor?",
+    category: "Security",
     correct: "Use social engineering to trick a user into opening a malicious APK",
     distractors: ["Use a tool like ICSSPLOIT to target specific vulnerabilities", "Exploit a known kernel vulnerability remotely", "Install a malicious app from the Google Play Store"],
     explain: "Social engineering (malicious APK) is the most likely attack vector for Android devices."
   },
   {
     q: "How should a system administrator schedule a vulnerability scan to run automatically every Sunday at 2:00 AM?",
+    category: "Operating Systems",
     correct: "Task scheduler",
     distractors: ["Event viewer", "Services console", "Device Manager"],
     explain: "Task scheduler runs tasks automatically at specified times. Event viewer logs events."
   },
   {
     q: "A company wants to deploy Windows and Office settings across 500 devices in Active Directory. Which tool should they use?",
+    category: "Operating Systems",
     correct: "GPO",
     distractors: ["HIPS", "MFA", "DHCP"],
     explain: "Group Policy Objects (GPO) deploy settings across many devices in Active Directory."
   },
   {
     q: "Which Linux command installs software on an RPM-based distribution?",
+    category: "Operating Systems",
     correct: "yum",
     distractors: ["nano", "apt-get", "pacman"],
     explain: "yum installs software on RPM-based Linux. nano is a text editor."
   },
   {
     q: "A Linux administrator needs to edit a configuration file from the command line. Which command launches a text editor?",
+    category: "Operating Systems",
     correct: "nano",
     distractors: ["cat", "ls", "grep"],
     explain: "nano is a command-line text editor. cat creates/displays files but doesn't edit them."
   },
   {
     q: "A chat application has too many users in one conversation, making important messages hard to find. What's the BEST way to organize messages?",
+    category: "Software Troubleshooting",
     correct: "Use dedicated channels to keep messages organized.",
     distractors: ["Reduce the number of users in each conversation.", "Enable read receipts for all users.", "Increase the font size in the chat window."],
     explain: "Dedicated channels organize messages so important updates aren't lost."
   },
   {
     q: "A user reports sudden internet connectivity loss and a warning about high network traffic. What's the BEST first step?",
+    category: "Software Troubleshooting",
     correct: "Investigate for malware and run a full security scan on the device",
     distractors: ["Turn on airplane mode for a few seconds, then turn it back off", "Reset the router to factory settings", "Reinstall the network drivers"],
     explain: "Sudden connectivity loss + high traffic warning = possible malware."
   },
   {
     q: "Which Windows account type can install and remove programs, modify system files, and change permissions?",
+    category: "Security",
     correct: "Administrator",
     distractors: ["Power User", "Standard User", "Guest"],
     explain: "An Administrator can install/remove programs, modify system files, and change permissions."
   },
   {
     q: "A user's Google homepage is in a foreign language. They haven't changed their browser settings. What should you check first?",
+    category: "Software Troubleshooting",
     correct: "Remove any proxy servers configured in their web browser",
     distractors: ["Verify the user's date and time zone are correctly listed in Windows", "Reinstall the web browser", "Change the search engine to Bing"],
     explain: "A proxy in a foreign country would cause Google to display in that country's language."
   },
   {
     q: "After registering the Windows Update service's DLL files, what should a technician do next?",
+    category: "Operating Systems",
     correct: "Reboot the computer",
     distractors: ["Register the Windows Update service's DLL files", "Uninstall the latest Windows update", "Run a system restore"],
     explain: "After registering DLL files, reboot the computer for changes to take effect."
   },
   {
     q: "A Windows installation reports 'Operating System Not Found.' Which bootrec command rebuilds the Boot Configuration Data?",
+    category: "Operating Systems",
     correct: "bootrec /rebuildbcd",
     distractors: ["bootrec /fixmbr", "bootrec /fixboot", "bootrec /scanos"],
     explain: "bootrec /rebuildbcd rebuilds the Boot Configuration Data to detect Windows installations."
   },
   {
     q: "Which technical control BEST prevents virus outbreaks by closing known vulnerabilities?",
+    category: "Security",
     correct: "Patch management",
     distractors: ["Acceptable use policies", "Antivirus software", "Firewall rules"],
     explain: "Patch management is a technical control that prevents known vulnerabilities from being exploited."
   },
   {
     q: "After a security update, a workstation fails to boot. What should a technician do first?",
+    category: "Operating Systems",
     correct: "Reboot the workstation into safe mode and roll back the recent security update",
     distractors: ["Reboot the workstation into the BIOS and reconfigure boot options", "Perform a clean installation of Windows", "Replace the hard drive"],
     explain: "Roll back the problematic update via Safe Mode."
   },
   {
     q: "A company wants physical access control for its server room. Which device is designed for this purpose?",
+    category: "Operational Procedures",
     correct: "Server lock",
     distractors: ["Smart card", "Biometric scanner", "Door alarm system"],
     explain: "A server lock is a physical locking mechanism for server cabinets."
   },
   {
     q: "What security measure has the best ROI for reducing the risk of successful attacks against an organization?",
+    category: "Security",
     correct: "User training and awareness",
     distractors: ["Penetration testing", "Firewall appliances", "Intrusion detection systems"],
     explain: "End users are the most vulnerable attack vector; training has the best ROI."
   },
   {
     q: "Which statement about virtual machines and physical servers is TRUE regarding downtime?",
+    category: "Operational Procedures",
     correct: "A virtual machine has less downtime than a physical server",
     distractors: ["A virtual machine has more downtime than a physical server", "They have equivalent downtime", "Virtual machines cannot be restored after failure"],
     explain: "VMs can be restored much faster than physical servers."
   },
   {
     q: "Before granting remote access to a server, what is the MOST important security measure to implement?",
+    category: "Security",
     correct: "Install the latest security updates and patches to the server",
     distractors: ["Set the server's anti-virus software to automatically update itself and perform a full scan every Saturday night", "Enable two-factor authentication on the admin account", "Configure a firewall rule to allow only specific IP addresses"],
     explain: "Keeping the server patched is the most important security measure before granting remote access."
   },
   {
     q: "An AI tool is generating responses with incorrect or outdated information. What is this issue called?",
+    category: "Software Troubleshooting",
     correct: "Inaccuracies",
     distractors: ["Hallucination", "Bias", "Overfitting"],
     explain: "The issue involves incorrect/outdated AI-generated content, not fabrication of false details."
   },
   {
     q: "What are the BEST security measures to protect data on a smartphone that could be lost or stolen?",
+    category: "Security",
     correct: "Configure the ability to perform a remote wipe, Enable full device encryption",
     distractors: ["Require complex passwords, Enable a pattern lock", "Install a VPN, Enable two-factor authentication", "Enable a firewall, Update the operating system"],
     explain: "Full encryption protects data if the device is lost; remote wipe erases data before a thief can access it."
   },
   {
     q: "A single Android app crashes repeatedly. What's the least disruptive first step?",
+    category: "Software Troubleshooting",
     correct: "Clear the application's cache and data",
     distractors: ["Restart the smartphone to refresh the operating system", "Factory reset the device", "Reinstall the app from the Play Store"],
     explain: "Cache corruption is the most common cause of single-app crashes; clearing cache/data is the least disruptive first step."
   },
   {
     q: "Which two factors MOST commonly compromise wireless networks?",
+    category: "Security",
     correct: "WPS enabled, Router with outdated firmware",
     distractors: ["Default administrative login credentials, Router with outdated firmware", "WEP encryption, Weak passwords", "Open networks, Default SSIDs"],
     explain: "WPS PINs are vulnerable to brute force attacks; outdated firmware is another common vulnerability."
   },
   {
     q: "Which Windows 10 edition supports up to 4 physical CPUs and 6 TB of RAM?",
+    category: "Operating Systems",
     correct: "Pro for Workstations",
     distractors: ["Pro", "Home", "Enterprise"],
     explain: "Windows 10 Pro for Workstations supports up to 4 physical CPUs and 6 TB RAM."
   },
   {
     q: "A company wants to prevent USB-based malware attacks and password-based compromises. Which two measures should they implement?",
+    category: "Security",
     correct: "Lockout the account after 3 failed login attempts, Change the default credentials on the servers",
     distractors: ["Modify the AutoRun settings, Install the operating system security updates", "Enable a firewall, Use complex passwords", "Install antivirus, Enable full disk encryption"],
     explain: "AutoRun settings prevent USB attacks; account lockout and changing default credentials prevent password attacks."
   },
   {
     q: "Which type of data is regulated under privacy laws such as GDPR and PCI-DSS?",
+    category: "Security",
     correct: "PII",
     distractors: ["DRM", "API keys", "Source code"],
     explain: "PII (Personally Identifiable Information) is regulated data along with PCI, GDPR, and PHI."
   },
   {
     q: "An attacker uses a list of common passwords to try to crack a user's account. What type of attack is this?",
+    category: "Security",
     correct: "Dictionary",
     distractors: ["Brute-force", "Rainbow table", "Man-in-the-middle"],
     explain: "A dictionary attack uses a list of common passwords; brute-force tries all possible combinations."
   },
   {
     q: "Which type of network hides your computer and prevents file sharing?",
+    category: "Operating Systems",
     correct: "Public",
     distractors: ["Private", "Workgroup", "Domain"],
     explain: "A public network hides your computer and prevents file sharing."
   },
   {
     q: "An instructor wants only their IoT device to connect to a classroom wireless network while blocking students' devices. Which control should they use?",
+    category: "Security",
     correct: "MAC filtering",
     distractors: ["NAT", "Port forwarding", "QoS"],
     explain: "MAC filtering allows specific devices (instructors') while blocking others (students)."
   },
   {
     q: "A Windows system administrator needs to scan for and restore corrupted system files. Which command should they use?",
+    category: "Operating Systems",
     correct: "sfc",
     distractors: ["chkdsk", "defrag", "diskpart"],
     explain: "sfc (System File Checker) scans for and restores corrupted Windows system files. chkdsk checks the file system."
