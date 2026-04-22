@@ -1394,6 +1394,20 @@ function endGame() {
   renderEnd();
 }
 
+const CATEGORY_COLORS = {
+  "Operating Systems": "var(--cyan)",
+  "Security": "var(--pink)",
+  "Software Troubleshooting": "var(--green)",
+  "Operational Procedures": "var(--yellow)"
+};
+
+function barFor(correct, total) {
+  if (total === 0) return '\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591';
+  const filled = Math.round((correct / total) * 12);
+  const empty = 12 - filled;
+  return '\u2588'.repeat(filled) + '\u2591'.repeat(empty);
+}
+
 function renderEnd() {
   const survived = state.lives > 0 && state.idx >= state.deck.length;
   const g = gradeFor(state.correctCount, state.deck.length);
@@ -1437,12 +1451,41 @@ function renderEnd() {
       <button class="btn-secondary" id="reviewBtn">REVIEW MISSED (${state.missed.length})</button>
     ` : '';
 
+  // Build category breakdown rows, sorted by lowest accuracy first
+  const catRows = Object.entries(state.categoryStats || {})
+    .sort((a, b) => {
+      const pctA = a[1].correct / (a[1].correct + a[1].missed) || 0;
+      const pctB = b[1].correct / (b[1].correct + b[1].missed) || 0;
+      return pctA - pctB;
+    })
+    .map(([name, stats]) => {
+      const total = stats.correct + stats.missed;
+      const color = CATEGORY_COLORS[name] || 'var(--ink)';
+      const bar = barFor(stats.correct, total);
+      return `
+        <div class="category-row">
+          <span class="category-name">${name}</span>
+          <span class="category-bar" style="color: ${color}">${bar}</span>
+          <span class="category-count">${stats.correct}/${total}</span>
+        </div>
+      `;
+    }).join('');
+
+  const catBreakdown = Object.keys(state.categoryStats || {}).length > 0 ? `
+      <div class="category-breakdown">
+        <div class="cat-title">CATEGORY BREAKDOWN</div>
+        ${catRows}
+      </div>
+    ` : '';
+
   stage.innerHTML = `
     <div class="end">
       <h1 class="end-title ${survived || (state.mode === 'streak' && state.streak > 0) ? 'win' : 'lose'}">${title}</h1>
       <div class="end-sub">${sub}</div>
 
       ${gradeHtml}
+
+      ${catBreakdown}
 
       <div class="end-stats">
         ${statsHtml}
