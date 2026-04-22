@@ -600,6 +600,38 @@
   }
 
   .btn-next:active { transform: scale(0.97); }
+
+  /* ============ MODE PICKER ============ */
+  .mode-picker {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .mode-btn {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    letter-spacing: 3px;
+    background: var(--bg-2);
+    color: var(--ink-dim);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .mode-btn:hover {
+    border-color: var(--cyan);
+    color: var(--ink);
+  }
+
+  .mode-btn.active {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: rgba(0,240,255,0.08);
+  }
 </style>
 <style>
   /* ============ TOUCH DEVICE OVERRIDES ============ */
@@ -633,11 +665,17 @@
     padding: 14px 36px;
   }
 
+  .touch-device .mode-btn {
+    font-size: 24px;
+    padding: 16px 28px;
+  }
+
   .touch-device .answer-btn,
   .touch-device .btn-start,
   .touch-device .btn-retry,
   .touch-device .btn-secondary,
-  .touch-device .btn-next {
+  .touch-device .btn-next,
+  .touch-device .mode-btn {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     user-select: none;
@@ -969,6 +1007,7 @@ const QUESTIONS = [
 // ============================================================
 let state = {
   screen: 'start',
+  mode: 'normal',   // 'normal' | 'streak' | 'review'
   deck: [],
   idx: 0,
   score: 0,
@@ -978,7 +1017,8 @@ let state = {
   answered: null,   // { pickedIdx, correctIdx, options }
   currentOptions: null,
   hiScore: 0,
-  newHi: false
+  newHi: false,
+  missed: []        // indices of wrong answers (normal mode only)
 };
 
 // ============================================================
@@ -1042,15 +1082,21 @@ function render() {
 }
 
 function renderStart() {
+  const isStreak = state.mode === 'streak';
   stage.innerHTML = `
     <div class="start">
       <div class="logo-top">// INITIALIZE</div>
       <h1 class="logo-main">SECOND<br>CHANCE</h1>
       <div class="logo-sub">CompTIA Redemption Run</div>
 
+      <div class="mode-picker">
+        <button class="mode-btn ${!isStreak ? 'active' : ''}" id="modeNormal">NORMAL</button>
+        <button class="mode-btn ${isStreak ? 'active' : ''}" id="modeStreak">STREAK</button>
+      </div>
+
       <div class="stat-row">
         <div class="stat-chip"><b>51</b>QUESTIONS</div>
-        <div class="stat-chip"><b>3</b>LIVES</div>
+        <div class="stat-chip">${isStreak ? '<b>∞</b>NO LIVES' : '<b>3</b>LIVES'}</div>
         <div class="stat-chip"><b>∞</b>STREAK BONUS</div>
       </div>
 
@@ -1065,6 +1111,14 @@ function renderStart() {
       <div class="hint">TIP: press 1-4 to answer · ENTER to continue</div>
     </div>
   `;
+  document.getElementById('modeNormal').addEventListener('click', () => {
+    state.mode = 'normal';
+    renderStart();
+  });
+  document.getElementById('modeStreak').addEventListener('click', () => {
+    state.mode = 'streak';
+    renderStart();
+  });
   document.getElementById('startBtn').addEventListener('click', startGame);
 }
 
@@ -1073,12 +1127,17 @@ function renderGame() {
   const { options, correctIdx } = state.currentOptions;
 
   const progress = ((state.idx) / state.deck.length) * 100;
+  const livesHtml = state.mode === 'streak'
+    ? `<span style="color: var(--yellow); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">STREAK MODE</span>`
+    : state.mode === 'review'
+      ? `<span style="color: var(--cyan); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">REVIEW MODE</span>`
+      : `<div class="lives">
+          ${[0,1,2].map(i => `<span class="heart ${i >= state.lives ? 'lost' : ''}">♥</span>`).join('')}
+        </div>`;
 
   stage.innerHTML = `
     <div class="hud">
-      <div class="lives">
-        ${[0,1,2].map(i => `<span class="heart ${i >= state.lives ? 'lost' : ''}">♥</span>`).join('')}
-      </div>
+      ${livesHtml}
       <div class="score-box">
         <div class="label">SCORE</div>
         <div class="value" id="scoreVal">${state.score.toLocaleString()}</div>
@@ -1148,8 +1207,12 @@ function handleAnswer(pickedIdx) {
   } else {
     state.streak = 0;
     state.lives -= 1;
+    state.missed.push(state.idx);
     document.body.classList.add('shake', 'flash-wrong');
     setTimeout(() => document.body.classList.remove('shake', 'flash-wrong'), 400);
+    if (state.mode === 'streak') {
+      setTimeout(() => { endGame(); }, 1500);
+    }
   }
 
   // Update HUD live
@@ -1202,7 +1265,12 @@ function advance() {
   state.answered = null;
   state.idx += 1;
 
-  if (state.lives <= 0 || state.idx >= state.deck.length) {
+  if (state.idx >= state.deck.length) {
+    endGame();
+    return;
+  }
+
+  if (state.mode === 'normal' && state.lives <= 0) {
     endGame();
     return;
   }
@@ -1227,49 +1295,107 @@ function renderEnd() {
   const survived = state.lives > 0 && state.idx >= state.deck.length;
   const g = gradeFor(state.correctCount, state.deck.length);
 
-  stage.innerHTML = `
-    <div class="end">
-      <h1 class="end-title ${survived ? 'win' : 'lose'}">${survived ? 'RUN COMPLETE' : 'GAME OVER'}</h1>
-      <div class="end-sub">${g.msg}</div>
+  // Mode overrides
+  let title, sub, showGrade;
+  if (state.mode === 'streak') {
+    title = state.streak === 0 ? 'FIRST BLOOD' : 'STREAK BROKEN';
+    sub = `STREAK: ${state.streak} CORRECT${state.streak > 0 ? ' · SCORE: ' + state.score.toLocaleString() : ''}`;
+    showGrade = false;
+  } else if (state.mode === 'review') {
+    title = 'REVIEW COMPLETE';
+    sub = `${state.correctCount}/${state.deck.length} CORRECT`;
+    showGrade = false;
+  } else {
+    title = survived ? 'RUN COMPLETE' : 'GAME OVER';
+    sub = g.msg;
+    showGrade = true;
+  }
 
+  const statsHtml = state.mode === 'streak'
+    ? `<div class="end-stat"><div class="l">STREAK</div><div class="v">${state.streak}</div></div>
+       <div class="end-stat"><div class="l">SCORE</div><div class="v">${state.score.toLocaleString()}</div></div>
+       <div class="end-stat"><div class="l">ATTEMPTED</div><div class="v">${state.correctCount + (state.mode === 'streak' ? 1 : 0)}</div></div>`
+    : state.mode === 'review'
+      ? `<div class="end-stat"><div class="l">CORRECT</div><div class="v">${state.correctCount}/${state.deck.length}</div></div>
+         <div class="end-stat"><div class="l">STREAK</div><div class="v">${state.streak}</div></div>
+         <div class="end-stat"><div class="l">SCORE</div><div class="v">${state.score.toLocaleString()}</div></div>`
+      : `<div class="end-stat"><div class="l">SCORE</div><div class="v">${state.score.toLocaleString()}</div></div>
+         <div class="end-stat"><div class="l">CORRECT</div><div class="v">${state.correctCount}/${state.deck.length}</div></div>
+         <div class="end-stat"><div class="l">HI-SCORE</div><div class="v">${state.hiScore.toLocaleString()}</div></div>`;
+
+  const gradeHtml = showGrade ? `
       <div class="grade-card">
         <div class="g-label">FINAL GRADE</div>
         <div class="grade" style="color: ${g.color};">${g.letter}</div>
       </div>
+    ` : '';
+
+  const reviewBtn = state.mode === 'normal' && state.missed.length > 0 ? `
+      <button class="btn-secondary" id="reviewBtn">REVIEW MISSED (${state.missed.length})</button>
+    ` : '';
+
+  stage.innerHTML = `
+    <div class="end">
+      <h1 class="end-title ${survived || (state.mode === 'streak' && state.streak > 0) ? 'win' : 'lose'}">${title}</h1>
+      <div class="end-sub">${sub}</div>
+
+      ${gradeHtml}
 
       <div class="end-stats">
-        <div class="end-stat"><div class="l">SCORE</div><div class="v">${state.score.toLocaleString()}</div></div>
-        <div class="end-stat"><div class="l">CORRECT</div><div class="v">${state.correctCount}/${state.deck.length}</div></div>
-        <div class="end-stat"><div class="l">HI-SCORE</div><div class="v">${state.hiScore.toLocaleString()}</div></div>
+        ${statsHtml}
       </div>
 
       ${state.newHi ? `<div class="new-hi">★ NEW HIGH SCORE ★</div>` : ''}
 
       <div class="end-buttons">
         <button class="btn-retry" id="retryBtn">▶ PLAY AGAIN</button>
+        ${reviewBtn}
         <button class="btn-secondary" id="menuBtn">MENU</button>
       </div>
     </div>
   `;
   document.getElementById('retryBtn').addEventListener('click', startGame);
-  document.getElementById('menuBtn').addEventListener('click', () => {
+  const menuBtn = document.getElementById('menuBtn');
+  menuBtn.addEventListener('click', () => {
     state.screen = 'start';
+    state.mode = 'normal';
     render();
   });
+  const reviewBtnEl = document.getElementById('reviewBtn');
+  if (reviewBtnEl) {
+    reviewBtnEl.addEventListener('click', startReview);
+  }
 }
 
 // ============================================================
 // GAME FLOW
 // ============================================================
-function startGame() {
-  state.deck = shuffle(QUESTIONS);
+function startReview() {
+  state.mode = 'review';
+  state.deck = shuffle(state.missed.map(i => QUESTIONS[i]));
   state.idx = 0;
   state.score = 0;
-  state.lives = 3;
+  state.lives = 0;
   state.streak = 0;
   state.correctCount = 0;
   state.answered = null;
   state.newHi = false;
+  state.missed = [];
+  state.currentOptions = buildOptions(state.deck[0]);
+  state.screen = 'game';
+  render();
+}
+
+function startGame() {
+  state.deck = shuffle(QUESTIONS);
+  state.idx = 0;
+  state.score = 0;
+  state.lives = state.mode === 'streak' ? 999 : 3;
+  state.streak = 0;
+  state.correctCount = 0;
+  state.answered = null;
+  state.newHi = false;
+  state.missed = [];
   state.currentOptions = buildOptions(state.deck[0]);
   state.screen = 'game';
   render();
