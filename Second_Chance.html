@@ -314,6 +314,7 @@
     .answers { grid-template-columns: 1fr; }
     .hud { grid-template-columns: 1fr 1fr; gap: 12px; }
     .streak-box { grid-column: 1 / -1; text-align: center; }
+    .category-name { min-width: 120px; font-size: 10px; }
   }
 
   .answer-btn {
@@ -631,6 +632,54 @@
     border-color: var(--cyan);
     color: var(--cyan);
     background: rgba(0,240,255,0.08);
+  }
+
+  /* ============ CATEGORY BREAKDOWN ============ */
+  .category-breakdown {
+    margin-top: 20px;
+    margin-bottom: 28px;
+    text-align: left;
+  }
+
+  .category-breakdown .cat-title {
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--ink-dim);
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .category-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .category-name {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--ink-dim);
+    min-width: 200px;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .category-bar {
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0;
+    user-select: none;
+  }
+
+  .category-count {
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    color: var(--ink);
+    min-width: 50px;
   }
 </style>
 <style>
