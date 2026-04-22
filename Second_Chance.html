@@ -1108,7 +1108,7 @@ const QUESTIONS = [
 let state = {
   screen: 'start',
   mode: 'normal',   // 'normal' | 'streak' | 'review'
-  deck: [],
+  deck: [],         // [{ id, question, isRetry }]
   idx: 0,
   score: 0,
   lives: 3,
@@ -1155,6 +1155,44 @@ function buildOptions(question) {
   const shuffled = shuffle(all);
   const correctIdx = shuffled.indexOf(question.correct);
   return { options: shuffled, correctIdx };
+}
+
+function buildDeck(questionIds) {
+  return shuffle(questionIds).map(id => ({
+    id,
+    question: QUESTIONS[id],
+    isRetry: false
+  }));
+}
+
+function emptyCategoryStats() {
+  return {
+    "Operating Systems": { correct: 0, missed: 0 },
+    "Security": { correct: 0, missed: 0 },
+    "Software Troubleshooting": { correct: 0, missed: 0 },
+    "Operational Procedures": { correct: 0, missed: 0 }
+  };
+}
+
+function trackMissed(questionId) {
+  if (!state.missed.includes(questionId)) state.missed.push(questionId);
+}
+
+function clearMissed(questionId) {
+  state.missed = state.missed.filter(id => id !== questionId);
+}
+
+function hasFutureRetry(questionId) {
+  return state.deck.slice(state.idx + 1).some(entry => entry.id === questionId);
+}
+
+function queueRetry(entry) {
+  if (state.mode === 'streak' || hasFutureRetry(entry.id)) return;
+  state.deck.push({
+    id: entry.id,
+    question: entry.question,
+    isRetry: true
+  });
 }
 
 function streakBonus(streak) {
@@ -1224,7 +1262,8 @@ function renderStart() {
 }
 
 function renderGame() {
-  const q = state.deck[state.idx];
+  const entry = state.deck[state.idx];
+  const q = entry.question;
   const { options, correctIdx } = state.currentOptions;
 
   const progress = ((state.idx) / state.deck.length) * 100;
@@ -1250,7 +1289,7 @@ function renderGame() {
     </div>
 
     <div class="q-header">
-      <span>QUESTION <span class="q-num">${state.idx + 1}</span> / ${state.deck.length}</span>
+      <span>QUESTION <span class="q-num">${state.idx + 1}</span> / ${state.deck.length}${entry.isRetry ? ' · RETRY' : ''}</span>
       <span>${state.streak >= 3 ? `+${streakBonus(state.streak)} streak bonus` : '&nbsp;'}</span>
     </div>
 
@@ -1282,7 +1321,8 @@ function renderGame() {
 function handleAnswer(pickedIdx) {
   if (state.answered) return;
 
-  const q = state.deck[state.idx];
+  const entry = state.deck[state.idx];
+  const q = entry.question;
   const { correctIdx } = state.currentOptions;
   const buttons = document.querySelectorAll('.answer-btn');
   if (pickedIdx < 0 || pickedIdx >= buttons.length) return;
@@ -1299,6 +1339,7 @@ function handleAnswer(pickedIdx) {
   if (isCorrect) {
     state.streak += 1;
     state.correctCount += 1;
+    clearMissed(entry.id);
     state.categoryStats[q.category].correct += 1;
     const base = 100;
     const bonus = streakBonus(state.streak);
@@ -1310,7 +1351,8 @@ function handleAnswer(pickedIdx) {
   } else {
     state.streak = 0;
     state.lives -= 1;
-    state.missed.push(state.idx);
+    trackMissed(entry.id);
+    queueRetry(entry);
     state.categoryStats[q.category].missed += 1;
     document.body.classList.add('shake', 'flash-wrong');
     setTimeout(() => document.body.classList.remove('shake', 'flash-wrong'), 400);
@@ -1379,7 +1421,7 @@ function advance() {
     return;
   }
 
-  state.currentOptions = buildOptions(state.deck[state.idx]);
+  state.currentOptions = buildOptions(state.deck[state.idx].question);
   renderGame();
 }
 
@@ -1524,7 +1566,7 @@ function startReview() {
     return;
   }
   state.mode = 'review';
-  state.deck = shuffle(state.missed.map(i => QUESTIONS[i]));
+  state.deck = buildDeck(state.missed);
   state.idx = 0;
   state.score = 0;
   state.lives = 0;
@@ -1533,19 +1575,14 @@ function startReview() {
   state.answered = null;
   state.newHi = false;
   state.missed = [];
-  state.categoryStats = {
-    "Operating Systems": { correct: 0, missed: 0 },
-    "Security": { correct: 0, missed: 0 },
-    "Software Troubleshooting": { correct: 0, missed: 0 },
-    "Operational Procedures": { correct: 0, missed: 0 }
-  };
-  state.currentOptions = buildOptions(state.deck[0]);
+  state.categoryStats = emptyCategoryStats();
+  state.currentOptions = buildOptions(state.deck[0].question);
   state.screen = 'game';
   render();
 }
 
 function startGame() {
-  state.deck = shuffle(QUESTIONS);
+  state.deck = buildDeck(QUESTIONS.map((_, i) => i));
   state.idx = 0;
   state.score = 0;
   state.lives = state.mode === 'streak' ? 999 : 3;
@@ -1554,13 +1591,8 @@ function startGame() {
   state.answered = null;
   state.newHi = false;
   state.missed = [];
-  state.categoryStats = {
-    "Operating Systems": { correct: 0, missed: 0 },
-    "Security": { correct: 0, missed: 0 },
-    "Software Troubleshooting": { correct: 0, missed: 0 },
-    "Operational Procedures": { correct: 0, missed: 0 }
-  };
-  state.currentOptions = buildOptions(state.deck[0]);
+  state.categoryStats = emptyCategoryStats();
+  state.currentOptions = buildOptions(state.deck[0].question);
   state.screen = 'game';
   render();
 }
