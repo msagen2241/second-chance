@@ -40,6 +40,9 @@
 <script src="js/storage.js"></script>
 <script src="js/courses.js"></script>
 <script src="js/audio.js"></script>
+<script src="js/errorlog.js"></script>
+<script src="js/spaced.js"></script>
+<script src="js/analytics.js"></script>
 <script src="js/progression.js"></script>
 <script src="js/gameplay.js"></script>
 <script src="js/juice.js"></script>
@@ -59,6 +62,9 @@ async function init() {
 
   // Load progression
   await Progression.load();
+
+  // Initialize spaced repetition data
+  await Spaced.initCourse('comptia');
 
   // Initialize juice effects
   Juice.init();

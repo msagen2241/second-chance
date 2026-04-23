@@ -35,6 +35,9 @@ const Core = {
     // Initialize gameplay state
     Gameplay.init();
 
+    // Start analytics session
+    Analytics.startSession(this.state.courseId);
+
     const questions = Courses.getQuestions();
     const questionIds = questions.map((_, i) => i);
     this.state.deck = this.buildDeck(questionIds);
@@ -78,6 +81,130 @@ const Core = {
     this.render();
   },
 
+  // Start category-focused study session
+  async startCategory(category) {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const questions = Courses.getQuestions();
+    const questionIds = questions.map((q, i) => q.category === category ? i : -1).filter(i => i >= 0);
+    this.state.mode = 'category';
+    this.state.studyCategory = category;
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 3;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  // Start weakness-focused study (auto-picks your bottom 2 categories)
+  async startWeakness() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const accuracy = await ErrorLog.getCategoryAccuracy(this.state.courseId);
+    const categories = Object.entries(accuracy)
+      .map(([name, data]) => ({ name, pct: data.total > 0 ? data.correct / data.total : 1 }))
+      .sort((a, b) => a.pct - b.pct)
+      .slice(0, 2)
+      .map(c => c.name);
+
+    // If no data yet, just use all questions
+    const filterCats = categories.length > 0 ? categories : Courses.getCategories();
+    const questions = Courses.getQuestions();
+    const questionIds = questions.map((q, i) => filterCats.includes(q.category) ? i : -1).filter(i => i >= 0);
+
+    this.state.mode = 'weakness';
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 3;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  // Start cram mode (your most-missed questions)
+  async startCram() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const mostMissed = await ErrorLog.getMostMissed(this.state.courseId, 30);
+    const questionIds = mostMissed.length > 0 ? mostMissed : Courses.getQuestions().map((_, i) => i);
+
+    this.state.mode = 'cram';
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 3;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  // Start spaced repetition review (due questions)
+  async startReviewDue() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const due = await Spaced.getDueQuestions(this.state.courseId);
+    if (due.length === 0) {
+      // No due questions — show toast and stay on start screen
+      return;
+    }
+
+    this.state.mode = 'review';
+    this.state.deck = this.buildDeck(due);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999; // No lives in review mode
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
   // Handle answer selection
   async handleAnswer(pickedIdx) {
     if (this.state.answered) return;
@@ -104,6 +231,11 @@ const Core = {
       this.state.correctCount += 1;
       this.clearMissed(entry.id);
       this.state.categoryStats[q.category].correct += 1;
+
+      // Track: error log + spaced repetition + analytics
+      ErrorLog.logAnswer(entry.id, true, pickedIdx, q.category, this.state.currentOptions.options.length);
+      Spaced.recordAnswer(this.state.courseId, entry.id, true);
+      Analytics.recordAnswer(true, q.category);
 
       // Gameplay: update combo, track boss, check reward
       const rewardResult = Gameplay.onCorrect(entry);
@@ -145,6 +277,11 @@ const Core = {
         return;
       }
     } else {
+      // Track: error log + spaced repetition + analytics
+      ErrorLog.logAnswer(entry.id, false, pickedIdx, q.category, this.state.currentOptions.options.length);
+      Spaced.recordAnswer(this.state.courseId, entry.id, false);
+      Analytics.recordAnswer(false, q.category);
+
       // Juice
       const btn = buttons[pickedIdx];
       if (btn) Juice.onWrong(btn);
@@ -339,6 +476,9 @@ const Core = {
     const g = this.gradeFor(this.state.correctCount, this.state.deck.length);
     Progression.recordRun(this.state.score, this.state.correctCount, this.state.deck.length, g.letter);
 
+    // End analytics session
+    Analytics.endSession();
+
     // Check achievements
     Progression.checkAchievements();
 
@@ -369,11 +509,16 @@ const Core = {
   },
 
   // Render start screen
-  renderStart() {
+  async renderStart() {
     const isStreak = this.state.mode === 'streak';
+    const isCategory = this.state.mode === 'category';
     const prog = Progression.data || { level: 0, totalXP: 0, skillPoints: 0, studyStreak: 0, achievements: [] };
     const xpNeeded = Progression.xpToNextLevel();
     const xpPct = prog.level >= 50 ? 100 : Math.min(100, (prog.totalXP % (100 * (prog.level + 1) + 200)) / (100 * (prog.level + 1) + 200) * 100);
+
+    // Get due count for spaced repetition
+    const dueCount = await Spaced.getDueCount(this.state.courseId);
+    const categories = Courses.getCategories();
 
     this.stage.innerHTML = `
       <div class="start">
@@ -408,7 +553,7 @@ const Core = {
         </div>
 
         <div class="mode-picker">
-          <button class="mode-btn ${!isStreak ? 'active' : ''}" id="modeNormal">NORMAL</button>
+          <button class="mode-btn ${!isStreak && !isCategory ? 'active' : ''}" id="modeNormal">NORMAL</button>
           <button class="mode-btn ${isStreak ? 'active' : ''}" id="modeStreak">STREAK</button>
         </div>
 
@@ -426,10 +571,50 @@ const Core = {
         ` : ''}
 
         <button class="btn-start" id="startBtn">▶ PRESS START</button>
+
+        <!-- Study Tools -->
+        <div class="study-tools">
+          <div class="tools-title">STUDY TOOLS</div>
+          <div class="tools-grid">
+            <button class="btn-tool" id="btnReviewDue">
+              <span class="tool-icon">📅</span>
+              <span class="tool-label">Review Due</span>
+              ${dueCount > 0 ? `<span class="tool-badge">${dueCount}</span>` : '<span class="tool-muted">none</span>'}
+            </button>
+            <button class="btn-tool" id="btnWeakness">
+              <span class="tool-icon">🎯</span>
+              <span class="tool-label">Weakness</span>
+            </button>
+            <button class="btn-tool" id="btnCram">
+              <span class="tool-icon">📚</span>
+              <span class="tool-label">Cram</span>
+            </button>
+            <button class="btn-tool" id="btnCategory">
+              <span class="tool-icon">📂</span>
+              <span class="tool-label">By Category</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Category Picker (hidden by default) -->
+        <div class="category-picker" id="categoryPicker" style="display:none;">
+          <div class="category-picker-title">CHOOSE CATEGORY</div>
+          ${categories.map(cat => `
+            <button class="btn-category" data-cat="${cat}">
+              <span class="cat-dot" style="background: ${this.categoryColor(cat)}"></span>
+              ${cat}
+            </button>
+          `).join('')}
+          <button class="btn-secondary btn-back-category">BACK</button>
+        </div>
+
         <button class="btn-secondary" id="skillTreeBtn">⚡ SKILL TREE</button>
+        <button class="btn-secondary" id="statsBtn">📊 STATS</button>
         <div class="hint">TIP: press 1-4 to answer · ENTER to continue</div>
       </div>
     `;
+
+    // Mode picker
     document.getElementById('modeNormal').addEventListener('click', async () => {
       await Audio.ensure();
       Audio.sfx('click');
@@ -442,7 +627,56 @@ const Core = {
       this.state.mode = 'streak';
       this.renderStart();
     });
+
+    // Start button
     document.getElementById('startBtn').addEventListener('click', () => this.startGame());
+
+    // Study tools
+    document.getElementById('btnReviewDue').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      if (dueCount === 0) return;
+      await this.startReviewDue();
+    });
+    document.getElementById('btnWeakness').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.startWeakness();
+    });
+    document.getElementById('btnCram').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.startCram();
+    });
+    document.getElementById('btnCategory').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      document.getElementById('categoryPicker').style.display = 'block';
+      document.getElementById('startBtn').style.display = 'none';
+      document.querySelector('.mode-picker').style.display = 'none';
+      document.querySelector('.stat-row').style.display = 'none';
+    });
+
+    // Category buttons
+    document.querySelectorAll('.btn-category').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        await Audio.ensure();
+        Audio.sfx('click');
+        const cat = btn.dataset.cat;
+        this.state.mode = 'category';
+        this.state.studyCategory = cat;
+        this.startCategory(cat);
+      });
+    });
+
+    // Back from category picker
+    document.querySelector('.btn-back-category').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      this.renderStart();
+    });
+
+    // Skill tree
     document.getElementById('skillTreeBtn').addEventListener('click', async () => {
       await Audio.ensure();
       Audio.sfx('click');
@@ -453,7 +687,67 @@ const Core = {
         Audio.playTrack('start');
       });
     });
+
+    // Stats
+    document.getElementById('statsBtn').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      Audio.stopMusic();
+      this.renderStatsModal();
+    });
+
     Audio.playTrack('start');
+  },
+
+  // Render stats modal
+  async renderStatsModal(onClose) {
+    const sessions = await Analytics.getSessionHistory(7);
+    const totalAnswered = await Analytics.getTotalAnswered(this.state.courseId);
+    const totalSessions = await Analytics.getTotalSessions();
+    const accuracy = await ErrorLog.getOverallAccuracy(this.state.courseId);
+
+    this.stage.innerHTML = `
+      <div class="stats-screen">
+        <div class="stats-title">STUDY STATS</div>
+        <div class="stats-overview">
+          <div class="stat-card">
+            <div class="stat-card-value">${totalAnswered}</div>
+            <div class="stat-card-label">TOTAL ANSWERS</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-value">${accuracy.pct}%</div>
+            <div class="stat-card-label">ALL-TIME ACCURACY</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-value">${totalSessions}</div>
+            <div class="stat-card-label">SESSIONS</div>
+          </div>
+        </div>
+
+        ${sessions.length > 0 ? `
+          <div class="stats-history-title">LAST 7 DAYS</div>
+          <div class="stats-history">
+            ${sessions.map(s => `
+              <div class="stats-session">
+                <span class="stats-date">${new Date(s.date).toLocaleDateString()}</span>
+                <span class="stats-accuracy ${s.accuracy >= 70 ? 'good' : s.accuracy >= 50 ? 'ok' : 'bad'}">${s.accuracy}%</span>
+                <span class="stats-count">${s.questionsAnswered} Qs</span>
+                <span class="stats-duration">${Math.round(s.durationMs / 60000)}m</span>
+              </div>
+            `).join('')}
+          </div>
+        ` : '<div class="stats-empty">No sessions yet. Complete a run to see your stats!</div>'}
+
+        <button class="btn-secondary stats-close">CLOSE</button>
+      </div>
+    `;
+
+    document.querySelector('.stats-close').addEventListener('click', () => {
+      Audio.sfx('click');
+      this.state.screen = 'start';
+      this.renderStart();
+      Audio.playTrack('start');
+    });
   },
 
   // Render game screen
@@ -575,6 +869,20 @@ const Core = {
         </div>
       ` : '';
 
+    // Session summary from analytics
+    const sessionSummary = Analytics.getSessionSummary();
+    const sessionHtml = sessionSummary ? `
+        <div class="session-summary">
+          <div class="session-title">SESSION SUMMARY</div>
+          <div class="session-row">
+            <span class="session-item">⏱ ${sessionSummary.duration}</span>
+            <span class="session-item">✓ ${sessionSummary.correct} correct</span>
+            <span class="session-item">✗ ${sessionSummary.wrong} wrong</span>
+            <span class="session-item">📊 ${sessionSummary.accuracy}%</span>
+          </div>
+        </div>
+      ` : '';
+
     const reviewBtn = this.state.mode === 'normal' && this.state.missed.length > 0 ? `
         <button class="btn-secondary" id="reviewBtn">REVIEW MISSED (${this.state.missed.length})</button>
       ` : '';
@@ -613,6 +921,7 @@ const Core = {
 
         ${gradeHtml}
 
+        ${sessionHtml}
         ${catBreakdown}
 
         <div class="end-stats">
