@@ -121,6 +121,9 @@ const Core = {
       this.state.score += gained;
       Progression.awardXP(gained);
 
+      // Check achievements after each correct answer
+      Progression.checkAchievements();
+
       Audio.sfx('correct');
       if (this.state.streak >= 3) Audio.sfx('streak', Math.min(this.state.streak, 5));
       document.body.classList.add('flash-correct');
@@ -373,6 +376,7 @@ const Core = {
           <span class="icon">${this.state.streak === 0 ? '·' : '⚡'}</span>
           <span>×${this.state.streak}</span>
         </div>
+        <button class="btn-menu" id="menuBtnGame" title="Return to menu">✕</button>
       </div>
 
       <div class="q-header">
@@ -415,6 +419,13 @@ const Core = {
 
     document.querySelectorAll('.answer-btn').forEach(btn => {
       btn.addEventListener('click', () => this.handleAnswer(parseInt(btn.dataset.idx)));
+    });
+    document.getElementById('menuBtnGame').addEventListener('click', () => {
+      Audio.stopMusic();
+      this.state.screen = 'start';
+      this.state.mode = 'normal';
+      this.renderStart();
+      Audio.playTrack('start');
     });
   },
 

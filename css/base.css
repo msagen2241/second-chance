@@ -1193,3 +1193,26 @@
   color: var(--cyan);
   background: rgba(0, 240, 255, 0.1);
 }
+
+/* ============================================================
+   MENU BUTTON (in-game)
+   ============================================================ */
+.btn-menu {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  color: var(--ink-dim);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-menu:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+  background: rgba(255, 46, 138, 0.1);
+}
