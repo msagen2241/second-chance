@@ -1,7 +1,7 @@
 // ============================================================
 // STORAGE — IndexedDB wrapper for v2
 // ============================================================
-const Storage = {
+const Storage = window.storage = {
   db: null,
   DB_NAME: 'second_chance_v2',
   DB_VERSION: 1,
