@@ -73,11 +73,26 @@ const Progression = {
       if (this.data.totalXP >= nextLevelCost) {
         this.data.level++;
         this.data.skillPoints++;
-        console.log(`[progression] Level up! Now level ${this.data.level}, +1 skill point`);
+        this.showLevelUpNotification(this.data.level);
       } else {
         break;
       }
     }
+  },
+
+  // Show level-up notification
+  showLevelUpNotification(level) {
+    const notif = document.createElement('div');
+    notif.className = 'levelup-notification';
+    notif.innerHTML = `
+      <div class="levelup-text">LEVEL ${level}</div>
+      <div class="levelup-sub">+1 SKILL POINT</div>
+    `;
+    document.body.appendChild(notif);
+    Audio.sfx('streak', 2);
+
+    // Auto-remove after animation
+    setTimeout(() => notif.remove(), 3000);
   },
 
   // Spend skill point on category

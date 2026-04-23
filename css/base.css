@@ -1173,6 +1173,49 @@
 }
 
 /* ============================================================
+   LEVEL-UP NOTIFICATION
+   ============================================================ */
+.levelup-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 15, 20, 0.95);
+  border: 2px solid var(--yellow);
+  padding: 24px 48px;
+  z-index: 10001;
+  text-align: center;
+  animation: levelUpIn 0.4s ease, levelUpOut 0.5s ease 2.5s forwards;
+  pointer-events: none;
+}
+
+.levelup-text {
+  font-family: 'VT323', monospace;
+  font-size: 48px;
+  color: var(--yellow);
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.levelup-sub {
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  color: var(--cyan);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+@keyframes levelUpIn {
+  from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes levelUpOut {
+  from { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  to { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
+/* ============================================================
    BUTTON SECONDARY
    ============================================================ */
 .btn-secondary {
