@@ -149,7 +149,6 @@ const Progression = {
       { id: 'marathon', name: 'Marathon', desc: 'Answer 50 questions in one run', condition: () => Core.state.correctCount >= 50, xp: 250 },
       { id: 'perfect_run', name: 'Perfect Run', desc: 'Clear a course with no wrong answers', condition: () => Core.state.correctCount > 0 && Core.state.missed.length === 0 && Core.state.screen === 'end', xp: 500 },
       { id: 'comeback', name: 'Comeback', desc: 'Win Normal mode after losing 2+ lives', condition: () => Core.state.mode === 'normal' && Core.state.lives <= 1 && Core.state.screen === 'end', xp: 150 },
-      { id: 'speed_demon', name: 'Speed Demon', desc: '5-combo chain', condition: () => Gameplay.comboCount >= 5, xp: 100 },
       { id: 'daily_grind', name: 'Daily Grind', desc: '7-day study streak', condition: () => this.data.studyStreak >= 7, xp: 400 }
     ];
 

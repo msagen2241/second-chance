@@ -37,23 +37,8 @@ const Gameplay = {
     this.questionsAnswered++;
     if (this.isBoss(entry)) this.bossDefeats++;
 
-    // Combo chain
-    const now = Date.now();
-    if (now - this.lastAnswerTime <= 5000) {
-      this.comboCount++;
-    } else {
-      this.comboCount = 1;
-    }
-    this.lastAnswerTime = now;
-
-    // Reset combo timer
-    if (this.comboTimer) clearTimeout(this.comboTimer);
-    this.comboTimerRemaining = 5000;
-    this.comboTimerStart = now;
-    this.comboTimer = setTimeout(() => {
-      this.comboCount = 0;
-      this.comboTimerRemaining = 0;
-    }, 5000);
+    // Track questions answered (no combo timer)
+    this.lastAnswerTime = Date.now();
 
     // Check for reward screen
     if (this.questionsAnswered % 5 === 0) {
@@ -93,9 +78,9 @@ const Gameplay = {
     return null;
   },
 
-  // Get combo bonus
+  // Get combo bonus (always 0, timer removed)
   comboBonus() {
-    return this.comboCount * 50;
+    return 0;
   },
 
   // Get score multiplier
@@ -172,7 +157,6 @@ const Gameplay = {
     const indicators = [];
     if (this.freezeActive) indicators.push({ icon: '❄️', label: 'Freeze' });
     if (this.doubleActive) indicators.push({ icon: '🎲', label: '2x' });
-    if (this.comboCount > 1) indicators.push({ icon: '🔥', label: `${this.comboCount}x Combo` });
     return indicators;
   },
 
@@ -181,16 +165,8 @@ const Gameplay = {
     // Already tracked bossDefeats in onCorrect, this is just for side effects
   },
 
-  // Get combo timer HTML
+  // Get combo timer HTML (always empty, timer removed)
   getComboTimerHTML() {
-    if (this.comboCount <= 1) return '';
-    const elapsed = Date.now() - this.comboTimerStart;
-    const remaining = Math.max(0, 5000 - elapsed);
-    const pct = (remaining / 5000) * 100;
-    return `
-      <div class="combo-timer-track">
-        <div class="combo-timer-fill" style="width: ${pct}%"></div>
-      </div>
-    `;
+    return '';
   }
 };
