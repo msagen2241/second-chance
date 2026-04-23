@@ -380,7 +380,7 @@ const Core = {
           <span class="icon">${this.state.streak === 0 ? '·' : '⚡'}</span>
           <span>×${this.state.streak}</span>
         </div>
-        <button class="btn-menu" id="menuBtnGame" title="Return to menu">✕</button>
+        <button class="btn-menu" id="menuBtnGame" title="Return to menu">MENU</button>
       </div>
 
       <div class="q-header">
@@ -418,12 +418,11 @@ const Core = {
       </div>
     `;
 
-    document.getElementById('menuBtnGame').addEventListener('click', () => {
+    document.getElementById('menuBtnGame').addEventListener('click', async () => {
       Audio.stopMusic();
       this.state.screen = 'start';
       this.state.mode = 'normal';
-      this.renderStart();
-      Audio.playTrack('start');
+      await this.renderStart();
     });
     document.getElementById('nextBtn').addEventListener('click', () => this.advanceFromReview());
     const prevBtn = document.getElementById('prevBtn');
@@ -788,7 +787,7 @@ const Core = {
           <span class="icon">${this.state.streak === 0 ? '·' : '⚡'}</span>
           <span>×${this.state.streak}</span>
         </div>
-        <button class="btn-menu" id="menuBtnGame" title="Return to menu">✕</button>
+        <button class="btn-menu" id="menuBtnGame" title="Return to menu">MENU</button>
       </div>
 
       <div class="q-header">
@@ -832,12 +831,11 @@ const Core = {
     document.querySelectorAll('.answer-btn').forEach(btn => {
       btn.addEventListener('click', () => this.handleAnswer(parseInt(btn.dataset.idx)));
     });
-    document.getElementById('menuBtnGame').addEventListener('click', () => {
+    document.getElementById('menuBtnGame').addEventListener('click', async () => {
       Audio.stopMusic();
       this.state.screen = 'start';
       this.state.mode = 'normal';
-      this.renderStart();
-      Audio.playTrack('start');
+      await this.renderStart();
     });
   },
 

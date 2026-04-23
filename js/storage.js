@@ -4,7 +4,7 @@
 const Storage = window.storage = {
   db: null,
   DB_NAME: 'second_chance_v2',
-  DB_VERSION: 3,
+  DB_VERSION: 4,
 
   async open() {
     if (this.db) return this.db;
@@ -41,6 +41,12 @@ const Storage = window.storage = {
         if (!db.objectStoreNames.contains('sessionLog')) {
           db.createObjectStore('sessionLog', { keyPath: 'id', autoIncrement: true });
         }
+
+        // v4: reset progression on upgrade so old XP/level doesn't carry over
+        const progStore = db.objectStoreNames.contains('progression')
+          ? db.transaction('progression', 'readwrite').objectStore('progression')
+          : null;
+        if (progStore) progStore.clear();
       };
 
       request.onsuccess = (e) => {

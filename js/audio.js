@@ -120,11 +120,9 @@ const Audio = {
     this.currentTrack = null;
   },
 
-  // ——— Music Tracks ———
+  // ——— Music Tracks ——— (disabled, SFX only)
   playTrack(name) {
-    if (!this.canPlay() || this.muted) return;
-    const track = this.tracks[name];
-    if (track) track.call(this);
+    // No music — SFX only
   },
 
   tracks: {

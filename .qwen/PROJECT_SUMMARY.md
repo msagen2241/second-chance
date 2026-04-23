@@ -1,113 +1,66 @@
-The user wants me to generate a comprehensive project summary in markdown format based on the conversation history. Let me analyze the key information and create a structured summary.
+The user wants me to generate a comprehensive project summary based on the conversation history. Let me analyze what's happened:
+
+1. The state_snapshot already provided a detailed summary of the study-tools feature work
+2. In this conversation, we fixed:
+   - renderStart being async but not awaited → made render() async, added try/catch fallback
+   - Removed all music (kept SFX only)
+   - Fixed level starting at 27 (bumped DB to v4, clear progression on upgrade)
+   - Made the MENU button more visible (changed from ✕ to "MENU", widened CSS)
+
+I should write a complete PROJECT_SUMMARY.md that captures all the important context for future sessions.
 # Project Summary
 
 ## Overall Goal
-Build study effectiveness tools (error analysis, spaced repetition, focused study modes, metacognition tracking) into Second Chance — a modular, single-page retro arcade quiz game for CompTIA exam preparation.
+Add study effectiveness tools (spaced repetition, error analysis, focused study sessions, metacognition analytics) to the Second Chance CompTIA quiz game, deployed as a single-page vanilla JS app on GitHub Pages.
 
 ## Key Knowledge
-
-**Project Structure:**
-- Working directory: `G:\MidTier\AI-Projects\Document-Memory\Games\Second Chance`
-- Branch: `feature/study-tools` (based on `master`)
-- Entry point: `game.html` → redirects from `index.html`
-- Modular architecture: `js/core.js`, `js/audio.js`, `js/storage.js`, `js/courses.js`, `js/gameplay.js`, `js/progression.js`, `js/juice.js`, `js/touch.js`
-- New modules: `js/errorlog.js`, `js/spaced.js`, `js/analytics.js`
-- Course data: `courses/comptia.json` (51 questions, 4 categories, 5 boss questions)
-- CSS: `css/base.css`, `css/touch.css`
-- Tech: Vanilla HTML/CSS/JS, no build step, Google Fonts + Hammer.js via CDN
-- Live site: `https://msagen2241.github.io/second-chance/`
-
-**Storage (IndexedDB v3, `second_chance_v2`):**
-- `progression` — global XP, level, skill points, achievements, study streak
-- `perCourse` — per-course stats (best score, grade, runs completed)
-- `settings` — audio muted, music/SFX volume
-- `questionStrength` — per-question SM-2 data (strength 0-100, interval in days, nextReview timestamp, ease factor)
-- `questionLog` — every answer logged (courseId, qId, isCorrect, pickedIdx, category, timestamp)
-- `sessionLog` — per-session summary (date, courseId, questions answered, correct/wrong, accuracy, durationMs, categories)
-- Storage exposed as both `Storage` and `window.storage` for legacy compat
-
-**Study Tools:**
-- ErrorLog: `logAnswer()`, `getMistakes()`, `getMostMissed()`, `getCategoryAccuracy()`, `getOverallAccuracy()`
-- Spaced: SM-2 algorithm, `getDueQuestions()`, `recordAnswer()`, `getStrengthMultiplier()` (weaker = more XP)
-- Analytics: `startSession()`, `endSession()`, `getSessionHistory(days)`, `getTrend(category, days)`, `getSessionSummary()`
-- Focused modes: Category (filter by category), Weakness (bottom 2 categories), Cram (30 most-missed), Review Due (spaced repetition queue)
-
-**Game Modes:**
-- Normal: 3 lives, missed questions recycled until correct, second-chance retry loop
-- Streak: no lives, ends on first miss
-- Review: replay unresolved missed questions
-- Category: single-category focused study
-- Weakness: auto-picks bottom 2 categories
-- Cram: 30 most-missed questions
-- Review Due: spaced repetition queue
-
-**Gameplay Mechanics:**
-- Freeze: absorbs one wrong answer (no life loss)
-- Double or Nothing: 2x points but extra life loss on wrong
-- Boss questions (IDs 5, 12, 25, 38, 45): 3x visual flair, trigger reward screen
-- Reward screen: every 5 correct answers + boss defeats, 10s auto-skip with countdown
-- Combo timer removed (was anxiety-inducing)
-- Streak bonus: consecutive correct answers earn escalating bonus points (+100 max)
-
-**Progression:**
-- XP per correct answer (base 100, modifiers from Gameplay + category skill + strength multiplier)
-- Global levels (capped 50), category skill tree (0-10), achievements, study streak
-- `checkLevelUp()` uses while loop for multiple level-ups
-- Achievements checked after each correct answer (not just at end)
-- Study streak: compares lastActiveDate to today/yesterday
-
-**Audio:**
-- Vanilla Web Audio API (no Tone.js)
-- Start screen: short 2-second non-looping jingle
-- Tracks: victory, gameover
-- SFX: correct, wrong, heartLoss, streak, click, deckClear, review
-
-**User Preferences:**
-- Simple commands, no summaries unless asked
-- Worktrees for feature isolation
-- Clean up stale artifacts
-- Combo timer too anxiety-inducing — removed
-- Multi-course support across all college classes (long-term)
-
-**Build & Deploy:**
-- No build step — open `game.html` in browser
-- Push `master` to `origin` rebuilds GitHub Pages
-- Local server: `python -m http.server 8080`
+- **Project root:** `G:\MidTier\AI-Projects\Document-Memory\Games\Second Chance`
+- **Branch:** `feature/study-tools` (not yet merged to master)
+- **Live URL:** `https://msagen2241.github.io/second-chance` (v2 on master)
+- **Tech:** Vanilla HTML/CSS/JS, IndexedDB, Google Fonts + Hammer.js via CDN. No bundlers.
+- **Entry point:** `game.html` (not `Second_Chance.html` anymore)
+- **IndexedDB:** `second_chance_v2`, **DB_VERSION 4**
+  - Stores: `progression`, `perCourse`, `settings`, `questionStrength` (with `nextReview` index), `questionLog` (with `courseId`/`qId`/`timestamp` indexes), `sessionLog`
+  - v4 upgrade clears old progression data to prevent stale XP/level carryover
+- **New modules:** `js/errorlog.js` (answer logging, mistake queries), `js/spaced.js` (SM-2 algorithm, due queue), `js/analytics.js` (session tracking, trends)
+- **Audio:** Music is **disabled** — `Audio.playTrack()` is a no-op. SFX (`sfx()`) still works.
+- **4 study modes:** Category (pick one), Weakness (auto bottom 2), Cram (30 most-missed), Review Due (spaced repetition queue)
+- **Start screen:** Study tools grid (4 buttons), category picker (hidden until toggled), stats button → modal with all-time stats and 7-day session history
+- **End screen:** Session summary panel (duration, correct, wrong, accuracy %)
+- **User preferences:** No anxiety-inducing timers (combo timer removed), simple commands, worktrees for feature isolation
+- **`renderStart()` is async** — must be awaited; has try/catch fallback to basic start screen on errors
+- **`render()` is async** — properly awaits `renderStart()`
 
 ## Recent Actions
-
-- Created `feature/study-tools` branch from `master`
-- Upgraded IndexedDB to v3 with `questionStrength`, `questionLog`, `sessionLog` stores
-- Built `errorlog.js` — logs every answer, queries for mistakes/most-missed/category accuracy
-- Built `spaced.js` — SM-2 algorithm with strength/interval/ease tracking, due queue
-- Built `analytics.js` — session tracking, duration, accuracy trends, 7-day history
-- Wired ErrorLog, Spaced, Analytics into `core.js` `handleAnswer()` (both correct and wrong paths)
-- Added session tracking: `Analytics.startSession()` in `startGame()`, `Analytics.endSession()` in `endGame()`
-- Added 4 focused study modes: `startCategory()`, `startWeakness()`, `startCram()`, `startReviewDue()`
-- Rewrote `renderStart()` — added study tools grid (Review Due with badge, Weakness, Cram, By Category), category picker, stats button
-- Added `renderStatsModal()` — shows all-time totals + last 7 days of sessions with color-coded accuracy
-- Added session summary to end screen — duration, correct/wrong counts, accuracy %
-- Added CSS for all new UI elements (study tools, category picker, session summary, stats screen)
-- Wired new scripts into `game.html` (errorlog, spaced, analytics before progression/core)
-- Added `Spaced.initCourse()` on startup to pre-populate strength records
-- Committed as single commit on `feature/study-tools`
+- Created `errorlog.js`, `spaced.js`, `analytics.js` modules
+- Upgraded `storage.js` to DB v4 (clears progression on schema upgrade)
+- Wired ErrorLog/Spaced/Analytics into `handleAnswer`; added `startCategory`/`startWeakness`/`startCram`/`startReviewDue`
+- Rewrote `renderStart` as async with error fallback; added study tools grid, category picker, stats modal
+- Added session summary panel to `renderEnd`
+- Added CSS for all new UI elements
+- Wired new scripts into `game.html`, added `Spaced.initCourse` on startup
+- **Fixed:** `render()` now async, all menu callbacks properly `await renderStart()`
+- **Fixed:** Music disabled (SFX only), level resets to 0 on DB upgrade
+- **Fixed:** MENU button now visible and labeled "MENU" (was subtle `✕`) in both game and review screens
 
 ## Current Plan
-
-1. [DONE] Storage v3: bump DB version, add questionLog/questionStrength/sessionLog stores
+1. [DONE] Storage v3→v4: bump DB version, add new stores, clear old progression on upgrade
 2. [DONE] Create errorlog.js — logAnswer, getMistakes, getMostMissed, getCategoryAccuracy
-3. [DONE] Create spaced.js — SM-2 algorithm, getDueQuestions, recordAnswer
+3. [DONE] Create spaced.js — SM-2 algorithm, getDueQuestions, recordAnswer, strength tracking
 4. [DONE] Create analytics.js — startSession, endSession, getSessionHistory, getTrend
-5. [DONE] Wire errorlog into core.js handleAnswer + session tracking in startGame/endGame
-6. [DONE] Add focused study modes: Category, Weakness, Cram, Review Due
-7. [DONE] Add stats modal + category picker + mode selector to start screen
+5. [DONE] Wire errorlog/analytics into core.js handleAnswer + session tracking
+6. [DONE] Add 4 focused study modes: Category, Weakness, Cram, Review Due
+7. [DONE] Add stats modal + category picker + study tools grid to start screen
 8. [DONE] Add end screen session stats panel
 9. [DONE] CSS for all new UI elements
 10. [DONE] Wire new scripts into game.html
-11. [TODO] Test `feature/study-tools` locally, fix any bugs
-12. [TODO] Merge `feature/study-tools` to `master`, push to GitHub Pages
+11. [DONE] Fix async renderStart/render — all callers now properly await
+12. [DONE] Remove music, keep SFX only
+13. [DONE] Fix level starting at 27 (DB v4 clears old progression)
+14. [DONE] Make MENU button visible on every question screen
+15. [TODO] Merge `feature/study-tools` to `master`, push to GitHub Pages
 
 ---
 
 ## Summary Metadata
-**Update time**: 2026-04-23T22:22:05.837Z 
+**Update time**: 2026-04-23T22:35:28.772Z 
