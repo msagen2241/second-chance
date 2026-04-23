@@ -262,11 +262,41 @@ const Core = {
   // Render start screen
   renderStart() {
     const isStreak = this.state.mode === 'streak';
+    const prog = Progression.data || { level: 0, totalXP: 0, skillPoints: 0, studyStreak: 0, achievements: [] };
+    const xpNeeded = Progression.xpToNextLevel();
+    const xpPct = prog.level >= 50 ? 100 : Math.min(100, (prog.totalXP % (100 * (prog.level + 1) + 200)) / (100 * (prog.level + 1) + 200) * 100);
+
     this.stage.innerHTML = `
       <div class="start">
         <div class="logo-top">// INITIALIZE</div>
         <h1 class="logo-main">SECOND<br>CHANCE</h1>
         <div class="logo-sub">CompTIA Redemption Run</div>
+
+        <!-- Progression -->
+        <div class="progression-panel">
+          <div class="level-badge">LVL ${prog.level}</div>
+          <div class="xp-bar-track">
+            <div class="xp-bar-fill" style="width: ${xpPct}%"></div>
+            <span class="xp-text">${prog.totalXP.toLocaleString()} / ${prog.level >= 50 ? 'MAX' : (prog.totalXP + xpNeeded).toLocaleString()}</span>
+          </div>
+          ${prog.skillPoints > 0 ? `<div class="skill-points-badge">+${prog.skillPoints} SKILL PTS</div>` : ''}
+        </div>
+
+        <!-- Streak + Achievements -->
+        <div class="meta-stats">
+          ${prog.studyStreak > 0 ? `
+            <div class="meta-stat">
+              <span class="meta-icon">🔥</span>
+              <span class="meta-value">${prog.studyStreak} DAY STREAK</span>
+            </div>
+          ` : ''}
+          ${prog.achievements.length > 0 ? `
+            <div class="meta-stat">
+              <span class="meta-icon">🏆</span>
+              <span class="meta-value">${prog.achievements.length} ACHIEVEMENTS</span>
+            </div>
+          ` : ''}
+        </div>
 
         <div class="mode-picker">
           <button class="mode-btn ${!isStreak ? 'active' : ''}" id="modeNormal">NORMAL</button>
@@ -287,6 +317,7 @@ const Core = {
         ` : ''}
 
         <button class="btn-start" id="startBtn">▶ PRESS START</button>
+        <button class="btn-secondary" id="skillTreeBtn">⚡ SKILL TREE</button>
         <div class="hint">TIP: press 1-4 to answer · ENTER to continue</div>
       </div>
     `;
@@ -303,6 +334,16 @@ const Core = {
       this.renderStart();
     });
     document.getElementById('startBtn').addEventListener('click', () => this.startGame());
+    document.getElementById('skillTreeBtn').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      Audio.stopMusic();
+      Progression.renderSkillTree(() => {
+        this.state.screen = 'start';
+        this.renderStart();
+        Audio.playTrack('start');
+      });
+    });
     Audio.playTrack('start');
   },
 

@@ -162,9 +162,29 @@ const Progression = {
 
     if (unlocked.length > 0) {
       this.save();
+      // Show notifications for each unlocked achievement
+      unlocked.forEach((ach, i) => {
+        setTimeout(() => this.showAchievementNotification(ach), i * 4000);
+      });
     }
 
     return unlocked;
+  },
+
+  // Show achievement notification
+  showAchievementNotification(ach) {
+    const notif = document.createElement('div');
+    notif.className = 'achievement-notification';
+    notif.innerHTML = `
+      <div class="ach-title">★ ACHIEVEMENT UNLOCKED ★</div>
+      <div class="ach-name">${ach.name}</div>
+      <div class="ach-desc">${ach.desc}</div>
+    `;
+    document.body.appendChild(notif);
+    Audio.sfx('streak', 3);
+
+    // Auto-remove after animation
+    setTimeout(() => notif.remove(), 4000);
   },
 
   // Get XP needed for next level
