@@ -502,23 +502,24 @@ const Core = {
   },
 
   // Render the current screen
-  render() {
-    if (this.state.screen === 'start') this.renderStart();
+  async render() {
+    if (this.state.screen === 'start') await this.renderStart();
     else if (this.state.screen === 'game') this.renderGame();
     else if (this.state.screen === 'end') this.renderEnd();
   },
 
   // Render start screen
   async renderStart() {
-    const isStreak = this.state.mode === 'streak';
-    const isCategory = this.state.mode === 'category';
-    const prog = Progression.data || { level: 0, totalXP: 0, skillPoints: 0, studyStreak: 0, achievements: [] };
-    const xpNeeded = Progression.xpToNextLevel();
-    const xpPct = prog.level >= 50 ? 100 : Math.min(100, (prog.totalXP % (100 * (prog.level + 1) + 200)) / (100 * (prog.level + 1) + 200) * 100);
+    try {
+      const isStreak = this.state.mode === 'streak';
+      const isCategory = this.state.mode === 'category';
+      const prog = Progression.data || { level: 0, totalXP: 0, skillPoints: 0, studyStreak: 0, achievements: [] };
+      const xpNeeded = Progression.xpToNextLevel();
+      const xpPct = prog.level >= 50 ? 100 : Math.min(100, (prog.totalXP % (100 * (prog.level + 1) + 200)) / (100 * (prog.level + 1) + 200) * 100);
 
-    // Get due count for spaced repetition
-    const dueCount = await Spaced.getDueCount(this.state.courseId);
-    const categories = Courses.getCategories();
+      // Get due count for spaced repetition
+      const dueCount = await Spaced.getDueCount(this.state.courseId);
+      const categories = Courses.getCategories();
 
     this.stage.innerHTML = `
       <div class="start">
@@ -697,6 +698,17 @@ const Core = {
     });
 
     Audio.playTrack('start');
+    } catch (e) {
+      console.error('[core] renderStart error:', e);
+      // Fallback: render basic start screen
+      this.stage.innerHTML = `
+        <div class="start">
+          <h1 class="logo-main">SECOND<br>CHANCE</h1>
+          <button class="btn-start" id="startBtn">▶ PRESS START</button>
+        </div>
+      `;
+      document.getElementById('startBtn').addEventListener('click', () => this.startGame());
+    }
   },
 
   // Render stats modal
