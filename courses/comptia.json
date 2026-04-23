@@ -71,7 +71,7 @@
         "Perform a Windows system restore"
       ],
       "explain": "Safe Mode bypasses add-ins and corrupt settings — often the quickest path to recovering the document's content.",
-      "isBoss": false
+      "isBoss": true
     },
     {
       "id": 6,
@@ -162,7 +162,7 @@
         "Phishing attack"
       ],
       "explain": "Rainbow tables precompute hashes for fast lookup. Brute-force tries combinations live. Dictionary uses word lists. Phishing tricks users.",
-      "isBoss": false
+      "isBoss": true
     },
     {
       "id": 13,
@@ -331,7 +331,7 @@
         "Device Manager"
       ],
       "explain": "Task scheduler runs tasks automatically at specified times. Event viewer logs events.",
-      "isBoss": false
+      "isBoss": true
     },
     {
       "id": 26,
@@ -500,7 +500,7 @@
         "Intrusion detection systems"
       ],
       "explain": "End users are the most vulnerable attack vector; training has the best ROI.",
-      "isBoss": false
+      "isBoss": true
     },
     {
       "id": 39,
@@ -591,7 +591,7 @@
         "Enterprise"
       ],
       "explain": "Windows 10 Pro for Workstations supports up to 4 physical CPUs and 6 TB RAM.",
-      "isBoss": false
+      "isBoss": true
     },
     {
       "id": 46,
