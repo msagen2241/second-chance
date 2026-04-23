@@ -493,7 +493,7 @@ const Core = {
     stage.innerHTML = `
       <div class="reward-screen">
         <div class="reward-title">⚡ POWER-UP SELECTED ⚡</div>
-        <div class="reward-sub">Choose wisely...</div>
+        <div class="reward-sub">Choose wisely... <span id="rewardTimer">(10s)</span></div>
         <div class="reward-options">
           ${powerUps.map((pu, i) => `
             <button class="reward-btn" data-idx="${i}">
@@ -509,6 +509,7 @@ const Core = {
 
     stage.querySelectorAll('.reward-btn').forEach(btn => {
       btn.addEventListener('click', () => {
+        clearInterval(timerInterval);
         const idx = parseInt(btn.dataset.idx);
         Gameplay.applyPick(powerUps[idx]);
         Juice.onPowerUpPick(btn);
@@ -518,16 +519,27 @@ const Core = {
     });
 
     stage.querySelector('.reward-skip').addEventListener('click', () => {
+      clearInterval(timerInterval);
       Audio.sfx('click');
       onContinue();
     });
 
-    // Auto-skip after 3 seconds
+    // Countdown timer
+    let timeLeft = 10;
+    const timerEl = document.getElementById('rewardTimer');
+    const timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timerEl) timerEl.textContent = `(${timeLeft}s)`;
+      if (timeLeft <= 0) clearInterval(timerInterval);
+    }, 1000);
+
+    // Auto-skip after 10 seconds
     setTimeout(() => {
+      clearInterval(timerInterval);
       if (document.querySelector('.reward-screen')) {
         onContinue();
       }
-    }, 3000);
+    }, 10000);
   },
 
   // Helper: category color
