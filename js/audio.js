@@ -129,50 +129,32 @@ const Audio = {
 
   tracks: {
     start() {
-      if (this.currentTrack === 'start' && this.loopTimer) return;
+      if (this.currentTrack === 'start') return; // Already playing, don't restart
       this.stopMusic();
       this.currentTrack = 'start';
-      const bpm = 156;
-      const stepMs = 60000 / bpm / 4;
+      const t = this.ctx.currentTime;
+      // Short 2-bar intro jingle (no loop)
       const lead = [
-        'E5',null,'G5',null,'A5',null,'B5','A5',
-        'G5',null,'E5',null,'D5',null,'E5','G5',
-        'A5',null,'B5',null,'D6',null,'B5','A5',
-        'G5',null,'E5','G5','A5','B5','A5','G5'
+        ['E5', 0.00, 0.12], ['G5', 0.12, 0.12], ['A5', 0.24, 0.12], ['B5', 0.36, 0.24],
+        ['A5', 0.60, 0.12], ['G5', 0.72, 0.12], ['E5', 0.84, 0.24],
+        ['D5', 1.08, 0.12], ['E5', 1.20, 0.12], ['G5', 1.32, 0.24], ['A5', 1.56, 0.16],
+        ['B5', 1.72, 0.12], ['D6', 1.84, 0.36]
       ];
-      const echo = [
-        null,null,'B4',null,null,null,'D5',null,
-        null,null,'B4',null,null,null,'B4',null,
-        null,null,'E5',null,null,null,'G5',null,
-        null,null,'B4',null,'D5',null,'E5',null
-      ];
-      const bass = [
-        'E2',null,'E3',null,'C3',null,'D3',null,
-        'E2',null,'E3',null,'D3',null,'B2',null,
-        'C3',null,'C4',null,'A2',null,'B2',null,
-        'C3',null,'D3',null,'E2',null,'B2',null
-      ];
-      const stabs = {
-        0: ['E4', 'B4'], 4: ['C4', 'G4'], 8: ['E4', 'B4'], 12: ['D4', 'A4'],
-        16: ['C4', 'G4'], 20: ['A3', 'E4'], 24: ['C4', 'G4'], 28: ['D4', 'A4']
-      };
-
-      const tick = () => {
-        if (this.currentTrack !== 'start' || !this.canPlay() || this.muted) return;
-        const step = this.loopBeat % 32;
-        const note = lead[step];
-        const support = echo[step];
-        const low = bass[step];
-        if (note) this.playNote(this.noteFreq[note], 'square', null, stepMs / 1000 * 0.92, 0.22, this.musicGain);
-        if (support) this.playNote(this.noteFreq[support], 'square', null, stepMs / 1000 * 0.72, 0.11, this.musicGain);
-        if (low) this.playNote(this.noteFreq[low], 'triangle', null, stepMs / 1000 * 1.45, 0.24, this.musicGain);
-        if (stabs[step]) this.playChord(stabs[step], 'sine', this.ctx.currentTime, stepMs / 1000 * 1.6, 0.085, this.musicGain);
-        if (step % 8 === 7) this.playNote(this.noteFreq['E4'], 'square', null, stepMs / 1000 * 0.34, 0.06, this.musicGain);
-        this.loopBeat++;
-        this.loopTimer = setTimeout(tick, stepMs);
-      };
-      this.loopBeat = 0;
-      tick();
+      lead.forEach(([note, offset, dur]) => {
+        this.playNote(this.noteFreq[note], 'square', t + offset, dur, 0.20, this.musicGain);
+      });
+      // Bass line
+      this.playNote(this.noteFreq['E2'], 'triangle', t + 0.00, 0.48, 0.22, this.musicGain);
+      this.playNote(this.noteFreq['C3'], 'triangle', t + 0.60, 0.48, 0.20, this.musicGain);
+      this.playNote(this.noteFreq['D3'], 'triangle', t + 1.08, 0.48, 0.20, this.musicGain);
+      this.playNote(this.noteFreq['E3'], 'triangle', t + 1.56, 0.64, 0.22, this.musicGain);
+      // Chord stabs
+      this.playChord(['E4', 'B4'], 'sine', t + 0.00, 0.36, 0.08, this.musicGain);
+      this.playChord(['C4', 'G4'], 'sine', t + 0.60, 0.36, 0.08, this.musicGain);
+      this.playChord(['D4', 'A4'], 'sine', t + 1.08, 0.36, 0.08, this.musicGain);
+      this.playChord(['E4', 'B4', 'D5'], 'sine', t + 1.56, 0.64, 0.09, this.musicGain);
+      // Clean up after jingle finishes
+      setTimeout(() => { if (this.currentTrack === 'start') this.stopMusic(); }, 2500);
     },
 
     victory() {

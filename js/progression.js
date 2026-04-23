@@ -61,6 +61,7 @@ const Progression = {
 
     this.data.totalXP += amount;
     this.checkLevelUp();
+    this.save(); // Persist immediately so XP survives browser close
   },
 
   // Check for level up (handles multiple level-ups)
