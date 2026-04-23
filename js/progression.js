@@ -63,18 +63,19 @@ const Progression = {
     this.checkLevelUp();
   },
 
-  // Check for level up
+  // Check for level up (handles multiple level-ups)
   checkLevelUp() {
     if (!this.data) return;
 
-    const currentLevel = this.data.level;
-    const nextLevelCost = 100 * (currentLevel + 1) + 200;
-
-    if (this.data.totalXP >= nextLevelCost && currentLevel < 50) {
-      this.data.level++;
-      this.data.skillPoints++;
-      console.log(`[progression] Level up! Now level ${this.data.level}, +1 skill point`);
-      // Could trigger level-up animation here
+    while (this.data.level < 50) {
+      const nextLevelCost = 100 * (this.data.level + 1) + 200;
+      if (this.data.totalXP >= nextLevelCost) {
+        this.data.level++;
+        this.data.skillPoints++;
+        console.log(`[progression] Level up! Now level ${this.data.level}, +1 skill point`);
+      } else {
+        break;
+      }
     }
   },
 

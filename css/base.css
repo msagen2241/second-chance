@@ -789,3 +789,246 @@
     border-color: var(--cyan);
     color: var(--cyan);
   }
+
+/* ============================================================
+   COMBO TIMER
+   ============================================================ */
+.combo-timer-track {
+  position: relative;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 8px 0;
+  overflow: hidden;
+}
+
+.combo-timer-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--yellow);
+  transition: width 0.1s linear;
+}
+
+/* ============================================================
+   POWER-UP INDICATORS
+   ============================================================ */
+.power-up-indicators {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.power-up-indicator {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: var(--yellow);
+  background: rgba(255, 214, 10, 0.1);
+  border: 1px solid rgba(255, 214, 10, 0.3);
+  padding: 2px 8px;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   BOSS QUESTION
+   ============================================================ */
+.boss-card {
+  border-color: var(--yellow);
+  box-shadow: 0 0 20px rgba(255, 214, 10, 0.2);
+}
+
+.boss-banner {
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  color: var(--yellow);
+  text-align: center;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px var(--yellow);
+}
+
+/* ============================================================
+   REWARD SCREEN
+   ============================================================ */
+.reward-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 20px;
+  background: rgba(15, 15, 20, 0.95);
+  border: 2px solid var(--cyan);
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.reward-title {
+  font-family: 'VT323', monospace;
+  font-size: 36px;
+  color: var(--cyan);
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px var(--cyan);
+}
+
+.reward-sub {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  color: var(--ink-dim);
+  letter-spacing: 2px;
+}
+
+.reward-options {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.reward-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  min-width: 180px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.2s ease;
+}
+
+.reward-btn:hover {
+  border-color: var(--cyan);
+  background: rgba(0, 240, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.reward-icon {
+  font-size: 32px;
+}
+
+.reward-name {
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  color: var(--cyan);
+  letter-spacing: 2px;
+}
+
+.reward-desc {
+  font-size: 12px;
+  color: var(--ink-dim);
+  text-align: center;
+}
+
+/* ============================================================
+   SKILL TREE
+   ============================================================ */
+.skill-tree-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 20px;
+  background: rgba(15, 15, 20, 0.95);
+  border: 2px solid var(--pink);
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.skill-tree-title {
+  font-family: 'VT323', monospace;
+  font-size: 36px;
+  color: var(--pink);
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px var(--pink);
+}
+
+.skill-tree-sub {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: var(--ink-dim);
+  letter-spacing: 1px;
+}
+
+.skill-tree-points {
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  color: var(--yellow);
+  letter-spacing: 2px;
+}
+
+.skill-tree-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.skill-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.skill-tree-cat {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  color: var(--ink);
+  min-width: 180px;
+  letter-spacing: 1px;
+}
+
+.skill-tree-bar {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+}
+
+.skill-tree-pip {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.skill-tree-pip.filled {
+  background: var(--pink);
+  box-shadow: 0 0 4px var(--pink);
+}
+
+.skill-tree-level {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: var(--ink-dim);
+  min-width: 40px;
+}
+
+.btn-skill-up {
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  color: var(--pink);
+  background: transparent;
+  border: 1px solid var(--pink);
+  padding: 2px 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.btn-skill-up:hover {
+  background: rgba(255, 46, 138, 0.2);
+}
+
+/* ============================================================
+   PARTICLE CANVAS
+   ============================================================ */
+.particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}

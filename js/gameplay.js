@@ -49,6 +49,7 @@ const Gameplay = {
     // Reset combo timer
     if (this.comboTimer) clearTimeout(this.comboTimer);
     this.comboTimerRemaining = 5000;
+    this.comboTimerStart = now;
     this.comboTimer = setTimeout(() => {
       this.comboCount = 0;
       this.comboTimerRemaining = 0;
@@ -175,10 +176,17 @@ const Gameplay = {
     return indicators;
   },
 
+  // Handle boss defeat (called from core.js after Juice effects)
+  onBossDefeat() {
+    // Already tracked bossDefeats in onCorrect, this is just for side effects
+  },
+
   // Get combo timer HTML
   getComboTimerHTML() {
     if (this.comboCount <= 1) return '';
-    const pct = (this.comboTimerRemaining / 5000) * 100;
+    const elapsed = Date.now() - this.comboTimerStart;
+    const remaining = Math.max(0, 5000 - elapsed);
+    const pct = (remaining / 5000) * 100;
     return `
       <div class="combo-timer-track">
         <div class="combo-timer-fill" style="width: ${pct}%"></div>

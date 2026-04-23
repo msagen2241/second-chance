@@ -32,6 +32,9 @@ const Core = {
     Audio.sfx('click');
     Audio.stopMusic();
 
+    // Initialize gameplay state
+    Gameplay.init();
+
     const questions = Courses.getQuestions();
     const questionIds = questions.map((_, i) => i);
     this.state.deck = this.buildDeck(questionIds);
@@ -101,27 +104,69 @@ const Core = {
       this.state.correctCount += 1;
       this.clearMissed(entry.id);
       this.state.categoryStats[q.category].correct += 1;
-      const base = 100;
-      const bonus = this.streakBonus(this.state.streak);
+
+      // Gameplay: update combo, track boss, check reward
+      const rewardResult = Gameplay.onCorrect(entry);
+
+      // Juice
+      const btn = buttons[pickedIdx];
+      if (btn) Juice.onCorrect(btn);
+
+      // Progression
+      const mult = Gameplay.scoreMultiplier();
+      const comboBonus = Gameplay.comboBonus();
+      const base = 100 * mult;
+      const bonus = this.streakBonus(this.state.streak) + comboBonus;
       const gained = base + bonus;
       this.state.score += gained;
+      Progression.awardXP(gained);
+
       Audio.sfx('correct');
       if (this.state.streak >= 3) Audio.sfx('streak', Math.min(this.state.streak, 5));
       document.body.classList.add('flash-correct');
       setTimeout(() => document.body.classList.remove('flash-correct'), 300);
       this.animateScore(this.state.score - gained, this.state.score);
+
+      // Check for streak milestone
+      if (this.state.streak % 5 === 0) Juice.onStreakMilestone(Math.floor(this.state.streak / 5));
+
+      // Check for boss defeat
+      if (entry.isBoss) {
+        Juice.onBossDefeat();
+        Gameplay.onBossDefeat();
+      }
+
+      // Check for reward screen
+      if (rewardResult === 'reward') {
+        this.renderRewardScreen(() => this.advance());
+        return;
+      }
     } else {
-      this.state.streak = 0;
-      this.state.lives -= 1;
-      this.trackMissed(entry.id);
-      this.queueRetry(entry);
-      this.state.categoryStats[q.category].missed += 1;
-      Audio.sfx('wrong');
-      Audio.sfx('heartLoss');
-      document.body.classList.add('shake', 'flash-wrong');
-      setTimeout(() => document.body.classList.remove('shake', 'flash-wrong'), 400);
-      if (this.state.mode === 'streak') {
-        setTimeout(() => { this.endGame(); }, 1500);
+      // Juice
+      const btn = buttons[pickedIdx];
+      if (btn) Juice.onWrong(btn);
+
+      // Check Gameplay effects (freeze, double-or-nothing)
+      const wrongResult = Gameplay.onWrong(entry);
+
+      if (wrongResult === 'freeze_used') {
+        // Freeze absorbed the hit — don't lose life, just break streak
+        this.state.streak = 0;
+        Audio.sfx('wrong');
+        Juice.floatingText(window.innerWidth / 2, window.innerHeight / 2, 'FROZEN', '#00f0ff');
+      } else {
+        this.state.streak = 0;
+        this.state.lives -= 1;
+        this.trackMissed(entry.id);
+        this.queueRetry(entry);
+        this.state.categoryStats[q.category].missed += 1;
+        Audio.sfx('wrong');
+        Audio.sfx('heartLoss');
+        document.body.classList.add('shake', 'flash-wrong');
+        setTimeout(() => document.body.classList.remove('shake', 'flash-wrong'), 400);
+        if (this.state.mode === 'streak') {
+          setTimeout(() => { this.endGame(); }, 1500);
+        }
       }
     }
 
@@ -180,6 +225,14 @@ const Core = {
     } else {
       this.state.newHi = false;
     }
+
+    // Record run stats
+    const g = this.gradeFor(this.state.correctCount, this.state.deck.length);
+    Progression.recordRun(this.state.score, this.state.correctCount, this.state.deck.length, g.letter);
+
+    // Check achievements
+    Progression.checkAchievements();
+
     this.renderEnd();
     Audio.stopMusic();
     if (this.state.mode === 'streak') {
@@ -290,7 +343,20 @@ const Core = {
         <div class="progress-fill" style="width: ${progress}%"></div>
       </div>
 
-      <div class="question-card">
+      <!-- Combo timer -->
+      ${Gameplay.getComboTimerHTML()}
+
+      <!-- Power-up indicators -->
+      ${Gameplay.getPowerUpIndicators().length > 0 ? `
+        <div class="power-up-indicators">
+          ${Gameplay.getPowerUpIndicators().map(ind => `
+            <span class="power-up-indicator">${ind.icon} ${ind.label}</span>
+          `).join('')}
+        </div>
+      ` : ''}
+
+      <div class="question-card ${entry.isBoss ? 'boss-card' : ''}">
+        ${entry.isBoss ? '<div class="boss-banner">★ BOSS QUESTION ★</div>' : ''}
         <div class="question-text">${q.q}</div>
       </div>
 
@@ -419,6 +485,51 @@ const Core = {
     }
   },
 
+  // Render reward screen (called from handleAnswer after every 5th correct or boss defeat)
+  renderRewardScreen(onContinue) {
+    const powerUps = Gameplay.generateRewardOptions();
+    const stage = document.getElementById('stage');
+
+    stage.innerHTML = `
+      <div class="reward-screen">
+        <div class="reward-title">⚡ POWER-UP SELECTED ⚡</div>
+        <div class="reward-sub">Choose wisely...</div>
+        <div class="reward-options">
+          ${powerUps.map((pu, i) => `
+            <button class="reward-btn" data-idx="${i}">
+              <span class="reward-icon">${pu.icon}</span>
+              <span class="reward-name">${pu.name}</span>
+              <span class="reward-desc">${pu.desc}</span>
+            </button>
+          `).join('')}
+        </div>
+        <button class="btn-secondary reward-skip">SKIP</button>
+      </div>
+    `;
+
+    stage.querySelectorAll('.reward-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.idx);
+        Gameplay.applyPick(powerUps[idx]);
+        Juice.onPowerUpPick(btn);
+        Audio.sfx('click');
+        onContinue();
+      });
+    });
+
+    stage.querySelector('.reward-skip').addEventListener('click', () => {
+      Audio.sfx('click');
+      onContinue();
+    });
+
+    // Auto-skip after 3 seconds
+    setTimeout(() => {
+      if (document.querySelector('.reward-screen')) {
+        onContinue();
+      }
+    }, 3000);
+  },
+
   // Helper: category color
   categoryColor(name) {
     const colors = {
@@ -460,10 +571,12 @@ const Core = {
   // Build shuffled deck
   buildDeck(questionIds) {
     const shuffled = this.shuffle(questionIds);
+    const questions = Courses.getQuestions();
     return shuffled.map(id => ({
       id,
-      question: Courses.getQuestions()[id],
-      isRetry: false
+      question: questions[id],
+      isRetry: false,
+      isBoss: questions[id].isBoss || false
     }));
   },
 
@@ -472,7 +585,7 @@ const Core = {
     const all = [question.correct, ...question.distractors];
     const shuffled = this.shuffle(all);
     const correctIdx = shuffled.indexOf(question.correct);
-    return { options: shuffled, correctIdx };
+    return { options: shuffled, correctIdx, category: question.category };
   },
 
   // Empty category stats
