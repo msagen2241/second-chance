@@ -1,0 +1,51 @@
+
+  /* ============ TOUCH DEVICE OVERRIDES ============ */
+  .touch-device .answer-btn {
+    min-height: 96px;
+    font-size: 16px;
+    padding: 20px 22px;
+  }
+
+  .touch-device .answer-btn .key {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .touch-device .answer-btn .text {
+    padding-top: 5px;
+  }
+
+  .touch-device .btn-start {
+    font-size: 36px;
+    padding: 22px 56px;
+  }
+
+  .touch-device .stat-chip {
+    padding: 14px 24px;
+  }
+
+  .touch-device .btn-next {
+    font-size: 24px;
+    padding: 14px 36px;
+  }
+
+  .touch-device .mode-btn {
+    font-size: 24px;
+    padding: 16px 28px;
+  }
+
+  .touch-device .answer-btn,
+  .touch-device .btn-start,
+  .touch-device .btn-retry,
+  .touch-device .btn-secondary,
+  .touch-device .btn-next,
+  .touch-device .mode-btn {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+  }
+
+  .touch-device .question-card {
+    touch-action: pan-y;
+  }

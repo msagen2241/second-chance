@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SECOND CHANCE // Redemption Run</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/touch.css">
+</head>
+<body>
+
+<!-- Audio Controls -->
+<div class="audio-controls" id="audioControls">
+  <button class="btn-audio-toggle" id="btnAudioToggle" title="Audio settings">🔊</button>
+  <div class="volume-panel" id="volumePanel">
+    <div class="volume-row">
+      <span class="volume-label">MUSIC</span>
+      <input type="range" class="volume-slider" id="sliderMusic" min="0" max="100" value="100">
+      <span class="volume-value" id="valMusic">100</span>
+    </div>
+    <div class="volume-row">
+      <span class="volume-label">SFX</span>
+      <input type="range" class="volume-slider" id="sliderSfx" min="0" max="100" value="100">
+      <span class="volume-value" id="valSfx">100</span>
+    </div>
+    <div class="volume-row volume-actions">
+      <button class="btn-audio-panel" id="btnMuteAudio" type="button">MUTE</button>
+    </div>
+  </div>
+</div>
+
+<!-- Game Stage -->
+<div class="stage" id="stage"></div>
+
+<!-- Scripts (order matters) -->
+<script src="js/storage.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/progression.js"></script>
+<script src="js/gameplay.js"></script>
+<script src="js/juice.js"></script>
+<script src="js/core.js"></script>
+<script src="js/touch.js"></script>
+
+<script>
+// ============================================================
+// INIT
+// ============================================================
+async function init() {
+  // Initialize core
+  Core.init();
+
+  // Load course
+  await Courses.load('comptia');
+
+  // Load progression
+  await Progression.load();
+
+  // Initialize juice effects
+  Juice.init();
+
+  // Initialize touch
+  Touch.init();
+
+  // Initialize audio controls
+  initAudioControls();
+
+  // Initialize audio unlock
+  initAudioUnlock();
+
+  // Load legacy high score
+  await Core.loadHi();
+
+  // Render start screen
+  Core.render();
+}
+
+// ============================================================
+// AUDIO CONTROLS
+// ============================================================
+function initAudioControls() {
+  const toggle = document.getElementById('btnAudioToggle');
+  const panel = document.getElementById('volumePanel');
+  const muteBtn = document.getElementById('btnMuteAudio');
+  const sliderMusic = document.getElementById('sliderMusic');
+  const sliderSfx = document.getElementById('sliderSfx');
+  const valMusic = document.getElementById('valMusic');
+  const valSfx = document.getElementById('valSfx');
+
+  if (!toggle || !panel || !muteBtn) return;
+
+  const updateUi = () => {
+    toggle.textContent = Audio.muted ? '🔇' : '🔊';
+    toggle.classList.toggle('muted', Audio.muted);
+    muteBtn.textContent = Audio.muted ? 'UNMUTE' : 'MUTE';
+  };
+
+  toggle.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    await Audio.ensure();
+    panel.classList.toggle('open');
+  });
+
+  muteBtn.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    await Audio.ensure();
+    const muted = Audio.toggleMute();
+    if (muted) {
+      Audio.stopMusic();
+    } else if (Core.state.screen === 'start') {
+      Audio.playTrack('start');
+    }
+    updateUi();
+  });
+
+  panel.addEventListener('click', (e) => e.stopPropagation());
+
+  document.addEventListener('click', (e) => {
+    if (!panel.contains(e.target) && e.target !== toggle) {
+      panel.classList.remove('open');
+    }
+  });
+
+  sliderMusic.addEventListener('input', (e) => {
+    const v = parseInt(e.target.value);
+    valMusic.textContent = v;
+    Audio.setMusicVol(v / 100);
+  });
+
+  sliderSfx.addEventListener('input', (e) => {
+    const v = parseInt(e.target.value);
+    valSfx.textContent = v;
+    Audio.setSfxVol(v / 100);
+  });
+
+  updateUi();
+}
+
+async function initAudioUnlock() {
+  const unlock = async () => {
+    const wasLocked = !Audio.canPlay();
+    const ready = await Audio.ensure();
+    if (ready && wasLocked && Core.state.screen === 'start') {
+      Audio.playTrack('start');
+    }
+  };
+
+  document.addEventListener('pointerdown', () => { void unlock(); }, true);
+  document.addEventListener('keydown', () => { void unlock(); }, true);
+}
+
+// ============================================================
+// KEYBOARD
+// ============================================================
+document.addEventListener('keydown', (e) => {
+  if (Core.state.screen === 'start') {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); Core.startGame(); }
+  } else if (Core.state.screen === 'game') {
+    if (!Core.state.answered) {
+      const n = parseInt(e.key);
+      if (n >= 1 && n <= 4 && n <= Core.state.currentOptions.options.length) {
+        Core.handleAnswer(n - 1);
+      }
+    } else {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); Core.advance(); }
+    }
+  } else if (Core.state.screen === 'end') {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); Core.startGame(); }
+  }
+});
+
+// ============================================================
+// START
+// ============================================================
+init();
+</script>
+</body>
+</html>
