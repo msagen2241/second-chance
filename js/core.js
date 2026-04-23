@@ -183,8 +183,9 @@ const Core = {
       h.classList.toggle('lost', i >= this.state.lives);
     });
 
-    // Show feedback + next button
+    // Show feedback + navigation
     const fb = document.getElementById('feedbackSlot');
+    const canBack = this.state.idx > 0;
     fb.innerHTML = `
       <div class="feedback ${isCorrect ? 'correct-fb' : 'wrong-fb'}">
         <strong>${isCorrect ? '> ACCESS GRANTED' : '> SYSTEM ERROR'}</strong>
@@ -192,10 +193,115 @@ const Core = {
         <div style="margin-top: 10px; font-size: 11px; color: var(--ink-dim); letter-spacing: 2px;">
           ${isCorrect ? `+${100 + this.streakBonus(this.state.streak - 1)} PTS` : ''}
         </div>
-        <button class="btn-next" id="nextBtn">NEXT ▸</button>
+        <div class="feedback-nav">
+          ${canBack ? '<button class="btn-prev" id="prevBtn">◂ BACK</button>' : '<span></span>'}
+          <button class="btn-next" id="nextBtn">NEXT ▸</button>
+        </div>
       </div>
     `;
-    document.getElementById('nextBtn').addEventListener('click', () => this.advance());
+    const nextBtn = document.getElementById('nextBtn');
+    if (nextBtn) nextBtn.addEventListener('click', () => this.advance());
+    const prevBtn = document.getElementById('prevBtn');
+    if (prevBtn) prevBtn.addEventListener('click', () => this.reviewPrevious());
+  },
+
+  // Review a previous question (read-only, no re-answering)
+  reviewPrevious() {
+    if (this.state.idx <= 0) return;
+    this.state.answered = null;
+    this.state.idx -= 1;
+
+    const entry = this.state.deck[this.state.idx];
+    const q = entry.question;
+    this.state.currentOptions = this.buildOptions(q);
+    this.renderGameReview();
+  },
+
+  // Render a review view of an already-answered question
+  renderGameReview() {
+    const entry = this.state.deck[this.state.idx];
+    const q = entry.question;
+    const { options, correctIdx } = this.state.currentOptions;
+    const progress = ((this.state.idx) / this.state.deck.length) * 100;
+
+    const livesHtml = this.state.mode === 'streak'
+      ? `<span style="color: var(--yellow); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">STREAK MODE</span>`
+      : this.state.mode === 'review'
+        ? `<span style="color: var(--cyan); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">REVIEW MODE</span>`
+        : `<div class="lives">
+            ${[0,1,2].map(i => `<span class="heart ${i >= this.state.lives ? 'lost' : ''}">♥</span>`).join('')}
+          </div>`;
+
+    this.stage.innerHTML = `
+      <div class="hud">
+        ${livesHtml}
+        <div class="score-box">
+          <div class="label">SCORE</div>
+          <div class="value" id="scoreVal">${this.state.score.toLocaleString()}</div>
+        </div>
+        <div class="streak-box ${this.state.streak === 0 ? 'cold' : ''}">
+          <span class="icon">${this.state.streak === 0 ? '·' : '⚡'}</span>
+          <span>×${this.state.streak}</span>
+        </div>
+        <button class="btn-menu" id="menuBtnGame" title="Return to menu">✕</button>
+      </div>
+
+      <div class="q-header">
+        <span>QUESTION <span class="q-num">${this.state.idx + 1}</span> / ${this.state.deck.length} · REVIEW</span>
+        <span>&nbsp;</span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" style="width: ${progress}%"></div>
+      </div>
+
+      <div class="question-card ${entry.isBoss ? 'boss-card' : ''}">
+        ${entry.isBoss ? '<div class="boss-banner">★ BOSS QUESTION ★</div>' : ''}
+        <div class="question-text">${q.q}</div>
+      </div>
+
+      <div class="answers" id="answers">
+        ${options.map((opt, i) => `
+          <button class="answer-btn" data-idx="${i}" disabled ${i === correctIdx ? 'class="correct"' : ''}>
+            <span class="key">${i + 1}</span>
+            <span class="text">${opt}</span>
+          </button>
+        `).join('')}
+      </div>
+
+      <div id="feedbackSlot">
+        <div class="feedback correct-fb">
+          <strong>▶ REVIEW MODE</strong>
+          ${q.explain}
+          <div class="feedback-nav">
+            ${this.state.idx > 0 ? '<button class="btn-prev" id="prevBtn">◂ BACK</button>' : '<span></span>'}
+            <button class="btn-next" id="nextBtn">NEXT ▸</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('menuBtnGame').addEventListener('click', () => {
+      Audio.stopMusic();
+      this.state.screen = 'start';
+      this.state.mode = 'normal';
+      this.renderStart();
+      Audio.playTrack('start');
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => this.advanceFromReview());
+    const prevBtn = document.getElementById('prevBtn');
+    if (prevBtn) prevBtn.addEventListener('click', () => this.reviewPrevious());
+  },
+
+  // Advance from review mode back to current position
+  advanceFromReview() {
+    this.state.idx += 1;
+    if (this.state.idx >= this.state.deck.length) {
+      this.endGame();
+      return;
+    }
+    this.state.currentOptions = this.buildOptions(this.state.deck[this.state.idx].question);
+    this.renderGame();
   },
 
   // Advance to next question

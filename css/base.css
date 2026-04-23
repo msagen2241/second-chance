@@ -1216,3 +1216,32 @@
   border-color: var(--pink);
   background: rgba(255, 46, 138, 0.1);
 }
+
+/* ============================================================
+   FEEDBACK NAVIGATION
+   ============================================================ */
+.feedback-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  gap: 12px;
+}
+
+.btn-prev {
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: var(--ink-dim);
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-prev:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  background: rgba(0, 240, 255, 0.1);
+}
