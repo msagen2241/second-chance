@@ -670,6 +670,240 @@
       ],
       "explain": "sfc (System File Checker) scans for and restores corrupted Windows system files. chkdsk checks the file system.",
       "isBoss": false
+    },
+    {
+      "id": 52,
+      "q": "An individual is setting up a new personal tablet. They want a screen lock method that balances good security with ease of recall. Which type of screen lock should they use?",
+      "category": "Security",
+      "correct": "PIN code",
+      "distractors": [
+        "Swipe",
+        "Fingerprint",
+        "Facial recognition"
+      ],
+      "explain": "A PIN code balances security with ease of recall. It is more secure than a swipe pattern and easier to remember than a complex password, while biometrics may be less convenient in some situations.",
+      "isBoss": false
+    },
+    {
+      "id": 53,
+      "q": "A company's security policy requires all internet traffic to pass through a central monitoring point. Which setting should be configured on employee workstations to comply with this policy?",
+      "category": "Operating Systems",
+      "correct": "Proxy server",
+      "distractors": [
+        "DHCP settings",
+        "DNS server",
+        "VPN connection"
+      ],
+      "explain": "A proxy server routes workstation internet traffic through a central point for monitoring and control. DNS and DHCP do not provide that traffic-control function, and a VPN is primarily for secure network access.",
+      "isBoss": false
+    },
+    {
+      "id": 54,
+      "q": "A computer engineer is explaining the advantages of using SRAM in a CPU's cache memory. What characteristic of SRAM makes it particularly suitable for this role?",
+      "category": "Operating Systems",
+      "correct": "Its faster access speed compared to DRAM",
+      "distractors": [
+        "Its high storage capacity",
+        "Its low power consumption",
+        "Its ability to store data without power"
+      ],
+      "explain": "SRAM is used for CPU cache because it can access data faster than DRAM. It is not nonvolatile and typically has lower storage density than DRAM.",
+      "isBoss": false
+    },
+    {
+      "id": 55,
+      "q": "A small business wants to consolidate various security functions, including firewall, antivirus, and intrusion prevention, into a single appliance. What type of device should they consider implementing?",
+      "category": "Security",
+      "correct": "UTM",
+      "distractors": [
+        "VNC",
+        "UPS",
+        "UTP"
+      ],
+      "explain": "A UTM, or Unified Threat Management device, combines multiple security functions such as firewall, antivirus, intrusion prevention, and related protections into one appliance.",
+      "isBoss": false
+    },
+    {
+      "id": 56,
+      "q": "A computer is experiencing issues with network connectivity. To use the built-in diagnostics and resolve the problem, which option should a user select in the Network and Sharing Center?",
+      "category": "Operating Systems",
+      "correct": "Troubleshoot problems",
+      "distractors": [
+        "Change adapter settings",
+        "Change advanced sharing settings",
+        "Set up a new connection or network"
+      ],
+      "explain": "Troubleshoot problems launches Windows Network Diagnostics to detect and attempt to resolve common network connectivity issues.",
+      "isBoss": false
+    },
+    {
+      "id": 57,
+      "q": "A user's operating system consistently fails to complete updates. What should be checked first to resolve this issue?",
+      "category": "Software Troubleshooting",
+      "correct": "Available storage space on the device",
+      "distractors": [
+        "The compatibility of installed applications with the new update",
+        "The speed of the internet connection",
+        "The accuracy of the system clock"
+      ],
+      "explain": "Failed operating system updates are commonly caused by insufficient free storage. Updates often need significant space to download, unpack, and install.",
+      "isBoss": false
+    },
+    {
+      "id": 58,
+      "q": "A small business owner is planning to upgrade the computers in her office. She requires an operating system that can handle advanced networking features and remote desktop access, but does not need advanced security features like device guard. Which edition of Windows 10 would be most suitable for her needs?",
+      "category": "Operating Systems",
+      "correct": "Windows 10 Pro",
+      "distractors": [
+        "Windows 10 Home",
+        "Windows 10 Enterprise",
+        "Windows 10 Pro for Workstations"
+      ],
+      "explain": "Windows 10 Pro supports small-business features such as domain join, Group Policy, and hosting Remote Desktop without requiring Enterprise-only security features.",
+      "isBoss": false
+    },
+    {
+      "id": 59,
+      "q": "A technician suspects that a computer is not connected to the network. To confirm network connectivity to the local router, which command should they execute?",
+      "category": "Operating Systems",
+      "correct": "ping [router IP address]",
+      "distractors": [
+        "netstat",
+        "nslookup",
+        "ipconfig"
+      ],
+      "explain": "Ping sends ICMP echo requests to a target such as the local router. A reply confirms basic network connectivity to that device.",
+      "isBoss": false
+    },
+    {
+      "id": 60,
+      "q": "A Windows 10 user wants to create a new profile in Microsoft Outlook. Which option within the Control Panel's Mail utility allows them to do this?",
+      "category": "Operating Systems",
+      "correct": "Show Profiles",
+      "distractors": [
+        "Data Files",
+        "Set as Default",
+        "Email Accounts"
+      ],
+      "explain": "Show Profiles in the Control Panel Mail utility lets users add, remove, or switch Outlook profiles.",
+      "isBoss": false
+    },
+    {
+      "id": 61,
+      "q": "When a user switches to a new mobile phone and wants to retain their existing phone number and service, what component should they transfer to the new device?",
+      "category": "Operating Systems",
+      "correct": "SIM",
+      "distractors": [
+        "SIMM",
+        "SATA",
+        "SCADA"
+      ],
+      "explain": "The SIM stores subscriber identity and network authorization information, allowing the user to keep the same phone number and mobile service on a compatible new phone.",
+      "isBoss": false
+    },
+    {
+      "id": 62,
+      "q": "A Windows 10 user wants to ensure their computer's time is always accurate, even after traveling to different time zones. Which setting in Time and Language should they enable?",
+      "category": "Operating Systems",
+      "correct": "Set time zone automatically",
+      "distractors": [
+        "Set time automatically",
+        "Sync now",
+        "Adjust for daylight saving time automatically"
+      ],
+      "explain": "Set time zone automatically lets Windows detect the current time zone and adjust the clock when traveling. Set time automatically only synchronizes the clock within the configured time zone.",
+      "isBoss": false
+    },
+    {
+      "id": 63,
+      "q": "A technician needs to check the processor type and speed, and the amount of installed RAM on a Windows 10 computer. Which tab in the System Information should they consult?",
+      "category": "Operating Systems",
+      "correct": "System Summary",
+      "distractors": [
+        "Hardware Resources",
+        "Components",
+        "Software Environment"
+      ],
+      "explain": "System Summary in System Information provides the main hardware overview, including processor details and installed RAM.",
+      "isBoss": false
+    },
+    {
+      "id": 64,
+      "q": "A user is setting up a new Windows 10 computer and is asked to create an account. They want an account that can be used to synchronize settings and files across multiple devices. Which type of account should they choose?",
+      "category": "Security",
+      "correct": "Microsoft account",
+      "distractors": [
+        "Guest user account",
+        "Power user account",
+        "Local account"
+      ],
+      "explain": "A Microsoft account links the user to Microsoft online services and can synchronize settings and files across devices. A local account is limited to one device.",
+      "isBoss": false
+    },
+    {
+      "id": 65,
+      "q": "An individual plans to sell their Mac and wants to completely erase all the data on the hard drive to prevent personal information from being recovered by the new owner. Which Disk Utility option should they use?",
+      "category": "Operating Systems",
+      "correct": "Erase",
+      "distractors": [
+        "RAID Assistant",
+        "First Aid",
+        "Partition"
+      ],
+      "explain": "The Erase option in Disk Utility removes the data from the selected drive, which is the appropriate step before selling or disposing of a Mac.",
+      "isBoss": false
+    },
+    {
+      "id": 66,
+      "q": "A user wants to organize their open applications and documents into separate workspaces to reduce clutter on their Mac. Which feature should they use?",
+      "category": "Operating Systems",
+      "correct": "Multiple Desktops",
+      "distractors": [
+        "Mission Control",
+        "Keychain",
+        "Spotlight"
+      ],
+      "explain": "Multiple Desktops, also known as Spaces, lets macOS users organize windows into separate workspaces to reduce clutter.",
+      "isBoss": false
+    },
+    {
+      "id": 67,
+      "q": "A network administrator wants to allow a specific application to communicate through the Windows Firewall. Which feature should they configure in the firewall settings?",
+      "category": "Operating Systems",
+      "correct": "Advanced settings > Inbound Rules > New Rule",
+      "distractors": [
+        "Advanced settings > Outbound Rules > New Rule",
+        "Inbound Rules",
+        "Outbound Rules"
+      ],
+      "explain": "To allow an application to receive network traffic through Windows Firewall, create a new inbound rule from Advanced settings.",
+      "isBoss": false
+    },
+    {
+      "id": 68,
+      "q": "What is the purpose of implementing Network Access Control (NAC) in a corporate network?",
+      "category": "Security",
+      "correct": "To control which devices are allowed to connect to the network",
+      "distractors": [
+        "To increase the storage capacity of the network",
+        "To translate network addresses",
+        "To encrypt the data transmitted over the network"
+      ],
+      "explain": "Network Access Control manages which devices are authorized and compliant enough to connect to corporate network resources.",
+      "isBoss": false
+    },
+    {
+      "id": 69,
+      "q": "Which of the following is a limitation of the Master Boot Record (MBR) partitioning scheme compared to the GUID Partition Table (GPT)?",
+      "category": "Operating Systems",
+      "correct": "MBR has a maximum disk size of 2TB",
+      "distractors": [
+        "MBR does not support booting from external drives",
+        "MBR can only be used on Windows operating systems",
+        "MBR supports a maximum of 128 primary partitions"
+      ],
+      "explain": "MBR supports a maximum disk size of 2TB and only four primary partitions. GPT supports much larger disks and many more partitions.",
+      "isBoss": false
     }
   ]
 }

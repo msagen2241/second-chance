@@ -380,7 +380,6 @@ const Core = {
           <span class="icon">${this.state.streak === 0 ? '·' : '⚡'}</span>
           <span>×${this.state.streak}</span>
         </div>
-        <button class="btn-menu" id="menuBtnGame" title="Return to menu">MENU</button>
       </div>
 
       <div class="q-header">
@@ -415,6 +414,10 @@ const Core = {
             <button class="btn-next" id="nextBtn">NEXT ▸</button>
           </div>
         </div>
+      </div>
+
+      <div class="game-menu-row">
+        <button class="btn-menu" id="menuBtnGame" title="Return to menu">MENU</button>
       </div>
     `;
 
@@ -513,12 +516,13 @@ const Core = {
       const isStreak = this.state.mode === 'streak';
       const isCategory = this.state.mode === 'category';
       const prog = Progression.data || { level: 0, totalXP: 0, skillPoints: 0, studyStreak: 0, achievements: [] };
-      const xpNeeded = Progression.xpToNextLevel();
-      const xpPct = prog.level >= 50 ? 100 : Math.min(100, (prog.totalXP % (100 * (prog.level + 1) + 200)) / (100 * (prog.level + 1) + 200) * 100);
+      const xpProgress = Progression.xpProgressToNextLevel();
+      const xpPct = xpProgress.pct;
 
       // Get due count for spaced repetition
       const dueCount = await Spaced.getDueCount(this.state.courseId);
       const categories = Courses.getCategories();
+      const questionCount = Courses.getQuestions().length;
 
     this.stage.innerHTML = `
       <div class="start">
@@ -531,7 +535,7 @@ const Core = {
           <div class="level-badge">LVL ${prog.level}</div>
           <div class="xp-bar-track">
             <div class="xp-bar-fill" style="width: ${xpPct}%"></div>
-            <span class="xp-text">${prog.totalXP.toLocaleString()} / ${prog.level >= 50 ? 'MAX' : (prog.totalXP + xpNeeded).toLocaleString()}</span>
+            <span class="xp-text">${prog.level >= 50 ? 'MAX' : `${xpProgress.current.toLocaleString()} / ${xpProgress.needed.toLocaleString()}`}</span>
           </div>
           ${prog.skillPoints > 0 ? `<div class="skill-points-badge">+${prog.skillPoints} SKILL PTS</div>` : ''}
         </div>
@@ -558,7 +562,7 @@ const Core = {
         </div>
 
         <div class="stat-row">
-          <div class="stat-chip"><b>51</b>QUESTIONS</div>
+          <div class="stat-chip"><b>${questionCount}</b>QUESTIONS</div>
           <div class="stat-chip">${isStreak ? '<b>∞</b>NO LIVES' : '<b>3</b>LIVES'}</div>
           <div class="stat-chip"><b>∞</b>STREAK BONUS</div>
         </div>
@@ -787,7 +791,6 @@ const Core = {
           <span class="icon">${this.state.streak === 0 ? '·' : '⚡'}</span>
           <span>×${this.state.streak}</span>
         </div>
-        <button class="btn-menu" id="menuBtnGame" title="Return to menu">MENU</button>
       </div>
 
       <div class="q-header">
@@ -826,6 +829,10 @@ const Core = {
       </div>
 
       <div id="feedbackSlot"></div>
+
+      <div class="game-menu-row">
+        <button class="btn-menu" id="menuBtnGame" title="Return to menu">MENU</button>
+      </div>
     `;
 
     document.querySelectorAll('.answer-btn').forEach(btn => {
@@ -1139,14 +1146,14 @@ const Core = {
   // Save high score (legacy compatibility)
   async saveHi(score) {
     try {
-      await window.storage.set('hiscore_v1', String(score));
+      await Storage.put('settings', { id: 'hiscore_v1', value: String(score) });
     } catch (e) { /* silent */ }
   },
 
   // Load high score (legacy compatibility)
   async loadHi() {
     try {
-      const r = await window.storage.get('hiscore_v1');
+      const r = await Storage.get('settings', 'hiscore_v1');
       if (r && r.value) this.state.hiScore = parseInt(r.value) || 0;
     } catch (e) { /* no saved score */ }
   }

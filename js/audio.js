@@ -13,6 +13,7 @@ const Audio = {
   loopTimer: null,
   loopBeat: 0,
   currentTrack: null,
+  resumeTimeoutMs: 250,
 
   // Note name → frequency
   noteFreq: {
@@ -30,13 +31,13 @@ const Audio = {
     this.initPromise = (async () => {
       try {
         this.ctx = new (window.AudioContext || window.webkitAudioContext)();
-        await this.ctx.resume();
         this.musicGain = this.ctx.createGain();
         this.musicGain.connect(this.ctx.destination);
         this.musicGain.gain.value = this.musicVol;
         this.sfxGain = this.ctx.createGain();
         this.sfxGain.connect(this.ctx.destination);
         this.sfxGain.gain.value = this.sfxVol;
+        await this.resumeWithTimeout();
         this.ready = true;
         console.log('[audio] Web Audio context ready');
       } catch (e) {
@@ -53,13 +54,21 @@ const Audio = {
     if (!this.ready) await this.init();
     if (!this.ctx) return false;
     if (this.ctx.state === 'suspended') {
-      try {
-        await this.ctx.resume();
-      } catch (e) {
-        console.warn('[audio] resume failed:', e);
-      }
+      await this.resumeWithTimeout();
     }
     return this.canPlay();
+  },
+
+  async resumeWithTimeout() {
+    if (!this.ctx || this.ctx.state !== 'suspended') return;
+    try {
+      await Promise.race([
+        this.ctx.resume(),
+        new Promise(resolve => setTimeout(resolve, this.resumeTimeoutMs))
+      ]);
+    } catch (e) {
+      console.warn('[audio] resume failed:', e);
+    }
   },
 
   canPlay() {

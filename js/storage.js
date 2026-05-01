@@ -4,7 +4,7 @@
 const Storage = window.storage = {
   db: null,
   DB_NAME: 'second_chance_v2',
-  DB_VERSION: 4,
+  DB_VERSION: 5,
 
   async open() {
     if (this.db) return this.db;
@@ -13,6 +13,7 @@ const Storage = window.storage = {
 
       request.onupgradeneeded = (e) => {
         const db = e.target.result;
+        const tx = e.target.transaction;
 
         // v1 stores
         if (!db.objectStoreNames.contains('progression')) {
@@ -42,11 +43,17 @@ const Storage = window.storage = {
           db.createObjectStore('sessionLog', { keyPath: 'id', autoIncrement: true });
         }
 
-        // v4: reset progression on upgrade so old XP/level doesn't carry over
+        // v4/v5: reset profile data so old XP/level doesn't carry over
         const progStore = db.objectStoreNames.contains('progression')
-          ? db.transaction('progression', 'readwrite').objectStore('progression')
+          ? tx.objectStore('progression')
           : null;
         if (progStore) progStore.clear();
+        if (e.oldVersion < 5) {
+          if (db.objectStoreNames.contains('perCourse')) tx.objectStore('perCourse').clear();
+          if (db.objectStoreNames.contains('questionStrength')) tx.objectStore('questionStrength').clear();
+          if (db.objectStoreNames.contains('questionLog')) tx.objectStore('questionLog').clear();
+          if (db.objectStoreNames.contains('sessionLog')) tx.objectStore('sessionLog').clear();
+        }
       };
 
       request.onsuccess = (e) => {
@@ -108,7 +115,7 @@ const Storage = window.storage = {
   // Legacy v1 migration
   async migrateLegacy() {
     try {
-      const r = await window.storage.get('hiscore_v1');
+      const r = await this.get('settings', 'hiscore_v1');
       if (r && r.value) {
         const hiScore = parseInt(r.value) || 0;
         const existing = await this.get('perCourse', 'comptia');
@@ -127,7 +134,7 @@ const Storage = window.storage = {
     return {
       id: 'global',
       totalXP: 0,
-      level: 0,
+      level: 1,
       skillPoints: 0,
       categorySkills: {},
       achievements: [],

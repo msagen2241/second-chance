@@ -12,6 +12,7 @@ const Progression = {
       this.data = Storage.defaultProgression();
       await Storage.put('progression', this.data);
     }
+    await this.normalizeLevelState();
 
     // Load per-course data
     if (Core.state.courseId) {
@@ -68,15 +69,18 @@ const Progression = {
   checkLevelUp() {
     if (!this.data) return;
 
+    const startLevel = this.data.level;
     while (this.data.level < 50) {
-      const nextLevelCost = 100 * (this.data.level + 1) + 200;
-      if (this.data.totalXP >= nextLevelCost) {
+      if (this.data.totalXP >= this.totalXPForLevel(this.data.level + 1)) {
         this.data.level++;
         this.data.skillPoints++;
-        this.showLevelUpNotification(this.data.level);
       } else {
         break;
       }
+    }
+
+    if (this.data.level > startLevel) {
+      this.showLevelUpNotification(this.data.level);
     }
   },
 
@@ -205,7 +209,57 @@ const Progression = {
   // Get XP needed for next level
   xpToNextLevel() {
     if (!this.data) return 0;
-    return 100 * (this.data.level + 1) + 200 - this.data.totalXP;
+    if (this.data.level >= 50) return 0;
+    return Math.max(0, this.totalXPForLevel(this.data.level + 1) - this.data.totalXP);
+  },
+
+  // XP required to advance from the previous level to this level
+  xpCostForLevel(level) {
+    if (level <= 1) return 0;
+    return 100 * (level - 1) + 200;
+  },
+
+  // Cumulative XP required to reach a level
+  totalXPForLevel(level) {
+    if (level <= 1) return 0;
+    const completedLevels = level - 1;
+    return 50 * completedLevels * (completedLevels + 1) + 200 * completedLevels;
+  },
+
+  levelForTotalXP(totalXP) {
+    let level = 1;
+    while (level < 50 && totalXP >= this.totalXPForLevel(level + 1)) {
+      level++;
+    }
+    return level;
+  },
+
+  xpProgressToNextLevel() {
+    if (!this.data) return { current: 0, needed: 1, pct: 0 };
+    if (this.data.level >= 50) return { current: 1, needed: 1, pct: 100 };
+
+    const levelStart = this.totalXPForLevel(this.data.level);
+    const levelEnd = this.totalXPForLevel(this.data.level + 1);
+    const current = Math.max(0, this.data.totalXP - levelStart);
+    const needed = levelEnd - levelStart;
+    return {
+      current,
+      needed,
+      pct: Math.min(100, current / needed * 100)
+    };
+  },
+
+  async normalizeLevelState() {
+    if (!this.data) return;
+
+    const expectedLevel = this.levelForTotalXP(this.data.totalXP || 0);
+    if (this.data.level !== expectedLevel) {
+      this.data.level = expectedLevel;
+      const spentPoints = Object.values(this.data.categorySkills || {})
+        .reduce((sum, value) => sum + (Number(value) || 0), 0);
+      this.data.skillPoints = Math.max(0, expectedLevel - spentPoints);
+      await this.save();
+    }
   },
 
   // Get category skill level

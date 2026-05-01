@@ -1,0 +1,911 @@
+// Generated fallback course data for direct file:// play.
+window.COURSE_DATA = window.COURSE_DATA || {};
+window.COURSE_DATA.comptia = {
+  "id": "comptia",
+  "name": "CompTIA A+",
+  "categories": [
+    "Operating Systems",
+    "Security",
+    "Software Troubleshooting",
+    "Operational Procedures"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "q": "An IT department is implementing a change management process. They need to classify changes based on impact and urgency (e.g., a routine printer driver update vs. a major network infrastructure upgrade). Which of the following would BEST help categorize these items?",
+      "category": "Operational Procedures",
+      "correct": "Identifying the change type",
+      "distractors": [
+        "Performing a security audit",
+        "Conducting a cost-benefit analysis",
+        "Scheduling a maintenance window"
+      ],
+      "explain": "Identifying the change type categorizes changes by complexity, risk, and urgency — routine, standard, or emergency.",
+      "isBoss": false
+    },
+    {
+      "id": 2,
+      "q": "A small doctor's office wants the highest level of wireless security AND desktop authentication. They only use cloud-based SaaS apps. Which combination should you implement?",
+      "category": "Security",
+      "correct": "WPA2 + Multifactor Authentication",
+      "distractors": [
+        "WEP + WPS",
+        "WPA + Single-factor password",
+        "Open network + Biometrics only"
+      ],
+      "explain": "WPA2 uses AES with CCMP encryption. Multifactor requires 2+ factors (know / have / are / do). WEP is broken, WPS is brute-forceable.",
+      "isBoss": false
+    },
+    {
+      "id": 3,
+      "q": "David needs to see diagnostic information about an Android app and its network connections while debugging it on a tablet. Which of the following should he enable on the device?",
+      "category": "Software Troubleshooting",
+      "correct": "Developer mode",
+      "distractors": [
+        "Rooting",
+        "Safe mode",
+        "Factory reset"
+      ],
+      "explain": "Developer mode exposes diagnostic info for apps and network connections. Rooting grants admin rights but isn't needed just for diagnostics.",
+      "isBoss": false
+    },
+    {
+      "id": 4,
+      "q": "Which command is used in the Linux terminal to change the permissions of a file?",
+      "category": "Operating Systems",
+      "correct": "chmod",
+      "distractors": [
+        "chown",
+        "chgrp",
+        "chattr"
+      ],
+      "explain": "chmod = change mode (permissions). chown changes owner. chgrp changes group. chattr changes attributes.",
+      "isBoss": false
+    },
+    {
+      "id": 5,
+      "q": "Abagail's Microsoft Word crashes every time she opens one specific document. Other documents open fine, no recent changes. She needs the content. What's the BEST next step?",
+      "category": "Software Troubleshooting",
+      "correct": "Attempt to open the document in Safe Mode",
+      "distractors": [
+        "Replace the document with a new blank file",
+        "Reinstall Microsoft Office",
+        "Perform a Windows system restore"
+      ],
+      "explain": "Safe Mode bypasses add-ins and corrupt settings — often the quickest path to recovering the document's content.",
+      "isBoss": true
+    },
+    {
+      "id": 6,
+      "q": "Daily Linux server backups are saved to a local NAS. You need to ensure backups will actually work when needed for restoration. What should you recommend?",
+      "category": "Operational Procedures",
+      "correct": "Attempt to restore to a test server from one of the backup files",
+      "distractors": [
+        "Set up scripts to automatically reattempt failed backup jobs",
+        "Verify the file sizes of each backup match the source",
+        "Increase the frequency of backups to twice daily"
+      ],
+      "explain": "The ONLY way to be sure a backup is good is to actually restore from it. Size checks and retries don't prove recoverability.",
+      "isBoss": false
+    },
+    {
+      "id": 7,
+      "q": "Which section of the Control Panel should a technician use to edit the account profile related to a user's Microsoft Outlook client?",
+      "category": "Software Troubleshooting",
+      "correct": "Mail",
+      "distractors": [
+        "User Accounts",
+        "Programs and Features",
+        "Credential Manager"
+      ],
+      "explain": "The Mail applet is specifically for viewing, editing, and removing Outlook profile settings for the logged-in user.",
+      "isBoss": false
+    },
+    {
+      "id": 8,
+      "q": "A user logs into Windows 11 and sees a black screen with just a movable cursor — no icons, no taskbar. What's the BEST initial fix to try?",
+      "category": "Software Troubleshooting",
+      "correct": "Restart the Windows Explorer process using Task Manager",
+      "distractors": [
+        "Boot into Safe Mode and perform a system restore",
+        "Reinstall Windows",
+        "Check the monitor cables and display settings"
+      ],
+      "explain": "A black screen + cursor usually means explorer.exe didn't start. Restarting it is the least invasive fix and works most of the time.",
+      "isBoss": false
+    },
+    {
+      "id": 9,
+      "q": "The server room humidity is at 10%. Which of the following risks to the servers could occur due to this low humidity level?",
+      "category": "Operational Procedures",
+      "correct": "Accidental static discharge",
+      "distractors": [
+        "Corrosion of the servers",
+        "Overheating of the CPUs",
+        "Increased fire hazard"
+      ],
+      "explain": "Low humidity allows static buildup → discharge damages components. Corrosion is a HIGH-humidity problem. Target: 40-60% RH.",
+      "isBoss": false
+    },
+    {
+      "id": 10,
+      "q": "What type of structure is 'IF THEN ELSE' in scripting?",
+      "category": "Operating Systems",
+      "correct": "Branch",
+      "distractors": [
+        "Variable",
+        "Loop",
+        "Function"
+      ],
+      "explain": "A branch controls program flow based on a logic condition — classically IF / THEN / ELSE. Variables hold values; loops repeat; functions encapsulate.",
+      "isBoss": false
+    },
+    {
+      "id": 11,
+      "q": "Dion Training wants governance for password length, complexity, and expiration. Which policy should this be documented within?",
+      "category": "Security",
+      "correct": "Password policy",
+      "distractors": [
+        "Acceptable use policy",
+        "Remote access policy",
+        "Data retention policy"
+      ],
+      "explain": "Password policies define complexity, length, expiration, and protection rules for knowledge-based authentication. AUPs govern use of company resources.",
+      "isBoss": false
+    },
+    {
+      "id": 12,
+      "q": "An attacker is using a precomputed table of hash values to attempt to crack your Windows password. What type of password attack is this?",
+      "category": "Security",
+      "correct": "Rainbow table attack",
+      "distractors": [
+        "Brute-force attack",
+        "Dictionary attack",
+        "Phishing attack"
+      ],
+      "explain": "Rainbow tables precompute hashes for fast lookup. Brute-force tries combinations live. Dictionary uses word lists. Phishing tricks users.",
+      "isBoss": true
+    },
+    {
+      "id": 13,
+      "q": "A Windows 10 workstation won't boot. The technician needs to replace the OS files with a new copy of the SAME version, without touching user data or installed apps. Which type of installation should they use?",
+      "category": "Operating Systems",
+      "correct": "Repair installation",
+      "distractors": [
+        "In-place upgrade",
+        "Clean install",
+        "Reset this PC"
+      ],
+      "explain": "A repair install replaces system files of the same version while preserving data, settings, and apps. An in-place upgrade installs a NEW version.",
+      "isBoss": false
+    },
+    {
+      "id": 14,
+      "q": "You run 'ipconfig /all' and see your IP is 169.254.34.12. Why can't you reach the internet?",
+      "category": "Operating Systems",
+      "correct": "The workstation couldn't reach the DHCP server",
+      "distractors": [
+        "The workstation couldn't reach the DNS server",
+        "The default gateway is misconfigured",
+        "The subnet mask is wrong"
+      ],
+      "explain": "169.254.x.x is an APIPA address — assigned automatically when no DHCP server responds. DNS issues wouldn't give you an APIPA address.",
+      "isBoss": false
+    },
+    {
+      "id": 15,
+      "q": "Which security control would be the BEST way to prevent unauthorized users from booting a workstation from an external USB drive?",
+      "category": "Security",
+      "correct": "BIOS password required",
+      "distractors": [
+        "Full disk encryption",
+        "Antivirus software",
+        "A strong Windows login password"
+      ],
+      "explain": "A BIOS password prevents changing the boot order. Encryption protects data at rest but doesn't stop the boot itself. OS passwords are bypassed entirely if you boot from USB.",
+      "isBoss": false
+    },
+    {
+      "id": 16,
+      "q": "Your team is finalizing a change request to install 20 new APs for a college campus. Locations are documented. What's the MOST important thing to add to the scope of work before approval?",
+      "category": "Operational Procedures",
+      "correct": "Rollback plan",
+      "distractors": [
+        "Risk analysis",
+        "Budget approval document",
+        "Technician training schedule"
+      ],
+      "explain": "Every change needs a rollback plan so it can be reversed if it goes sideways. Risk analysis is important but the rollback is the critical safety net.",
+      "isBoss": false
+    },
+    {
+      "id": 17,
+      "q": "Edward can access his company email but cannot reach the network file share that hosted his shared inbox folders. He can reach other network shares. What's the MOST likely cause?",
+      "category": "Operating Systems",
+      "correct": "The network file share's permission has been modified",
+      "distractors": [
+        "The internet security options in his email client have been modified",
+        "The domain controller's DNS settings were changed",
+        "The OS update installed an incompatible email driver"
+      ],
+      "explain": "The file share's permissions have likely changed during Edward's vacation. Since he can still send/receive email, his account permissions are fine. Internet security options would affect sending/receiving, and OS updates wouldn't affect network file shares.",
+      "isBoss": false
+    },
+    {
+      "id": 18,
+      "q": "A technician needs to make a Windows computer visible to other PCs on a workgroup network. Which setting should be enabled?",
+      "category": "Operating Systems",
+      "correct": "Network discovery",
+      "distractors": [
+        "File and folder sharing",
+        "Printer sharing",
+        "Guest account access"
+      ],
+      "explain": "Network discovery allows Windows to find other computers on a network. File sharing is separate — it's about making your files accessible, not finding other PCs.",
+      "isBoss": false
+    },
+    {
+      "id": 19,
+      "q": "A file server must remain running during a power outage until the backup generator starts. Which device provides the needed buffer?",
+      "category": "Operational Procedures",
+      "correct": "An uninterruptible power supply (UPS)",
+      "distractors": [
+        "A line conditioner",
+        "A surge protector",
+        "A voltage regulator"
+      ],
+      "explain": "A UPS provides battery backup during power outages (until the generator kicks in). A line conditioner only adjusts voltage levels but can't keep the server running during a complete power failure.",
+      "isBoss": false
+    },
+    {
+      "id": 20,
+      "q": "A Linux administrator needs to change a user's password from the command line. Which command should they use?",
+      "category": "Operating Systems",
+      "correct": "passwd",
+      "distractors": [
+        "pwd",
+        "chpasswd",
+        "usermod"
+      ],
+      "explain": "passwd changes a user's password. pwd displays the present working directory.",
+      "isBoss": false
+    },
+    {
+      "id": 21,
+      "q": "An FTP server currently sits on the internal network. To improve security, where should it be placed?",
+      "category": "Operating Systems",
+      "correct": "Migrate the FTP server from the internal network to a screened subnet",
+      "distractors": [
+        "Add a deny rule to the firewall's ACL that blocks port 21 outbound",
+        "Place the FTP server in the same VLAN as the web server",
+        "Restrict FTP access to only the IT department"
+      ],
+      "explain": "A screened subnet (DMZ) isolates public-facing servers from the internal network. Blocking outbound port 21 wouldn't prevent exploitation of the FTP server itself.",
+      "isBoss": false
+    },
+    {
+      "id": 22,
+      "q": "Which file type can be executed on Linux, macOS, and Windows without modification?",
+      "category": "Operating Systems",
+      "correct": ".py",
+      "distractors": [
+        ".sh",
+        ".bat",
+        ".cmd"
+      ],
+      "explain": "Python (.py) scripts run on Linux, macOS, and Windows. Shell scripts (.sh) are Linux/macOS only.",
+      "isBoss": false
+    },
+    {
+      "id": 23,
+      "q": "A company uses Cisco infrastructure for AAA authentication. Which protocol was developed by Cisco for this purpose?",
+      "category": "Security",
+      "correct": "TACACS+",
+      "distractors": [
+        "RADIUS",
+        "Kerberos",
+        "LDAP"
+      ],
+      "explain": "TACACS+ was developed by Cisco as a proprietary protocol for AAA. RADIUS is a general protocol.",
+      "isBoss": false
+    },
+    {
+      "id": 24,
+      "q": "What is the most likely way a user's Android tablet could be compromised by a malicious actor?",
+      "category": "Security",
+      "correct": "Use social engineering to trick a user into opening a malicious APK",
+      "distractors": [
+        "Use a tool like ICSSPLOIT to target specific vulnerabilities",
+        "Exploit a known kernel vulnerability remotely",
+        "Install a malicious app from the Google Play Store"
+      ],
+      "explain": "Social engineering (malicious APK) is the most likely attack vector for Android devices.",
+      "isBoss": false
+    },
+    {
+      "id": 25,
+      "q": "How should a system administrator schedule a vulnerability scan to run automatically every Sunday at 2:00 AM?",
+      "category": "Operating Systems",
+      "correct": "Task scheduler",
+      "distractors": [
+        "Event viewer",
+        "Services console",
+        "Device Manager"
+      ],
+      "explain": "Task scheduler runs tasks automatically at specified times. Event viewer logs events.",
+      "isBoss": true
+    },
+    {
+      "id": 26,
+      "q": "A company wants to deploy Windows and Office settings across 500 devices in Active Directory. Which tool should they use?",
+      "category": "Operating Systems",
+      "correct": "GPO",
+      "distractors": [
+        "HIPS",
+        "MFA",
+        "DHCP"
+      ],
+      "explain": "Group Policy Objects (GPO) deploy settings across many devices in Active Directory.",
+      "isBoss": false
+    },
+    {
+      "id": 27,
+      "q": "Which Linux command installs software on an RPM-based distribution?",
+      "category": "Operating Systems",
+      "correct": "yum",
+      "distractors": [
+        "nano",
+        "apt-get",
+        "pacman"
+      ],
+      "explain": "yum installs software on RPM-based Linux. nano is a text editor.",
+      "isBoss": false
+    },
+    {
+      "id": 28,
+      "q": "A Linux administrator needs to edit a configuration file from the command line. Which command launches a text editor?",
+      "category": "Operating Systems",
+      "correct": "nano",
+      "distractors": [
+        "cat",
+        "ls",
+        "grep"
+      ],
+      "explain": "nano is a command-line text editor. cat creates/displays files but doesn't edit them.",
+      "isBoss": false
+    },
+    {
+      "id": 29,
+      "q": "A chat application has too many users in one conversation, making important messages hard to find. What's the BEST way to organize messages?",
+      "category": "Software Troubleshooting",
+      "correct": "Use dedicated channels to keep messages organized.",
+      "distractors": [
+        "Reduce the number of users in each conversation.",
+        "Enable read receipts for all users.",
+        "Increase the font size in the chat window."
+      ],
+      "explain": "Dedicated channels organize messages so important updates aren't lost.",
+      "isBoss": false
+    },
+    {
+      "id": 30,
+      "q": "A user reports sudden internet connectivity loss and a warning about high network traffic. What's the BEST first step?",
+      "category": "Software Troubleshooting",
+      "correct": "Investigate for malware and run a full security scan on the device",
+      "distractors": [
+        "Turn on airplane mode for a few seconds, then turn it back off",
+        "Reset the router to factory settings",
+        "Reinstall the network drivers"
+      ],
+      "explain": "Sudden connectivity loss + high traffic warning = possible malware.",
+      "isBoss": false
+    },
+    {
+      "id": 31,
+      "q": "Which Windows account type can install and remove programs, modify system files, and change permissions?",
+      "category": "Security",
+      "correct": "Administrator",
+      "distractors": [
+        "Power User",
+        "Standard User",
+        "Guest"
+      ],
+      "explain": "An Administrator can install/remove programs, modify system files, and change permissions.",
+      "isBoss": false
+    },
+    {
+      "id": 32,
+      "q": "A user's Google homepage is in a foreign language. They haven't changed their browser settings. What should you check first?",
+      "category": "Software Troubleshooting",
+      "correct": "Remove any proxy servers configured in their web browser",
+      "distractors": [
+        "Verify the user's date and time zone are correctly listed in Windows",
+        "Reinstall the web browser",
+        "Change the search engine to Bing"
+      ],
+      "explain": "A proxy in a foreign country would cause Google to display in that country's language.",
+      "isBoss": false
+    },
+    {
+      "id": 33,
+      "q": "After registering the Windows Update service's DLL files, what should a technician do next?",
+      "category": "Operating Systems",
+      "correct": "Reboot the computer",
+      "distractors": [
+        "Register the Windows Update service's DLL files",
+        "Uninstall the latest Windows update",
+        "Run a system restore"
+      ],
+      "explain": "After registering DLL files, reboot the computer for changes to take effect.",
+      "isBoss": false
+    },
+    {
+      "id": 34,
+      "q": "A Windows installation reports 'Operating System Not Found.' Which bootrec command rebuilds the Boot Configuration Data?",
+      "category": "Operating Systems",
+      "correct": "bootrec /rebuildbcd",
+      "distractors": [
+        "bootrec /fixmbr",
+        "bootrec /fixboot",
+        "bootrec /scanos"
+      ],
+      "explain": "bootrec /rebuildbcd rebuilds the Boot Configuration Data to detect Windows installations.",
+      "isBoss": false
+    },
+    {
+      "id": 35,
+      "q": "Which technical control BEST prevents virus outbreaks by closing known vulnerabilities?",
+      "category": "Security",
+      "correct": "Patch management",
+      "distractors": [
+        "Acceptable use policies",
+        "Antivirus software",
+        "Firewall rules"
+      ],
+      "explain": "Patch management is a technical control that prevents known vulnerabilities from being exploited.",
+      "isBoss": false
+    },
+    {
+      "id": 36,
+      "q": "After a security update, a workstation fails to boot. What should a technician do first?",
+      "category": "Operating Systems",
+      "correct": "Reboot the workstation into safe mode and roll back the recent security update",
+      "distractors": [
+        "Reboot the workstation into the BIOS and reconfigure boot options",
+        "Perform a clean installation of Windows",
+        "Replace the hard drive"
+      ],
+      "explain": "Roll back the problematic update via Safe Mode.",
+      "isBoss": false
+    },
+    {
+      "id": 37,
+      "q": "A company wants physical access control for its server room. Which device is designed for this purpose?",
+      "category": "Operational Procedures",
+      "correct": "Server lock",
+      "distractors": [
+        "Smart card",
+        "Biometric scanner",
+        "Door alarm system"
+      ],
+      "explain": "A server lock is a physical locking mechanism for server cabinets.",
+      "isBoss": false
+    },
+    {
+      "id": 38,
+      "q": "What security measure has the best ROI for reducing the risk of successful attacks against an organization?",
+      "category": "Security",
+      "correct": "User training and awareness",
+      "distractors": [
+        "Penetration testing",
+        "Firewall appliances",
+        "Intrusion detection systems"
+      ],
+      "explain": "End users are the most vulnerable attack vector; training has the best ROI.",
+      "isBoss": true
+    },
+    {
+      "id": 39,
+      "q": "Which statement about virtual machines and physical servers is TRUE regarding downtime?",
+      "category": "Operational Procedures",
+      "correct": "A virtual machine has less downtime than a physical server",
+      "distractors": [
+        "A virtual machine has more downtime than a physical server",
+        "They have equivalent downtime",
+        "Virtual machines cannot be restored after failure"
+      ],
+      "explain": "VMs can be restored much faster than physical servers.",
+      "isBoss": false
+    },
+    {
+      "id": 40,
+      "q": "Before granting remote access to a server, what is the MOST important security measure to implement?",
+      "category": "Security",
+      "correct": "Install the latest security updates and patches to the server",
+      "distractors": [
+        "Set the server's anti-virus software to automatically update itself and perform a full scan every Saturday night",
+        "Enable two-factor authentication on the admin account",
+        "Configure a firewall rule to allow only specific IP addresses"
+      ],
+      "explain": "Keeping the server patched is the most important security measure before granting remote access.",
+      "isBoss": false
+    },
+    {
+      "id": 41,
+      "q": "An AI tool is generating responses with incorrect or outdated information. What is this issue called?",
+      "category": "Software Troubleshooting",
+      "correct": "Inaccuracies",
+      "distractors": [
+        "Hallucination",
+        "Bias",
+        "Overfitting"
+      ],
+      "explain": "The issue involves incorrect/outdated AI-generated content, not fabrication of false details.",
+      "isBoss": false
+    },
+    {
+      "id": 42,
+      "q": "What are the BEST security measures to protect data on a smartphone that could be lost or stolen?",
+      "category": "Security",
+      "correct": "Configure the ability to perform a remote wipe, Enable full device encryption",
+      "distractors": [
+        "Require complex passwords, Enable a pattern lock",
+        "Install a VPN, Enable two-factor authentication",
+        "Enable a firewall, Update the operating system"
+      ],
+      "explain": "Full encryption protects data if the device is lost; remote wipe erases data before a thief can access it.",
+      "isBoss": false
+    },
+    {
+      "id": 43,
+      "q": "A single Android app crashes repeatedly. What's the least disruptive first step?",
+      "category": "Software Troubleshooting",
+      "correct": "Clear the application's cache and data",
+      "distractors": [
+        "Restart the smartphone to refresh the operating system",
+        "Factory reset the device",
+        "Reinstall the app from the Play Store"
+      ],
+      "explain": "Cache corruption is the most common cause of single-app crashes; clearing cache/data is the least disruptive first step.",
+      "isBoss": false
+    },
+    {
+      "id": 44,
+      "q": "Which two factors MOST commonly compromise wireless networks?",
+      "category": "Security",
+      "correct": "WPS enabled, Router with outdated firmware",
+      "distractors": [
+        "Default administrative login credentials, Router with outdated firmware",
+        "WEP encryption, Weak passwords",
+        "Open networks, Default SSIDs"
+      ],
+      "explain": "WPS PINs are vulnerable to brute force attacks; outdated firmware is another common vulnerability.",
+      "isBoss": false
+    },
+    {
+      "id": 45,
+      "q": "Which Windows 10 edition supports up to 4 physical CPUs and 6 TB of RAM?",
+      "category": "Operating Systems",
+      "correct": "Pro for Workstations",
+      "distractors": [
+        "Pro",
+        "Home",
+        "Enterprise"
+      ],
+      "explain": "Windows 10 Pro for Workstations supports up to 4 physical CPUs and 6 TB RAM.",
+      "isBoss": true
+    },
+    {
+      "id": 46,
+      "q": "A company wants to prevent USB-based malware attacks and password-based compromises. Which two measures should they implement?",
+      "category": "Security",
+      "correct": "Lockout the account after 3 failed login attempts, Change the default credentials on the servers",
+      "distractors": [
+        "Modify the AutoRun settings, Install the operating system security updates",
+        "Enable a firewall, Use complex passwords",
+        "Install antivirus, Enable full disk encryption"
+      ],
+      "explain": "AutoRun settings prevent USB attacks; account lockout and changing default credentials prevent password attacks.",
+      "isBoss": false
+    },
+    {
+      "id": 47,
+      "q": "Which type of data is regulated under privacy laws such as GDPR and PCI-DSS?",
+      "category": "Security",
+      "correct": "PII",
+      "distractors": [
+        "DRM",
+        "API keys",
+        "Source code"
+      ],
+      "explain": "PII (Personally Identifiable Information) is regulated data along with PCI, GDPR, and PHI.",
+      "isBoss": false
+    },
+    {
+      "id": 48,
+      "q": "An attacker uses a list of common passwords to try to crack a user's account. What type of attack is this?",
+      "category": "Security",
+      "correct": "Dictionary",
+      "distractors": [
+        "Brute-force",
+        "Rainbow table",
+        "Man-in-the-middle"
+      ],
+      "explain": "A dictionary attack uses a list of common passwords; brute-force tries all possible combinations.",
+      "isBoss": false
+    },
+    {
+      "id": 49,
+      "q": "Which type of network hides your computer and prevents file sharing?",
+      "category": "Operating Systems",
+      "correct": "Public",
+      "distractors": [
+        "Private",
+        "Workgroup",
+        "Domain"
+      ],
+      "explain": "A public network hides your computer and prevents file sharing.",
+      "isBoss": false
+    },
+    {
+      "id": 50,
+      "q": "An instructor wants only their IoT device to connect to a classroom wireless network while blocking students' devices. Which control should they use?",
+      "category": "Security",
+      "correct": "MAC filtering",
+      "distractors": [
+        "NAT",
+        "Port forwarding",
+        "QoS"
+      ],
+      "explain": "MAC filtering allows specific devices (instructors') while blocking others (students).",
+      "isBoss": false
+    },
+    {
+      "id": 51,
+      "q": "A Windows system administrator needs to scan for and restore corrupted system files. Which command should they use?",
+      "category": "Operating Systems",
+      "correct": "sfc",
+      "distractors": [
+        "chkdsk",
+        "defrag",
+        "diskpart"
+      ],
+      "explain": "sfc (System File Checker) scans for and restores corrupted Windows system files. chkdsk checks the file system.",
+      "isBoss": false
+    },
+    {
+      "id": 52,
+      "q": "An individual is setting up a new personal tablet. They want a screen lock method that balances good security with ease of recall. Which type of screen lock should they use?",
+      "category": "Security",
+      "correct": "PIN code",
+      "distractors": [
+        "Swipe",
+        "Fingerprint",
+        "Facial recognition"
+      ],
+      "explain": "A PIN code balances security with ease of recall. It is more secure than a swipe pattern and easier to remember than a complex password, while biometrics may be less convenient in some situations.",
+      "isBoss": false
+    },
+    {
+      "id": 53,
+      "q": "A company's security policy requires all internet traffic to pass through a central monitoring point. Which setting should be configured on employee workstations to comply with this policy?",
+      "category": "Operating Systems",
+      "correct": "Proxy server",
+      "distractors": [
+        "DHCP settings",
+        "DNS server",
+        "VPN connection"
+      ],
+      "explain": "A proxy server routes workstation internet traffic through a central point for monitoring and control. DNS and DHCP do not provide that traffic-control function, and a VPN is primarily for secure network access.",
+      "isBoss": false
+    },
+    {
+      "id": 54,
+      "q": "A computer engineer is explaining the advantages of using SRAM in a CPU's cache memory. What characteristic of SRAM makes it particularly suitable for this role?",
+      "category": "Operating Systems",
+      "correct": "Its faster access speed compared to DRAM",
+      "distractors": [
+        "Its high storage capacity",
+        "Its low power consumption",
+        "Its ability to store data without power"
+      ],
+      "explain": "SRAM is used for CPU cache because it can access data faster than DRAM. It is not nonvolatile and typically has lower storage density than DRAM.",
+      "isBoss": false
+    },
+    {
+      "id": 55,
+      "q": "A small business wants to consolidate various security functions, including firewall, antivirus, and intrusion prevention, into a single appliance. What type of device should they consider implementing?",
+      "category": "Security",
+      "correct": "UTM",
+      "distractors": [
+        "VNC",
+        "UPS",
+        "UTP"
+      ],
+      "explain": "A UTM, or Unified Threat Management device, combines multiple security functions such as firewall, antivirus, intrusion prevention, and related protections into one appliance.",
+      "isBoss": false
+    },
+    {
+      "id": 56,
+      "q": "A computer is experiencing issues with network connectivity. To use the built-in diagnostics and resolve the problem, which option should a user select in the Network and Sharing Center?",
+      "category": "Operating Systems",
+      "correct": "Troubleshoot problems",
+      "distractors": [
+        "Change adapter settings",
+        "Change advanced sharing settings",
+        "Set up a new connection or network"
+      ],
+      "explain": "Troubleshoot problems launches Windows Network Diagnostics to detect and attempt to resolve common network connectivity issues.",
+      "isBoss": false
+    },
+    {
+      "id": 57,
+      "q": "A user's operating system consistently fails to complete updates. What should be checked first to resolve this issue?",
+      "category": "Software Troubleshooting",
+      "correct": "Available storage space on the device",
+      "distractors": [
+        "The compatibility of installed applications with the new update",
+        "The speed of the internet connection",
+        "The accuracy of the system clock"
+      ],
+      "explain": "Failed operating system updates are commonly caused by insufficient free storage. Updates often need significant space to download, unpack, and install.",
+      "isBoss": false
+    },
+    {
+      "id": 58,
+      "q": "A small business owner is planning to upgrade the computers in her office. She requires an operating system that can handle advanced networking features and remote desktop access, but does not need advanced security features like device guard. Which edition of Windows 10 would be most suitable for her needs?",
+      "category": "Operating Systems",
+      "correct": "Windows 10 Pro",
+      "distractors": [
+        "Windows 10 Home",
+        "Windows 10 Enterprise",
+        "Windows 10 Pro for Workstations"
+      ],
+      "explain": "Windows 10 Pro supports small-business features such as domain join, Group Policy, and hosting Remote Desktop without requiring Enterprise-only security features.",
+      "isBoss": false
+    },
+    {
+      "id": 59,
+      "q": "A technician suspects that a computer is not connected to the network. To confirm network connectivity to the local router, which command should they execute?",
+      "category": "Operating Systems",
+      "correct": "ping [router IP address]",
+      "distractors": [
+        "netstat",
+        "nslookup",
+        "ipconfig"
+      ],
+      "explain": "Ping sends ICMP echo requests to a target such as the local router. A reply confirms basic network connectivity to that device.",
+      "isBoss": false
+    },
+    {
+      "id": 60,
+      "q": "A Windows 10 user wants to create a new profile in Microsoft Outlook. Which option within the Control Panel's Mail utility allows them to do this?",
+      "category": "Operating Systems",
+      "correct": "Show Profiles",
+      "distractors": [
+        "Data Files",
+        "Set as Default",
+        "Email Accounts"
+      ],
+      "explain": "Show Profiles in the Control Panel Mail utility lets users add, remove, or switch Outlook profiles.",
+      "isBoss": false
+    },
+    {
+      "id": 61,
+      "q": "When a user switches to a new mobile phone and wants to retain their existing phone number and service, what component should they transfer to the new device?",
+      "category": "Operating Systems",
+      "correct": "SIM",
+      "distractors": [
+        "SIMM",
+        "SATA",
+        "SCADA"
+      ],
+      "explain": "The SIM stores subscriber identity and network authorization information, allowing the user to keep the same phone number and mobile service on a compatible new phone.",
+      "isBoss": false
+    },
+    {
+      "id": 62,
+      "q": "A Windows 10 user wants to ensure their computer's time is always accurate, even after traveling to different time zones. Which setting in Time and Language should they enable?",
+      "category": "Operating Systems",
+      "correct": "Set time zone automatically",
+      "distractors": [
+        "Set time automatically",
+        "Sync now",
+        "Adjust for daylight saving time automatically"
+      ],
+      "explain": "Set time zone automatically lets Windows detect the current time zone and adjust the clock when traveling. Set time automatically only synchronizes the clock within the configured time zone.",
+      "isBoss": false
+    },
+    {
+      "id": 63,
+      "q": "A technician needs to check the processor type and speed, and the amount of installed RAM on a Windows 10 computer. Which tab in the System Information should they consult?",
+      "category": "Operating Systems",
+      "correct": "System Summary",
+      "distractors": [
+        "Hardware Resources",
+        "Components",
+        "Software Environment"
+      ],
+      "explain": "System Summary in System Information provides the main hardware overview, including processor details and installed RAM.",
+      "isBoss": false
+    },
+    {
+      "id": 64,
+      "q": "A user is setting up a new Windows 10 computer and is asked to create an account. They want an account that can be used to synchronize settings and files across multiple devices. Which type of account should they choose?",
+      "category": "Security",
+      "correct": "Microsoft account",
+      "distractors": [
+        "Guest user account",
+        "Power user account",
+        "Local account"
+      ],
+      "explain": "A Microsoft account links the user to Microsoft online services and can synchronize settings and files across devices. A local account is limited to one device.",
+      "isBoss": false
+    },
+    {
+      "id": 65,
+      "q": "An individual plans to sell their Mac and wants to completely erase all the data on the hard drive to prevent personal information from being recovered by the new owner. Which Disk Utility option should they use?",
+      "category": "Operating Systems",
+      "correct": "Erase",
+      "distractors": [
+        "RAID Assistant",
+        "First Aid",
+        "Partition"
+      ],
+      "explain": "The Erase option in Disk Utility removes the data from the selected drive, which is the appropriate step before selling or disposing of a Mac.",
+      "isBoss": false
+    },
+    {
+      "id": 66,
+      "q": "A user wants to organize their open applications and documents into separate workspaces to reduce clutter on their Mac. Which feature should they use?",
+      "category": "Operating Systems",
+      "correct": "Multiple Desktops",
+      "distractors": [
+        "Mission Control",
+        "Keychain",
+        "Spotlight"
+      ],
+      "explain": "Multiple Desktops, also known as Spaces, lets macOS users organize windows into separate workspaces to reduce clutter.",
+      "isBoss": false
+    },
+    {
+      "id": 67,
+      "q": "A network administrator wants to allow a specific application to communicate through the Windows Firewall. Which feature should they configure in the firewall settings?",
+      "category": "Operating Systems",
+      "correct": "Advanced settings > Inbound Rules > New Rule",
+      "distractors": [
+        "Advanced settings > Outbound Rules > New Rule",
+        "Inbound Rules",
+        "Outbound Rules"
+      ],
+      "explain": "To allow an application to receive network traffic through Windows Firewall, create a new inbound rule from Advanced settings.",
+      "isBoss": false
+    },
+    {
+      "id": 68,
+      "q": "What is the purpose of implementing Network Access Control (NAC) in a corporate network?",
+      "category": "Security",
+      "correct": "To control which devices are allowed to connect to the network",
+      "distractors": [
+        "To increase the storage capacity of the network",
+        "To translate network addresses",
+        "To encrypt the data transmitted over the network"
+      ],
+      "explain": "Network Access Control manages which devices are authorized and compliant enough to connect to corporate network resources.",
+      "isBoss": false
+    },
+    {
+      "id": 69,
+      "q": "Which of the following is a limitation of the Master Boot Record (MBR) partitioning scheme compared to the GUID Partition Table (GPT)?",
+      "category": "Operating Systems",
+      "correct": "MBR has a maximum disk size of 2TB",
+      "distractors": [
+        "MBR does not support booting from external drives",
+        "MBR can only be used on Windows operating systems",
+        "MBR supports a maximum of 128 primary partitions"
+      ],
+      "explain": "MBR supports a maximum disk size of 2TB and only four primary partitions. GPT supports much larger disks and many more partitions.",
+      "isBoss": false
+    }
+  ]
+};
