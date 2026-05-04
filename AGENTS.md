@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 51 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
+A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 88 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
 
 ### Features
 
@@ -12,12 +12,12 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 - **Lives system** — 3 hearts; lose one per wrong answer (Normal mode only)
 - **Second-chance retry loop** — in Normal mode, a missed question is appended back into the deck as a `RETRY` item and stays in circulation until answered correctly
 - **Streak bonus** — consecutive correct answers earn escalating bonus points (up to +100)
-- **Question categories** — all 51 questions tagged with CompTIA exam domains (Operating Systems, Security, Software Troubleshooting, Operational Procedures)
+- **Question categories** — all 69 questions tagged with CompTIA exam domains (Operating Systems, Security, Software Troubleshooting, Operational Procedures)
 - **Category breakdown** — end screen shows colored bar chart sorted by lowest accuracy first
 - **Randomized deck** — questions and answer order shuffle each run
 - **Persistent high score** — saved via IndexedDB (`hiscore_v1`)
 - **End-of-run grading** — S/A/B/C/D/F based on accuracy (normal mode only)
-- **Progression system** — XP, levels (cap 50), skill tree (0-10 per category), achievements, study streaks
+- **Progression system** — XP, levels (starts at 1, cap 50), skill tree (0-10 per category), achievements, study streaks
 - **Power-up reward screen** — every 5th correct answer or boss defeat pauses for player to pick from 2-3 power-ups (Freeze, Double or Nothing, Quick XP)
 - **Boss questions** — 6 flagged questions with visual banner, extra XP, particle effects on defeat
 - **Juice effects** — screen shake, particles, flash overlays, floating text, animated UI
@@ -32,15 +32,15 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 
 ### Game Data
 
-Questions live in `courses/comptia.json` (51 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, password attacks, and more). Each question has a `category` field for the CompTIA domain breakdown.
+Questions live in `courses/comptia.json` (88 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, password attacks, missed practice-test questions, and more). Each question has a `category` field for the CompTIA domain breakdown. `js/course-data.js` contains the same course data as a bundled fallback so `game.html` works when opened directly via `file://`, where browsers block `fetch('courses/comptia.json')`.
 
 **Category distribution:**
 | Category | Count | Color |
 |----------|-------|-------|
-| Operating Systems | 19 | cyan |
-| Security | 16 | pink |
-| Software Troubleshooting | 9 | green |
-| Operational Procedures | 7 | yellow |
+| Operating Systems | 42 | cyan |
+| Security | 23 | pink |
+| Software Troubleshooting | 13 | green |
+| Operational Procedures | 10 | yellow |
 
 ## How to Play
 
@@ -82,15 +82,16 @@ Second Chance/
 ├── AGENTS.md                       # This file
 ├── .qwen/PROJECT_SUMMARY.md        # Running project summary for agent handoff/context
 ├── courses/
-│   └── comptia.json                # 51 CompTIA questions (categories, boss flags)
+│   └── comptia.json                # 88 CompTIA questions (categories, boss flags)
 ├── css/
 │   ├── base.css                    # Main styles (includes study tools, juice, progression)
 │   └── touch.css                   # Touch-specific responsive overrides
 └── js/
     ├── core.js                     # Game loop, screen rendering, handleAnswer
     ├── audio.js                    # Tone.js SFX (music disabled, playTrack is no-op)
-    ├── storage.js                  # IndexedDB v4 wrapper (progression, perCourse, settings, questionStrength, questionLog, sessionLog)
-    ├── courses.js                  # Course loader, category queries
+    ├── storage.js                  # IndexedDB v5 wrapper (progression, perCourse, settings, questionStrength, questionLog, sessionLog)
+    ├── course-data.js              # Bundled comptia course fallback for direct file:// play
+    ├── courses.js                  # Course loader, category queries, bundled fallback
     ├── progression.js              # XP, levels, skill tree, achievements, study streaks
     ├── gameplay.js                 # Power-ups (freeze, double-or-nothing), boss logic, combo timer (dead)
     ├── juice.js                    # Particles, screen shake, flash, floating text
@@ -104,7 +105,9 @@ Second Chance/
 
 - **Modular architecture** — separate JS/CSS files loaded via `<script>` tags in `game.html`. No bundlers.
 - **Fonts** — loaded from Google Fonts (`VT323` for headers, `JetBrains Mono` for body). Requires internet connection.
-- **IndexedDB v4** — `second_chance_v2` database. Schema upgrade clears old progression data. Stores: `progression`, `perCourse`, `settings`, `questionStrength` (with `nextReview` index), `questionLog` (with `courseId`/`qId`/`timestamp` indexes), `sessionLog`.
+- **IndexedDB v5** — `second_chance_v2` database. Schema upgrade clears profile/progression data so existing users restart at level 1 after the v5 reset. Stores: `progression`, `perCourse`, `settings`, `questionStrength` (with `nextReview` index), `questionLog` (with `courseId`/`qId`/`timestamp` indexes), `sessionLog`.
+- **Default profile** — new/reset profiles start at level 1 with 0 XP and 0 skill points. XP thresholds are cumulative: level 2 at 300 XP, level 3 at 700 XP, level 4 at 1,200 XP.
+- **Direct local play** — `game.html` loads `js/course-data.js` before `js/courses.js`; `Courses.load()` uses bundled data automatically under `file://` and falls back to it if JSON fetch fails.
 - **`renderStart()` is async** — must be awaited (fetches spaced repetition due count). Has try/catch fallback.
 - **`render()` is async** — properly awaits `renderStart()`.
 - **Responsive** — single-column layout on screens < 560px.
@@ -130,20 +133,31 @@ Second Chance/
 ```
 
 3. To make a question a boss, add `"isBoss": true`.
+4. Regenerate `js/course-data.js` from `courses/comptia.json` so direct `file://` play sees the same questions as GitHub Pages:
+
+```bash
+node - <<'NODE'
+const fs = require('fs');
+const data = JSON.parse(fs.readFileSync('courses/comptia.json', 'utf8'));
+const out = `// Generated fallback course data for direct file:// play.\nwindow.COURSE_DATA = window.COURSE_DATA || {};\nwindow.COURSE_DATA.${data.id} = ${JSON.stringify(data, null, 2)};\n`;
+fs.writeFileSync('js/course-data.js', out);
+NODE
+```
 
 ## Adding New Courses
 
 1. Create `courses/newcourse.json` with the same format as `comptia.json`
-2. Add an entry to `Courses.available` in `js/courses.js`:
+2. Add the course ID to `knownCourses` in `js/courses.js`:
 
 ```js
-{ id: 'newcourse', name: 'Course Name', file: 'courses/newcourse.json' }
+const knownCourses = ['comptia', 'newcourse'];
 ```
 
-3. The course selector on the start screen will auto-discover it.
+3. If the new course should work under direct `file://` play, add it to `js/course-data.js` as another `window.COURSE_DATA.<id>` entry.
+4. The course selector/start screen course queries will discover it from JSON when served over HTTP, or from bundled data when opened directly.
 
 ## Building & Running
 
-No build step. Open `game.html` in any modern browser.
+No build step. Open `game.html` in any modern browser. Direct file opening works because course data is bundled in `js/course-data.js`.
 
 For GitHub Pages, push committed changes on `master` to `origin`.
