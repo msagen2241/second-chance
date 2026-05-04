@@ -906,6 +906,253 @@ window.COURSE_DATA.comptia = {
       ],
       "explain": "MBR supports a maximum disk size of 2TB and only four primary partitions. GPT supports much larger disks and many more partitions.",
       "isBoss": false
+    },
+    {
+      "id": 70,
+      "q": "A technician needs to partition a 4TB hard drive for use as a data storage in a modern Windows system. Which partitioning style is most suitable for this purpose?",
+      "category": "Operating Systems",
+      "correct": "GPT",
+      "distractors": [
+        "MBR",
+        "FAT32",
+        "NTFS"
+      ],
+      "explain": "GPT is the correct partitioning style for a 4TB drive because it supports disks larger than 2TB. FAT32 and NTFS are file systems, not partitioning styles.",
+      "isBoss": false
+    },
+    {
+      "id": 71,
+      "q": "When setting up a wireless network, which encryption method is known for being the strongest and is used in WPA2 and WPA3 for securing Wi-Fi networks?",
+      "category": "Security",
+      "correct": "AES",
+      "distractors": [
+        "TKIP",
+        "WEP",
+        "RC4"
+      ],
+      "explain": "AES is the strongest common Wi-Fi encryption method and is used with WPA2 and WPA3. TKIP is older and weaker, while WEP is obsolete and insecure.",
+      "isBoss": false
+    },
+    {
+      "id": 72,
+      "q": "A Windows 10 user needs to adjust the transparency effects on their system for better visibility. Which section in Personalization allows them to modify this setting?",
+      "category": "Operating Systems",
+      "correct": "Colors",
+      "distractors": [
+        "Themes",
+        "Lock screen",
+        "Start"
+      ],
+      "explain": "Transparency effects are controlled from the Colors section in Windows Personalization settings.",
+      "isBoss": false
+    },
+    {
+      "id": 73,
+      "q": "What is the primary function of Network Address Translation (NAT) in a router?",
+      "category": "Operating Systems",
+      "correct": "To convert private IP addresses to public IP addresses for internet communication",
+      "distractors": [
+        "To control access to the network",
+        "To encrypt all traffic leaving the network",
+        "To assign MAC addresses to devices"
+      ],
+      "explain": "NAT translates private internal IP addresses to a public IP address so local devices can communicate over the internet.",
+      "isBoss": false
+    },
+    {
+      "id": 74,
+      "q": "An IT administrator implements Single Sign-On (SSO) for the company's various applications. What is the main advantage of SSO in this corporate environment?",
+      "category": "Security",
+      "correct": "It reduces the number of passwords users need to remember",
+      "distractors": [
+        "It increases the complexity of the login process",
+        "It requires a separate password for each application",
+        "It eliminates the need for account permissions"
+      ],
+      "explain": "SSO lets a user authenticate once and then access multiple applications, reducing password fatigue and simplifying the login experience.",
+      "isBoss": false
+    },
+    {
+      "id": 75,
+      "q": "A user is experiencing issues with their computer's file system. Which command-line tool should they use to check the integrity of the file system and fix logical file system errors?",
+      "category": "Software Troubleshooting",
+      "correct": "chkdsk",
+      "distractors": [
+        "sfc",
+        "diskpart",
+        "format"
+      ],
+      "explain": "chkdsk checks the disk and file system for logical errors and can repair them. sfc scans protected system files instead.",
+      "isBoss": false
+    },
+    {
+      "id": 76,
+      "q": "A law firm is considering implementing an advanced document management system. What should be the primary business consideration in this decision?",
+      "category": "Operational Procedures",
+      "correct": "The potential for improving document accessibility and security",
+      "distractors": [
+        "The compatibility of the system with existing hardware",
+        "The color scheme of the user interface",
+        "The popularity of the vendor on social media"
+      ],
+      "explain": "For a law firm, the key business issue is improving secure access to sensitive documents while protecting confidentiality.",
+      "isBoss": false
+    },
+    {
+      "id": 77,
+      "q": "A network administrator wants to write a script that will automatically install a set of applications on all new employee workstations. Which scripting use case does this scenario best represent?",
+      "category": "Operational Procedures",
+      "correct": "Installation of applications",
+      "distractors": [
+        "Basic automation",
+        "Remapping network drives",
+        "Restarting machines"
+      ],
+      "explain": "This script is specifically being used to automate application deployment on new workstations.",
+      "isBoss": false
+    },
+    {
+      "id": 78,
+      "q": "What is the keyboard shortcut to directly force quit an application on a Mac without opening the Force Quit window?",
+      "category": "Operating Systems",
+      "correct": "Command + Option + Shift + Esc (hold for 3 seconds)",
+      "distractors": [
+        "Option + Command + Esc",
+        "Command + Q",
+        "Control + Option + Esc"
+      ],
+      "explain": "Holding Command + Option + Shift + Esc for 3 seconds force quits the frontmost Mac application directly. Option + Command + Esc opens the Force Quit window instead.",
+      "isBoss": false
+    },
+    {
+      "id": 79,
+      "q": "In a company, an IT administrator needs to manage access to corporate resources on a Windows 10 device. Which option in the Accounts settings should they use?",
+      "category": "Operating Systems",
+      "correct": "Access work or school",
+      "distractors": [
+        "Email & accounts",
+        "Sync your settings",
+        "Your info"
+      ],
+      "explain": "Access work or school is the Accounts setting used to connect and manage organizational accounts and related resource access.",
+      "isBoss": false
+    },
+    {
+      "id": 80,
+      "q": "A power user wants to set up a RAID array to increase the storage capacity and reliability of their Mac. Which feature in Disk Utility should they use to configure this?",
+      "category": "Operating Systems",
+      "correct": "RAID Assistant",
+      "distractors": [
+        "Partition",
+        "Erase",
+        "First Aid"
+      ],
+      "explain": "RAID Assistant in Disk Utility is the correct tool for creating and managing RAID arrays on a Mac.",
+      "isBoss": false
+    },
+    {
+      "id": 81,
+      "q": "A computer is experiencing severe system issues and cannot boot properly. The user wants to restore the system to its factory settings without using external media. Which method should they use?",
+      "category": "Software Troubleshooting",
+      "correct": "Using the recovery partition",
+      "distractors": [
+        "Repair installation",
+        "Safe mode",
+        "System restore point"
+      ],
+      "explain": "A recovery partition contains the factory recovery image and allows the system to be restored without external installation media.",
+      "isBoss": false
+    },
+    {
+      "id": 82,
+      "q": "After multiple unsuccessful attempts to remove a severe malware infection, a technician decides that the best course of action is to start fresh. Which method should they use to completely remove the infection and restore the system to a known good state?",
+      "category": "Software Troubleshooting",
+      "correct": "OS reinstallation",
+      "distractors": [
+        "Recovery mode",
+        "System restore",
+        "Quarantine the files and continue normal use"
+      ],
+      "explain": "A full OS reinstallation provides the cleanest path back to a known good state when serious malware cannot be reliably removed any other way.",
+      "isBoss": false
+    },
+    {
+      "id": 83,
+      "q": "Why is it important for a business to ensure all its software licenses are valid and non-expired?",
+      "category": "Operational Procedures",
+      "correct": "To avoid legal and financial penalties from software audits",
+      "distractors": [
+        "To keep the software up to date with the latest features",
+        "To increase CPU performance",
+        "To reduce file fragmentation"
+      ],
+      "explain": "Maintaining valid licenses protects the business from legal exposure and fines during software compliance audits.",
+      "isBoss": false
+    },
+    {
+      "id": 84,
+      "q": "A technician is instructing a user on how to reset their File Explorer view settings to defaults. What is the correct step under the File Explorer Options?",
+      "category": "Operating Systems",
+      "correct": "Under the View tab, click Reset Folders",
+      "distractors": [
+        "Under the View tab, click Apply to Folders",
+        "Under the General tab, click Restore Defaults",
+        "Under the Search tab, click Reset Index"
+      ],
+      "explain": "Reset Folders returns File Explorer folder views to their default settings. Apply to Folders copies the current view to similar folders instead.",
+      "isBoss": false
+    },
+    {
+      "id": 85,
+      "q": "A user wishes to record their gameplay on a Windows 10 PC. Which built-in Windows feature allows them to do this without installing third-party software?",
+      "category": "Operating Systems",
+      "correct": "Game bar",
+      "distractors": [
+        "Game Mode",
+        "DirectX",
+        "Xbox Networking"
+      ],
+      "explain": "Game Bar is the built-in Windows feature used to capture gameplay, screenshots, and related recording tasks.",
+      "isBoss": false
+    },
+    {
+      "id": 86,
+      "q": "A company is setting up a system that allows employees to access their work desktop environments remotely. Which technology enables this remote access to desktop interfaces hosted on central servers?",
+      "category": "Operating Systems",
+      "correct": "VDI",
+      "distractors": [
+        "UTP",
+        "VPN",
+        "NAT"
+      ],
+      "explain": "VDI, or Virtual Desktop Infrastructure, hosts desktop environments on central servers so users can remotely access them from other devices.",
+      "isBoss": false
+    },
+    {
+      "id": 87,
+      "q": "In a large organization with many departments, an IT administrator needs to apply different security policies to different groups of users. What Active Directory structure should they use to organize users and computers for this purpose?",
+      "category": "Security",
+      "correct": "Organizational units",
+      "distractors": [
+        "Domains",
+        "Home folders",
+        "Folder redirection"
+      ],
+      "explain": "Organizational units let administrators group users and computers so different Group Policy settings can be applied to different departments.",
+      "isBoss": false
+    },
+    {
+      "id": 88,
+      "q": "An IT professional is tasked with choosing an operating system for a new high-performance computing environment that will be used for scientific simulations. The system requires resilient file system support, expanded hardware support, and faster file sharing capabilities. Which Windows 10 edition should the IT professional choose?",
+      "category": "Operating Systems",
+      "correct": "Windows 10 Pro for Workstations",
+      "distractors": [
+        "Windows 10 Pro",
+        "Windows 10 Home",
+        "Windows 10 Enterprise"
+      ],
+      "explain": "Windows 10 Pro for Workstations is designed for high-end hardware and adds capabilities such as ReFS support and SMB Direct for demanding workloads.",
+      "isBoss": false
     }
   ]
 };
