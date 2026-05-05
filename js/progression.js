@@ -2,6 +2,7 @@
 // PROGRESSION — XP, levels, skill tree, achievements, study streak
 // ============================================================
 const Progression = {
+  enabled: false,
   data: null,
   courseData: null,
 
@@ -12,7 +13,9 @@ const Progression = {
       this.data = Storage.defaultProgression();
       await Storage.put('progression', this.data);
     }
-    await this.normalizeLevelState();
+    if (this.enabled) {
+      await this.normalizeLevelState();
+    }
 
     // Load per-course data
     if (Core.state.courseId) {
@@ -30,8 +33,9 @@ const Progression = {
       }
     }
 
-    // Update study streak
-    this.updateStudyStreak();
+    if (this.enabled) {
+      this.updateStudyStreak();
+    }
 
     // Migrate legacy data on first run
     await Storage.migrateLegacy();
@@ -51,7 +55,7 @@ const Progression = {
 
   // Award XP
   awardXP(amount) {
-    if (!this.data) return;
+    if (!this.enabled || !this.data) return;
 
     // Apply category skill multiplier
     const category = Core.state.currentOptions ? Core.state.currentOptions.category : null;
@@ -67,7 +71,7 @@ const Progression = {
 
   // Check for level up (handles multiple level-ups)
   checkLevelUp() {
-    if (!this.data) return;
+    if (!this.enabled || !this.data) return;
 
     const startLevel = this.data.level;
     while (this.data.level < 50) {
@@ -86,6 +90,7 @@ const Progression = {
 
   // Show level-up notification
   showLevelUpNotification(level) {
+    if (!this.enabled) return;
     const notif = document.createElement('div');
     notif.className = 'levelup-notification';
     notif.innerHTML = `
@@ -101,7 +106,7 @@ const Progression = {
 
   // Spend skill point on category
   spendSkillPoint(category) {
-    if (!this.data || this.data.skillPoints <= 0) return false;
+    if (!this.enabled || !this.data || this.data.skillPoints <= 0) return false;
 
     const currentLevel = this.data.categorySkills[category] || 0;
     if (currentLevel >= 10) return false; // Max level
@@ -114,7 +119,7 @@ const Progression = {
 
   // Update study streak
   updateStudyStreak() {
-    if (!this.data) return;
+    if (!this.enabled || !this.data) return;
 
     const today = new Date().toDateString();
     const yesterday = new Date(Date.now() - 86400000).toDateString();
@@ -158,7 +163,7 @@ const Progression = {
 
   // Check and unlock achievements
   checkAchievements(condition) {
-    if (!this.data) return [];
+    if (!this.enabled || !this.data) return [];
 
     const unlocked = [];
     const achievements = [
@@ -192,6 +197,7 @@ const Progression = {
 
   // Show achievement notification
   showAchievementNotification(ach) {
+    if (!this.enabled) return;
     const notif = document.createElement('div');
     notif.className = 'achievement-notification';
     notif.innerHTML = `
@@ -208,7 +214,7 @@ const Progression = {
 
   // Get XP needed for next level
   xpToNextLevel() {
-    if (!this.data) return 0;
+    if (!this.enabled || !this.data) return 0;
     if (this.data.level >= 50) return 0;
     return Math.max(0, this.totalXPForLevel(this.data.level + 1) - this.data.totalXP);
   },
@@ -235,7 +241,7 @@ const Progression = {
   },
 
   xpProgressToNextLevel() {
-    if (!this.data) return { current: 0, needed: 1, pct: 0 };
+    if (!this.enabled || !this.data) return { current: 0, needed: 1, pct: 0 };
     if (this.data.level >= 50) return { current: 1, needed: 1, pct: 100 };
 
     const levelStart = this.totalXPForLevel(this.data.level);
@@ -250,7 +256,7 @@ const Progression = {
   },
 
   async normalizeLevelState() {
-    if (!this.data) return;
+    if (!this.enabled || !this.data) return;
 
     const expectedLevel = this.levelForTotalXP(this.data.totalXP || 0);
     if (this.data.level !== expectedLevel) {
@@ -264,18 +270,23 @@ const Progression = {
 
   // Get category skill level
   getCategorySkill(category) {
-    if (!this.data || !this.data.categorySkills) return 0;
+    if (!this.enabled || !this.data || !this.data.categorySkills) return 0;
     return this.data.categorySkills[category] || 0;
   },
 
   // Get XP multiplier for category
   categoryMultiplier(category) {
+    if (!this.enabled) return 1;
     const skillLevel = this.getCategorySkill(category);
     return 1 + skillLevel * 0.1;
   },
 
   // Render skill tree panel
   renderSkillTree(onClose) {
+    if (!this.enabled) {
+      if (onClose) onClose();
+      return;
+    }
     const categories = Courses.getCategories();
     const stage = document.getElementById('stage');
 

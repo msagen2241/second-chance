@@ -1153,6 +1153,331 @@ window.COURSE_DATA.comptia = {
       ],
       "explain": "Windows 10 Pro for Workstations is designed for high-end hardware and adds capabilities such as ReFS support and SMB Direct for demanding workloads.",
       "isBoss": false
+    },
+    {
+      "id": 89,
+      "q": "A company implements a policy to ensure all remote desktop connections to its computers are monitored and controlled. Which type of rule should be configured in the local OS firewall?",
+      "category": "Security",
+      "correct": "Inbound Rule for Remote Desktop",
+      "distractors": [
+        "Network Discovery",
+        "General firewall enable/disable setting",
+        "Outbound Rule for Remote Desktop"
+      ],
+      "explain": "To monitor and control remote desktop connections according to company policy, an inbound rule specific to Remote Desktop should be configured in the local OS firewall.",
+      "isBoss": false
+    },
+    {
+      "id": 90,
+      "q": "A user wants their Windows 10 laptop to save energy by not using the battery when it's not being actively used, but also wants to resume work quickly. Which Power Option feature should they use?",
+      "category": "Operating Systems",
+      "correct": "Sleep/Suspend",
+      "distractors": [
+        "Hibernate",
+        "Standby",
+        "Turn on fast startup"
+      ],
+      "explain": "Sleep or suspend saves power while keeping the current state in RAM, allowing the user to resume work quickly.",
+      "isBoss": false
+    },
+    {
+      "id": 91,
+      "q": "An IT administrator needs to segment a large office network to improve performance and increase security. What technology allows for creating separate broadcast domains within the same physical network?",
+      "category": "Security",
+      "correct": "VLAN",
+      "distractors": [
+        "VM",
+        "VNC",
+        "VGA"
+      ],
+      "explain": "VLANs create separate broadcast domains on the same physical network, which improves performance and helps isolate traffic for better security.",
+      "isBoss": false
+    },
+    {
+      "id": 92,
+      "q": "A company is upgrading its server storage and needs a solution that offers high performance and reliability for mission-critical applications. Which interface type is commonly used in enterprise environments for such requirements?",
+      "category": "Operating Systems",
+      "correct": "SAS",
+      "distractors": [
+        "SATA",
+        "SIMM",
+        "SDN"
+      ],
+      "explain": "SAS is commonly used for enterprise storage because it provides strong performance, reliability, and redundancy features for critical workloads.",
+      "isBoss": false
+    },
+    {
+      "id": 93,
+      "q": "An IT specialist is setting up a remote access connection for a user who needs to connect to the company network from home. Which protocol can be used to secure this remote connection?",
+      "category": "Security",
+      "correct": "PPP",
+      "distractors": [
+        "PXE",
+        "PKI",
+        "PoE"
+      ],
+      "explain": "PPP is used to establish direct remote access connections and supports authentication, encryption, and compression for secure communication.",
+      "isBoss": false
+    },
+    {
+      "id": 94,
+      "q": "An IT administrator wants to assign a personal storage space on the network for each user in the company, which is accessible from any computer within the domain. Which Active Directory feature allows them to accomplish this?",
+      "category": "Operating Systems",
+      "correct": "Home folder",
+      "distractors": [
+        "Folder redirection",
+        "Security groups",
+        "Login script"
+      ],
+      "explain": "A home folder gives each domain user a personal network storage location that follows them to any computer they log into.",
+      "isBoss": false
+    },
+    {
+      "id": 95,
+      "q": "A software application on a user's computer is not functioning correctly, potentially due to corrupted files. The user wants to fix the program without removing or altering its data. Which feature in Programs and Features should they use?",
+      "category": "Software Troubleshooting",
+      "correct": "Repair",
+      "distractors": [
+        "Uninstall",
+        "View installed updates",
+        "Change"
+      ],
+      "explain": "The Repair option is intended to fix damaged or missing program files without removing the application or its data.",
+      "isBoss": false
+    },
+    {
+      "id": 96,
+      "q": "An employee needs to access a file stored on a company server named \"Server01\" in a shared folder called \"Projects.\" Which of the following is the correct network path they should type into File Explorer to access this folder?",
+      "category": "Operating Systems",
+      "correct": "\\\\Server01\\Projects",
+      "distractors": [
+        "//Server01/Projects",
+        "C:\\Server01\\Projects",
+        "Server01://Projects"
+      ],
+      "explain": "Windows UNC paths use the format \\\\ServerName\\ShareName when accessing shared folders over the network.",
+      "isBoss": false
+    },
+    {
+      "id": 97,
+      "q": "A remote worker is setting up their home office for frequent video conferences. To ensure their voice is clearly heard by others, what equipment should they prioritize?",
+      "category": "Operational Procedures",
+      "correct": "Microphones",
+      "distractors": [
+        "Speakers",
+        "Smart devices",
+        "Webcams"
+      ],
+      "explain": "For clear communication in frequent video conferences, a good microphone is the most important accessory for transmitting the user's voice clearly.",
+      "isBoss": false
+    },
+    {
+      "id": 98,
+      "q": "What technology does a Liquid Crystal Display (LCD) primarily use to produce images?",
+      "category": "Operating Systems",
+      "correct": "Liquid crystals and backlight",
+      "distractors": [
+        "Electron beams striking a phosphorescent screen",
+        "Electroluminescent panels",
+        "Compressed air to create visual effects"
+      ],
+      "explain": "LCDs use liquid crystals to modulate a backlight and produce the final image.",
+      "isBoss": false
+    },
+    {
+      "id": 99,
+      "q": "After upgrading their computer's RAM from 4GB to 8GB, a user notices that the system still only recognizes 4GB of RAM. What are two likely causes of this issue?",
+      "category": "Operating Systems",
+      "correct": "The additional RAM is not compatible with the motherboard; The operating system is a 32-bit version",
+      "distractors": [
+        "The additional RAM is not compatible with the motherboard; The new RAM modules are faulty",
+        "The hard drive is full; The operating system is a 32-bit version",
+        "The new RAM modules are faulty; The power supply unit is inadequate"
+      ],
+      "explain": "A 32-bit operating system often cannot use more than about 4GB of RAM, and incompatible RAM may also prevent the full memory upgrade from being recognized.",
+      "isBoss": false
+    },
+    {
+      "id": 100,
+      "q": "A salesperson is traveling and needs to connect their laptop to the internet, but there is no Wi-Fi available. What are two viable options for them to access the internet?",
+      "category": "Operating Systems",
+      "correct": "Tether their smartphone to the laptop; Use a mobile hotspot device",
+      "distractors": [
+        "Connect to a public Wi-Fi network; Use a mobile hotspot device",
+        "Use a wired Ethernet connection; Upgrade the laptop's RAM",
+        "Connect to a public Wi-Fi network; Tether their smartphone to the laptop"
+      ],
+      "explain": "Without Wi-Fi, the practical mobile options are smartphone tethering or a dedicated mobile hotspot that uses cellular data.",
+      "isBoss": false
+    },
+    {
+      "id": 101,
+      "q": "A company's IT department is planning a strategy for software maintenance on its networked computers. What practice should they prioritize to maintain system security?",
+      "category": "Security",
+      "correct": "Regularly apply software updates and patches",
+      "distractors": [
+        "Limit internet access to reduce the risk of malware",
+        "Disconnect computers from the network when not in use",
+        "Manually check for software updates annually"
+      ],
+      "explain": "Regular patching closes known vulnerabilities and is one of the core practices for maintaining system security.",
+      "isBoss": false
+    },
+    {
+      "id": 102,
+      "q": "In order to improve the visual quality of games on a Windows 10 system, which setting under the Gaming section allows users to specify the preferred graphics performance for individual games?",
+      "category": "Operating Systems",
+      "correct": "Graphics settings",
+      "distractors": [
+        "Game bar",
+        "Game Mode",
+        "Xbox Game Pass"
+      ],
+      "explain": "Graphics settings lets Windows users choose graphics performance preferences for specific apps and games.",
+      "isBoss": false
+    },
+    {
+      "id": 103,
+      "q": "A user reports that a frequently used application on their Windows computer is suddenly crashing and displaying error messages. The IT technician suspects an issue with the application's configuration or corrupted files. What should be the technician's first step in troubleshooting this unexpected application behavior?",
+      "category": "Software Troubleshooting",
+      "correct": "Check for and apply any updates to the application",
+      "distractors": [
+        "Update the network drivers",
+        "Run the application in compatibility mode",
+        "Reinstall the operating system"
+      ],
+      "explain": "Checking for application updates is the least disruptive first step and often resolves crashes caused by known bugs or broken components.",
+      "isBoss": false
+    },
+    {
+      "id": 104,
+      "q": "An administrator needs to add, delete, and modify user accounts on a Windows computer. Which command should they use?",
+      "category": "Operating Systems",
+      "correct": "net user",
+      "distractors": [
+        "gpupdate",
+        "netstat",
+        "net use"
+      ],
+      "explain": "The net user command is specifically used to manage local user accounts from the Windows command line.",
+      "isBoss": false
+    },
+    {
+      "id": 105,
+      "q": "In a scenario where a user wants to change the size of text, apps, and other items on their Windows 10 display for easier viewing, which option in \"Personalization\" should they access?",
+      "category": "Operating Systems",
+      "correct": "Display settings",
+      "distractors": [
+        "Colors",
+        "Themes",
+        "Lock screen"
+      ],
+      "explain": "Display settings contains scale and layout controls for adjusting the size of text, apps, and other interface elements.",
+      "isBoss": false
+    },
+    {
+      "id": 106,
+      "q": "A small business is setting up a network for file and printer sharing among Windows computers. Which protocol is commonly used in such networks to facilitate this sharing?",
+      "category": "Operating Systems",
+      "correct": "SMB",
+      "distractors": [
+        "SMTP",
+        "SNMP",
+        "SPF"
+      ],
+      "explain": "SMB is the standard Windows network protocol used for file and printer sharing across local networks.",
+      "isBoss": false
+    },
+    {
+      "id": 107,
+      "q": "A company is concerned about the loss of mobile devices issued to its field workers. Besides implementing physical security measures, which feature should be enabled on these devices for additional security?",
+      "category": "Security",
+      "correct": "Locator applications",
+      "distractors": [
+        "Automatic OS updates",
+        "Screen lock using swipe patterns",
+        "Remote wipe capabilities"
+      ],
+      "explain": "Locator applications help recover lost mobile devices by providing tracking information, which directly addresses the device-loss concern.",
+      "isBoss": false
+    },
+    {
+      "id": 108,
+      "q": "A company needs to authenticate and authorize users connecting to its network remotely via VPN. Which authentication protocol is best suited for centralizing the authentication and authorization process for these remote connections?",
+      "category": "Security",
+      "correct": "Remote Authentication Dial-In User Service (RADIUS)",
+      "distractors": [
+        "Terminal Access Controller Access-Control System (TACACS+)",
+        "LDAP",
+        "Kerberos"
+      ],
+      "explain": "RADIUS is widely used to centralize authentication and authorization for remote access services such as VPN connections.",
+      "isBoss": false
+    },
+    {
+      "id": 109,
+      "q": "A user complains that their Windows 10 search is not returning results from documents stored in a newly added secondary drive. Which option in the \"Indexing Options\" utility should they modify to resolve this issue?",
+      "category": "Software Troubleshooting",
+      "correct": "Modify",
+      "distractors": [
+        "Pause",
+        "Rebuild",
+        "Advanced"
+      ],
+      "explain": "Modify lets the user choose which drives and folders are included in indexing, which is the direct fix for a newly added drive being omitted from search results.",
+      "isBoss": false
+    },
+    {
+      "id": 110,
+      "q": "In an older network infrastructure, a technician encounters a system that uses a protocol for allowing applications on different computers to communicate within a local area network. This protocol, primarily used in early Windows networks, is:",
+      "category": "Operating Systems",
+      "correct": "NetBIOS",
+      "distractors": [
+        "NFC",
+        "NDA",
+        "NAT"
+      ],
+      "explain": "NetBIOS was used in early Windows networking to let applications communicate and identify systems across a local network.",
+      "isBoss": false
+    },
+    {
+      "id": 111,
+      "q": "A user is experiencing issues with a network application after enabling the Windows Defender Firewall. The technician suspects that the firewall might be blocking the application. Which feature in the Windows Defender Firewall should the technician use to check if the application is being blocked?",
+      "category": "Software Troubleshooting",
+      "correct": "Advanced settings > Monitoring",
+      "distractors": [
+        "Allow an app or feature through Windows Defender Firewall",
+        "Firewall & network protection",
+        "Advanced settings > Inbound Rules"
+      ],
+      "explain": "The Monitoring section in Windows Defender Firewall with Advanced Security shows the active rules and connection status needed to see whether traffic is being blocked.",
+      "isBoss": false
+    },
+    {
+      "id": 112,
+      "q": "What is the most effective physical destruction method for completely destroying a variety of media, including paper documents, CDs, and hard drives, to ensure data cannot be recovered?",
+      "category": "Operational Procedures",
+      "correct": "Incinerating",
+      "distractors": [
+        "Shredding",
+        "Degaussing",
+        "Drilling"
+      ],
+      "explain": "Incineration destroys many different media types completely, making it the most universally effective physical destruction method in this scenario.",
+      "isBoss": false
+    },
+    {
+      "id": 113,
+      "q": "A large corporation is looking to upgrade its computer systems and requires an operating system with comprehensive security features including Windows Information Protection (WIP), Credential Guard, and Device Guard. Which Windows 10 edition should they opt for?",
+      "category": "Security",
+      "correct": "Windows 10 Enterprise",
+      "distractors": [
+        "Windows 10 Home",
+        "Windows 10 Pro for Workstations",
+        "Windows 10 Pro"
+      ],
+      "explain": "Windows 10 Enterprise includes advanced security features such as WIP, Credential Guard, and Device Guard that large organizations commonly require.",
+      "isBoss": false
     }
   ]
 };
