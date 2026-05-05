@@ -40,6 +40,10 @@ const Gameplay = {
     // Track questions answered (no combo timer)
     this.lastAnswerTime = Date.now();
 
+    if (!['normal', 'streak'].includes(Core.state.mode)) {
+      return null;
+    }
+
     // Check for reward screen
     if (this.questionsAnswered % 5 === 0) {
       return 'reward';
@@ -136,8 +140,7 @@ const Gameplay = {
   generateRewardOptions() {
     const allOptions = [
       { id: 'freeze', name: 'Freeze', icon: '❄️', desc: 'Block next life loss', action: () => { this.freezeActive = true; } },
-      { id: 'double', name: 'Double or Nothing', icon: '🎲', desc: '2x points, 2x risk', action: () => { this.doubleActive = true; } },
-      { id: 'xp_bonus', name: 'Quick XP', icon: '⚡', desc: '+50 XP now', action: () => { Progression.awardXP(50); } }
+      { id: 'double', name: 'Double or Nothing', icon: '🎲', desc: '2x points, 2x risk', action: () => { this.doubleActive = true; } }
     ];
 
     // Shuffle and pick 2

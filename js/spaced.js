@@ -83,6 +83,19 @@ const Spaced = {
     return rec.strength;
   },
 
+  // Get weakest questions by current strength, lower first
+  async getWeakestQuestions(courseId, limit = 20, maxStrength = 60) {
+    const all = await Storage.getAll('questionStrength');
+    return all
+      .filter(r => r.courseId === courseId && r.timesCorrect + r.timesMissed > 0 && r.strength <= maxStrength)
+      .sort((a, b) => {
+        if (a.strength !== b.strength) return a.strength - b.strength;
+        return (b.timesMissed - a.timesMissed);
+      })
+      .slice(0, limit)
+      .map(r => r.qId);
+  },
+
   // Get XP multiplier based on question strength (older/weaker = more XP)
   async getStrengthMultiplier(courseId, qId) {
     const strength = await this.getStrength(courseId, qId);

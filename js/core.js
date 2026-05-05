@@ -4,7 +4,7 @@
 const Core = {
   state: {
     screen: 'start',
-    mode: 'normal',   // 'normal' | 'streak' | 'review'
+    mode: 'normal',   // 'normal' | 'study' | 'streak' | 'review' | 'interleave' | 'redflag' | 'confidence' | 'pretest'
     courseId: 'comptia',
     deck: [],         // [{ id, question, isRetry }]
     idx: 0,
@@ -17,13 +17,61 @@ const Core = {
     hiScore: 0,
     newHi: false,
     missed: [],
-    categoryStats: {}  // { "Operating Systems": { correct: 0, missed: 0 }, ... }
+    categoryStats: {},  // { "Operating Systems": { correct: 0, missed: 0 }, ... }
+    studyCategory: null,
+    awaitingConfidence: false,
+    confidenceChoice: null,
+    pretestPhase: null,
+    pretestSourceIds: null
   },
 
   stage: null,
 
   init() {
     this.stage = document.getElementById('stage');
+  },
+
+  isInfiniteMode(mode = this.state.mode) {
+    return ['study', 'review', 'confidence', 'interleave', 'redflag', 'pretest'].includes(mode);
+  },
+
+  modeBanner(mode = this.state.mode) {
+    if (mode === 'streak') {
+      return `<span style="color: var(--yellow); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">STREAK MODE</span>`;
+    }
+    if (mode === 'study') {
+      return `<span style="color: var(--green); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">STUDY MODE</span>`;
+    }
+    if (mode === 'interleave') {
+      return `<span style="color: var(--cyan); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">INTERLEAVE MODE</span>`;
+    }
+    if (mode === 'redflag') {
+      return `<span style="color: var(--red); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">RED FLAG MODE</span>`;
+    }
+    if (mode === 'confidence') {
+      return `<span style="color: var(--pink); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">CONFIDENCE MODE</span>`;
+    }
+    if (mode === 'pretest') {
+      return `<span style="color: var(--yellow); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">PRETEST MODE</span>`;
+    }
+    if (mode === 'review') {
+      return `<span style="color: var(--cyan); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">REVIEW MODE</span>`;
+    }
+    return `<div class="lives">
+      ${[0,1,2].map(i => `<span class="heart ${i >= this.state.lives ? 'lost' : ''}">♥</span>`).join('')}
+    </div>`;
+  },
+
+  async buildWeaknessQuestionIds() {
+    const accuracy = await ErrorLog.getCategoryAccuracy(this.state.courseId);
+    const categories = Object.entries(accuracy)
+      .map(([name, data]) => ({ name, pct: data.total > 0 ? data.correct / data.total : 1 }))
+      .sort((a, b) => a.pct - b.pct)
+      .slice(0, 2)
+      .map(c => c.name);
+    const filterCats = categories.length > 0 ? categories : Courses.getCategories();
+    const questions = Courses.getQuestions();
+    return questions.map((q, i) => filterCats.includes(q.category) ? i : -1).filter(i => i >= 0);
   },
 
   // Start a new game run
@@ -43,13 +91,17 @@ const Core = {
     this.state.deck = this.buildDeck(questionIds);
     this.state.idx = 0;
     this.state.score = 0;
-    this.state.lives = this.state.mode === 'streak' ? 999 : 3;
+    this.state.lives = this.isInfiniteMode() || this.state.mode === 'streak' ? 999 : 3;
     this.state.streak = 0;
     this.state.correctCount = 0;
     this.state.answered = null;
     this.state.newHi = false;
     this.state.missed = [];
     this.state.categoryStats = this.emptyCategoryStats();
+    this.state.awaitingConfidence = false;
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = null;
+    this.state.pretestSourceIds = null;
     this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
     this.state.screen = 'game';
     this.render();
@@ -118,17 +170,7 @@ const Core = {
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
 
-    const accuracy = await ErrorLog.getCategoryAccuracy(this.state.courseId);
-    const categories = Object.entries(accuracy)
-      .map(([name, data]) => ({ name, pct: data.total > 0 ? data.correct / data.total : 1 }))
-      .sort((a, b) => a.pct - b.pct)
-      .slice(0, 2)
-      .map(c => c.name);
-
-    // If no data yet, just use all questions
-    const filterCats = categories.length > 0 ? categories : Courses.getCategories();
-    const questions = Courses.getQuestions();
-    const questionIds = questions.map((q, i) => filterCats.includes(q.category) ? i : -1).filter(i => i >= 0);
+    const questionIds = await this.buildWeaknessQuestionIds();
 
     this.state.mode = 'weakness';
     this.state.deck = this.buildDeck(questionIds);
@@ -141,6 +183,127 @@ const Core = {
     this.state.newHi = false;
     this.state.missed = [];
     this.state.categoryStats = this.emptyCategoryStats();
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  async startInterleaveWeakness() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const questionIds = await this.buildWeaknessQuestionIds();
+    this.state.mode = 'interleave';
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.awaitingConfidence = false;
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = null;
+    this.state.pretestSourceIds = null;
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  async startRedFlag() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const mostMissed = await ErrorLog.getMostMissed(this.state.courseId, 20);
+    const weakest = await Spaced.getWeakestQuestions(this.state.courseId, 20, 60);
+    const questionIds = [...new Set([...mostMissed, ...weakest])];
+    const fallback = questionIds.length > 0 ? questionIds : await this.buildWeaknessQuestionIds();
+
+    this.state.mode = 'redflag';
+    this.state.deck = this.buildDeck(fallback);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.awaitingConfidence = false;
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = null;
+    this.state.pretestSourceIds = null;
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  async startConfidence() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const questions = Courses.getQuestions();
+    const questionIds = questions.map((_, i) => i);
+    this.state.mode = 'confidence';
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = null;
+    this.state.pretestSourceIds = null;
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  async startPretest() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const questions = Courses.getQuestions();
+    const questionIds = questions.map((_, i) => i);
+    this.state.mode = 'pretest';
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.awaitingConfidence = false;
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = 'pretest';
+    this.state.pretestSourceIds = questionIds.slice();
     this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
     this.state.screen = 'game';
     this.render();
@@ -205,11 +368,93 @@ const Core = {
     this.render();
   },
 
+  promptConfidence() {
+    const slot = document.getElementById('feedbackSlot');
+    if (!slot) return Promise.resolve('maybe');
+    this.state.awaitingConfidence = true;
+
+    return new Promise(resolve => {
+      slot.innerHTML = `
+        <div class="confidence-prompt">
+          <div class="confidence-title">HOW SURE WERE YOU?</div>
+          <div class="confidence-options">
+            <button class="btn-secondary confidence-btn" data-confidence="sure">SURE</button>
+            <button class="btn-secondary confidence-btn" data-confidence="maybe">MAYBE</button>
+            <button class="btn-secondary confidence-btn" data-confidence="guessed">GUESSED</button>
+          </div>
+        </div>
+      `;
+      slot.querySelectorAll('.confidence-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          this.state.awaitingConfidence = false;
+          this.state.confidenceChoice = btn.dataset.confidence;
+          resolve(btn.dataset.confidence);
+        }, { once: true });
+      });
+    });
+  },
+
+  startPretestStudyPass() {
+    const questionIds = this.state.pretestSourceIds || Courses.getQuestions().map((_, i) => i);
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.awaitingConfidence = false;
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = 'study';
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.renderGame();
+  },
+
+  async restartCurrentMode() {
+    switch (this.state.mode) {
+      case 'study':
+      case 'streak':
+      case 'normal':
+        await this.startGame();
+        return;
+      case 'category':
+        await this.startCategory(this.state.studyCategory);
+        return;
+      case 'weakness':
+        await this.startWeakness();
+        return;
+      case 'cram':
+        await this.startCram();
+        return;
+      case 'review':
+        await this.startReviewDue();
+        return;
+      case 'interleave':
+        await this.startInterleaveWeakness();
+        return;
+      case 'redflag':
+        await this.startRedFlag();
+        return;
+      case 'confidence':
+        await this.startConfidence();
+        return;
+      case 'pretest':
+        await this.startPretest();
+        return;
+      default:
+        await this.startGame();
+    }
+  },
+
   // Handle answer selection
   async handleAnswer(pickedIdx) {
-    if (this.state.answered) return;
+    if (this.state.answered || this.state.awaitingConfidence) return;
     await Audio.ensure();
-    if (this.state.answered) return;
+    if (this.state.answered || this.state.awaitingConfidence) return;
 
     const entry = this.state.deck[this.state.idx];
     const q = entry.question;
@@ -218,18 +463,44 @@ const Core = {
     if (pickedIdx < 0 || pickedIdx >= buttons.length) return;
     const isCorrect = pickedIdx === correctIdx;
     this.state.answered = { pickedIdx, correctIdx };
+    let retryQueued = false;
+    let confidence = null;
 
     buttons.forEach(b => b.disabled = true);
+
+    if (this.state.mode === 'confidence') {
+      confidence = await this.promptConfidence();
+    }
 
     // Mark correct answer always
     buttons[correctIdx].classList.add('correct');
     // Mark wrong pick if applicable
     if (!isCorrect) buttons[pickedIdx].classList.add('wrong');
 
+    if (this.state.mode === 'pretest' && this.state.pretestPhase === 'pretest') {
+      const fb = document.getElementById('feedbackSlot');
+      fb.innerHTML = `
+        <div class="feedback ${isCorrect ? 'correct-fb' : 'wrong-fb'}">
+          <strong>${isCorrect ? '> PRETEST HIT' : '> PRETEST MISS'}</strong>
+          <div style="margin-top: 8px;">No explanation yet. Full study pass starts after the preview run.</div>
+          <div class="feedback-nav">
+            <span></span>
+            <button class="btn-next" id="nextBtn">NEXT ▸</button>
+          </div>
+        </div>
+      `;
+      const nextBtn = document.getElementById('nextBtn');
+      if (nextBtn) nextBtn.addEventListener('click', () => this.advance());
+      return;
+    }
+
     if (isCorrect) {
       this.state.streak += 1;
       this.state.correctCount += 1;
       this.clearMissed(entry.id);
+      if (this.state.mode === 'confidence' && !entry.isRetry && confidence !== 'sure') {
+        retryQueued = this.queueRetry(entry);
+      }
       this.state.categoryStats[q.category].correct += 1;
 
       // Track: error log + spaced repetition + analytics
@@ -296,12 +567,16 @@ const Core = {
         Juice.floatingText(window.innerWidth / 2, window.innerHeight / 2, 'FROZEN', '#00f0ff');
       } else {
         this.state.streak = 0;
-        this.state.lives -= 1;
+        if (this.state.mode === 'normal') {
+          this.state.lives -= 1;
+        }
         this.trackMissed(entry.id);
-        this.queueRetry(entry);
+        retryQueued = this.queueRetry(entry);
         this.state.categoryStats[q.category].missed += 1;
         Audio.sfx('wrong');
-        Audio.sfx('heartLoss');
+        if (this.state.mode === 'normal') {
+          Audio.sfx('heartLoss');
+        }
         document.body.classList.add('shake', 'flash-wrong');
         setTimeout(() => document.body.classList.remove('shake', 'flash-wrong'), 400);
         if (this.state.mode === 'streak') {
@@ -328,7 +603,14 @@ const Core = {
         <strong>${isCorrect ? '> ACCESS GRANTED' : '> SYSTEM ERROR'}</strong>
         ${q.explain}
         <div style="margin-top: 10px; font-size: 11px; color: var(--ink-dim); letter-spacing: 2px;">
-          ${isCorrect ? `+${100 + this.streakBonus(this.state.streak - 1)} PTS` : ''}
+          ${isCorrect
+            ? `+${100 + this.streakBonus(this.state.streak - 1)} PTS`
+            : retryQueued
+              ? 'QUESTION RE-QUEUED. IT WILL RETURN SOON.'
+              : ''}
+          ${isCorrect && this.state.mode === 'confidence' && confidence && confidence !== 'sure' && retryQueued
+            ? '<br>LOW-CONFIDENCE CORRECT. QUEUED FOR REINFORCEMENT.'
+            : ''}
         </div>
         <div class="feedback-nav">
           ${canBack ? '<button class="btn-prev" id="prevBtn">◂ BACK</button>' : '<span></span>'}
@@ -361,17 +643,9 @@ const Core = {
     const { options, correctIdx } = this.state.currentOptions;
     const progress = ((this.state.idx) / this.state.deck.length) * 100;
 
-    const livesHtml = this.state.mode === 'streak'
-      ? `<span style="color: var(--yellow); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">STREAK MODE</span>`
-      : this.state.mode === 'review'
-        ? `<span style="color: var(--cyan); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">REVIEW MODE</span>`
-        : `<div class="lives">
-            ${[0,1,2].map(i => `<span class="heart ${i >= this.state.lives ? 'lost' : ''}">♥</span>`).join('')}
-          </div>`;
-
     this.stage.innerHTML = `
       <div class="hud">
-        ${livesHtml}
+        ${this.modeBanner()}
         <div class="score-box">
           <div class="label">SCORE</div>
           <div class="value" id="scoreVal">${this.state.score.toLocaleString()}</div>
@@ -445,11 +719,15 @@ const Core = {
 
   // Advance to next question
   advance() {
-    if (!this.state.answered) return;
+    if (this.state.awaitingConfidence || !this.state.answered) return;
     this.state.answered = null;
     this.state.idx += 1;
 
     if (this.state.idx >= this.state.deck.length) {
+      if (this.state.mode === 'pretest' && this.state.pretestPhase === 'pretest') {
+        this.startPretestStudyPass();
+        return;
+      }
       this.endGame();
       return;
     }
@@ -514,10 +792,12 @@ const Core = {
   async renderStart() {
     try {
       const isStreak = this.state.mode === 'streak';
+      const isStudy = this.state.mode === 'study';
+      const isConfidence = this.state.mode === 'confidence';
+      const isInterleave = this.state.mode === 'interleave';
+      const isRedFlag = this.state.mode === 'redflag';
+      const isPretest = this.state.mode === 'pretest';
       const isCategory = this.state.mode === 'category';
-      const prog = Progression.data || { level: 0, totalXP: 0, skillPoints: 0, studyStreak: 0, achievements: [] };
-      const xpProgress = Progression.xpProgressToNextLevel();
-      const xpPct = xpProgress.pct;
 
       // Get due count for spaced repetition
       const dueCount = await Spaced.getDueCount(this.state.courseId);
@@ -530,40 +810,15 @@ const Core = {
         <h1 class="logo-main">SECOND<br>CHANCE</h1>
         <div class="logo-sub">CompTIA Redemption Run</div>
 
-        <!-- Progression -->
-        <div class="progression-panel">
-          <div class="level-badge">LVL ${prog.level}</div>
-          <div class="xp-bar-track">
-            <div class="xp-bar-fill" style="width: ${xpPct}%"></div>
-            <span class="xp-text">${prog.level >= 50 ? 'MAX' : `${xpProgress.current.toLocaleString()} / ${xpProgress.needed.toLocaleString()}`}</span>
-          </div>
-          ${prog.skillPoints > 0 ? `<div class="skill-points-badge">+${prog.skillPoints} SKILL PTS</div>` : ''}
-        </div>
-
-        <!-- Streak + Achievements -->
-        <div class="meta-stats">
-          ${prog.studyStreak > 0 ? `
-            <div class="meta-stat">
-              <span class="meta-icon">🔥</span>
-              <span class="meta-value">${prog.studyStreak} DAY STREAK</span>
-            </div>
-          ` : ''}
-          ${prog.achievements.length > 0 ? `
-            <div class="meta-stat">
-              <span class="meta-icon">🏆</span>
-              <span class="meta-value">${prog.achievements.length} ACHIEVEMENTS</span>
-            </div>
-          ` : ''}
-        </div>
-
         <div class="mode-picker">
-          <button class="mode-btn ${!isStreak && !isCategory ? 'active' : ''}" id="modeNormal">NORMAL</button>
+          <button class="mode-btn ${!isStreak && !isStudy && !isCategory && !isConfidence && !isInterleave && !isRedFlag && !isPretest ? 'active' : ''}" id="modeNormal">NORMAL</button>
+          <button class="mode-btn ${isStudy ? 'active' : ''}" id="modeStudy">STUDY</button>
           <button class="mode-btn ${isStreak ? 'active' : ''}" id="modeStreak">STREAK</button>
         </div>
 
         <div class="stat-row">
           <div class="stat-chip"><b>${questionCount}</b>QUESTIONS</div>
-          <div class="stat-chip">${isStreak ? '<b>∞</b>NO LIVES' : '<b>3</b>LIVES'}</div>
+          <div class="stat-chip">${(isStreak || isStudy || isConfidence || isInterleave || isRedFlag || isPretest) ? '<b>∞</b>NO LIVES' : '<b>3</b>LIVES'}</div>
           <div class="stat-chip"><b>∞</b>STREAK BONUS</div>
         </div>
 
@@ -582,21 +837,54 @@ const Core = {
           <div class="tools-grid">
             <button class="btn-tool" id="btnReviewDue">
               <span class="tool-icon">📅</span>
-              <span class="tool-label">Review Due</span>
+              <span class="tool-copy"><span class="tool-label">Review Due</span><span class="tool-hint">Overdue spaced-repetition cards</span></span>
               ${dueCount > 0 ? `<span class="tool-badge">${dueCount}</span>` : '<span class="tool-muted">none</span>'}
             </button>
             <button class="btn-tool" id="btnWeakness">
               <span class="tool-icon">🎯</span>
-              <span class="tool-label">Weakness</span>
+              <span class="tool-copy"><span class="tool-label">Weakness</span><span class="tool-hint">Your lowest-accuracy categories</span></span>
             </button>
             <button class="btn-tool" id="btnCram">
               <span class="tool-icon">📚</span>
-              <span class="tool-label">Cram</span>
+              <span class="tool-copy"><span class="tool-label">Cram</span><span class="tool-hint">Most-missed questions first</span></span>
             </button>
             <button class="btn-tool" id="btnCategory">
               <span class="tool-icon">📂</span>
-              <span class="tool-label">By Category</span>
+              <span class="tool-copy"><span class="tool-label">By Category</span><span class="tool-hint">Drill one CompTIA domain</span></span>
             </button>
+            <button class="btn-tool" id="btnInterleave">
+              <span class="tool-icon">🔀</span>
+              <span class="tool-copy"><span class="tool-label">Interleave Weakness</span><span class="tool-hint">Mix weak categories together</span></span>
+            </button>
+            <button class="btn-tool" id="btnConfidence">
+              <span class="tool-icon">🧠</span>
+              <span class="tool-copy"><span class="tool-label">Confidence</span><span class="tool-hint">Rate how sure you were</span></span>
+            </button>
+            <button class="btn-tool" id="btnRedFlag">
+              <span class="tool-icon">🚩</span>
+              <span class="tool-copy"><span class="tool-label">Red Flag</span><span class="tool-hint">Weakest retention + most missed</span></span>
+            </button>
+            <button class="btn-tool" id="btnPretest">
+              <span class="tool-icon">🧪</span>
+              <span class="tool-copy"><span class="tool-label">Pretest</span><span class="tool-hint">Preview first, explanations later</span></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mode-guide">
+          <div class="mode-guide-title">QUICK GUIDE</div>
+          <div class="mode-guide-list">
+            <div class="mode-guide-row"><span class="mode-guide-name">NORMAL</span><span class="mode-guide-desc">3 lives. Missed questions come back as retries. Best for a standard run.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">STUDY</span><span class="mode-guide-desc">Infinite lives. No power-ups. Questions repeat until you get them right.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">STREAK</span><span class="mode-guide-desc">No lives. One miss ends the run. Best for pressure-testing recall.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">WEAKNESS</span><span class="mode-guide-desc">Pulls from your lowest-accuracy categories.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">CRAM</span><span class="mode-guide-desc">Pulls your most-missed questions.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">REVIEW DUE</span><span class="mode-guide-desc">Uses the spaced-repetition queue for overdue questions.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">INTERLEAVE</span><span class="mode-guide-desc">Mixes your weakest categories together instead of blocking one topic.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">CONFIDENCE</span><span class="mode-guide-desc">After each answer, rate how sure you were. Low-confidence answers get reinforced.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">RED FLAG</span><span class="mode-guide-desc">Targets the questions you miss most and the ones with weakest retention.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">PRETEST</span><span class="mode-guide-desc">First pass without explanations, then an automatic full study pass on the same set.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">CATEGORY</span><span class="mode-guide-desc">Lets you drill one CompTIA domain at a time.</span></div>
           </div>
         </div>
 
@@ -612,7 +900,6 @@ const Core = {
           <button class="btn-secondary btn-back-category">BACK</button>
         </div>
 
-        <button class="btn-secondary" id="skillTreeBtn">⚡ SKILL TREE</button>
         <button class="btn-secondary" id="statsBtn">📊 STATS</button>
         <div class="hint">TIP: press 1-4 to answer · ENTER to continue</div>
       </div>
@@ -623,6 +910,12 @@ const Core = {
       await Audio.ensure();
       Audio.sfx('click');
       this.state.mode = 'normal';
+      this.renderStart();
+    });
+    document.getElementById('modeStudy').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      this.state.mode = 'study';
       this.renderStart();
     });
     document.getElementById('modeStreak').addEventListener('click', async () => {
@@ -660,6 +953,26 @@ const Core = {
       document.querySelector('.mode-picker').style.display = 'none';
       document.querySelector('.stat-row').style.display = 'none';
     });
+    document.getElementById('btnInterleave').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.startInterleaveWeakness();
+    });
+    document.getElementById('btnConfidence').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.startConfidence();
+    });
+    document.getElementById('btnRedFlag').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.startRedFlag();
+    });
+    document.getElementById('btnPretest').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.startPretest();
+    });
 
     // Category buttons
     document.querySelectorAll('.btn-category').forEach(btn => {
@@ -678,18 +991,6 @@ const Core = {
       await Audio.ensure();
       Audio.sfx('click');
       this.renderStart();
-    });
-
-    // Skill tree
-    document.getElementById('skillTreeBtn').addEventListener('click', async () => {
-      await Audio.ensure();
-      Audio.sfx('click');
-      Audio.stopMusic();
-      Progression.renderSkillTree(() => {
-        this.state.screen = 'start';
-        this.renderStart();
-        Audio.playTrack('start');
-      });
     });
 
     // Stats
@@ -772,17 +1073,9 @@ const Core = {
     const { options, correctIdx } = this.state.currentOptions;
 
     const progress = ((this.state.idx) / this.state.deck.length) * 100;
-    const livesHtml = this.state.mode === 'streak'
-      ? `<span style="color: var(--yellow); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">STREAK MODE</span>`
-      : this.state.mode === 'review'
-        ? `<span style="color: var(--cyan); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">REVIEW MODE</span>`
-        : `<div class="lives">
-            ${[0,1,2].map(i => `<span class="heart ${i >= this.state.lives ? 'lost' : ''}">♥</span>`).join('')}
-          </div>`;
-
     this.stage.innerHTML = `
       <div class="hud">
-        ${livesHtml}
+        ${this.modeBanner()}
         <div class="score-box">
           <div class="label">SCORE</div>
           <div class="value" id="scoreVal">${this.state.score.toLocaleString()}</div>
@@ -794,7 +1087,7 @@ const Core = {
       </div>
 
       <div class="q-header">
-        <span>QUESTION <span class="q-num">${this.state.idx + 1}</span> / ${this.state.deck.length}${entry.isRetry ? ' · RETRY' : ''}</span>
+        <span>QUESTION <span class="q-num">${this.state.idx + 1}</span> / ${this.state.deck.length}${entry.isRetry ? ' · RETRY' : ''}${this.state.mode === 'pretest' && this.state.pretestPhase === 'pretest' ? ' · PREVIEW' : ''}</span>
         <span>${this.state.streak >= 3 ? `+${this.streakBonus(this.state.streak)} streak bonus` : '&nbsp;'}</span>
       </div>
 
@@ -857,6 +1150,14 @@ const Core = {
       title = this.state.streak === 0 ? 'FIRST BLOOD' : 'STREAK BROKEN';
       sub = `STREAK: ${this.state.streak} CORRECT${this.state.streak > 0 ? ' · SCORE: ' + this.state.score.toLocaleString() : ''}`;
       showGrade = false;
+    } else if (['study', 'interleave', 'redflag', 'confidence'].includes(this.state.mode)) {
+      title = 'STUDY COMPLETE';
+      sub = `${this.state.correctCount}/${this.state.deck.length} CORRECT`;
+      showGrade = false;
+    } else if (this.state.mode === 'pretest') {
+      title = 'PRETEST REVIEW COMPLETE';
+      sub = `${this.state.correctCount}/${this.state.deck.length} CORRECT`;
+      showGrade = false;
     } else if (this.state.mode === 'review') {
       title = 'REVIEW COMPLETE';
       sub = `${this.state.correctCount}/${this.state.deck.length} CORRECT`;
@@ -871,6 +1172,10 @@ const Core = {
       ? `<div class="end-stat"><div class="l">STREAK</div><div class="v">${this.state.streak}</div></div>
          <div class="end-stat"><div class="l">SCORE</div><div class="v">${this.state.score.toLocaleString()}</div></div>
          <div class="end-stat"><div class="l">ATTEMPTED</div><div class="v">${this.state.correctCount + (this.state.mode === 'streak' ? 1 : 0)}</div></div>`
+      : ['study', 'interleave', 'redflag', 'confidence', 'pretest'].includes(this.state.mode)
+        ? `<div class="end-stat"><div class="l">CORRECT</div><div class="v">${this.state.correctCount}/${this.state.deck.length}</div></div>
+           <div class="end-stat"><div class="l">STREAK</div><div class="v">${this.state.streak}</div></div>
+           <div class="end-stat"><div class="l">SCORE</div><div class="v">${this.state.score.toLocaleString()}</div></div>`
       : this.state.mode === 'review'
         ? `<div class="end-stat"><div class="l">CORRECT</div><div class="v">${this.state.correctCount}/${this.state.deck.length}</div></div>
            <div class="end-stat"><div class="l">STREAK</div><div class="v">${this.state.streak}</div></div>
@@ -954,7 +1259,7 @@ const Core = {
         </div>
       </div>
     `;
-    document.getElementById('retryBtn').addEventListener('click', () => this.startGame());
+    document.getElementById('retryBtn').addEventListener('click', () => this.restartCurrentMode());
     const menuBtn = document.getElementById('menuBtn');
     menuBtn.addEventListener('click', async () => {
       await Audio.ensure();
@@ -1110,11 +1415,15 @@ const Core = {
   // Queue retry for missed question
   queueRetry(entry) {
     if (this.state.mode === 'streak' || this.hasFutureRetry(entry.id)) return;
-    this.state.deck.push({
+    const retryEntry = {
       id: entry.id,
       question: entry.question,
-      isRetry: true
-    });
+      isRetry: true,
+      isBoss: entry.isBoss || false
+    };
+    const insertAt = Math.min(this.state.deck.length, this.state.idx + 4);
+    this.state.deck.splice(insertAt, 0, retryEntry);
+    return true;
   },
 
   // Streak bonus calculation

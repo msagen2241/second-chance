@@ -2,23 +2,23 @@
 
 ## Project Overview
 
-A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 88 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
+A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 113 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
 
 ### Features
 
-- **3 game modes** — Normal (3 lives with missed-question recycling until correct), Streak (no lives, ends on first miss), Review (replay unresolved missed questions)
-- **4 study modes** — Category (pick one), Weakness (auto bottom 2 categories), Cram (30 most-missed), Review Due (spaced repetition queue)
-- **Mode picker** — toggle between Normal and Streak on the start screen
+- **4 main game modes** — Normal (3 lives with missed-question recycling until correct), Study (infinite lives, no power-ups), Streak (no lives, ends on first miss), Review (replay unresolved missed questions)
+- **8 study tools** — Category (pick one), Weakness (auto bottom 2 categories), Cram (30 most-missed), Review Due (spaced repetition queue), Interleave Weakness, Confidence, Red Flag, Pretest
+- **Mode picker** — toggle between Normal, Study, and Streak on the start screen
 - **Lives system** — 3 hearts; lose one per wrong answer (Normal mode only)
-- **Second-chance retry loop** — in Normal mode, a missed question is appended back into the deck as a `RETRY` item and stays in circulation until answered correctly
+- **Second-chance retry loop** — in all non-streak quiz flows, a missed question is requeued a few questions later as a `RETRY` item and stays in circulation until answered correctly
 - **Streak bonus** — consecutive correct answers earn escalating bonus points (up to +100)
-- **Question categories** — all 69 questions tagged with CompTIA exam domains (Operating Systems, Security, Software Troubleshooting, Operational Procedures)
+- **Question categories** — all 113 questions tagged with CompTIA exam domains (Operating Systems, Security, Software Troubleshooting, Operational Procedures)
 - **Category breakdown** — end screen shows colored bar chart sorted by lowest accuracy first
 - **Randomized deck** — questions and answer order shuffle each run
 - **Persistent high score** — saved via IndexedDB (`hiscore_v1`)
 - **End-of-run grading** — S/A/B/C/D/F based on accuracy (normal mode only)
-- **Progression system** — XP, levels (starts at 1, cap 50), skill tree (0-10 per category), achievements, study streaks
-- **Power-up reward screen** — every 5th correct answer or boss defeat pauses for player to pick from 2-3 power-ups (Freeze, Double or Nothing, Quick XP)
+- **Progression system disabled** — XP, levels, skill tree, achievements, and study streak tracking remain in code/storage but are hidden and inactive for now
+- **Power-up reward screen** — every 5th correct answer or boss defeat pauses for player to pick from 2 power-ups (Freeze, Double or Nothing); disabled in Study and all study-tool modes
 - **Boss questions** — 6 flagged questions with visual banner, extra XP, particle effects on defeat
 - **Juice effects** — screen shake, particles, flash overlays, floating text, animated UI
 - **Touch support** — Hammer.js CDN, swipe to advance, adaptive touch targets
@@ -32,15 +32,15 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 
 ### Game Data
 
-Questions live in `courses/comptia.json` (88 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, password attacks, missed practice-test questions, and more). Each question has a `category` field for the CompTIA domain breakdown. `js/course-data.js` contains the same course data as a bundled fallback so `game.html` works when opened directly via `file://`, where browsers block `fetch('courses/comptia.json')`.
+Questions live in `courses/comptia.json` (113 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, password attacks, missed practice-test questions, and more). Each question has a `category` field for the CompTIA domain breakdown. `js/course-data.js` contains the same course data as a bundled fallback so `game.html` works when opened directly via `file://`, where browsers block `fetch('courses/comptia.json')`.
 
 **Category distribution:**
 | Category | Count | Color |
 |----------|-------|-------|
-| Operating Systems | 42 | cyan |
-| Security | 23 | pink |
-| Software Troubleshooting | 13 | green |
-| Operational Procedures | 10 | yellow |
+| Operating Systems | 54 | cyan |
+| Security | 30 | pink |
+| Software Troubleshooting | 17 | green |
+| Operational Procedures | 12 | yellow |
 
 ## How to Play
 
@@ -53,12 +53,18 @@ Open `game.html` locally in any modern browser, or use the GitHub Pages deployme
 1. Click **▶ PRESS START** (or press `Enter`/`Space`)
 2. Answer each question by clicking an option or pressing `1-4`
 3. Read the feedback, then press `Enter` to advance
-4. If you miss a question, it loses a heart and is queued to return later as `RETRY`
+4. If you miss a question, it loses a heart and is queued to return soon as `RETRY`
 5. Once you answer that repeated question correctly, it leaves the missed pool
-6. Every 5th correct answer → power-up reward screen (pick from 2-3 options)
+6. Every 5th correct answer → power-up reward screen (pick from 2 options)
 7. Lose all 3 hearts → Game Over; clear the deck and all queued retries → Victory
 8. Beat your high score to appear on the leaderboard
 9. After a run, click "Review Missed (N)" to replay only unresolved missed questions
+
+### Study Mode
+1. Toggle **STUDY** on the start screen
+2. Answer questions with infinite lives and no power-up interruptions
+3. Missed questions are requeued as `RETRY` items until you answer them correctly
+4. The run ends only after the deck and all queued retries are cleared
 
 ### Streak Mode
 1. Toggle **STREAK** on the start screen
@@ -71,6 +77,10 @@ Open `game.html` locally in any modern browser, or use the GitHub Pages deployme
 - **Weakness** — auto-selects your bottom 2 categories by accuracy
 - **Cram** — pulls the 30 most-missed questions from your error log
 - **Review Due** — spaced repetition queue; shows only questions where `nextReview <= now`
+- **Interleave Weakness** — mixes your weakest categories in an infinite-lives study run
+- **Confidence** — after each answer, you rate `SURE`, `MAYBE`, or `GUESSED`; low-confidence correct answers are requeued for reinforcement
+- **Red Flag** — focuses on most-missed and lowest-strength spaced-repetition questions
+- **Pretest** — runs a no-explanation preview pass first, then automatically starts a full study pass on the same deck
 
 ## File Structure
 
@@ -82,7 +92,7 @@ Second Chance/
 ├── AGENTS.md                       # This file
 ├── .qwen/PROJECT_SUMMARY.md        # Running project summary for agent handoff/context
 ├── courses/
-│   └── comptia.json                # 88 CompTIA questions (categories, boss flags)
+│   └── comptia.json                # 113 CompTIA questions (categories, boss flags)
 ├── css/
 │   ├── base.css                    # Main styles (includes study tools, juice, progression)
 │   └── touch.css                   # Touch-specific responsive overrides
@@ -92,7 +102,7 @@ Second Chance/
     ├── storage.js                  # IndexedDB v5 wrapper (progression, perCourse, settings, questionStrength, questionLog, sessionLog)
     ├── course-data.js              # Bundled comptia course fallback for direct file:// play
     ├── courses.js                  # Course loader, category queries, bundled fallback
-    ├── progression.js              # XP, levels, skill tree, achievements, study streaks
+    ├── progression.js              # Progression system (currently disabled at runtime)
     ├── gameplay.js                 # Power-ups (freeze, double-or-nothing), boss logic, combo timer (dead)
     ├── juice.js                    # Particles, screen shake, flash, floating text
     ├── touch.js                    # Hammer.js touch handling
@@ -106,15 +116,14 @@ Second Chance/
 - **Modular architecture** — separate JS/CSS files loaded via `<script>` tags in `game.html`. No bundlers.
 - **Fonts** — loaded from Google Fonts (`VT323` for headers, `JetBrains Mono` for body). Requires internet connection.
 - **IndexedDB v5** — `second_chance_v2` database. Schema upgrade clears profile/progression data so existing users restart at level 1 after the v5 reset. Stores: `progression`, `perCourse`, `settings`, `questionStrength` (with `nextReview` index), `questionLog` (with `courseId`/`qId`/`timestamp` indexes), `sessionLog`.
-- **Default profile** — new/reset profiles start at level 1 with 0 XP and 0 skill points. XP thresholds are cumulative: level 2 at 300 XP, level 3 at 700 XP, level 4 at 1,200 XP.
+- **Progression disabled** — `progression.js` still loads data, but XP, levels, skill tree, achievements, and related notifications are gated behind `Progression.enabled = false`
 - **Direct local play** — `game.html` loads `js/course-data.js` before `js/courses.js`; `Courses.load()` uses bundled data automatically under `file://` and falls back to it if JSON fetch fails.
 - **`renderStart()` is async** — must be awaited (fetches spaced repetition due count). Has try/catch fallback.
 - **`render()` is async** — properly awaits `renderStart()`.
 - **Responsive** — single-column layout on screens < 560px.
 - **Deck model** — runtime deck uses `{ id, question, isRetry }` entries for missed-question recycling.
-- **Review semantics** — `state.missed` tracks unresolved question IDs; correctly answered retries are removed from the pool.
+- **Review semantics** — `state.missed` tracks unresolved question IDs; correctly answered retries are removed from the pool. Retries are reinserted a few questions later instead of being buried at the end of the deck.
 - **SFX only** — `Audio.playTrack()` is a no-op. `Audio.sfx()` handles correct/wrong/click/streak sounds.
-- **Level-up notification** — centered toast, 2.5s duration, streak SFX, auto-dismiss.
 - **Publishing** — pushing `master` to `origin` rebuilds GitHub Pages at `https://msagen2241.github.io/second-chance/`
 
 ## Adding New Questions
