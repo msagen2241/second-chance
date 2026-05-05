@@ -14,6 +14,7 @@ const Audio = {
   loopBeat: 0,
   currentTrack: null,
   resumeTimeoutMs: 250,
+  primed: false,
 
   // Note name → frequency
   noteFreq: {
@@ -66,8 +67,26 @@ const Audio = {
         this.ctx.resume(),
         new Promise(resolve => setTimeout(resolve, this.resumeTimeoutMs))
       ]);
+      this.primeOutput();
     } catch (e) {
       console.warn('[audio] resume failed:', e);
+    }
+  },
+
+  primeOutput() {
+    if (!this.ctx || this.ctx.state !== 'running' || this.primed) return;
+    try {
+      const buffer = this.ctx.createBuffer(1, 1, 22050);
+      const source = this.ctx.createBufferSource();
+      const gain = this.ctx.createGain();
+      gain.gain.value = 0.00001;
+      source.buffer = buffer;
+      source.connect(gain);
+      gain.connect(this.ctx.destination);
+      source.start(0);
+      this.primed = true;
+    } catch (e) {
+      console.warn('[audio] primeOutput failed:', e);
     }
   },
 

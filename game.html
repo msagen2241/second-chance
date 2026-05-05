@@ -148,15 +148,22 @@ function initAudioControls() {
 }
 
 async function initAudioUnlock() {
+  let unlocked = false;
   const unlock = async () => {
+    if (unlocked) return;
     const wasLocked = !Audio.canPlay();
     const ready = await Audio.ensure();
+    if (!ready) return;
+    unlocked = true;
     if (ready && wasLocked && Core.state.screen === 'start') {
       Audio.playTrack('start');
     }
   };
 
-  document.addEventListener('pointerdown', () => { void unlock(); }, true);
+  const opts = { capture: true, passive: true };
+  document.addEventListener('pointerdown', () => { void unlock(); }, opts);
+  document.addEventListener('touchstart', () => { void unlock(); }, opts);
+  document.addEventListener('mousedown', () => { void unlock(); }, opts);
   document.addEventListener('keydown', () => { void unlock(); }, true);
 }
 
