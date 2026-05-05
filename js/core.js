@@ -755,8 +755,8 @@ const Core = {
       Spaced.recordAnswer(this.state.courseId, entry.id, true);
       Analytics.recordAnswer(true, q.category);
 
-      // Gameplay: update combo, track boss, check reward
-      const rewardResult = Gameplay.onCorrect(entry);
+      // Gameplay bookkeeping
+      Gameplay.onCorrect(entry);
 
       // Juice
       const btn = buttons[pickedIdx];
@@ -789,11 +789,6 @@ const Core = {
         Gameplay.onBossDefeat();
       }
 
-      // Check for reward screen
-      if (rewardResult === 'reward') {
-        this.renderRewardScreen(() => this.advance());
-        return;
-      }
     } else {
       // Track: error log + spaced repetition + analytics
       ErrorLog.logAnswer(entry.id, false, pickedIdx, q.category, this.state.currentOptions.options.length);
@@ -804,31 +799,24 @@ const Core = {
       const btn = buttons[pickedIdx];
       if (btn) Juice.onWrong(btn);
 
-      // Check Gameplay effects (freeze, double-or-nothing)
-      const wrongResult = Gameplay.onWrong(entry);
+      // Gameplay side effects
+      Gameplay.onWrong(entry);
 
-      if (wrongResult === 'freeze_used') {
-        // Freeze absorbed the hit — don't lose life, just break streak
-        this.state.streak = 0;
-        Audio.sfx('wrong');
-        Juice.floatingText(window.innerWidth / 2, window.innerHeight / 2, 'FROZEN', '#00f0ff');
-      } else {
-        this.state.streak = 0;
-        if (this.state.mode === 'normal') {
-          this.state.lives -= 1;
-        }
-        this.trackMissed(entry.id);
-        retryQueued = this.queueRetry(entry);
-        this.state.categoryStats[q.category].missed += 1;
-        Audio.sfx('wrong');
-        if (this.state.mode === 'normal') {
-          Audio.sfx('heartLoss');
-        }
-        document.body.classList.add('shake', 'flash-wrong');
-        setTimeout(() => document.body.classList.remove('shake', 'flash-wrong'), 400);
-        if (this.state.mode === 'streak') {
-          setTimeout(() => { this.endGame(); }, 1500);
-        }
+      this.state.streak = 0;
+      if (this.state.mode === 'normal') {
+        this.state.lives -= 1;
+      }
+      this.trackMissed(entry.id);
+      retryQueued = this.queueRetry(entry);
+      this.state.categoryStats[q.category].missed += 1;
+      Audio.sfx('wrong');
+      if (this.state.mode === 'normal') {
+        Audio.sfx('heartLoss');
+      }
+      document.body.classList.add('shake', 'flash-wrong');
+      setTimeout(() => document.body.classList.remove('shake', 'flash-wrong'), 400);
+      if (this.state.mode === 'streak') {
+        setTimeout(() => { this.endGame(); }, 1500);
       }
     }
 
@@ -1389,15 +1377,6 @@ const Core = {
       <!-- Combo timer -->
       ${Gameplay.getComboTimerHTML()}
 
-      <!-- Power-up indicators -->
-      ${Gameplay.getPowerUpIndicators().length > 0 ? `
-        <div class="power-up-indicators">
-          ${Gameplay.getPowerUpIndicators().map(ind => `
-            <span class="power-up-indicator">${ind.icon} ${ind.label}</span>
-          `).join('')}
-        </div>
-      ` : ''}
-
       <div class="question-card ${entry.isBoss ? 'boss-card' : ''}">
         ${entry.isBoss ? '<div class="boss-banner">★ BOSS QUESTION ★</div>' : ''}
         <div class="question-text">${q.q}</div>
@@ -1569,63 +1548,6 @@ const Core = {
     if (reviewBtnEl) {
       reviewBtnEl.addEventListener('click', () => this.startReview());
     }
-  },
-
-  // Render reward screen (called from handleAnswer after every 5th correct or boss defeat)
-  renderRewardScreen(onContinue) {
-    const powerUps = Gameplay.generateRewardOptions();
-    const stage = document.getElementById('stage');
-
-    stage.innerHTML = `
-      <div class="reward-screen">
-        <div class="reward-title">⚡ POWER-UP SELECTED ⚡</div>
-        <div class="reward-sub">Choose wisely... <span id="rewardTimer">(10s)</span></div>
-        <div class="reward-options">
-          ${powerUps.map((pu, i) => `
-            <button class="reward-btn" data-idx="${i}">
-              <span class="reward-icon">${pu.icon}</span>
-              <span class="reward-name">${pu.name}</span>
-              <span class="reward-desc">${pu.desc}</span>
-            </button>
-          `).join('')}
-        </div>
-        <button class="btn-secondary reward-skip">SKIP</button>
-      </div>
-    `;
-
-    stage.querySelectorAll('.reward-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        clearInterval(timerInterval);
-        const idx = parseInt(btn.dataset.idx);
-        Gameplay.applyPick(powerUps[idx]);
-        Juice.onPowerUpPick(btn);
-        Audio.sfx('click');
-        onContinue();
-      });
-    });
-
-    stage.querySelector('.reward-skip').addEventListener('click', () => {
-      clearInterval(timerInterval);
-      Audio.sfx('click');
-      onContinue();
-    });
-
-    // Countdown timer
-    let timeLeft = 10;
-    const timerEl = document.getElementById('rewardTimer');
-    const timerInterval = setInterval(() => {
-      timeLeft--;
-      if (timerEl) timerEl.textContent = `(${timeLeft}s)`;
-      if (timeLeft <= 0) clearInterval(timerInterval);
-    }, 1000);
-
-    // Auto-skip after 10 seconds
-    setTimeout(() => {
-      clearInterval(timerInterval);
-      if (document.querySelector('.reward-screen')) {
-        onContinue();
-      }
-    }, 10000);
   },
 
   // Helper: category color
