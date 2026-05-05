@@ -68,6 +68,7 @@ const Spaced = {
     const now = Date.now();
     return all
       .filter(r => r.courseId === courseId && r.nextReview > 0 && r.nextReview <= now)
+      .sort((a, b) => a.nextReview - b.nextReview)
       .map(r => r.qId);
   },
 
@@ -75,6 +76,44 @@ const Spaced = {
   async getDueCount(courseId) {
     const due = await this.getDueQuestions(courseId);
     return due.length;
+  },
+
+  // Get review status for start-screen UX
+  async getReviewStatus(courseId) {
+    const all = await Storage.getAll('questionStrength');
+    const now = Date.now();
+    const seen = all.filter(r => r.courseId === courseId && (r.timesCorrect + r.timesMissed > 0));
+    const due = seen.filter(r => r.nextReview > 0 && r.nextReview <= now);
+    const upcoming = seen
+      .filter(r => r.nextReview > now)
+      .sort((a, b) => a.nextReview - b.nextReview);
+    return {
+      dueCount: due.length,
+      upcomingCount: upcoming.length,
+      nextReviewAt: upcoming.length ? upcoming[0].nextReview : null
+    };
+  },
+
+  // Build a practical review queue: due first, then upcoming if nothing is overdue
+  async getReviewQueue(courseId, limit = 30) {
+    const all = await Storage.getAll('questionStrength');
+    const now = Date.now();
+    const seen = all.filter(r => r.courseId === courseId && (r.timesCorrect + r.timesMissed > 0));
+    const due = seen
+      .filter(r => r.nextReview > 0 && r.nextReview <= now)
+      .sort((a, b) => a.nextReview - b.nextReview)
+      .slice(0, limit)
+      .map(r => r.qId);
+    if (due.length > 0) return due;
+
+    const upcoming = seen
+      .filter(r => r.nextReview > now)
+      .sort((a, b) => a.nextReview - b.nextReview)
+      .slice(0, limit)
+      .map(r => r.qId);
+    if (upcoming.length > 0) return upcoming;
+
+    return [];
   },
 
   // Get strength for a question (0-100)

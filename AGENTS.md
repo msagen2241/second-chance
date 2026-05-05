@@ -7,7 +7,7 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 ### Features
 
 - **4 main game modes** — Normal (3 lives with missed-question recycling until correct), Study (infinite lives, no power-ups), Streak (no lives, ends on first miss), Review (replay unresolved missed questions)
-- **8 study tools** — Category (pick one), Weakness (auto bottom 2 categories), Cram (30 most-missed), Review Due (spaced repetition queue), Interleave Weakness, Confidence, Red Flag, Pretest
+- **9 study tools** — Category (pick one), Weakness (auto bottom 2 categories), Cram (30 most-missed), Review Due (spaced repetition queue), Interleave Weakness, Confidence, Red Flag, Pretest, Quickfire
 - **Mode picker** — toggle between Normal, Study, and Streak on the start screen
 - **Lives system** — 3 hearts; lose one per wrong answer (Normal mode only)
 - **Second-chance retry loop** — in all non-streak quiz flows, a missed question is requeued a few questions later as a `RETRY` item and stays in circulation until answered correctly
@@ -15,6 +15,7 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 - **Question categories** — all 113 questions tagged with CompTIA exam domains (Operating Systems, Security, Software Troubleshooting, Operational Procedures)
 - **Category breakdown** — end screen shows colored bar chart sorted by lowest accuracy first
 - **Randomized deck** — questions and answer order shuffle each run
+- **Manual save/resume** — save an in-progress run from the game HUD and resume it later from the start screen
 - **Persistent high score** — saved via IndexedDB (`hiscore_v1`)
 - **End-of-run grading** — S/A/B/C/D/F based on accuracy (normal mode only)
 - **Progression system disabled** — XP, levels, skill tree, achievements, and study streak tracking remain in code/storage but are hidden and inactive for now
@@ -24,7 +25,7 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 - **Touch support** — Hammer.js CDN, swipe to advance, adaptive touch targets
 - **Keyboard support** — press `1-4` to answer, `Enter` to continue
 - **Study analytics** — session tracking, 7-day history, category accuracy trends, stats modal
-- **Spaced repetition** — SM-2 algorithm tracks per-question strength (0-100), interval, ease factor; "Review Due" mode queues overdue questions
+- **Spaced repetition** — SM-2 algorithm tracks per-question strength (0-100), interval, ease factor; "Review Due" mode prioritizes overdue questions, then falls back to next-up scheduled review cards
 - **Error log** — every answer logged; powers Category/Weakness/Cram study modes
 - **Level-up notification** — centered toast with level + skill point indicator
 - **SFX only** — music disabled, sound effects (Tone.js 16-bit) remain
@@ -76,11 +77,12 @@ Open `game.html` locally in any modern browser, or use the GitHub Pages deployme
 - **Category** — pick a specific CompTIA domain, drill only those questions
 - **Weakness** — auto-selects your bottom 2 categories by accuracy
 - **Cram** — pulls the 30 most-missed questions from your error log
-- **Review Due** — spaced repetition queue; shows only questions where `nextReview <= now`
+- **Review Due** — spaced repetition queue; shows overdue questions first, then next-up scheduled review cards
 - **Interleave Weakness** — mixes your weakest categories in an infinite-lives study run
-- **Confidence** — after each answer, you rate `SURE`, `MAYBE`, or `GUESSED`; low-confidence correct answers are requeued for reinforcement
+- **Confidence** — after each answer, you rate `GUESSED` or `SURE`; guessed correct answers are requeued for reinforcement
 - **Red Flag** — focuses on most-missed and lowest-strength spaced-repetition questions
 - **Pretest** — runs a no-explanation preview pass first, then automatically starts a full study pass on the same deck
+- **Quickfire** — instant right/wrong feedback, then auto-advances to the next question without a `NEXT` click
 
 ## File Structure
 
@@ -116,12 +118,16 @@ Second Chance/
 - **Modular architecture** — separate JS/CSS files loaded via `<script>` tags in `game.html`. No bundlers.
 - **Fonts** — loaded from Google Fonts (`VT323` for headers, `JetBrains Mono` for body). Requires internet connection.
 - **IndexedDB v5** — `second_chance_v2` database. Schema upgrade clears profile/progression data so existing users restart at level 1 after the v5 reset. Stores: `progression`, `perCourse`, `settings`, `questionStrength` (with `nextReview` index), `questionLog` (with `courseId`/`qId`/`timestamp` indexes), `sessionLog`.
+- **Saved session record** — manual run resume is stored in `settings` under `saved_session_v1`
+- **Review Due behavior** — if nothing is overdue yet, it uses the next scheduled review cards instead of silently doing nothing
 - **Progression disabled** — `progression.js` still loads data, but XP, levels, skill tree, achievements, and related notifications are gated behind `Progression.enabled = false`
 - **Direct local play** — `game.html` loads `js/course-data.js` before `js/courses.js`; `Courses.load()` uses bundled data automatically under `file://` and falls back to it if JSON fetch fails.
 - **`renderStart()` is async** — must be awaited (fetches spaced repetition due count). Has try/catch fallback.
 - **`render()` is async** — properly awaits `renderStart()`.
 - **Responsive** — single-column layout on screens < 560px.
 - **Deck model** — runtime deck uses `{ id, question, isRetry }` entries for missed-question recycling.
+- **Save semantics** — `SAVE & EXIT` stores the current run state and resumes on the current unanswered card; if the current card was already answered, resume starts on the next question boundary instead.
+- **Quickfire semantics** — Quickfire is an infinite-lives study mode with retry recycling and auto-advance after the answer effect/sound.
 - **Review semantics** — `state.missed` tracks unresolved question IDs; correctly answered retries are removed from the pool. Retries are reinserted a few questions later instead of being buried at the end of the deck.
 - **SFX only** — `Audio.playTrack()` is a no-op. `Audio.sfx()` handles correct/wrong/click/streak sounds.
 - **Publishing** — pushing `master` to `origin` rebuilds GitHub Pages at `https://msagen2241.github.io/second-chance/`

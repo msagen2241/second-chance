@@ -2,9 +2,11 @@
 // CORE — Game state, rendering, and core game flow
 // ============================================================
 const Core = {
+  SAVED_SESSION_KEY: 'saved_session_v1',
+  autoAdvanceTimer: null,
   state: {
     screen: 'start',
-    mode: 'normal',   // 'normal' | 'study' | 'streak' | 'review' | 'interleave' | 'redflag' | 'confidence' | 'pretest'
+    mode: 'normal',   // 'normal' | 'study' | 'streak' | 'review' | 'interleave' | 'redflag' | 'confidence' | 'pretest' | 'quickfire'
     courseId: 'comptia',
     deck: [],         // [{ id, question, isRetry }]
     idx: 0,
@@ -32,7 +34,7 @@ const Core = {
   },
 
   isInfiniteMode(mode = this.state.mode) {
-    return ['study', 'review', 'confidence', 'interleave', 'redflag', 'pretest'].includes(mode);
+    return ['study', 'review', 'confidence', 'interleave', 'redflag', 'pretest', 'quickfire'].includes(mode);
   },
 
   modeBanner(mode = this.state.mode) {
@@ -53,6 +55,9 @@ const Core = {
     }
     if (mode === 'pretest') {
       return `<span style="color: var(--yellow); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">PRETEST MODE</span>`;
+    }
+    if (mode === 'quickfire') {
+      return `<span style="color: var(--red); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">QUICKFIRE MODE</span>`;
     }
     if (mode === 'review') {
       return `<span style="color: var(--cyan); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">REVIEW MODE</span>`;
@@ -79,6 +84,8 @@ const Core = {
     await Audio.ensure();
     Audio.sfx('click');
     Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
 
     // Initialize gameplay state
     Gameplay.init();
@@ -110,6 +117,8 @@ const Core = {
   // Start review mode
   async startReview() {
     await Audio.ensure();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
     if (this.state.missed.length === 0) {
       this.state.screen = 'end';
       this.render();
@@ -138,6 +147,8 @@ const Core = {
     await Audio.ensure();
     Audio.sfx('click');
     Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
 
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
@@ -166,6 +177,8 @@ const Core = {
     await Audio.ensure();
     Audio.sfx('click');
     Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
 
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
@@ -192,6 +205,8 @@ const Core = {
     await Audio.ensure();
     Audio.sfx('click');
     Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
 
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
@@ -221,6 +236,8 @@ const Core = {
     await Audio.ensure();
     Audio.sfx('click');
     Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
 
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
@@ -254,6 +271,8 @@ const Core = {
     await Audio.ensure();
     Audio.sfx('click');
     Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
 
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
@@ -283,6 +302,8 @@ const Core = {
     await Audio.ensure();
     Audio.sfx('click');
     Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
 
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
@@ -314,6 +335,8 @@ const Core = {
     await Audio.ensure();
     Audio.sfx('click');
     Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
 
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
@@ -342,18 +365,19 @@ const Core = {
     await Audio.ensure();
     Audio.sfx('click');
     Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
 
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
 
-    const due = await Spaced.getDueQuestions(this.state.courseId);
-    if (due.length === 0) {
-      // No due questions — show toast and stay on start screen
-      return;
-    }
+    const due = await Spaced.getReviewQueue(this.state.courseId);
+    const fallback = due.length > 0
+      ? due
+      : (await this.buildWeaknessQuestionIds()).slice(0, 30);
 
     this.state.mode = 'review';
-    this.state.deck = this.buildDeck(due);
+    this.state.deck = this.buildDeck(fallback);
     this.state.idx = 0;
     this.state.score = 0;
     this.state.lives = 999; // No lives in review mode
@@ -368,9 +392,41 @@ const Core = {
     this.render();
   },
 
+  async startQuickfire() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const questions = Courses.getQuestions();
+    const questionIds = questions.map((_, i) => i);
+    this.state.mode = 'quickfire';
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.awaitingConfidence = false;
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = null;
+    this.state.pretestSourceIds = null;
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
   promptConfidence() {
     const slot = document.getElementById('feedbackSlot');
-    if (!slot) return Promise.resolve('maybe');
+    if (!slot) return Promise.resolve('guessed');
     this.state.awaitingConfidence = true;
 
     return new Promise(resolve => {
@@ -378,9 +434,8 @@ const Core = {
         <div class="confidence-prompt">
           <div class="confidence-title">HOW SURE WERE YOU?</div>
           <div class="confidence-options">
-            <button class="btn-secondary confidence-btn" data-confidence="sure">SURE</button>
-            <button class="btn-secondary confidence-btn" data-confidence="maybe">MAYBE</button>
             <button class="btn-secondary confidence-btn" data-confidence="guessed">GUESSED</button>
+            <button class="btn-secondary confidence-btn" data-confidence="sure">SURE</button>
           </div>
         </div>
       `;
@@ -395,6 +450,7 @@ const Core = {
   },
 
   startPretestStudyPass() {
+    this.clearAutoAdvance();
     const questionIds = this.state.pretestSourceIds || Courses.getQuestions().map((_, i) => i);
     this.state.deck = this.buildDeck(questionIds);
     this.state.idx = 0;
@@ -411,6 +467,194 @@ const Core = {
     this.state.pretestPhase = 'study';
     this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
     this.state.screen = 'game';
+    this.renderGame();
+  },
+
+  modeLabel(mode) {
+    const labels = {
+      normal: 'Normal',
+      study: 'Study',
+      streak: 'Streak',
+      review: 'Review',
+      category: 'By Category',
+      weakness: 'Weakness',
+      cram: 'Cram',
+      interleave: 'Interleave Weakness',
+      confidence: 'Confidence',
+      redflag: 'Red Flag',
+      pretest: 'Pretest',
+      quickfire: 'Quickfire'
+    };
+    return labels[mode] || 'Study';
+  },
+
+  clearAutoAdvance() {
+    if (this.autoAdvanceTimer) {
+      clearTimeout(this.autoAdvanceTimer);
+      this.autoAdvanceTimer = null;
+    }
+  },
+
+  scheduleAutoAdvance(delay = 650) {
+    this.clearAutoAdvance();
+    this.autoAdvanceTimer = setTimeout(() => {
+      this.autoAdvanceTimer = null;
+      if (this.state.screen !== 'game' || this.state.mode !== 'quickfire' || !this.state.answered) return;
+      this.advance();
+    }, delay);
+  },
+
+  getSavedSessionSummary(record) {
+    const session = record && record.session;
+    if (!session) return null;
+    const current = Math.min((session.idx || 0) + 1, (session.deck || []).length || 1);
+    const total = (session.deck || []).length || 0;
+    const savedAt = record.savedAt ? new Date(record.savedAt).toLocaleString() : '';
+    return {
+      label: this.modeLabel(session.mode),
+      progress: `Question ${current}/${total}`,
+      savedAt
+    };
+  },
+
+  normalizeStateForSave() {
+    if (this.state.screen !== 'game' || !this.state.deck.length || this.state.awaitingConfidence) return null;
+    const snapshot = {
+      screen: 'game',
+      mode: this.state.mode,
+      courseId: this.state.courseId,
+      deck: this.state.deck.map(entry => ({
+        id: entry.id,
+        isRetry: !!entry.isRetry,
+        isBoss: !!entry.isBoss
+      })),
+      idx: this.state.idx,
+      score: this.state.score,
+      lives: this.state.lives,
+      streak: this.state.streak,
+      correctCount: this.state.correctCount,
+      currentOptions: this.state.currentOptions ? {
+        options: [...this.state.currentOptions.options],
+        correctIdx: this.state.currentOptions.correctIdx,
+        category: this.state.currentOptions.category
+      } : null,
+      hiScore: this.state.hiScore,
+      newHi: false,
+      missed: [...this.state.missed],
+      categoryStats: JSON.parse(JSON.stringify(this.state.categoryStats || {})),
+      studyCategory: this.state.studyCategory,
+      confidenceChoice: null,
+      pretestPhase: this.state.pretestPhase,
+      pretestSourceIds: this.state.pretestSourceIds ? [...this.state.pretestSourceIds] : null
+    };
+
+    if (this.state.answered) {
+      snapshot.idx += 1;
+      if (snapshot.idx >= snapshot.deck.length) return null;
+      const nextQuestion = Courses.getQuestions()[snapshot.deck[snapshot.idx].id];
+      snapshot.currentOptions = this.buildOptions(nextQuestion);
+      snapshot.streak = this.state.streak;
+    }
+
+    return snapshot;
+  },
+
+  async saveCurrentSession() {
+    const session = this.normalizeStateForSave();
+    if (!session) return false;
+    try {
+      await Storage.put('settings', {
+        id: this.SAVED_SESSION_KEY,
+        savedAt: Date.now(),
+        session
+      });
+      return true;
+    } catch (e) {
+      console.warn('[core] saveCurrentSession failed:', e);
+      return false;
+    }
+  },
+
+  async loadSavedSessionRecord() {
+    try {
+      return await Storage.get('settings', this.SAVED_SESSION_KEY);
+    } catch (e) {
+      console.warn('[core] loadSavedSessionRecord failed:', e);
+      return null;
+    }
+  },
+
+  async clearSavedSession(silent = false) {
+    try {
+      await Storage.delete('settings', this.SAVED_SESSION_KEY);
+    } catch (e) {
+      if (!silent) console.warn('[core] clearSavedSession failed:', e);
+    }
+  },
+
+  async saveAndExitToMenu() {
+    const saved = await this.saveCurrentSession();
+    if (!saved) return;
+    this.clearAutoAdvance();
+    Audio.stopMusic();
+    this.state.screen = 'start';
+    await this.renderStart();
+  },
+
+  async resumeSavedSession() {
+    const record = await this.loadSavedSessionRecord();
+    const session = record && record.session;
+    if (!session || !Array.isArray(session.deck) || !session.deck.length) {
+      await this.clearSavedSession(true);
+      await this.renderStart();
+      return;
+    }
+
+    const questions = Courses.getQuestions();
+    const restoredDeck = [];
+    for (const entry of session.deck) {
+      if (!questions[entry.id]) {
+        await this.clearSavedSession(true);
+        await this.renderStart();
+        return;
+      }
+      restoredDeck.push({
+        id: entry.id,
+        question: questions[entry.id],
+        isRetry: !!entry.isRetry,
+        isBoss: !!entry.isBoss
+      });
+    }
+
+    if (!restoredDeck[session.idx]) {
+      await this.clearSavedSession(true);
+      await this.renderStart();
+      return;
+    }
+
+    Gameplay.init();
+    Analytics.startSession(session.courseId || this.state.courseId);
+    this.clearAutoAdvance();
+    this.state.screen = 'game';
+    this.state.mode = session.mode || 'study';
+    this.state.courseId = session.courseId || this.state.courseId;
+    this.state.deck = restoredDeck;
+    this.state.idx = session.idx || 0;
+    this.state.score = session.score || 0;
+    this.state.lives = session.lives || 0;
+    this.state.streak = session.streak || 0;
+    this.state.correctCount = session.correctCount || 0;
+    this.state.answered = null;
+    this.state.awaitingConfidence = false;
+    this.state.currentOptions = session.currentOptions || this.buildOptions(restoredDeck[this.state.idx].question);
+    this.state.hiScore = this.state.hiScore || 0;
+    this.state.newHi = false;
+    this.state.missed = Array.isArray(session.missed) ? [...session.missed] : [];
+    this.state.categoryStats = session.categoryStats || this.emptyCategoryStats();
+    this.state.studyCategory = session.studyCategory || null;
+    this.state.confidenceChoice = session.confidenceChoice || null;
+    this.state.pretestPhase = session.pretestPhase || null;
+    this.state.pretestSourceIds = Array.isArray(session.pretestSourceIds) ? [...session.pretestSourceIds] : null;
     this.renderGame();
   },
 
@@ -444,6 +688,9 @@ const Core = {
         return;
       case 'pretest':
         await this.startPretest();
+        return;
+      case 'quickfire':
+        await this.startQuickfire();
         return;
       default:
         await this.startGame();
@@ -618,6 +865,19 @@ const Core = {
         </div>
       </div>
     `;
+    if (this.state.mode === 'quickfire') {
+      fb.innerHTML = `
+        <div class="feedback ${isCorrect ? 'correct-fb' : 'wrong-fb'} quickfire-fb">
+          <strong>${isCorrect ? '> RIGHT' : '> WRONG'}</strong>
+          <div style="margin-top: 8px; color: var(--ink-dim); letter-spacing: 2px;">
+            ${isCorrect ? '+100' : retryQueued ? 'RETRY QUEUED' : ''}
+          </div>
+        </div>
+      `;
+      this.scheduleAutoAdvance();
+      return;
+    }
+
     const nextBtn = document.getElementById('nextBtn');
     if (nextBtn) nextBtn.addEventListener('click', () => this.advance());
     const prevBtn = document.getElementById('prevBtn');
@@ -626,6 +886,7 @@ const Core = {
 
   // Review a previous question (read-only, no re-answering)
   reviewPrevious() {
+    this.clearAutoAdvance();
     if (this.state.idx <= 0) return;
     this.state.answered = null;
     this.state.idx -= 1;
@@ -708,6 +969,7 @@ const Core = {
 
   // Advance from review mode back to current position
   advanceFromReview() {
+    this.clearAutoAdvance();
     this.state.idx += 1;
     if (this.state.idx >= this.state.deck.length) {
       this.endGame();
@@ -719,6 +981,7 @@ const Core = {
 
   // Advance to next question
   advance() {
+    this.clearAutoAdvance();
     if (this.state.awaitingConfidence || !this.state.answered) return;
     this.state.answered = null;
     this.state.idx += 1;
@@ -743,6 +1006,8 @@ const Core = {
 
   // End the current game
   endGame() {
+    this.clearAutoAdvance();
+    this.clearSavedSession(true);
     this.state.screen = 'end';
     if (this.state.score > this.state.hiScore) {
       this.state.newHi = true;
@@ -798,11 +1063,15 @@ const Core = {
       const isRedFlag = this.state.mode === 'redflag';
       const isPretest = this.state.mode === 'pretest';
       const isCategory = this.state.mode === 'category';
+      const isQuickfire = this.state.mode === 'quickfire';
 
       // Get due count for spaced repetition
-      const dueCount = await Spaced.getDueCount(this.state.courseId);
+      const reviewStatus = await Spaced.getReviewStatus(this.state.courseId);
+      const dueCount = reviewStatus.dueCount;
       const categories = Courses.getCategories();
       const questionCount = Courses.getQuestions().length;
+      const savedSession = await this.loadSavedSessionRecord();
+      const savedSummary = this.getSavedSessionSummary(savedSession);
 
     this.stage.innerHTML = `
       <div class="start">
@@ -818,7 +1087,7 @@ const Core = {
 
         <div class="stat-row">
           <div class="stat-chip"><b>${questionCount}</b>QUESTIONS</div>
-          <div class="stat-chip">${(isStreak || isStudy || isConfidence || isInterleave || isRedFlag || isPretest) ? '<b>∞</b>NO LIVES' : '<b>3</b>LIVES'}</div>
+          <div class="stat-chip">${(isStreak || isStudy || isConfidence || isInterleave || isRedFlag || isPretest || isQuickfire) ? '<b>∞</b>NO LIVES' : '<b>3</b>LIVES'}</div>
           <div class="stat-chip"><b>∞</b>STREAK BONUS</div>
         </div>
 
@@ -830,6 +1099,10 @@ const Core = {
         ` : ''}
 
         <button class="btn-start" id="startBtn">▶ PRESS START</button>
+        ${savedSummary ? `
+          <button class="btn-secondary" id="resumeBtn">RESUME SAVED SESSION</button>
+          <div class="hint" style="margin-top: 8px;">${savedSummary.label} · ${savedSummary.progress}${savedSummary.savedAt ? ` · saved ${savedSummary.savedAt}` : ''}</div>
+        ` : ''}
 
         <!-- Study Tools -->
         <div class="study-tools">
@@ -837,8 +1110,8 @@ const Core = {
           <div class="tools-grid">
             <button class="btn-tool" id="btnReviewDue">
               <span class="tool-icon">📅</span>
-              <span class="tool-copy"><span class="tool-label">Review Due</span><span class="tool-hint">Overdue spaced-repetition cards</span></span>
-              ${dueCount > 0 ? `<span class="tool-badge">${dueCount}</span>` : '<span class="tool-muted">none</span>'}
+              <span class="tool-copy"><span class="tool-label">Review Due</span><span class="tool-hint">Overdue or next-up review cards</span></span>
+              ${dueCount > 0 ? `<span class="tool-badge">${dueCount}</span>` : reviewStatus.upcomingCount > 0 ? '<span class="tool-muted">soon</span>' : '<span class="tool-muted">none</span>'}
             </button>
             <button class="btn-tool" id="btnWeakness">
               <span class="tool-icon">🎯</span>
@@ -868,6 +1141,10 @@ const Core = {
               <span class="tool-icon">🧪</span>
               <span class="tool-copy"><span class="tool-label">Pretest</span><span class="tool-hint">Preview first, explanations later</span></span>
             </button>
+            <button class="btn-tool" id="btnQuickfire">
+              <span class="tool-icon">⚡</span>
+              <span class="tool-copy"><span class="tool-label">Quickfire</span><span class="tool-hint">Instant right/wrong, auto next</span></span>
+            </button>
           </div>
         </div>
 
@@ -885,6 +1162,7 @@ const Core = {
             <div class="mode-guide-row"><span class="mode-guide-name">RED FLAG</span><span class="mode-guide-desc">Targets the questions you miss most and the ones with weakest retention.</span></div>
             <div class="mode-guide-row"><span class="mode-guide-name">PRETEST</span><span class="mode-guide-desc">First pass without explanations, then an automatic full study pass on the same set.</span></div>
             <div class="mode-guide-row"><span class="mode-guide-name">CATEGORY</span><span class="mode-guide-desc">Lets you drill one CompTIA domain at a time.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">QUICKFIRE</span><span class="mode-guide-desc">Instant right or wrong feedback, then auto-advance to the next question.</span></div>
           </div>
         </div>
 
@@ -927,12 +1205,20 @@ const Core = {
 
     // Start button
     document.getElementById('startBtn').addEventListener('click', () => this.startGame());
+    const resumeBtn = document.getElementById('resumeBtn');
+    if (resumeBtn) {
+      resumeBtn.addEventListener('click', async () => {
+        await Audio.ensure();
+        Audio.sfx('click');
+        Audio.stopMusic();
+        await this.resumeSavedSession();
+      });
+    }
 
     // Study tools
     document.getElementById('btnReviewDue').addEventListener('click', async () => {
       await Audio.ensure();
       Audio.sfx('click');
-      if (dueCount === 0) return;
       await this.startReviewDue();
     });
     document.getElementById('btnWeakness').addEventListener('click', async () => {
@@ -972,6 +1258,11 @@ const Core = {
       await Audio.ensure();
       Audio.sfx('click');
       await this.startPretest();
+    });
+    document.getElementById('btnQuickfire').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.startQuickfire();
     });
 
     // Category buttons
@@ -1124,12 +1415,18 @@ const Core = {
       <div id="feedbackSlot"></div>
 
       <div class="game-menu-row">
+        <button class="btn-menu" id="saveBtnGame" title="Save this session and return to menu">SAVE & EXIT</button>
         <button class="btn-menu" id="menuBtnGame" title="Return to menu">MENU</button>
       </div>
     `;
 
     document.querySelectorAll('.answer-btn').forEach(btn => {
       btn.addEventListener('click', () => this.handleAnswer(parseInt(btn.dataset.idx)));
+    });
+    document.getElementById('saveBtnGame').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.saveAndExitToMenu();
     });
     document.getElementById('menuBtnGame').addEventListener('click', async () => {
       Audio.stopMusic();
@@ -1150,7 +1447,7 @@ const Core = {
       title = this.state.streak === 0 ? 'FIRST BLOOD' : 'STREAK BROKEN';
       sub = `STREAK: ${this.state.streak} CORRECT${this.state.streak > 0 ? ' · SCORE: ' + this.state.score.toLocaleString() : ''}`;
       showGrade = false;
-    } else if (['study', 'interleave', 'redflag', 'confidence'].includes(this.state.mode)) {
+    } else if (['study', 'interleave', 'redflag', 'confidence', 'quickfire'].includes(this.state.mode)) {
       title = 'STUDY COMPLETE';
       sub = `${this.state.correctCount}/${this.state.deck.length} CORRECT`;
       showGrade = false;
@@ -1172,7 +1469,7 @@ const Core = {
       ? `<div class="end-stat"><div class="l">STREAK</div><div class="v">${this.state.streak}</div></div>
          <div class="end-stat"><div class="l">SCORE</div><div class="v">${this.state.score.toLocaleString()}</div></div>
          <div class="end-stat"><div class="l">ATTEMPTED</div><div class="v">${this.state.correctCount + (this.state.mode === 'streak' ? 1 : 0)}</div></div>`
-      : ['study', 'interleave', 'redflag', 'confidence', 'pretest'].includes(this.state.mode)
+      : ['study', 'interleave', 'redflag', 'confidence', 'pretest', 'quickfire'].includes(this.state.mode)
         ? `<div class="end-stat"><div class="l">CORRECT</div><div class="v">${this.state.correctCount}/${this.state.deck.length}</div></div>
            <div class="end-stat"><div class="l">STREAK</div><div class="v">${this.state.streak}</div></div>
            <div class="end-stat"><div class="l">SCORE</div><div class="v">${this.state.score.toLocaleString()}</div></div>`

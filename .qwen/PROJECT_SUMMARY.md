@@ -15,7 +15,7 @@ Second Chance — modular arcade quiz game for studying CompTIA exam material. A
 - **Modules:** `core.js`, `audio.js`, `storage.js`, `courses.js`, `progression.js`, `gameplay.js`, `juice.js`, `touch.js`, `errorlog.js`, `spaced.js`, `analytics.js`
 - **Audio:** Music **disabled** (`playTrack` is no-op). SFX only via `Audio.sfx()`.
 - **Main modes:** Normal, Study, Streak, Review
-- **8 study tools:** Category, Weakness, Cram, Review Due, Interleave Weakness, Confidence, Red Flag, Pretest
+- **9 study tools:** Category, Weakness, Cram, Review Due, Interleave Weakness, Confidence, Red Flag, Pretest, Quickfire
 - **Question count:** 113 total
 - **Retry loop:** missed questions are requeued a few questions later until answered correctly; visible as `RETRY`
 - **Progression:** disabled at runtime via `Progression.enabled = false`, code retained
@@ -27,7 +27,7 @@ Second Chance — modular arcade quiz game for studying CompTIA exam material. A
 |---------|--------|
 | Normal/Study/Streak/Review modes | ✅ wired |
 | Category/Weakness/Cram/Review Due study tools | ✅ wired |
-| Interleave Weakness / Confidence / Red Flag / Pretest | ✅ wired |
+| Interleave Weakness / Confidence / Red Flag / Pretest / Quickfire | ✅ wired |
 | Lives system + second-chance retry loop | ✅ wired |
 | Spaced repetition (SM-2) | ✅ wired |
 | Error log + mistake queries | ✅ wired |
@@ -50,11 +50,11 @@ Second Chance — modular arcade quiz game for studying CompTIA exam material. A
 
 ## Current Plan
 Current working set:
-- Keep the new study modes polished and validate edge cases in-browser
-- Update docs before commit/push
-- Then commit and deploy the study-mode changes
+- Review Due now falls back to next-up scheduled cards instead of dead-clicking when nothing is overdue
+- Quickfire mode now auto-advances after right/wrong feedback and keeps retry recycling
+- Save/resume is available from the in-run HUD and start screen
 
 ---
 
 ## Summary Metadata
-**Update time**: 2026-05-05T00:00:00.000Z
+**Update time**: 2026-05-05T00:30:00.000Z

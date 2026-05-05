@@ -13,6 +13,7 @@
 - **Question count:** 113
 - **Course file:** `courses/comptia.json`
 - **Bundled fallback:** `js/course-data.js`
+- **Manual resume:** saved study/run state is stored in `settings.saved_session_v1`
 
 ## Active gameplay model
 
@@ -23,14 +24,15 @@
 
 ## Study tools
 
-- **Review Due** — overdue spaced-repetition questions
+- **Review Due** — overdue questions first, then next-up scheduled review cards
 - **Weakness** — bottom 2 categories by accuracy
 - **Cram** — most-missed questions
 - **By Category** — one domain only
 - **Interleave Weakness** — mixes weak categories together
-- **Confidence** — asks `SURE / MAYBE / GUESSED`; low-confidence correct answers get requeued
+- **Confidence** — asks `GUESSED / SURE`; guessed correct answers get requeued
 - **Red Flag** — combines most-missed and weakest-retention questions
 - **Pretest** — preview pass without explanations, then automatic study pass
+- **Quickfire** — instant right/wrong response with auto-advance and no `NEXT` step
 
 ## Important implementation notes
 
@@ -40,6 +42,9 @@
 - **Power-ups:** only active in arcade-style modes; disabled for Study and all study-tool modes
 - **Pretest:** preview phase intentionally hides explanations and disables back-navigation during that phase
 - **Confidence mode:** answer flow is gated by `awaitingConfidence` so `advance()` cannot skip the prompt
+- **Review Due:** now opens overdue cards first, then next-up scheduled review cards if nothing is overdue, and falls back to a useful starter drill when there is no review history yet
+- **Saved sessions:** `SAVE & EXIT` stores the current run and start screen shows a `RESUME SAVED SESSION` button when one exists
+- **Quickfire:** auto-advance is timer-driven and cleared on manual navigation/save/end so it does not double-skip questions
 - **Replay behavior:** `PLAY AGAIN` uses mode-aware restart logic, not a generic normal restart
 - **Direct file play:** `game.html` loads `js/course-data.js` before `js/courses.js` so the game works under `file://`
 

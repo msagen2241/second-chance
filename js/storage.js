@@ -87,6 +87,17 @@ const Storage = window.storage = {
     });
   },
 
+  async delete(storeName, key) {
+    const db = await this.open();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(storeName, 'readwrite');
+      const store = tx.objectStore(storeName);
+      const request = store.delete(key);
+      request.onsuccess = () => resolve();
+      request.onerror = () => reject(request.error);
+    });
+  },
+
   // Get all records from a store
   async getAll(storeName) {
     const db = await this.open();

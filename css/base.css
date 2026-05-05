@@ -1256,6 +1256,7 @@
 .game-menu-row {
   display: flex;
   justify-content: center;
+  gap: 10px;
   margin-top: 18px;
 }
 
@@ -1316,6 +1317,10 @@
   gap: 8px;
   max-width: 520px;
   margin: 0 auto;
+}
+
+.quickfire-fb {
+  text-align: center;
 }
 
 .btn-tool {
