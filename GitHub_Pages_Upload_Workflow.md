@@ -51,7 +51,7 @@ Before uploading, this folder already had a local Git repository.
 
 The project path was:
 
-`G:\MidTier\AI-Projects\Document-Memory\Games\Second Chance`
+`D:\AI\Projects\Document-Memory\Games\Second Chance`
 
 The main game file was:
 
@@ -298,7 +298,7 @@ If you make changes to `Second_Chance.html` and want the website to update, the 
 ### 1. Open PowerShell in the project folder
 
 ```powershell
-cd "G:\MidTier\AI-Projects\Document-Memory\Games\Second Chance"
+cd "D:\AI\Projects\Document-Memory\Games\Second Chance"
 ```
 
 ### 2. Check what changed
@@ -472,7 +472,7 @@ For future updates, these habits will help:
 For this specific project, the repeatable update command sequence is usually just:
 
 ```powershell
-cd "G:\MidTier\AI-Projects\Document-Memory\Games\Second Chance"
+cd "D:\AI\Projects\Document-Memory\Games\Second Chance"
 git status
 git add -- Second_Chance.html
 git commit -m "update: describe what changed"
