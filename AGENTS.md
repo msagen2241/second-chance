@@ -132,6 +132,31 @@ Second Chance/
 - **SFX only** — `Audio.playTrack()` is a no-op. `Audio.sfx()` handles correct/wrong/click/streak sounds.
 - **Publishing** — pushing `master` to `origin` rebuilds GitHub Pages at `https://msagen2241.github.io/second-chance/`
 
+## Verification Rule
+
+After any question-bank update, bundled fallback regeneration, or GitHub Pages deploy, explicitly verify question counts in all three places:
+
+1. `courses/comptia.json`
+2. `js/course-data.js`
+3. the full-deck mode starters in `js/core.js`
+
+For this project, these modes/tools should use the full CompTIA bank:
+- `Normal`
+- `Study`
+- `Streak`
+- `Confidence`
+- `Pretest`
+- `Quickfire`
+
+These study tools intentionally use subsets and should **not** be treated as full-bank modes:
+- `Category`
+- `Weakness`
+- `Interleave Weakness`
+- `Cram`
+- `Review Due`
+- `Red Flag`
+- `Review Missed`
+
 ## Adding New Questions
 
 1. Open `courses/comptia.json`
