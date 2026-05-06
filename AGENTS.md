@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 113 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
+A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 130 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
 
 ### Features
 
@@ -12,14 +12,13 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 - **Lives system** — 3 hearts; lose one per wrong answer (Normal mode only)
 - **Second-chance retry loop** — in all non-streak quiz flows, a missed question is requeued a few questions later as a `RETRY` item and stays in circulation until answered correctly
 - **Streak bonus** — consecutive correct answers earn escalating bonus points (up to +100)
-- **Question categories** — all 113 questions tagged with CompTIA exam domains (Operating Systems, Security, Software Troubleshooting, Operational Procedures)
+- **Question categories** — all 130 questions tagged with CompTIA exam domains (Operating Systems, Security, Software Troubleshooting, Operational Procedures)
 - **Category breakdown** — end screen shows colored bar chart sorted by lowest accuracy first
 - **Randomized deck** — questions and answer order shuffle each run
 - **Manual save/resume** — save an in-progress run from the game HUD and resume it later from the start screen
 - **Persistent high score** — saved via IndexedDB (`hiscore_v1`)
 - **End-of-run grading** — S/A/B/C/D/F based on accuracy (normal mode only)
 - **Progression system disabled** — XP, levels, skill tree, achievements, and study streak tracking remain in code/storage but are hidden and inactive for now
-- **Power-up reward screen** — every 5th correct answer or boss defeat pauses for player to pick from 2 power-ups (Freeze, Double or Nothing); disabled in Study and all study-tool modes
 - **Boss questions** — 6 flagged questions with visual banner, extra XP, particle effects on defeat
 - **Juice effects** — screen shake, particles, flash overlays, floating text, animated UI
 - **Touch support** — Hammer.js CDN, swipe to advance, adaptive touch targets
@@ -33,15 +32,15 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 
 ### Game Data
 
-Questions live in `courses/comptia.json` (113 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, password attacks, missed practice-test questions, and more). Each question has a `category` field for the CompTIA domain breakdown. `js/course-data.js` contains the same course data as a bundled fallback so `game.html` works when opened directly via `file://`, where browsers block `fetch('courses/comptia.json')`.
+Questions live in `courses/comptia.json` (130 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, password attacks, missed practice-test questions, and more). Each question has a `category` field for the CompTIA domain breakdown. `js/course-data.js` contains the same course data as a bundled fallback so `game.html` works when opened directly via `file://`, where browsers block `fetch('courses/comptia.json')`.
 
 **Category distribution:**
 | Category | Count | Color |
 |----------|-------|-------|
-| Operating Systems | 54 | cyan |
-| Security | 30 | pink |
-| Software Troubleshooting | 17 | green |
-| Operational Procedures | 12 | yellow |
+| Operating Systems | 60 | cyan |
+| Security | 34 | pink |
+| Software Troubleshooting | 20 | green |
+| Operational Procedures | 16 | yellow |
 
 ## How to Play
 
@@ -56,14 +55,13 @@ Open `game.html` locally in any modern browser, or use the GitHub Pages deployme
 3. Read the feedback, then press `Enter` to advance
 4. If you miss a question, it loses a heart and is queued to return soon as `RETRY`
 5. Once you answer that repeated question correctly, it leaves the missed pool
-6. Every 5th correct answer → power-up reward screen (pick from 2 options)
-7. Lose all 3 hearts → Game Over; clear the deck and all queued retries → Victory
-8. Beat your high score to appear on the leaderboard
-9. After a run, click "Review Missed (N)" to replay only unresolved missed questions
+6. Lose all 3 hearts → Game Over; clear the deck and all queued retries → Victory
+7. Beat your high score to appear on the leaderboard
+8. After a run, click "Review Missed (N)" to replay only unresolved missed questions
 
 ### Study Mode
 1. Toggle **STUDY** on the start screen
-2. Answer questions with infinite lives and no power-up interruptions
+2. Answer questions with infinite lives
 3. Missed questions are requeued as `RETRY` items until you answer them correctly
 4. The run ends only after the deck and all queued retries are cleared
 
@@ -94,7 +92,7 @@ Second Chance/
 ├── AGENTS.md                       # This file
 ├── .qwen/PROJECT_SUMMARY.md        # Running project summary for agent handoff/context
 ├── courses/
-│   └── comptia.json                # 113 CompTIA questions (categories, boss flags)
+│   └── comptia.json                # 130 CompTIA questions (categories, boss flags)
 ├── css/
 │   ├── base.css                    # Main styles (includes study tools, juice, progression)
 │   └── touch.css                   # Touch-specific responsive overrides
@@ -105,7 +103,7 @@ Second Chance/
     ├── course-data.js              # Bundled comptia course fallback for direct file:// play
     ├── courses.js                  # Course loader, category queries, bundled fallback
     ├── progression.js              # Progression system (currently disabled at runtime)
-    ├── gameplay.js                 # Power-ups (freeze, double-or-nothing), boss logic, combo timer (dead)
+    ├── gameplay.js                 # Boss tracking and lightweight run-state helpers
     ├── juice.js                    # Particles, screen shake, flash, floating text
     ├── touch.js                    # Hammer.js touch handling
     ├── errorlog.js                 # Answer logging, mistake queries, category accuracy
@@ -121,6 +119,7 @@ Second Chance/
 - **Saved session record** — manual run resume is stored in `settings` under `saved_session_v1`
 - **Review Due behavior** — if nothing is overdue yet, it uses the next scheduled review cards instead of silently doing nothing
 - **Progression disabled** — `progression.js` still loads data, but XP, levels, skill tree, achievements, and related notifications are gated behind `Progression.enabled = false`
+- **No power-ups** — reward screens, freeze, and double-or-nothing are removed from the runtime
 - **Direct local play** — `game.html` loads `js/course-data.js` before `js/courses.js`; `Courses.load()` uses bundled data automatically under `file://` and falls back to it if JSON fetch fails.
 - **`renderStart()` is async** — must be awaited (fetches spaced repetition due count). Has try/catch fallback.
 - **`render()` is async** — properly awaits `renderStart()`.

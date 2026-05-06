@@ -1476,6 +1476,210 @@
       ],
       "explain": "Windows 10 Enterprise includes advanced security features such as WIP, Credential Guard, and Device Guard that large organizations commonly require.",
       "isBoss": false
+    },
+    {
+      "id": 114,
+      "q": "Jason has an old 2017 Dell Laptop that he uses to connect to his office network while traveling. The computer is slow and is running Windows 7. The laptop's screen was recently cracked and needs replacement. Jason brings the laptop to the computer store you work at and asks for your assistance. Which of the following do you recommend?",
+      "category": "Operational Procedures",
+      "correct": "Purchase a new laptop as the cost to repair might be more than a new laptop",
+      "distractors": [
+        "Sell him an external 15\" tablet/monitor to connect to the laptop as a workaround",
+        "Replace the display and contact the manufacturer for reimbursement",
+        "Replace the display and charge him for the parts/installation"
+      ],
+      "explain": "Recommend a new laptop. Given the age, slow performance, unsupported Windows 7 install, and cracked display, repair cost is likely to exceed the value of the device and a replacement will be faster, more secure, and longer lasting."
+    },
+    {
+      "id": 115,
+      "q": "Which of the following types of attacks is conducted against a database server by inserting code into an entry field on a web application form for execution to try and gain access to the contents of the database?",
+      "category": "Security",
+      "correct": "SQL injection",
+      "distractors": [
+        "Cross-site scripting",
+        "On-path attack",
+        "Zero-day attack"
+      ],
+      "explain": "SQL injection inserts malicious SQL statements into application input fields so the backend database executes them. That can expose, alter, or destroy data in the database."
+    },
+    {
+      "id": 116,
+      "q": "You are configuring a SOHO network and only denying specific IP addresses from accessing the network while allowing any IP addresses not found on the list. Which of the following should be implemented?",
+      "category": "Security",
+      "correct": "Blocklist",
+      "distractors": [
+        "MAC filtering",
+        "Allow list",
+        "Port forwarding"
+      ],
+      "explain": "A blocklist denies only the specifically listed items and allows everything else. An allow list does the opposite by permitting only listed entries and blocking all others."
+    },
+    {
+      "id": 117,
+      "q": "Which of the following commands is used on a Linux system to delete all the files and directories in a Linux system's filesystem?",
+      "category": "Operating Systems",
+      "correct": "rm -rf /",
+      "distractors": [
+        "rm *.*",
+        "rm -rf *.*",
+        "rm /"
+      ],
+      "explain": "The command rm -rf / starts at the root directory and recursively force-deletes files and folders throughout the filesystem. It is the classic catastrophic Linux deletion command."
+    },
+    {
+      "id": 118,
+      "q": "Which of the following types of backups generates the recovered files from a complete copy of a file created at some point in time and one or more partial backups created at later times to merge them into the recovered data?",
+      "category": "Operational Procedures",
+      "correct": "Synthetic",
+      "distractors": [
+        "Incremental",
+        "Differential",
+        "Full"
+      ],
+      "explain": "A synthetic backup is assembled from an earlier full backup plus later backup changes so the restored result is synthesized from multiple backup points rather than copied from one current file image."
+    },
+    {
+      "id": 119,
+      "q": "A technician removed malware from a Windows 10 laptop and wants to restore system files to defaults while preserving user data and Windows Store apps. User-installed applications may be deleted. Which installation type should be used?",
+      "category": "Operating Systems",
+      "correct": "Refresh installation",
+      "distractors": [
+        "Clean install",
+        "Repair installation",
+        "In-place upgrade"
+      ],
+      "explain": "A refresh installation resets Windows system files and many settings while preserving user data and Windows Store apps. Traditional desktop apps may be removed."
+    },
+    {
+      "id": 120,
+      "q": "Your IT administrator has proposed a new method for deploying security patches to company servers. Before the change is approved, another senior administrator is assigned to review the plan to ensure it follows best practices, minimizes risks, and aligns with company policies. Which of the following would BEST describe this step in the change management process?",
+      "category": "Operational Procedures",
+      "correct": "Peer review",
+      "distractors": [
+        "Standard change",
+        "Implementation",
+        "Change freeze"
+      ],
+      "explain": "This is peer review: another qualified administrator evaluates the proposed change before approval to reduce risk and confirm that it follows process and best practice."
+    },
+    {
+      "id": 121,
+      "q": "Jonni is installing Windows 11 (64-bit) in a virtual machine on his Linux desktop. The installation is continually failing and producing an error. Jonni has configured the virtual machine with a dual-core 1.2 GHz processor, 4 GB of memory, a 32 GB hard drive, and a 1920 x 1080 screen resolution. Which item in the virtual machine should be increased to fix the installation issue experienced?",
+      "category": "Operating Systems",
+      "correct": "Amount of hard drive space",
+      "distractors": [
+        "Number of CPU cores",
+        "The screen resolution",
+        "Amount of memory"
+      ],
+      "explain": "Windows 11 needs at least 64 GB of storage. The configured 32 GB drive is below the requirement, so increasing disk capacity is the needed fix."
+    },
+    {
+      "id": 122,
+      "q": "A technician is troubleshooting a video conferencing application used by remote employees. Users report frequent lag, choppy video, and sudden disconnections, even though the application was installed correctly and worked during initial testing. The issue is occurring across multiple users in different locations. Which of the following is the most likely cause?",
+      "category": "Operating Systems",
+      "correct": "Insufficient internet bandwidth for high-quality video transmission.",
+      "distractors": [
+        "Firewall restrictions blocking video data packets.",
+        "Video card incompatibility with the conferencing application.",
+        "Outdated network drivers on users' computers."
+      ],
+      "explain": "Consistent lag, choppy video, and dropped sessions across multiple users points most strongly to insufficient bandwidth. Firewall blocks or hardware incompatibility would usually fail more abruptly or more selectively."
+    },
+    {
+      "id": 123,
+      "q": "A laptop displays multiple pop-ups immediately when opening the browser. What action(s) should you take NEXT?",
+      "category": "Software Troubleshooting",
+      "correct": "Clear the browser's cookies and history, enable the pop-up blocker, and scan the system for malware",
+      "distractors": [
+        "Document the pop-ups displayed and take a screenshot",
+        "Quarantine the machine and report it as infected to your company's cybersecurity department for investigation",
+        "Reinstall or reimage the operating system"
+      ],
+      "explain": "Browser pop-ups are commonly caused by adware, spyware, or malicious browser changes. The next step is remediation: clear browser data, enable the pop-up blocker, and run a malware scan."
+    },
+    {
+      "id": 124,
+      "q": "Which of the following is considered a trusted app source for APK files?",
+      "category": "Software Troubleshooting",
+      "correct": "Play Store",
+      "distractors": [
+        "Android Central",
+        "App Store",
+        "Windows Store"
+      ],
+      "explain": "For Android APK distribution, the Play Store is the official trusted source. The other options are unrelated platforms or third-party sources."
+    },
+    {
+      "id": 125,
+      "q": "What information should be recorded on a chain of custody form during a forensic investigation?",
+      "category": "Operational Procedures",
+      "correct": "Any individual who worked with evidence during the investigation",
+      "distractors": [
+        "The list of individuals who made contact with files leading to the investigation",
+        "The list of former owners/operators of the workstation involved in the investigation",
+        "The law enforcement agent who was first on the scene"
+      ],
+      "explain": "A chain of custody records everyone who handled the evidence and what was done with it, preserving accountability and evidentiary integrity."
+    },
+    {
+      "id": 126,
+      "q": "When Jason needs to log in to his bank, he must use a key fob to generate a random number code automatically synchronized to a code on the server for authentication. What type of device is Jason using to log in?",
+      "category": "Security",
+      "correct": "Hardware token",
+      "distractors": [
+        "Smart card",
+        "PIV card",
+        "Biometric lock"
+      ],
+      "explain": "A key fob that generates synchronized one-time codes is a hardware token. Smart cards and PIV cards are also hardware tokens broadly, but the described device is specifically the token fob style used for OTP authentication."
+    },
+    {
+      "id": 127,
+      "q": "Eduardo is installing Windows 11 (64-bit) in a virtual machine on his macOS desktop. The installation is continually failing and producing an error. Eduardo has configured the virtual machine with a 2.2 GHz processor, 4 GB of memory, a 64 GB hard drive, and a 1280 x 720 screen resolution. Which item in the virtual machine should be increased to fix the installation issue experienced?",
+      "category": "Operating Systems",
+      "correct": "Number of CPU cores",
+      "distractors": [
+        "The screen resolution",
+        "Amount of memory",
+        "Amount of hard drive space"
+      ],
+      "explain": "Windows 11 requires a compatible 64-bit processor with at least two cores. The other listed specs already meet baseline requirements, so CPU cores are the missing piece."
+    },
+    {
+      "id": 128,
+      "q": "Dion Training wants to keep their wireless network open for students but prevent coffee shop customers next door from connecting. Which setting should be modified?",
+      "category": "Security",
+      "correct": "Signal strength or power level",
+      "distractors": [
+        "Default SSID",
+        "Firewall",
+        "MAC filtering"
+      ],
+      "explain": "Reducing transmit power can keep the wireless coverage inside the intended physical area while still leaving the network open for authorized nearby users."
+    },
+    {
+      "id": 129,
+      "q": "A user's SOHO wireless network appears to have significantly slowed down today. Normally, they can download files at 900 Mbps or more, but today, they only averaged 23 Mbps when downloading. You check their wireless settings and see the following: Network SSID: DionTraining Security: WPA2 Password: diontraining Mode: AC ISP: Fiber1Gbps Which of the following is MOST likely the problem?",
+      "category": "Software Troubleshooting",
+      "correct": "Other users have connected to the WiFi due to a weak password",
+      "distractors": [
+        "WPA2 reduces download speeds and the user should switch to WPA3",
+        "Additional transmission power is needed for the wireless signal",
+        "The WAN type needs to be upgraded to DSL or cable"
+      ],
+      "explain": "The weak and guessable WiFi password makes unauthorized access likely. Extra users consuming bandwidth is the most plausible explanation for the large throughput drop."
+    },
+    {
+      "id": 130,
+      "q": "Your company has just installed a brand new email server, but you determined that the server cannot send emails to another server during your initial testing. You decide to check the firewall's ACL to see if the server's outgoing email is being blocked. Which of the following ports should you ensure is open and not blocked by the firewall?",
+      "category": "Operating Systems",
+      "correct": "25",
+      "distractors": [
+        "22",
+        "110",
+        "143"
+      ],
+      "explain": "SMTP uses TCP port 25 for sending email between servers. POP3 uses 110, IMAP uses 143, and SSH uses 22."
     }
   ]
 }

@@ -10,15 +10,15 @@
 - **Entry point:** `game.html`
 - **Live URL:** `https://msagen2241.github.io/second-chance/`
 - **Database:** IndexedDB `second_chance_v2`, schema version 5
-- **Question count:** 113
+- **Question count:** 130
 - **Course file:** `courses/comptia.json`
 - **Bundled fallback:** `js/course-data.js`
 - **Manual resume:** saved study/run state is stored in `settings.saved_session_v1`
 
 ## Active gameplay model
 
-- **Normal** — 3 lives, missed questions requeue as `RETRY`, power-ups enabled
-- **Study** — infinite lives, missed questions requeue, no power-ups
+- **Normal** — 3 lives, missed questions requeue as `RETRY`
+- **Study** — infinite lives, missed questions requeue
 - **Streak** — one miss ends run
 - **Review** — replay unresolved missed questions
 
@@ -39,7 +39,7 @@
 - **Retry loop:** wrong answers are reinserted a few questions later, not just at the end of the deck
 - **Retry visibility:** queued retries are labeled `RETRY` in the HUD and wrong-answer feedback explicitly says the question was requeued
 - **Progression:** intentionally disabled via `Progression.enabled = false`; keep code, but it should stay inert unless explicitly re-enabled
-- **Power-ups:** only active in arcade-style modes; disabled for Study and all study-tool modes
+- **Power-ups:** removed from runtime
 - **Pretest:** preview phase intentionally hides explanations and disables back-navigation during that phase
 - **Confidence mode:** answer flow is gated by `awaitingConfidence` so `advance()` cannot skip the prompt
 - **Review Due:** now opens overdue cards first, then next-up scheduled review cards if nothing is overdue, and falls back to a useful starter drill when there is no review history yet
@@ -54,7 +54,7 @@
 - `css/base.css` — all main visuals, including study-tool cards and quick guide
 - `css/touch.css` — touch layout adjustments
 - `js/core.js` — game flow, render logic, mode starters, retry system, end screens
-- `js/gameplay.js` — power-up behavior and reward logic
+- `js/gameplay.js` — boss tracking and lightweight run-state helpers
 - `js/spaced.js` — spaced repetition records and weakest-question queries
 - `js/errorlog.js` — answer history and most-missed logic
 - `js/analytics.js` — session tracking and stats modal
