@@ -1682,6 +1682,227 @@ window.COURSE_DATA.comptia = {
         "143"
       ],
       "explain": "SMTP uses TCP port 25 for sending email between servers. POP3 uses 110, IMAP uses 143, and SSH uses 22."
+    },
+    {
+      "id": 131,
+      "q": "Dion Training is concerned with the possibility of employees accessing another user's workstation in secured areas without their permission. Which of the following would BEST be able to prevent this from happening?",
+      "category": "Security",
+      "correct": "Require biometric identification for user logins",
+      "distractors": [
+        "Require a username and a password for user logins",
+        "Enforce a policy that requires passwords to be changed every 30 days",
+        "Install security cameras in secure areas to monitor logins"
+      ],
+      "explain": "Biometric identification (fingerprint reader, retina scanner) ensures that even if a password is discovered, the attacker cannot log in without the employee's physical biometric. Passwords alone can be discovered and reused. Enforcing short password retention limits damage after disclosure but cannot prevent a login during the valid period. Security cameras are a detective or deterrent control, not a preventive one.",
+      "isBoss": false
+    },
+    {
+      "id": 132,
+      "q": "A system administrator is assigned an approved change request with a change window of 120 minutes. After 90 minutes, the change is stuck on step five of a five-step change. The server manager decides to initiate a rollback. Which describes what the system administrator should do next?",
+      "category": "Operational Procedures",
+      "correct": "Return the system to the original state before the change",
+      "distractors": [
+        "Return the system to step four since this was the last working step",
+        "Leave the change as is and inform users of a workaround",
+        "Request additional time since the change is near completion"
+      ],
+      "explain": "A rollback reverts everything to the last known good configuration before the change began — not just to the previous step. Every change should be accompanied by a rollback (backout) plan so it can be fully reversed if harmful or unforeseen consequences occur.",
+      "isBoss": false
+    },
+    {
+      "id": 133,
+      "q": "Which of the following is the BEST thing to use to uniquely identify the different workstations in use on the local area network?",
+      "category": "Operational Procedures",
+      "correct": "MAC address",
+      "distractors": [
+        "IP address",
+        "Domain name",
+        "RFID"
+      ],
+      "explain": "Each NIC has a unique MAC address assigned by the manufacturer, making it the best unique identifier on a LAN. IP addresses frequently change via DHCP. A domain name is shared by all clients on the domain. RFID physically tags devices but is not transmitted over the network.",
+      "isBoss": false
+    },
+    {
+      "id": 134,
+      "q": "Which of the following types of attacks occurs when an attacker attempts to gain confidential information or login credentials by sending targeted emails to a specific set of recipients within an organization?",
+      "category": "Security",
+      "correct": "Spear phishing",
+      "distractors": [
+        "Phishing",
+        "Vishing",
+        "Whaling"
+      ],
+      "explain": "Spear phishing targets a specific set of people with tailored emails — the key differentiator is the targeted recipients. Phishing casts a wide net to random recipients. Whaling targets senior executives or high-value individuals. Vishing uses phone calls or VoIP to extract information.",
+      "isBoss": false
+    },
+    {
+      "id": 135,
+      "q": "Regardless of what website Michelle types into her browser, she is being redirected to \"malwarescammers.com.\" What should Michelle do to fix this problem?",
+      "category": "Software Troubleshooting",
+      "correct": "Reset the web browser's proxy setting",
+      "distractors": [
+        "Rollback the application to the previous version",
+        "Update the anti-virus software and run a full system scan",
+        "Restart the network services"
+      ],
+      "explain": "A browser redirect for all sites typically means a malicious proxy has been injected into the browser's connection settings. Checking and clearing the proxy under Internet Options (Connections tab) is the correct first step. The hosts file should also be checked for single-site redirects. AV scans and network restarts do not address the proxy configuration directly.",
+      "isBoss": false
+    },
+    {
+      "id": 136,
+      "q": "Peter is attempting to print to his office printer, but nothing comes out. Yesterday, his printer was working just fine. Peter does not notice any errors on the taskbar's printer icon. Which of the following actions should Peter try FIRST to solve this issue?",
+      "category": "Software Troubleshooting",
+      "correct": "Check the status of the print server queue",
+      "distractors": [
+        "Check to ensure the printer selected is the default printer",
+        "Cancel all documents and print them again",
+        "Check that the printer is not offline"
+      ],
+      "explain": "When no error appears on the taskbar printer icon, the print job likely reached the queue but became stuck there. Opening and clearing the print queue is the correct first step. Offline status would typically surface as a visible error. Verifying the default printer and resubmitting are secondary steps.",
+      "isBoss": false
+    },
+    {
+      "id": 137,
+      "q": "An attacker has been collecting credit card details by calling victims and using false pretexts to trick them. Which of the following types of attack is being conducted?",
+      "category": "Security",
+      "correct": "Vishing",
+      "distractors": [
+        "Phishing",
+        "Spear phishing",
+        "Whaling"
+      ],
+      "explain": "Vishing (voice phishing) extracts information through phone calls or VoIP. Phishing is email-based with a wide target pool. Spear phishing is a targeted email attack against a specific group. Whaling is email- or web-based phishing aimed at senior executives or high-value individuals.",
+      "isBoss": false
+    },
+    {
+      "id": 138,
+      "q": "Which of the following data types would be used to store the number 3.14?",
+      "category": "Operational Procedures",
+      "correct": "Floating-point",
+      "distractors": [
+        "String",
+        "Integer",
+        "Boolean"
+      ],
+      "explain": "A floating-point type stores fractional/decimal numbers like 3.14 and consumes 4–8 bytes. An integer stores whole numbers. A boolean stores TRUE (1) or FALSE (0) in 1 bit. A string stores character sequences and would treat 3.14 as text, not a numeric value.",
+      "isBoss": false
+    },
+    {
+      "id": 139,
+      "q": "A user reports their Windows 10 computer runs unusually slow after login. Task Manager shows >99% disk usage from a process named \"Antimalware Service Executable.\" What is the BEST way to resolve this?",
+      "category": "Software Troubleshooting",
+      "correct": "Update Windows Defender definitions and restart the system",
+      "distractors": [
+        "Permanently disable the anti-malware program's real-time protection",
+        "Perform a full malware scan and schedule it for off-hours",
+        "Restart the computer in Safe Mode and disable startup programs"
+      ],
+      "explain": "High disk usage by Antimalware Service Executable is commonly caused by outdated virus definitions triggering continuous scanning. Updating definitions resolves the cause. Disabling real-time protection creates a security gap. Running a full scan during work hours worsens the slowdown. Safe Mode is reserved for more severe scenarios and is not the correct first step.",
+      "isBoss": false
+    },
+    {
+      "id": 140,
+      "q": "You need to recycle 20 old company laptops for donation to a community center. Which data destruction method is MOST appropriate to fully destroy the data while keeping the drives reusable?",
+      "category": "Security",
+      "correct": "Low-level formatting of the HDDs",
+      "distractors": [
+        "Degaussing of the HDDs",
+        "Standard formatting of the HDDs",
+        "Drill/hammer the HDD platters"
+      ],
+      "explain": "Low-level formatting overwrites all sectors, making data recovery essentially impossible while leaving the drive functional. Standard formatting only removes file system pointers, leaving data recoverable. Degaussing destroys the magnetic medium, rendering the drive unusable. Physically destroying the platters also makes the drives unusable — unsuitable for donation.",
+      "isBoss": false
+    },
+    {
+      "id": 141,
+      "q": "You need to provide remote access to a virtualized desktop on a Linux-based hypervisor. The solution must support audio, USB redirection, and high-quality video streaming. Which protocol BEST meets this requirement?",
+      "category": "Operational Procedures",
+      "correct": "SPICE",
+      "distractors": [
+        "VNC",
+        "SSH",
+        "RDP"
+      ],
+      "explain": "SPICE (Simple Protocol for Independent Computing Environments) is designed for virtualized desktop access and natively supports audio, USB redirection, and high-quality video — commonly paired with Linux hypervisors like KVM. RDP is a Microsoft-proprietary protocol primarily for Windows. SSH provides command-line access, not a graphical desktop. VNC offers remote desktop access but lacks SPICE's multimedia and device-redirection features.",
+      "isBoss": false
+    },
+    {
+      "id": 142,
+      "q": "Sarah is installing Windows 10 (64-bit) in a virtual machine configured with a dual-core 950 MHz processor, 4 GB of RAM, a 64 GB hard drive, and 1280×720 resolution. The installation keeps failing. Which component is insufficient?",
+      "category": "Operating Systems",
+      "correct": "The processor is insufficient",
+      "distractors": [
+        "The screen resolution is insufficient",
+        "The amount of storage space is insufficient",
+        "The amount of RAM is insufficient"
+      ],
+      "explain": "Windows 10 (64-bit) requires a minimum 1 GHz processor. At 950 MHz the CPU falls short. The 4 GB RAM exceeds the 2 GB minimum, the 64 GB drive exceeds the 20 GB minimum, and 1280×720 meets the display requirement. Windows 11 raises the RAM minimum to 4 GB and storage to 64 GB, but those thresholds are not relevant here.",
+      "isBoss": false
+    },
+    {
+      "id": 143,
+      "q": "A user's Windows 10 upgrade failed. Which log file in Event Viewer should you review to determine the cause?",
+      "category": "Software Troubleshooting",
+      "correct": "Setup log",
+      "distractors": [
+        "Application log",
+        "Security log",
+        "System log"
+      ],
+      "explain": "The Setup log (setup.evtx) records all events from the Windows installation or upgrade process and is the correct source for upgrade failure details. The Application log tracks application errors. The System log covers driver, service, and hardware events. The Security log records audit and login events.",
+      "isBoss": false
+    },
+    {
+      "id": 144,
+      "q": "Tom has finished installing and configuring a new domain server. What is the next step he should perform so that employees can access the server on the corporate domain?",
+      "category": "Security",
+      "correct": "Configure the user's account",
+      "distractors": [
+        "Configure access to the file server",
+        "Install antivirus protection",
+        "Install an application"
+      ],
+      "explain": "After the server is installed and configured, the administrator must create and configure user accounts — following least-privilege principles — before employees can log in. Installing antivirus, applications, and configuring file server access all come after accounts are set up.",
+      "isBoss": false
+    },
+    {
+      "id": 145,
+      "q": "Under which environmental condition is electrostatic discharge (ESD) the greatest threat?",
+      "category": "Operational Procedures",
+      "correct": "When humidity is low",
+      "distractors": [
+        "When temperatures are high",
+        "When humidity is high",
+        "When temperatures are low"
+      ],
+      "explain": "Low humidity allows static charge to build up because there is little moisture in the air to dissipate it. High humidity actually reduces ESD risk because moisture conducts away static electricity. Server rooms should maintain 40–60% relative humidity to minimize ESD risk to components.",
+      "isBoss": false
+    },
+    {
+      "id": 146,
+      "q": "Which Linux command is used to change the ownership of a file or directory?",
+      "category": "Operating Systems",
+      "correct": "chown",
+      "distractors": [
+        "chmod",
+        "passwd",
+        "pwd"
+      ],
+      "explain": "chown changes the owning user or group of a file, directory, or link. chmod modifies the permission flags (read/write/execute) on files and directories. passwd changes user account passwords. pwd prints the current working directory path.",
+      "isBoss": false
+    },
+    {
+      "id": 147,
+      "q": "Which backup rotation scheme overwrites the oldest media with the current backup being performed?",
+      "category": "Operational Procedures",
+      "correct": "FIFO",
+      "distractors": [
+        "3-2-1 backup",
+        "Grandfather-father-son",
+        "Tower of Hanoi"
+      ],
+      "explain": "FIFO (First In, First Out) uses a fixed set of tapes and always overwrites the oldest one. Grandfather-father-son (GFS) combines daily incremental, weekly full, and monthly full backups stored at different retention levels. The 3-2-1 rule requires three copies on two media types with one off-site. Tower of Hanoi rotates sets on a mathematical schedule to minimize tape wear while retaining longer history.",
+      "isBoss": false
     }
   ]
 };
