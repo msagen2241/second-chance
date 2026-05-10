@@ -713,6 +713,8 @@ const Core = {
     let retryQueued = false;
     let confidence = null;
 
+    if (!entry.isRetry) this._trackRecentId(entry.id);
+
     buttons.forEach(b => b.disabled = true);
 
     if (this.state.mode === 'confidence') {
@@ -1591,13 +1593,31 @@ const Core = {
   // Build shuffled deck
   buildDeck(questionIds) {
     const shuffled = this.shuffle(questionIds);
+    const recent = this._getRecentIds();
+    // Push recently-answered questions toward the back so the deck feels fresh
+    const front = shuffled.filter(id => !recent.has(id));
+    const back = this.shuffle(shuffled.filter(id => recent.has(id)));
+    const ordered = [...front, ...back];
     const questions = Courses.getQuestions();
-    return shuffled.map(id => ({
+    return ordered.map(id => ({
       id,
       question: questions[id],
       isRetry: false,
       isBoss: questions[id].isBoss || false
     }));
+  },
+
+  _getRecentIds() {
+    try { return new Set(JSON.parse(localStorage.getItem('sc_recent_ids') || '[]')); }
+    catch { return new Set(); }
+  },
+
+  _trackRecentId(id) {
+    try {
+      const list = JSON.parse(localStorage.getItem('sc_recent_ids') || '[]');
+      const updated = [id, ...list.filter(x => x !== id)].slice(0, 25);
+      localStorage.setItem('sc_recent_ids', JSON.stringify(updated));
+    } catch {}
   },
 
   // Build shuffled options
@@ -1665,7 +1685,11 @@ const Core = {
   shuffle(arr) {
     const a = [...arr];
     for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      const range = i + 1;
+      const max = Math.floor(0x100000000 / range) * range;
+      let r;
+      do { r = crypto.getRandomValues(new Uint32Array(1))[0]; } while (r >= max);
+      const j = r % range;
       [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
