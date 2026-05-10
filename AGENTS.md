@@ -2,17 +2,17 @@
 
 ## Project Overview
 
-A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 130 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
+A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam material (Test 1 review). The game presents 159 randomly shuffled multiple-choice questions with a pixel-art aesthetic (VT323 + JetBrains Mono fonts, cyan/pink/green/yellow palette on a dark grid background).
 
 ### Features
 
-- **4 main game modes** — Normal (3 lives with missed-question recycling until correct), Study (infinite lives, no power-ups), Streak (no lives, ends on first miss), Review (replay unresolved missed questions)
+- **4 main game modes** — Normal (3 lives with missed-question recycling until correct), Study (infinite lives), Streak (no lives, ends on first miss), Review (replay unresolved missed questions)
 - **9 study tools** — Category (pick one), Weakness (auto bottom 2 categories), Cram (30 most-missed), Review Due (spaced repetition queue), Interleave Weakness, Confidence, Red Flag, Pretest, Quickfire
 - **Mode picker** — toggle between Normal, Study, and Streak on the start screen
 - **Lives system** — 3 hearts; lose one per wrong answer (Normal mode only)
 - **Second-chance retry loop** — in all non-streak quiz flows, a missed question is requeued a few questions later as a `RETRY` item and stays in circulation until answered correctly
 - **Streak bonus** — consecutive correct answers earn escalating bonus points (up to +100)
-- **Question categories** — all 130 questions tagged with CompTIA exam domains (Operating Systems, Security, Software Troubleshooting, Operational Procedures)
+- **Question categories** — all 159 questions tagged with CompTIA exam domains (Operating Systems, Security, Software Troubleshooting, Operational Procedures)
 - **Category breakdown** — end screen shows colored bar chart sorted by lowest accuracy first
 - **Randomized deck** — questions and answer order shuffle each run
 - **Manual save/resume** — save an in-progress run from the game HUD and resume it later from the start screen
@@ -32,15 +32,15 @@ A single-page, retro-horizonal arcade-style quiz game for studying CompTIA exam 
 
 ### Game Data
 
-Questions live in `courses/comptia.json` (130 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, password attacks, missed practice-test questions, and more). Each question has a `category` field for the CompTIA domain breakdown. `js/course-data.js` contains the same course data as a bundled fallback so `game.html` works when opened directly via `file://`, where browsers block `fetch('courses/comptia.json')`.
+Questions live in `courses/comptia.json` (159 questions covering IT change management, wireless security, Linux commands, Windows troubleshooting, networking, password attacks, missed practice-test questions, and more). Each question has a `category` field for the CompTIA domain breakdown. `js/course-data.js` contains the same course data as a bundled fallback so `game.html` works when opened directly via `file://`, where browsers block `fetch('courses/comptia.json')`.
 
 **Category distribution:**
 | Category | Count | Color |
 |----------|-------|-------|
-| Operating Systems | 60 | cyan |
-| Security | 34 | pink |
-| Software Troubleshooting | 20 | green |
-| Operational Procedures | 16 | yellow |
+| Operating Systems | 62 | cyan |
+| Security | 41 | pink |
+| Software Troubleshooting | 31 | green |
+| Operational Procedures | 25 | yellow |
 
 ## How to Play
 
@@ -92,7 +92,7 @@ Second Chance/
 ├── AGENTS.md                       # This file
 ├── .qwen/PROJECT_SUMMARY.md        # Running project summary for agent handoff/context
 ├── courses/
-│   └── comptia.json                # 130 CompTIA questions (categories, boss flags)
+│   └── comptia.json                # 159 CompTIA questions (categories, boss flags)
 ├── css/
 │   ├── base.css                    # Main styles (includes study tools, juice, progression)
 │   └── touch.css                   # Touch-specific responsive overrides

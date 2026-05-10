@@ -10,7 +10,7 @@
 - **Entry point:** `game.html`
 - **Live URL:** `https://msagen2241.github.io/second-chance/`
 - **Database:** IndexedDB `second_chance_v2`, schema version 5
-- **Question count:** 130
+- **Question count:** 159
 - **Course file:** `courses/comptia.json`
 - **Bundled fallback:** `js/course-data.js`
 - **Manual resume:** saved study/run state is stored in `settings.saved_session_v1`

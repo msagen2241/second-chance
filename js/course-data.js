@@ -1903,6 +1903,162 @@ window.COURSE_DATA.comptia = {
       ],
       "explain": "FIFO (First In, First Out) uses a fixed set of tapes and always overwrites the oldest one. Grandfather-father-son (GFS) combines daily incremental, weekly full, and monthly full backups stored at different retention levels. The 3-2-1 rule requires three copies on two media types with one off-site. Tower of Hanoi rotates sets on a mathematical schedule to minimize tape wear while retaining longer history.",
       "isBoss": false
+    },
+    {
+      "id": 148,
+      "q": "You are configuring a SOHO network and only allowing specific IP addresses to access the network while blocking any IP addresses that are not on the list. Which of the following should be implemented?",
+      "category": "Security",
+      "correct": "Allow list",
+      "distractors": [
+        "MAC filtering",
+        "Port forwarding",
+        "Blocklist"
+      ],
+      "explain": "An allow list permits only explicitly approved IP addresses and blocks everything else by default. A blocklist blocks specified addresses but allows others, which is the opposite of this scenario.",
+      "isBoss": false
+    },
+    {
+      "id": 149,
+      "q": "Jack has asked you for a recommendation on which word processing software they should install. There are four different options available. Which license type would be the most cost-effective for a single home user?",
+      "category": "Operational Procedures",
+      "correct": "Personal",
+      "distractors": [
+        "Business",
+        "Open-source",
+        "Enterprise"
+      ],
+      "explain": "A personal license is designed and priced for individual home use. Business and enterprise licenses typically cost more and are intended for commercial or organizational use.",
+      "isBoss": false
+    },
+    {
+      "id": 150,
+      "q": "Dion Training wants to implement a new wireless network using WPA3 in their offices. Which of the following features of WPA3 replaces the Pre-Shared Key (PSK) authentication used in WPA2?",
+      "category": "Security",
+      "correct": "SAE",
+      "distractors": [
+        "AES GCMP",
+        "Enhanced open",
+        "CCMP"
+      ],
+      "explain": "SAE, or Simultaneous Authentication of Equals, replaces WPA2-PSK in WPA3 and provides stronger password-based authentication with protection against offline dictionary attacks.",
+      "isBoss": false
+    },
+    {
+      "id": 151,
+      "q": "A user reports their Windows 10 computer is running slowly and the hard drive light is constantly on. Which tool should the technician use first to identify the cause?",
+      "category": "Software Troubleshooting",
+      "correct": "Task Manager",
+      "distractors": [
+        "Disk Cleanup",
+        "Event Viewer",
+        "System Restore"
+      ],
+      "explain": "Task Manager is the first tool to check for live performance bottlenecks because it shows CPU, memory, disk, and network usage by process in real time.",
+      "isBoss": false
+    },
+    {
+      "id": 152,
+      "q": "A technician is troubleshooting a Windows PC that displays a \"Low Memory\" warning. After adding more RAM, the issue persists. What should the technician check next?",
+      "category": "Software Troubleshooting",
+      "correct": "Adjust the virtual memory (pagefile) settings",
+      "distractors": [
+        "Increase the display resolution",
+        "Reinstall the operating system",
+        "Run Disk Cleanup"
+      ],
+      "explain": "Virtual memory uses disk space to supplement RAM. If pagefile settings are too small or misconfigured, low memory warnings can persist even after adding physical memory.",
+      "isBoss": false
+    },
+    {
+      "id": 153,
+      "q": "A user's browser keeps redirecting to unknown websites and displaying excessive pop-up ads. What is the MOST likely cause?",
+      "category": "Software Troubleshooting",
+      "correct": "Malware/adware infection",
+      "distractors": [
+        "Corrupt browser installation",
+        "Outdated browser version",
+        "DNS server misconfiguration"
+      ],
+      "explain": "Browser redirects and excessive pop-ups are classic symptoms of adware or malware infection. An outdated browser can increase risk, but it does not usually cause redirects by itself.",
+      "isBoss": false
+    },
+    {
+      "id": 154,
+      "q": "Which of the following is the BEST method to prevent ransomware from causing permanent data loss?",
+      "category": "Software Troubleshooting",
+      "correct": "Maintain regular offline backups",
+      "distractors": [
+        "Install antivirus software",
+        "Enable Windows Firewall",
+        "Use strong passwords"
+      ],
+      "explain": "Regular offline or offsite backups are the best protection against permanent ransomware data loss because they allow clean restoration if local files are encrypted.",
+      "isBoss": false
+    },
+    {
+      "id": 155,
+      "q": "A user's Android phone apps keep crashing after a recent OS update. What should the technician try FIRST?",
+      "category": "Software Troubleshooting",
+      "correct": "Clear the app cache and data",
+      "distractors": [
+        "Factory reset the device",
+        "Uninstall and reinstall all apps",
+        "Roll back the OS update"
+      ],
+      "explain": "Clearing app cache and data is the least disruptive first step for app crashes after an OS update because stale or corrupt cached data often causes the issue.",
+      "isBoss": false
+    },
+    {
+      "id": 156,
+      "q": "A technician needs to remove a rootkit from an infected Windows machine. What is the MOST effective approach?",
+      "category": "Software Troubleshooting",
+      "correct": "Boot from external media and scan offline",
+      "distractors": [
+        "Run Windows Defender in normal mode",
+        "Use System Restore to a previous point",
+        "Uninstall recently added programs"
+      ],
+      "explain": "Rootkits can hide from scanners running inside the infected OS. Booting from trusted external media lets the scanner inspect the drive while the rootkit is inactive.",
+      "isBoss": false
+    },
+    {
+      "id": 157,
+      "q": "A Windows PC shows a \"missing DLL\" error when launching an application. What is the BEST first step?",
+      "category": "Software Troubleshooting",
+      "correct": "Reinstall or repair the application",
+      "distractors": [
+        "Reinstall Windows",
+        "Delete and reinstall the DLL manually",
+        "Run sfc /scannow"
+      ],
+      "explain": "A missing DLL error is commonly caused by a corrupt or incomplete application install. Repairing or reinstalling the application restores the proper DLL version safely.",
+      "isBoss": false
+    },
+    {
+      "id": 158,
+      "q": "A technician discovers that an employee has been using company equipment to run a personal side business. What should the technician do?",
+      "category": "Operational Procedures",
+      "correct": "Document the finding and report it to management",
+      "distractors": [
+        "Confront the employee directly",
+        "Ignore it as it doesn't affect performance",
+        "Delete the personal business files immediately"
+      ],
+      "explain": "The professional response to an acceptable use policy violation is to document the finding and escalate it through management or the proper reporting channel.",
+      "isBoss": false
+    },
+    {
+      "id": 159,
+      "q": "After completing a system change, a technician notices unexpected behavior in a related system. What should they do according to change management procedures?",
+      "category": "Operational Procedures",
+      "correct": "Initiate a rollback and document the issue",
+      "distractors": [
+        "Continue monitoring and wait for it to resolve",
+        "Document it and move on",
+        "Immediately call the vendor"
+      ],
+      "explain": "When a change causes unexpected side effects, change management best practice is to roll back to the last known good state and document the issue for review.",
+      "isBoss": false
     }
   ]
 };

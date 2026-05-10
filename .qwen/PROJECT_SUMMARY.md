@@ -16,7 +16,7 @@ Second Chance — modular arcade quiz game for studying CompTIA exam material. A
 - **Audio:** Music **disabled** (`playTrack` is no-op). SFX only via `Audio.sfx()`.
 - **Main modes:** Normal, Study, Streak, Review
 - **9 study tools:** Category, Weakness, Cram, Review Due, Interleave Weakness, Confidence, Red Flag, Pretest, Quickfire
-- **Question count:** 130 total
+- **Question count:** 159 total
 - **Retry loop:** missed questions are requeued a few questions later until answered correctly; visible as `RETRY`
 - **Progression:** disabled at runtime via `Progression.enabled = false`, code retained
 - **`renderStart()` and `render()` are async** — must be awaited
@@ -49,7 +49,7 @@ Second Chance — modular arcade quiz game for studying CompTIA exam material. A
 
 ## Current Plan
 Current working set:
-- Question bank now contains 130 CompTIA questions and the bundled fallback matches it
+- Question bank now contains 159 CompTIA questions and the bundled fallback matches it
 - Review Due now falls back to next-up scheduled cards instead of dead-clicking when nothing is overdue
 - Quickfire mode now auto-advances after right/wrong feedback and keeps retry recycling
 - Save/resume is available from the in-run HUD and start screen
@@ -57,4 +57,4 @@ Current working set:
 ---
 
 ## Summary Metadata
-**Update time**: 2026-05-06T00:00:00.000Z
+**Update time**: 2026-05-09T00:00:00.000Z
