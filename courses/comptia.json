@@ -2057,6 +2057,266 @@
       ],
       "explain": "When a change causes unexpected side effects, change management best practice is to roll back to the last known good state and document the issue for review.",
       "isBoss": false
+    },
+    {
+      "id": 160,
+      "q": "After replacing a security device protecting a screened subnet, external users can no longer access a remotely accessible application. Which device was MOST likely misconfigured?",
+      "category": "Security",
+      "correct": "Firewall",
+      "distractors": [
+        "DHCP",
+        "Content filter",
+        "DNS"
+      ],
+      "explain": "A firewall is an integral part of creating a screened subnet. If the firewall ruleset was not configured to allow external users to access the application remotely, the default condition is to deny by default. Content filtering denies traffic based on content, not server access. DHCP (port 67) assigns IP addresses and is unrelated to access control. DNS (port 53) handles name resolution, not access control.",
+      "isBoss": false
+    },
+    {
+      "id": 161,
+      "q": "You are troubleshooting an issue with a Windows desktop and need to display the machine's active TCP connections. Which of the following commands should you use?",
+      "category": "Operating Systems",
+      "correct": "netstat",
+      "distractors": [
+        "net use",
+        "ping",
+        "nslookup"
+      ],
+      "explain": "netstat displays active TCP/UDP connections, listening ports, and network statistics. nslookup queries DNS servers to resolve hostnames. net use manages network drive connections. ping tests reachability. For active TCP connections, netstat (or netstat -a) is the correct tool.",
+      "isBoss": false
+    },
+    {
+      "id": 162,
+      "q": "A user cannot install a printer and wants to check if a printer driver is already installed. Which Control Panel utility should you use?",
+      "category": "Operating Systems",
+      "correct": "Device Manager",
+      "distractors": [
+        "System",
+        "Programs and Features",
+        "Devices and Printers"
+      ],
+      "explain": "Device Manager shows all hardware drivers installed, including printer drivers, and highlights issues with yellow exclamation marks. Programs and Features manages installed software applications. Devices and Printers manages connected devices but doesn't show driver details. System shows OS and hardware info.",
+      "isBoss": false
+    },
+    {
+      "id": 163,
+      "q": "A user reports their workstation's CPU spikes to 95-100% and Microsoft Word is behaving strangely. What is the MOST likely cause?",
+      "category": "Software Troubleshooting",
+      "correct": "The computer has become a zombie",
+      "distractors": [
+        "The computer is the victim of a DoS attack",
+        "Word has a corrupt installation",
+        "The hard drive is failing"
+      ],
+      "explain": "A zombie workstation runs unauthorized software directing it to participate in DDoS attacks as part of a botnet — using CPU and network resources heavily. Botnets can spread via macros in Office documents. A DoS attack targets the machine from outside as a victim receiving traffic, not generating it.",
+      "isBoss": false
+    },
+    {
+      "id": 164,
+      "q": "A user cannot access shared network drives after a recent security update and sees unexpected system notifications. Other users in the same department have no issues. What should you do FIRST?",
+      "category": "Software Troubleshooting",
+      "correct": "Check for unauthorized software and scan for malware",
+      "distractors": [
+        "Verify network settings and reconnect to network drives",
+        "Disable the recent security update and reattempt the connection",
+        "Reimage the workstation"
+      ],
+      "explain": "Unexpected notifications plus inability to access resources (while others can) is a classic malware symptom. Scan for malware first before doing network troubleshooting. Disabling security updates exposes the system to vulnerabilities. Reimaging is a last resort.",
+      "isBoss": false
+    },
+    {
+      "id": 165,
+      "q": "You submitted an RFC to install a security patch on some Windows 2019 servers. Which change request document describes which servers will receive the patch?",
+      "category": "Operational Procedures",
+      "correct": "Scope",
+      "distractors": [
+        "Purpose",
+        "Risk analysis",
+        "Plan"
+      ],
+      "explain": "Scope defines the area, number, size, or scale of the change — which systems are affected. Plan describes HOW the change occurs. Purpose defines WHY. Risk analysis covers likelihood and impact. When a question asks \"which systems are included,\" that's always Scope.",
+      "isBoss": false
+    },
+    {
+      "id": 166,
+      "q": "An employee emailed themselves customer data including names, account numbers, and credit card limits to work from home. Which logical security concept prevents trusted insiders from stealing corporate data?",
+      "category": "Security",
+      "correct": "DLP",
+      "distractors": [
+        "Strong passwords",
+        "MDM",
+        "Firewall"
+      ],
+      "explain": "Data Loss Prevention (DLP) detects and prevents data exfiltration by monitoring sensitive data in use, in motion, and at rest. Since the user was an authorized insider, passwords, firewalls, and MDM don't address this threat. DLP is specifically designed to stop insider data theft.",
+      "isBoss": false
+    },
+    {
+      "id": 167,
+      "q": "A company must continue using an end-of-life (EOL) OS for a legacy application. Which is the BEST mitigation strategy?",
+      "category": "Operating Systems",
+      "correct": "Implement network segmentation and restrict internet access",
+      "distractors": [
+        "Upgrade the application to the latest version",
+        "Replace the outdated hardware",
+        "Continue using the system but enable all available security updates"
+      ],
+      "explain": "For EOL systems, isolation is the best security mitigation — network segmentation and restricting internet access prevents cyberattacks while the system still functions. Upgrading may not be possible. Security updates are not available for EOL systems. Hardware replacement doesn't solve the OS vulnerability.",
+      "isBoss": false
+    },
+    {
+      "id": 168,
+      "q": "Which utility would you use to view startup items, disable services, and modify boot parameters on Windows?",
+      "category": "Software Troubleshooting",
+      "correct": "System Configuration (msconfig)",
+      "distractors": [
+        "PerfMon",
+        "Resource Monitor",
+        "System Information (msinfo32)"
+      ],
+      "explain": "MSConfig manages startup processes, services, drivers, and boot parameters. PerfMon monitors CPU/memory performance. Resource Monitor displays real-time hardware/software resource usage. MSinfo32 gathers system info for diagnostics but cannot manage startup items.",
+      "isBoss": false
+    },
+    {
+      "id": 169,
+      "q": "An IT admin receives an email from legal instructing them not to delete any emails or files related to a specific project. What is the MOST likely reason?",
+      "category": "Operational Procedures",
+      "correct": "A notice of a legal hold",
+      "distractors": [
+        "A data transport request",
+        "A chain of custody breach",
+        "The process of discovery"
+      ],
+      "explain": "A legal hold (litigation hold) instructs staff to preserve all relevant data in anticipation of litigation. It precedes discovery. Discovery is the legal process of exchanging evidence — the hold comes first to ensure data is preserved before discovery begins. Chain of custody relates to evidence handling, not preservation notices.",
+      "isBoss": false
+    },
+    {
+      "id": 170,
+      "q": "You need a document that legally defines service expectations, uptime guarantees, and penalties if a third-party cloud provider fails to meet agreed terms. Which document should you request?",
+      "category": "Operational Procedures",
+      "correct": "SLA",
+      "distractors": [
+        "BCP",
+        "EULA",
+        "SLO"
+      ],
+      "explain": "A Service Level Agreement (SLA) is legally binding and defines expectations, uptime, response times, and penalties. An SLO (Service Level Objective) outlines performance goals but is not legally enforceable. A BCP focuses on maintaining operations during disruptions. An EULA governs software usage rights, not provider performance.",
+      "isBoss": false
+    },
+    {
+      "id": 171,
+      "q": "You need the BEST encryption for APs connecting two company buildings to maximize wireless security. Which should you choose?",
+      "category": "Security",
+      "correct": "WPA3",
+      "distractors": [
+        "WEP",
+        "WPA",
+        "WPA2 (AES)"
+      ],
+      "explain": "WPA3 is the latest and most secure standard, using SAE (Simultaneous Authentication of Equals) instead of PSK and offering 192-bit encryption for enterprise. WPA2/AES is still strong but WPA3 supersedes it. WEP and WPA are obsolete. When \"maximize security\" is stated and WPA3 is an option, always choose WPA3.",
+      "isBoss": false
+    },
+    {
+      "id": 172,
+      "q": "A user installed a third-party email client on their smartphone. After resetting their password, they still get 'Invalid credentials.' What is the MOST appropriate solution?",
+      "category": "Software Troubleshooting",
+      "correct": "Reconfigure the email client with the new credentials",
+      "distractors": [
+        "Disable the recent security update",
+        "Verify network settings",
+        "Update the email client to the latest version"
+      ],
+      "explain": "After a password reset, third-party apps don't auto-update stored credentials — the user must manually update the password in the app settings. An invalid credentials error after a password change is a credential issue, not a network or update issue.",
+      "isBoss": false
+    },
+    {
+      "id": 173,
+      "q": "In a PBQ authentication-factor matching task, which mapping is correct?",
+      "category": "Security",
+      "correct": "Something you know = passwords/PINs; something you have = smart cards/tokens/phones/badges; something you are = biometrics; somewhere you are = geolocation",
+      "distractors": [
+        "Something you know = smart cards; something you have = fingerprints; something you are = passwords; somewhere you are = badges",
+        "Something you know = geolocation; something you have = PINs; something you are = tokens; somewhere you are = biometrics",
+        "Something you know = phones; something you have = security questions; something you are = location; somewhere you are = fingerprints"
+      ],
+      "explain": "Authentication factors are grouped by type: know = passwords, PINs, and security questions; have = smart cards, tokens, phones, and badges; are = biometrics such as fingerprint, retina, or face; where = location-based authentication. MFA requires two or more different factor types.",
+      "isBoss": false
+    },
+    {
+      "id": 174,
+      "q": "During malware remediation, what step would allow malware to reinfect the system if skipped?",
+      "category": "Software Troubleshooting",
+      "correct": "Disabling System Restore and removing previous restore points",
+      "distractors": [
+        "Performing a data wipe on the USB thumb drive",
+        "Updating antivirus definitions before scanning",
+        "Running the scan in Safe Mode"
+      ],
+      "explain": "Malware can embed itself in System Restore restore points — if you don't disable System Restore and purge old restore points BEFORE scanning, the malware reinfects the system when restore points are accessed. This is a required step in CompTIA's malware remediation process: disable System Restore first, then scan, then re-enable.",
+      "isBoss": false
+    },
+    {
+      "id": 175,
+      "q": "Bob is building a workstation for his son to write school reports. It has an Intel x86 processor, 3 GB RAM, and 256 GB SSD. Which Windows edition is MOST appropriate?",
+      "category": "Operating Systems",
+      "correct": "Windows 10 Home",
+      "distractors": [
+        "Windows 11 Home",
+        "Windows 10 Pro",
+        "Enterprise"
+      ],
+      "explain": "An x86 (32-bit) processor with 3 GB RAM cannot run Windows 11 (requires 64-bit CPU, 4 GB RAM, TPM 2.0). Windows 10 Home supports x86/32-bit, runs on 3 GB RAM, and is correct for a personal student workstation. Pro and Enterprise include domain/business features unnecessary for home use.",
+      "isBoss": false
+    },
+    {
+      "id": 176,
+      "q": "You need to manage user accounts and reset passwords on a local Windows machine without domain access. Which tool should you use?",
+      "category": "Operating Systems",
+      "correct": "Local Users and Groups",
+      "distractors": [
+        "System Configuration",
+        "System Information",
+        "Device Manager"
+      ],
+      "explain": "Local Users and Groups (lusrmgr.msc) creates, modifies, and deletes local user accounts and resets passwords. System Configuration manages startup. System Information (msinfo32) displays hardware/software info. Device Manager manages hardware drivers. For local account management = lusrmgr.msc.",
+      "isBoss": false
+    },
+    {
+      "id": 177,
+      "q": "A user wants their laptop to save the session to disk and power off completely to save battery, resuming exactly where they left off. Which power setting should be configured?",
+      "category": "Operating Systems",
+      "correct": "Hibernate",
+      "distractors": [
+        "Standby",
+        "Sleep",
+        "Lock"
+      ],
+      "explain": "Hibernate saves the entire RAM contents to disk (hiberfil.sys) then powers off completely — enabling full session restoration even after a full power loss. Sleep keeps RAM powered (uses battery). Standby is an older term for Sleep. Lock secures the screen but keeps the system running. Hibernate = full power-off + session preservation.",
+      "isBoss": false
+    },
+    {
+      "id": 178,
+      "q": "A company needs daily backups kept for one week, weekly backups kept for one month, and monthly backups kept for one year. Which rotation scheme BEST meets this?",
+      "category": "Operational Procedures",
+      "correct": "Grandfather-Father-Son (GFS)",
+      "distractors": [
+        "3-2-1 backup strategy",
+        "Synthetic full backup",
+        "Off-site backup storage"
+      ],
+      "explain": "GFS is a hierarchical retention scheme: Son = daily (kept ~1 week), Father = weekly (kept ~1 month), Grandfather = monthly (kept 1 year+). The 3-2-1 strategy defines redundancy (3 copies, 2 media types, 1 offsite) — not a rotation schedule. Synthetic full is a backup creation method. Off-site is a location strategy.",
+      "isBoss": false
+    },
+    {
+      "id": 179,
+      "q": "After a Windows update, a user's display driver is causing system instability. What is the BEST first step?",
+      "category": "Software Troubleshooting",
+      "correct": "Rollback the driver to the previous version",
+      "distractors": [
+        "Reinstall Windows",
+        "Downgrade the PC to a previous patch level",
+        "Disable the display adapter"
+      ],
+      "explain": "Rolling back a driver to the previous version via Device Manager is the quickest, least disruptive fix when a driver update causes instability. Reinstalling Windows is excessive. Downgrading patch level introduces security vulnerabilities. Disabling the adapter removes display functionality entirely. Driver rollback is always the first step after an update breaks hardware.",
+      "isBoss": false
     }
   ]
 }
