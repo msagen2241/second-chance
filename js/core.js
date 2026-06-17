@@ -629,6 +629,17 @@ const Core = {
     }, delay);
   },
 
+  feedbackDetails(question) {
+    const explanation = question.explain || 'Review why this answer best matches the ITIL concept being tested.';
+    return `
+      <div class="feedback-answer">
+        <span>Correct answer</span>
+        <b>${question.correct}</b>
+      </div>
+      <div class="feedback-explain">${explanation}</div>
+    `;
+  },
+
   getSavedSessionSummary(record) {
     const session = record && record.session;
     if (!session) return null;
@@ -974,8 +985,8 @@ const Core = {
     fb.innerHTML = `
       <div class="feedback ${isCorrect ? 'correct-fb' : 'wrong-fb'}">
         <strong>${isCorrect ? '> ACCESS GRANTED' : '> SYSTEM ERROR'}</strong>
-        ${q.explain}
-        <div style="margin-top: 10px; font-size: 11px; color: var(--ink-dim); letter-spacing: 2px;">
+        ${this.feedbackDetails(q)}
+        <div class="feedback-meta">
           ${isCorrect
             ? `+${100 + this.streakBonus(this.state.streak - 1)} PTS`
             : retryQueued
@@ -995,12 +1006,13 @@ const Core = {
       fb.innerHTML = `
         <div class="feedback ${isCorrect ? 'correct-fb' : 'wrong-fb'} quickfire-fb">
           <strong>${isCorrect ? '> RIGHT' : '> WRONG'}</strong>
-          <div style="margin-top: 8px; color: var(--ink-dim); letter-spacing: 2px;">
+          ${this.feedbackDetails(q)}
+          <div class="feedback-meta">
             ${isCorrect ? '+100' : retryQueued ? 'RETRY QUEUED' : ''}
           </div>
         </div>
       `;
-      this.scheduleAutoAdvance();
+      this.scheduleAutoAdvance(1200);
       return;
     }
 
@@ -1069,7 +1081,7 @@ const Core = {
       <div id="feedbackSlot">
         <div class="feedback correct-fb">
           <strong>▶ REVIEW MODE</strong>
-          ${q.explain}
+          ${this.feedbackDetails(q)}
           <div class="feedback-nav">
             ${this.state.idx > 0 ? '<button class="btn-prev" id="prevBtn">◂ BACK</button>' : '<span></span>'}
             <button class="btn-next" id="nextBtn">NEXT ▸</button>

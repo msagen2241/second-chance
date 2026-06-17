@@ -413,6 +413,46 @@
   .feedback.correct-fb strong { color: var(--green); }
   .feedback.wrong-fb strong { color: var(--red); }
 
+  .feedback-answer {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--ink);
+    margin: 8px 0 10px;
+    padding: 10px 12px;
+  }
+
+  .feedback-answer span {
+    color: var(--ink-dim);
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .feedback-answer b {
+    color: var(--yellow);
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .feedback-explain {
+    color: var(--ink-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .feedback-meta {
+    color: var(--ink-dim);
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-top: 10px;
+  }
+
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }

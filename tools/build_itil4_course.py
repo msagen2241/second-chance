@@ -352,6 +352,48 @@ TERM_DISTRACTOR_MAP = {
     "workaround": ["Known error", "Problem control", "Error control"],
 }
 
+OFFICIAL_EXPLANATIONS = {
+    "greater ability to focus on customer experience when personal contact is needed": "Automation can handle routine contacts, which lets the service desk spend more attention on users who need human support.",
+    "utility": "Utility is what the service does; it is the functionality that helps meet a need or remove a constraint.",
+    "to systematically observe services and service components, and record and report selected changes of state": "Monitoring and event management watches services and components, then records and reports meaningful state changes.",
+    "accurate and carefully analyzed data": "Continual improvement decisions should be evidence-based, not based on assumptions or guesses.",
+    "by using a combination of practices": "Value chain activities use ITIL practices together to transform inputs into outputs.",
+    "1 and 4": "Customer engagement helps service level management by providing useful measurement input and supporting progress discussions.",
+    "understanding the vision and objectives of the organization": "Optimization starts by knowing what the organization is trying to achieve, so improvement work stays aligned to value.",
+    "service value system": "The SVS describes how all parts of the organization work together to co-create value with stakeholders.",
+    "service request management": "Service request management handles predefined user requests and can support feedback, compliments, and complaints.",
+    "service relationship management": "Service relationship management is the joint provider-consumer work that supports continual value co-creation.",
+    "incident management": "Incident management restores normal service operation as quickly as possible and minimizes business impact.",
+    "a standard change": "A standard change is low-risk, pre-authorized, and follows a documented procedure; many can be triggered as service requests.",
+    "collaborate and promote visibility": "Making work visible helps people understand flow, find bottlenecks, and identify waste.",
+    "a service": "A service enables value co-creation by helping customers achieve outcomes without managing specific costs and risks themselves.",
+    "a change authority should be assigned to each type of change and change model": "Different changes carry different risk, so authorization should match the change type and model.",
+    "organizations and people": "This dimension includes structure, roles, responsibilities, culture, governance, management, and communication.",
+    "analyzed": "A known error is a problem that has been analyzed but has not yet been resolved.",
+    "known error is the status assigned to a problem after it has been analyzed": "Known error status means the problem has been analyzed and is managed even though full resolution is not complete.",
+    "processes and procedures": "Efficient service request management depends on clear, repeatable request workflows and procedures.",
+    "it needs a practical understanding of the business processes": "A useful service desk needs context about how the business works, not just technical scripts.",
+    "service configuration management": "Service configuration management keeps reliable information about configuration items and their relationships.",
+    "outcomes": "The customer defines service requirements and takes responsibility for the outcomes of service consumption.",
+    "progress iteratively with feedback": "This principle favors taking useful steps, learning from feedback, and adjusting rather than over-analyzing up front.",
+    "it should be prioritized based on its potential impact and probability": "Problems should be prioritized by risk: how likely they are and how much impact they could cause.",
+    "ensure suppliers include details of their approach to service improvement in contracts": "Supplier contracts should make continual improvement expectations explicit, so suppliers contribute to improving services.",
+    "corporate culture of the organization": "Supplier strategy is influenced by organizational culture as well as business needs, constraints, and supplier capabilities.",
+    "a cause or potential cause of one or more incidents": "In ITIL, a problem is the cause or potential cause behind one or more incidents.",
+    "to establish and nurture the links between the organization and its stakeholders at strategic and tactical levels": "Relationship management builds and maintains stakeholder relationships at strategic and tactical levels.",
+    "the guiding principles": "The guiding principles help organizations adopt and adapt ITIL guidance in any situation.",
+    "something created by carrying out an activity": "An output is a deliverable produced by an activity; it is not the same as an outcome.",
+    "it provides an outcome-based view of services": "Balanced service metrics help assess services by outcomes and value, not just isolated technical measures.",
+    "to ensure that incidents with the highest business impact are resolved first": "Incident prioritization makes sure effort goes first to incidents with the greatest business impact.",
+    "it asset management": "IT asset management helps maximize value, control costs, manage risks, and support asset lifecycle decisions.",
+    "to help identify problems": "Recurring issues seen by the service desk can reveal underlying problems that need investigation.",
+    "plan": "The Plan activity provides shared direction and status across all four dimensions, products, and services.",
+    "focus on value": "Focus on value keeps decisions tied to what matters to service consumers, including revenue, growth, and outcomes.",
+    "service level management": "Service level management captures and reports service performance against business-based targets.",
+    "the implementation of a security patch to a critical software application": "An emergency change is used when delay would increase risk or impact, such as urgently patching critical software.",
+    "start where you are": "Start where you are means assess the current state and reuse what is valuable before changing it.",
+}
+
 
 def clean_text(value: str) -> str:
     value = value.replace("\u2013", "-").replace("\u2014", "-")
@@ -518,12 +560,13 @@ def parse_official_sample() -> list[dict]:
         correct_letter = answers[number]
         correct = options[correct_letter]
         distractors = [options[l] for l in "ABCD" if l != correct_letter]
+        category = category_for_official(stem + " " + correct)
         questions.append(make_question(
-            category=category_for_official(stem + " " + correct),
+            category=category,
             prompt=stem,
             correct=correct,
             distractors=distractors,
-            explain=f"Official sample paper answer {correct_letter}: {correct}.",
+            explain=explain_official_sample(stem, correct, category),
             source="Official ITIL 4 Foundation sample paper 2",
             qtype="official-sample",
         ))
@@ -543,6 +586,23 @@ def category_for_official(text: str) -> str:
     if any(k in low for k in ["incident", "problem", "service desk", "service request", "service level", "supplier", "relationship", "asset", "release", "deployment", "configuration", "monitoring"]):
         return "Detailed Practices"
     return "Key Concepts"
+
+
+def explain_official_sample(stem: str, correct: str, category: str) -> str:
+    key = clean_text(correct).lower().rstrip(".")
+    if key in OFFICIAL_EXPLANATIONS:
+        return OFFICIAL_EXPLANATIONS[key]
+    if category == "Guiding Principles":
+        return "This answer identifies the guiding principle that best fits the situation described."
+    if category == "Detailed Practices":
+        return "This answer identifies the ITIL practice or practice concept responsible for the described activity."
+    if category == "Four Dimensions":
+        return "This answer identifies the service management dimension most directly involved."
+    if category == "Service Value Chain":
+        return "This answer identifies the value chain activity or relationship being tested."
+    if category == "Service Value System":
+        return "This answer identifies the SVS component or purpose described in the question."
+    return "This answer matches the ITIL term or concept described in the question."
 
 
 def make_question(category, prompt, correct, distractors, explain, source, qtype="coach", include=True, **extra):

@@ -1004,7 +1004,7 @@ window.COURSE_DATA.itil4 = {
         "Increased ability to focus on fixing technology instead of supporting people",
         "Elimination of the need to escalate incidents to support teams"
       ],
-      "explain": "Official sample paper answer A: Greater ability to focus on customer experience when personal contact is needed.",
+      "explain": "Automation can handle routine contacts, which lets the service desk spend more attention on users who need human support.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1027,7 +1027,7 @@ window.COURSE_DATA.itil4 = {
         "Warranty",
         "Risk"
       ],
-      "explain": "Official sample paper answer B: Utility.",
+      "explain": "Utility is what the service does; it is the functionality that helps meet a need or remove a constraint.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1047,7 +1047,7 @@ window.COURSE_DATA.itil4 = {
         "To protect the information needed by the organization to conduct its business",
         "To minimize the negative impact of incidents by restoring normal service operation as quickly as possible"
       ],
-      "explain": "Official sample paper answer B: To systematically observe services and service components, and record and report selected changes of state.",
+      "explain": "Monitoring and event management watches services and components, then records and reports meaningful state changes.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1069,7 +1069,7 @@ window.COURSE_DATA.itil4 = {
         "An up-to-date balanced scorecard",
         "A recent maturity assessment"
       ],
-      "explain": "Official sample paper answer B: Accurate and carefully analyzed data.",
+      "explain": "Continual improvement decisions should be evidence-based, not based on assumptions or guesses.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1092,7 +1092,7 @@ window.COURSE_DATA.itil4 = {
         "By using a single functional team",
         "By implementing process automation"
       ],
-      "explain": "Official sample paper answer B: By using a combination of practices.",
+      "explain": "Value chain activities use ITIL practices together to transform inputs into outputs.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1113,7 +1113,7 @@ window.COURSE_DATA.itil4 = {
         "2 and 3",
         "3 and 4"
       ],
-      "explain": "Official sample paper answer D: 1 and 4.",
+      "explain": "Customer engagement helps service level management by providing useful measurement input and supporting progress discussions.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1137,7 +1137,7 @@ window.COURSE_DATA.itil4 = {
         "Determining where the most positive impact would be",
         "Standardizing practices and services"
       ],
-      "explain": "Official sample paper answer B: Understanding the vision and objectives of the organization.",
+      "explain": "Optimization starts by knowing what the organization is trying to achieve, so improvement work stays aligned to value.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1157,7 +1157,7 @@ window.COURSE_DATA.itil4 = {
         "four dimensions of service management",
         "'service request management' practice"
       ],
-      "explain": "Official sample paper answer C: service value system.",
+      "explain": "The SVS describes how all parts of the organization work together to co-create value with stakeholders.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1178,7 +1178,7 @@ window.COURSE_DATA.itil4 = {
         "Problem management",
         "Incident management"
       ],
-      "explain": "Official sample paper answer B: Service request management.",
+      "explain": "Service request management handles predefined user requests and can support feedback, compliments, and complaints.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1201,7 +1201,7 @@ window.COURSE_DATA.itil4 = {
         "Service consumption",
         "Service offering"
       ],
-      "explain": "Official sample paper answer D: Service relationship management.",
+      "explain": "Service relationship management is the joint provider-consumer work that supports continual value co-creation.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1223,7 +1223,7 @@ window.COURSE_DATA.itil4 = {
         "Service level management",
         "IT asset management"
       ],
-      "explain": "Official sample paper answer A: Incident management.",
+      "explain": "Incident management restores normal service operation as quickly as possible and minimizes business impact.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1246,7 +1246,7 @@ window.COURSE_DATA.itil4 = {
         "An emergency change",
         "An application change"
       ],
-      "explain": "Official sample paper answer C: A standard change.",
+      "explain": "A standard change is low-risk, pre-authorized, and follows a documented procedure; many can be triggered as service requests.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1270,7 +1270,7 @@ window.COURSE_DATA.itil4 = {
         "Think and work holistically",
         "Keep it simple and practical"
       ],
-      "explain": "Official sample paper answer B: Collaborate and promote visibility.",
+      "explain": "Making work visible helps people understand flow, find bottlenecks, and identify waste.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1291,7 +1291,7 @@ window.COURSE_DATA.itil4 = {
         "A practice",
         "Continual improvement"
       ],
-      "explain": "Official sample paper answer A: A service.",
+      "explain": "A service enables value co-creation by helping customers achieve outcomes without managing specific costs and risks themselves.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1311,7 +1311,7 @@ window.COURSE_DATA.itil4 = {
         "The authorization of normal changes should be expedited to ensure they can be implemented quickly",
         "Standard changes are high risk and should be authorized by the highest level of change authority"
       ],
-      "explain": "Official sample paper answer A: A change authority should be assigned to each type of change and change model.",
+      "explain": "Different changes carry different risk, so authorization should match the change type and model.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1332,7 +1332,7 @@ window.COURSE_DATA.itil4 = {
         "Partners and suppliers",
         "Value streams and processes"
       ],
-      "explain": "Official sample paper answer A: Organizations and people.",
+      "explain": "This dimension includes structure, roles, responsibilities, culture, governance, management, and communication.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1353,7 +1353,7 @@ window.COURSE_DATA.itil4 = {
         "escalated",
         "closed"
       ],
-      "explain": "Official sample paper answer B: analyzed.",
+      "explain": "A known error is a problem that has been analyzed but has not yet been resolved.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1376,7 +1376,7 @@ window.COURSE_DATA.itil4 = {
         "Known errors cause vulnerabilities, problems cause incidents",
         "Known errors are managed by technical staff, problems are managed by service management staff"
       ],
-      "explain": "Official sample paper answer A: Known error is the status assigned to a problem after it has been analyzed.",
+      "explain": "Known error status means the problem has been analyzed and is managed even though full resolution is not complete.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1399,7 +1399,7 @@ window.COURSE_DATA.itil4 = {
         "Self-service tools",
         "Incident management"
       ],
-      "explain": "Official sample paper answer C: Processes and procedures.",
+      "explain": "Efficient service request management depends on clear, repeatable request workflows and procedures.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1422,7 +1422,7 @@ window.COURSE_DATA.itil4 = {
         "It carries out change assessment and authorization",
         "It investigates the cause of incidents"
       ],
-      "explain": "Official sample paper answer D: It needs a practical understanding of the business processes.",
+      "explain": "A useful service desk needs context about how the business works, not just technical scripts.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1445,7 +1445,7 @@ window.COURSE_DATA.itil4 = {
         "IT asset management",
         "Monitoring and event management"
       ],
-      "explain": "Official sample paper answer A: Service configuration management.",
+      "explain": "Service configuration management keeps reliable information about configuration items and their relationships.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1467,7 +1467,7 @@ window.COURSE_DATA.itil4 = {
         "Deployment management",
         "Problem management"
       ],
-      "explain": "Official sample paper answer D: Incident management.",
+      "explain": "Incident management restores normal service operation as quickly as possible and minimizes business impact.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1490,7 +1490,7 @@ window.COURSE_DATA.itil4 = {
         "costs",
         "risks"
       ],
-      "explain": "Official sample paper answer B: outcomes.",
+      "explain": "The customer defines service requirements and takes responsibility for the outcomes of service consumption.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1510,7 +1510,7 @@ window.COURSE_DATA.itil4 = {
         "Start where you are",
         "Focus on value"
       ],
-      "explain": "Official sample paper answer D: Progress iteratively with feedback.",
+      "explain": "This principle favors taking useful steps, learning from feedback, and adjusting rather than over-analyzing up front.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1531,7 +1531,7 @@ window.COURSE_DATA.itil4 = {
         "It should be resolved so that it can be closed",
         "It should have a workaround to reduce the impact"
       ],
-      "explain": "Official sample paper answer B: It should be prioritized based on its potential impact and probability.",
+      "explain": "Problems should be prioritized by risk: how likely they are and how much impact they could cause.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1554,7 +1554,7 @@ window.COURSE_DATA.itil4 = {
         "Require evidence that the supplier implements all improvements using project management practices",
         "Ensure that all supplier problem management activities result in improvements"
       ],
-      "explain": "Official sample paper answer A: Ensure suppliers include details of their approach to service improvement in contracts.",
+      "explain": "Supplier contracts should make continual improvement expectations explicit, so suppliers contribute to improving services.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1577,7 +1577,7 @@ window.COURSE_DATA.itil4 = {
         "Type of cooperation with suppliers",
         "Level of formality"
       ],
-      "explain": "Official sample paper answer C: Corporate culture of the organization.",
+      "explain": "Supplier strategy is influenced by organizational culture as well as business needs, constraints, and supplier capabilities.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1599,7 +1599,7 @@ window.COURSE_DATA.itil4 = {
         "Any change of state that has significance for the management of a configuration item",
         "An unplanned reduction in the quality of a service"
       ],
-      "explain": "Official sample paper answer C: A cause or potential cause of one or more incidents.",
+      "explain": "In ITIL, a problem is the cause or potential cause behind one or more incidents.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1623,7 +1623,7 @@ window.COURSE_DATA.itil4 = {
         "To reduce the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors",
         "To minimize the negative impact of incidents by restoring normal service operation as quickly as possible"
       ],
-      "explain": "Official sample paper answer B: To establish and nurture the links between the organization and its stakeholders at strategic and tactical levels.",
+      "explain": "Relationship management builds and maintains stakeholder relationships at strategic and tactical levels.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1645,7 +1645,7 @@ window.COURSE_DATA.itil4 = {
         "The service value chain",
         "Practices"
       ],
-      "explain": "Official sample paper answer B: The guiding principles.",
+      "explain": "The guiding principles help organizations adopt and adapt ITIL guidance in any situation.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1666,7 +1666,7 @@ window.COURSE_DATA.itil4 = {
         "A possible event that could cause harm or loss",
         "A result for a stakeholder"
       ],
-      "explain": "Official sample paper answer D: Something created by carrying out an activity.",
+      "explain": "An output is a deliverable produced by an activity; it is not the same as an outcome.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1686,7 +1686,7 @@ window.COURSE_DATA.itil4 = {
         "It reports each service element separately",
         "It facilitates the automatic collection of metrics"
       ],
-      "explain": "Official sample paper answer C: It provides an outcome-based view of services.",
+      "explain": "Balanced service metrics help assess services by outcomes and value, not just isolated technical measures.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1706,7 +1706,7 @@ window.COURSE_DATA.itil4 = {
         "To identify which support team the incident should be escalated to",
         "To encourage a high level of collaboration within and between teams"
       ],
-      "explain": "Official sample paper answer C: To ensure that incidents with the highest business impact are resolved first.",
+      "explain": "Incident prioritization makes sure effort goes first to incidents with the greatest business impact.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1729,7 +1729,7 @@ window.COURSE_DATA.itil4 = {
         "Release management",
         "Service desk"
       ],
-      "explain": "Official sample paper answer B: IT asset management.",
+      "explain": "IT asset management helps maximize value, control costs, manage risks, and support asset lifecycle decisions.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1751,7 +1751,7 @@ window.COURSE_DATA.itil4 = {
         "To ensure effective handling of service requests",
         "To engage the correct change authority"
       ],
-      "explain": "Official sample paper answer A: To help identify problems.",
+      "explain": "Recurring issues seen by the service desk can reveal underlying problems that need investigation.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1775,7 +1775,7 @@ window.COURSE_DATA.itil4 = {
         "Engage",
         "Obtain/build"
       ],
-      "explain": "Official sample paper answer D: Plan.",
+      "explain": "The Plan activity provides shared direction and status across all four dimensions, products, and services.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1796,7 +1796,7 @@ window.COURSE_DATA.itil4 = {
         "Optimize and automate",
         "Progress iteratively with feedback"
       ],
-      "explain": "Official sample paper answer D: Focus on value.",
+      "explain": "Focus on value keeps decisions tied to what matters to service consumers, including revenue, growth, and outcomes.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1817,7 +1817,7 @@ window.COURSE_DATA.itil4 = {
         "Service request management",
         "Service configuration management"
       ],
-      "explain": "Official sample paper answer B: Service level management.",
+      "explain": "Service level management captures and reports service performance against business-based targets.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1840,7 +1840,7 @@ window.COURSE_DATA.itil4 = {
         "A low-risk computer upgrade implemented as a service request",
         "A scheduled major hardware and software implementation"
       ],
-      "explain": "Official sample paper answer C: The implementation of a security patch to a critical software application.",
+      "explain": "An emergency change is used when delay would increase risk or impact, such as urgently patching critical software.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
@@ -1863,7 +1863,7 @@ window.COURSE_DATA.itil4 = {
         "Collaborate and promote visibility",
         "Progress iteratively with feedback"
       ],
-      "explain": "Official sample paper answer B: Start where you are.",
+      "explain": "Start where you are means assess the current state and reuse what is valuable before changing it.",
       "source": "Official ITIL 4 Foundation sample paper 2",
       "type": "official-sample",
       "includeInFullDeck": true,
