@@ -34,7 +34,7 @@ const Courses = {
   // Discover available courses by scanning known IDs
   // In future: could use a manifest.json or directory listing
   async discover() {
-    const knownCourses = ['comptia']; // Add more as they're created
+    const knownCourses = ['itil4']; // Add more as they're created
     this.available = [];
     for (const id of knownCourses) {
       const fallback = window.COURSE_DATA && window.COURSE_DATA[id];

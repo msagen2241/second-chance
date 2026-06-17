@@ -1,2324 +1,7436 @@
 // Generated fallback course data for direct file:// play.
 window.COURSE_DATA = window.COURSE_DATA || {};
-window.COURSE_DATA.comptia = {
-  "id": "comptia",
-  "name": "CompTIA A+",
+window.COURSE_DATA.itil4 = {
+  "id": "itil4",
+  "name": "ITIL 4 Foundation",
   "categories": [
-    "Operating Systems",
-    "Security",
-    "Software Troubleshooting",
-    "Operational Procedures"
+    "Key Concepts",
+    "Guiding Principles",
+    "Four Dimensions",
+    "Service Value System",
+    "Service Value Chain",
+    "Practice Purposes",
+    "Detailed Practices",
+    "Glossary Terms"
+  ],
+  "fullDeckCategories": [
+    "Key Concepts",
+    "Guiding Principles",
+    "Four Dimensions",
+    "Service Value System",
+    "Service Value Chain",
+    "Practice Purposes",
+    "Detailed Practices"
+  ],
+  "instructorFocusDecks": [
+    {
+      "id": "focus-key-concepts",
+      "label": "Key Concepts",
+      "hint": "Service, value, outcomes, roles, cost, risk",
+      "group": "Short Topic Drills"
+    },
+    {
+      "id": "focus-guiding-principles",
+      "label": "Guiding Principles",
+      "hint": "Recall and scenario mapping for the 7 principles",
+      "group": "Short Topic Drills"
+    },
+    {
+      "id": "focus-four-dimensions",
+      "label": "Four Dimensions",
+      "hint": "Name each dimension and map scenarios",
+      "group": "Short Topic Drills"
+    },
+    {
+      "id": "focus-svs",
+      "label": "Service Value System",
+      "hint": "SVS purpose, components, and relationships",
+      "group": "Short Topic Drills"
+    },
+    {
+      "id": "focus-svc",
+      "label": "Service Value Chain",
+      "hint": "Plan, improve, engage, design/transition, obtain/build, deliver/support",
+      "group": "Short Topic Drills"
+    },
+    {
+      "id": "focus-practice-purposes",
+      "label": "15 Practice Purposes",
+      "hint": "One-sentence purpose checks for the tested practices",
+      "group": "Short Topic Drills"
+    },
+    {
+      "id": "focus-continual-improvement",
+      "label": "Continual Improvement",
+      "hint": "Purpose, improvement model, and momentum",
+      "group": "7 Practices Micro-Drills"
+    },
+    {
+      "id": "focus-change-enablement",
+      "label": "Change Enablement",
+      "hint": "Standard, normal, emergency changes and authorization",
+      "group": "7 Practices Micro-Drills"
+    },
+    {
+      "id": "focus-incident-management",
+      "label": "Incident Management",
+      "hint": "Restore service quickly, major incidents, user impact",
+      "group": "7 Practices Micro-Drills"
+    },
+    {
+      "id": "focus-problem-management",
+      "label": "Problem Management",
+      "hint": "Problems, known errors, workarounds, cause reduction",
+      "group": "7 Practices Micro-Drills"
+    },
+    {
+      "id": "focus-service-request-management",
+      "label": "Service Request Mgmt",
+      "hint": "Predefined user requests and service actions",
+      "group": "7 Practices Micro-Drills"
+    },
+    {
+      "id": "focus-service-desk",
+      "label": "Service Desk",
+      "hint": "Single point of contact and user communication",
+      "group": "7 Practices Micro-Drills"
+    },
+    {
+      "id": "focus-service-level-management",
+      "label": "Service Level Mgmt",
+      "hint": "Business-based targets and service performance",
+      "group": "7 Practices Micro-Drills"
+    },
+    {
+      "id": "mock-40",
+      "label": "40Q Mock",
+      "hint": "Weighted: 17 practice questions, 13 Sections 3-5, 10 foundations",
+      "group": "Exam Simulation"
+    }
+  ],
+  "shortStudySize": 25,
+  "glossaryDrillSize": 25,
+  "sourceSummary": {
+    "sourceFolder": "courses/ITIL4/PDFs",
+    "ragManifest": "courses/ITIL4/rag/manifest.json",
+    "pdfSourceCount": 7,
+    "glossaryTermCount": 219
+  },
+  "glossary": [
+    {
+      "term": "acceptance criteria",
+      "definition": "A list of minimum requirements that a service or service component must meet for it to be acceptable to key stakeholders."
+    },
+    {
+      "term": "Agile",
+      "definition": "An umbrella term for a collection of frameworks and techniques that together enable teams and individuals to work in a way that is typified by collaboration, prioritization, iterative and incremental delivery, and timeboxing. There are several specific methods (or frameworks) that are classed as Agile, such as Scrum, Lean, and Kanban."
+    },
+    {
+      "term": "architecture management practice",
+      "definition": "The practice of providing an understanding of all the different elements that make up an organization and how those elements relate to one another."
+    },
+    {
+      "term": "asset register",
+      "definition": "A database or list of assets, capturing key attributes such as ownership and financial value."
+    },
+    {
+      "term": "availability",
+      "definition": "The ability of an IT service or other configuration item to perform its agreed function when required."
+    },
+    {
+      "term": "availability management practice",
+      "definition": "The practice of ensuring that services deliver agreed levels of availability to meet the needs of customers and users."
+    },
+    {
+      "term": "baseline",
+      "definition": "A report or metric that serves as a starting point against which progress or change can be assessed."
+    },
+    {
+      "term": "best practice",
+      "definition": "A way of working that has been proven to be successful by multiple organizations."
+    },
+    {
+      "term": "big data",
+      "definition": "The use of very large volumes of structured and unstructured data from a variety of sources to gain new insights."
+    },
+    {
+      "term": "business analysis practice",
+      "definition": "The practice of analysing a business or some element of a business, defining its needs and recommending solutions to address these needs and/or solve a business problem, and create value for stakeholders."
+    },
+    {
+      "term": "business case",
+      "definition": "A justification for expenditure of organizational resources, providing information about costs, benefits, options, risks, and issues."
+    },
+    {
+      "term": "business impact analysis (BIA)",
+      "definition": "A key activity in the practice of service continuity management that identifies vital business functions and their dependencies."
+    },
+    {
+      "term": "business relationship manager (BRM)",
+      "definition": "A role responsible for maintaining good relationships with one or more customers."
+    },
+    {
+      "term": "call",
+      "definition": "An interaction (e.g. a telephone call) with the service desk. A call could result in an incident or a service request being logged."
+    },
+    {
+      "term": "call/contact centre",
+      "definition": "An organization or business unit that handles large numbers of incoming and outgoing calls and other interactions."
+    },
+    {
+      "term": "capability",
+      "definition": "The ability of an organization, person, process, application, configuration item, or IT service to carry out an activity."
+    },
+    {
+      "term": "capacity and performance management practice",
+      "definition": "The practice of ensuring that services achieve agreed and expected performance levels, satisfying current and future demand in a cost-effective way."
+    },
+    {
+      "term": "capacity planning",
+      "definition": "The activity of creating a plan that manages resources to meet demand for services."
+    },
+    {
+      "term": "change",
+      "definition": "The addition, modification, or removal of anything that could have a direct or indirect effect on services."
+    },
+    {
+      "term": "change authority",
+      "definition": "A person or group responsible for authorizing a change."
+    },
+    {
+      "term": "change enablement practice",
+      "definition": "The practice of ensuring that risks are properly assessed, authorizing changes to proceed and managing a change schedule in order to maximize the number of successful service and product changes."
+    },
+    {
+      "term": "change model",
+      "definition": "A repeatable approach to the management of a particular type of change."
+    },
+    {
+      "term": "change schedule",
+      "definition": "A calendar that shows planned and historical changes."
+    },
+    {
+      "term": "charging",
+      "definition": "The activity that assigns a price for services."
+    },
+    {
+      "term": "cloud computing",
+      "definition": "A model for enabling on-demand network access to a shared pool of configurable computing resources that can be rapidly provided with minimal management effort or provider interaction."
+    },
+    {
+      "term": "compliance",
+      "definition": "The act of ensuring that a standard or set of guidelines is followed, or that proper, consistent accounting or other practices are being employed."
+    },
+    {
+      "term": "confidentiality",
+      "definition": "A security objective that ensures information is not made available or disclosed to unauthorized entities."
+    },
+    {
+      "term": "configuration",
+      "definition": "An arrangement of configuration items (CIs) or other resources that work together to deliver a product or service. Can also be used to describe the parameter settings for one or more CIs."
+    },
+    {
+      "term": "configuration item (CI)",
+      "definition": "Any component that needs to be managed in order to deliver an IT service."
+    },
+    {
+      "term": "configuration management database (CMDB)",
+      "definition": "A database used to store configuration records throughout their lifecycle. The CMDB also maintains the relationships between configuration records."
+    },
+    {
+      "term": "configuration management system (CMS)",
+      "definition": "A set of tools, data, and information that is used to support service configuration management."
+    },
+    {
+      "term": "configuration record",
+      "definition": "A record containing the details of a configuration item (CI). Each configuration record documents the lifecycle of a single CI. Configuration records are stored in a configuration management database."
+    },
+    {
+      "term": "continual improvement practice",
+      "definition": "The practice of aligning an organization's practices and services with changing business needs through the ongoing identification and improvement of all elements involved in the effective management of products and services."
+    },
+    {
+      "term": "continuous deployment",
+      "definition": "An integrated set of practices and tools used to deploy software changes into the production environment. These software changes have already passed pre-defined automated tests."
+    },
+    {
+      "term": "continuous integration/continuous delivery",
+      "definition": "An integrated set of practices and tools used to merge developers' code, build and test the resulting software, and package it so that it is ready for deployment."
+    },
+    {
+      "term": "control",
+      "definition": "The means of managing a risk, ensuring that a business objective is achieved, or that a process is followed."
+    },
+    {
+      "term": "cost",
+      "definition": "The amount of money spent on a specific activity or resource."
+    },
+    {
+      "term": "cost centre",
+      "definition": "A business unit or project to which costs are assigned."
+    },
+    {
+      "term": "critical success factor (CSF)",
+      "definition": "A necessary precondition for the achievement of intended results."
+    },
+    {
+      "term": "culture",
+      "definition": "A set of values that is shared by a group of people, including expectations about how people should behave, ideas, beliefs, and practices."
+    },
+    {
+      "term": "customer",
+      "definition": "The role that defines the requirements for a service and takes responsibility for the outcomes of service consumption."
+    },
+    {
+      "term": "customer experience (CX)",
+      "definition": "The sum of functional and emotional interactions with a service and service provider as perceived by a service customer."
+    },
+    {
+      "term": "dashboard",
+      "definition": "A real-time graphical representation of data."
+    },
+    {
+      "term": "deliver and support",
+      "definition": "The value chain activity that ensures services are delivered and supported according to agreed specifications and stakeholders' expectations."
+    },
+    {
+      "term": "demand",
+      "definition": "Input to the service value system based on opportunities and needs from internal and external stakeholders."
+    },
+    {
+      "term": "deployment",
+      "definition": "The movement of any service component into any environment."
+    },
+    {
+      "term": "deployment management practice",
+      "definition": "The practice of moving new or changed hardware, software, documentation, processes, or any other service component to live environments."
+    },
+    {
+      "term": "design and transition",
+      "definition": "The value chain activity that ensures products and services continually meet stakeholder expectations for quality, costs, and time to market."
+    },
+    {
+      "term": "design thinking",
+      "definition": "A practical and human-centred approach used by product and service designers to solve complex problems and find practical and creative solutions that meet the needs of an organization and its customers."
+    },
+    {
+      "term": "development environment",
+      "definition": "An environment used to create or modify IT services or applications."
+    },
+    {
+      "term": "DevOps",
+      "definition": "An organizational culture that aims to improve the flow of value to customers. DevOps focuses on culture, automation, Lean, measurement, and sharing (CALMS)."
+    },
+    {
+      "term": "digital transformation",
+      "definition": "The evolution of traditional business models to meet the needs of highly empowered customers, with technology playing an enabling role."
+    },
+    {
+      "term": "disaster",
+      "definition": "A sudden unplanned event that causes great damage or serious loss to an organization. A disaster results in an organization failing to provide critical business functions for some predetermined minimum period of time."
+    },
+    {
+      "term": "disaster recovery plans",
+      "definition": "A set of clearly defined plans related to how an organization will recover from a disaster as well as return to a pre-disaster condition, considering the four dimensions of service management."
+    },
+    {
+      "term": "driver",
+      "definition": "Something that influences strategy, objectives, or requirements."
+    },
+    {
+      "term": "effectiveness",
+      "definition": "A measure of whether the objectives of a practice, service or activity have been achieved."
+    },
+    {
+      "term": "efficiency",
+      "definition": "A measure of whether the right amount of resources have been used by a practice, service, or activity."
+    },
+    {
+      "term": "emergency change",
+      "definition": "A change that must be introduced as soon as possible."
+    },
+    {
+      "term": "engage",
+      "definition": "The value chain activity that provides a good understanding of stakeholder needs, transparency, continual engagement, and good relationships with all stakeholders."
+    },
+    {
+      "term": "environment",
+      "definition": "A subset of the IT infrastructure that is used for a particular purpose, for example a live environment or test environment. Can also mean the external conditions that influence or affect something."
+    },
+    {
+      "term": "error",
+      "definition": "A flaw or vulnerability that may cause incidents."
+    },
+    {
+      "term": "error control",
+      "definition": "Problem management activities used to manage known errors."
+    },
+    {
+      "term": "escalation",
+      "definition": "The act of sharing awareness or transferring ownership of an issue or work item."
+    },
+    {
+      "term": "event",
+      "definition": "Any change of state that has significance for the management of a service or other configuration item."
+    },
+    {
+      "term": "external customer",
+      "definition": "A customer who works for an organization other than the service provider."
+    },
+    {
+      "term": "failure",
+      "definition": "A loss of ability to operate to specification, or to deliver the required output or outcome."
+    },
+    {
+      "term": "feedback loop",
+      "definition": "A technique whereby the outputs of one part of a system are used as inputs to the same part of the system."
+    },
+    {
+      "term": "four dimensions of service management",
+      "definition": "The four perspectives that are critical to the effective and efficient facilitation of value for customers and other stakeholders in the form of products and services."
+    },
+    {
+      "term": "goods",
+      "definition": "Tangible resources that are transferred or available for transfer from a service provider to a service consumer, together with ownership and associated rights and responsibilities."
+    },
+    {
+      "term": "governance",
+      "definition": "The means by which an organization is directed and controlled."
+    },
+    {
+      "term": "identity",
+      "definition": "A unique name that is used to identify and grant system access rights to a user, person, or role."
+    },
+    {
+      "term": "improve",
+      "definition": "The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management."
+    },
+    {
+      "term": "incident",
+      "definition": "An unplanned interruption to a service or reduction in the quality of a service."
+    },
+    {
+      "term": "incident management",
+      "definition": "The practice of minimizing the negative impact of incidents by restoring normal service operation as quickly as possible."
+    },
+    {
+      "term": "information and technology",
+      "definition": "One of the four dimensions of service management. It includes the information and knowledge used to deliver services, and the information and technologies used to manage all aspects of the service value system."
+    },
+    {
+      "term": "information security management practice",
+      "definition": "The practice of protecting an organization by understanding and managing risks to the confidentiality, integrity, and availability of information."
+    },
+    {
+      "term": "information security policy",
+      "definition": "The policy that governs an organization's approach to information security management."
+    },
+    {
+      "term": "infrastructure and platform management practice",
+      "definition": "The practice of overseeing the infrastructure and platforms used by an organization. This enables the monitoring of technology solutions available, including solutions from third parties."
+    },
+    {
+      "term": "integrity",
+      "definition": "A security objective that ensures information is only modified by authorized personnel and activities."
+    },
+    {
+      "term": "internal customer",
+      "definition": "A customer who works for the same organization as the service provider."
+    },
+    {
+      "term": "Internet of Things",
+      "definition": "The interconnection of devices via the internet that were not traditionally thought of as IT assets, but now include embedded computing capability and network connectivity."
+    },
+    {
+      "term": "IT asset",
+      "definition": "Any financially valuable component that can contribute to the delivery of an IT product or service."
+    },
+    {
+      "term": "IT asset management practice",
+      "definition": "The practice of planning and managing the full lifecycle of all IT assets."
+    },
+    {
+      "term": "IT infrastructure",
+      "definition": "All of the hardware, software, networks, and facilities that are required to develop, test, deliver, monitor, manage, and support IT services."
+    },
+    {
+      "term": "IT service",
+      "definition": "A service based on the use of information technology. Best-practice guidance for IT service management."
+    },
+    {
+      "term": "ITIL guiding principles",
+      "definition": "Recommendations that can guide an organization in all circumstances, regardless of changes in its goals, strategies, type of work, or management structure."
+    },
+    {
+      "term": "ITIL service value chain",
+      "definition": "An operating model for service providers that covers all the key activities required to effectively manage products and services."
+    },
+    {
+      "term": "ITIL value chain activity",
+      "definition": "A step of the value chain that an organization takes in the creation of value."
+    },
+    {
+      "term": "Kanban",
+      "definition": "A method for visualizing work, identifying potential blockages and resource conflicts, and managing work in progress."
+    },
+    {
+      "term": "key performance indicator (KPI)",
+      "definition": "An important metric used to evaluate the success in meeting an objective."
+    },
+    {
+      "term": "knowledge management practice",
+      "definition": "The practice of maintaining and improving the effective, efficient, and convenient use of information and knowledge across an organization."
+    },
+    {
+      "term": "known error",
+      "definition": "A problem that has been analysed but has not been resolved."
+    },
+    {
+      "term": "Lean",
+      "definition": "An approach that focuses on improving workflows by maximizing value through the elimination of waste."
+    },
+    {
+      "term": "lifecycle",
+      "definition": "The full set of stages, transitions, and associated statuses in the life of a service, product, practice, or other entity."
+    },
+    {
+      "term": "live",
+      "definition": "Refers to a service or other configuration item operating in the live environment."
+    },
+    {
+      "term": "live environment",
+      "definition": "A controlled environment used in the delivery of IT services to service consumers."
+    },
+    {
+      "term": "maintainability",
+      "definition": "The ease with which a service or other entity can be repaired or modified."
+    },
+    {
+      "term": "major incident",
+      "definition": "An incident with significant business impact, requiring an immediate coordinated resolution."
+    },
+    {
+      "term": "management system",
+      "definition": "Interrelated or interacting elements that establish policy and objectives and enable the achievement of those objectives."
+    },
+    {
+      "term": "maturity",
+      "definition": "A measure of the reliability, efficiency and effectiveness of an organization, practice, or process."
+    },
+    {
+      "term": "mean time between failures (MTBF)",
+      "definition": "A metric of how frequently a service or other configuration item fails."
+    },
+    {
+      "term": "mean time to restore service (MTRS)",
+      "definition": "A metric of how quickly a service is restored after a failure."
+    },
+    {
+      "term": "measurement and reporting",
+      "definition": "The practice of supporting good decision- making and continual improvement by decreasing levels of uncertainty."
+    },
+    {
+      "term": "metric",
+      "definition": "A measurement or calculation that is monitored or reported for management and improvement."
+    },
+    {
+      "term": "minimum viable product (MVP)",
+      "definition": "A product with just enough features to satisfy early customers, and to provide feedback for future product development."
+    },
+    {
+      "term": "mission",
+      "definition": "A short but complete description of the overall purpose and intentions of an organization"
+    },
+    {
+      "term": "model",
+      "definition": "A representation of a system, practice, process, service, or other entity that is used to understand and predict its behaviour and relationships."
+    },
+    {
+      "term": "modelling",
+      "definition": "The activity of creating, maintaining, and utilizing models."
+    },
+    {
+      "term": "monitoring",
+      "definition": "Repeated observation of a system, practice, process, service, or other entity to detect events and to ensure that the current status is known."
+    },
+    {
+      "term": "monitoring and event management practice",
+      "definition": "The practice of systematically observing services and service components, and recording and reporting selected changes of state identified as events."
+    },
+    {
+      "term": "obtain/build",
+      "definition": "The value chain activity that ensures service components are available when and where they are needed, and that they meet agreed specifications."
+    },
+    {
+      "term": "operation",
+      "definition": "The routine running and management of an activity, product, service, or other configuration item."
+    },
+    {
+      "term": "operational technology",
+      "definition": "The hardware and software solutions that detect or cause changes in physical processes through direct monitoring and/or control of physical devices such as valves, pumps, etc."
+    },
+    {
+      "term": "organization",
+      "definition": "A person or a group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives."
+    },
+    {
+      "term": "organizational change management practice",
+      "definition": "The practice of ensuring that changes in an organization are smoothly and successfully implemented and that lasting benefits are achieved by managing the human aspects of the changes."
+    },
+    {
+      "term": "organizational resilience",
+      "definition": "The ability of an organization to anticipate, prepare for, respond to, and adapt to unplanned external influences."
+    },
+    {
+      "term": "organizational velocity",
+      "definition": "The speed, effectiveness, and efficiency with which an organization operates. Organizational velocity influences time to market, quality, safety, costs, and risks."
+    },
+    {
+      "term": "organizations and people",
+      "definition": "One of the four dimensions of service management. It ensures that the way an organization is structured and managed, as well as its roles, responsibilities, and systems of authority and communication, is well defined and supports its overall strategy and operating model."
+    },
+    {
+      "term": "outcome",
+      "definition": "A result for a stakeholder enabled by one or more outputs."
+    },
+    {
+      "term": "output",
+      "definition": "A tangible or intangible deliverable of an activity."
+    },
+    {
+      "term": "outsourcing",
+      "definition": "The process of having external suppliers provide products and services that were previously provided internally."
+    },
+    {
+      "term": "partners and suppliers",
+      "definition": "One of the four dimensions of service management. It encompasses the relationships an organization has with other organizations that are involved in the design, development, deployment, delivery, support, and/or continual improvement of services."
+    },
+    {
+      "term": "partnership",
+      "definition": "A relationship between two organizations that involves working closely together to achieve common goals and objectives."
+    },
+    {
+      "term": "performance",
+      "definition": "A measure of what is achieved or delivered by a system, person, team, practice, or service."
+    },
+    {
+      "term": "pilot",
+      "definition": "A test implementation of a service with a limited scope in a live environment."
+    },
+    {
+      "term": "plan",
+      "definition": "The value chain activity that ensures a shared understanding of the vision, current status, and improvement direction for all four dimensions and all products and services across an organization."
+    },
+    {
+      "term": "policy",
+      "definition": "Formally documented management expectations and intentions, used to direct decisions and activities."
+    },
+    {
+      "term": "portfolio management practice",
+      "definition": "The practice of ensuring that an organization has the right mix of programmes, projects, products, and services to execute its strategy within its funding and resource constraints."
+    },
+    {
+      "term": "post-implementation review (PIR)",
+      "definition": "A review after the implementation of a change, to evaluate success and identify opportunities for improvement."
+    },
+    {
+      "term": "practice",
+      "definition": "A set of organizational resources designed for performing work or accomplishing an objective."
+    },
+    {
+      "term": "problem",
+      "definition": "A cause, or potential cause, of one or more incidents."
+    },
+    {
+      "term": "problem management practice",
+      "definition": "The practice of reducing the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors."
+    },
+    {
+      "term": "procedure",
+      "definition": "A documented way to carry out an activity or a process."
+    },
+    {
+      "term": "process",
+      "definition": "A set of interrelated or interacting activities that transform inputs into outputs. Processes define the sequence of activities and their dependencies."
+    },
+    {
+      "term": "product",
+      "definition": "A configuration of an organization's resources designed to offer value for a consumer."
+    },
+    {
+      "term": "production environment",
+      "definition": "See live environment."
+    },
+    {
+      "term": "programme",
+      "definition": "A set of related projects and activities, and an organization structure created to direct and oversee them."
+    },
+    {
+      "term": "project",
+      "definition": "A temporary structure that is created for the purpose of delivering one or more outputs (or products) according to an agreed business case."
+    },
+    {
+      "term": "project management practice",
+      "definition": "The practice of ensuring that all an organization's proects are successfully delivered."
+    },
+    {
+      "term": "quick win",
+      "definition": "An improvement that is expected to provide a return on investment in a short period of time with relatively small cost and effort."
+    },
+    {
+      "term": "record",
+      "definition": "A document stating results achieved and providing evidence of activities performed."
+    },
+    {
+      "term": "recovery",
+      "definition": "The activity of returning a configuration item to normal operation after a failure."
+    },
+    {
+      "term": "recovery point objective (RPO)",
+      "definition": "The point to which information used by an activity must be restored to enable the activity to operate on resumption."
+    },
+    {
+      "term": "recovery time objective (RTO)",
+      "definition": "The maximum acceptable period of time following a service disruption that can elapse before the lack of business functionality severely impacts the organization."
+    },
+    {
+      "term": "relationship management practice",
+      "definition": "The practice of establishing and nurturing links between an organization and its stakeholders at strategic and tactical levels."
+    },
+    {
+      "term": "release",
+      "definition": "A version of a service or other configuration item, or a collection of configuration items, that is made available for use."
+    },
+    {
+      "term": "release management practice",
+      "definition": "The practice of making new and changed services and features available for use."
+    },
+    {
+      "term": "reliability",
+      "definition": "The ability of a product, service, or other configuration item to perform its intended function for a specified period of time or number of cycles."
+    },
+    {
+      "term": "request catalogue",
+      "definition": "A view of the service catalogue, providing details on service requests for existing and new services, which is made available for the user."
+    },
+    {
+      "term": "request for change (RFC)",
+      "definition": "A description of a proposed change used to initiate change enablement."
+    },
+    {
+      "term": "resolution",
+      "definition": "The action of solving an incident or problem."
+    },
+    {
+      "term": "resource",
+      "definition": "Personnel, material, finance, or other entity that is required for the execution of an activity or the achievement of an objective. Resources used by an organization may be owned by the organization or used according to an agreement with the resource owner."
+    },
+    {
+      "term": "retire",
+      "definition": "The act of permanently withdrawing a product, service, or other configuration item from use."
+    },
+    {
+      "term": "risk",
+      "definition": "A possible event that could cause harm or loss, or make it more difficult to achieve objectives. Can also be defined as uncertainty of outcome, and can be used in the context of measuring the probability of positive outcomes as well as negative outcomes."
+    },
+    {
+      "term": "risk assessment",
+      "definition": "An activity to identify, analyse, and evaluate risks."
+    },
+    {
+      "term": "risk management practice",
+      "definition": "The practice of ensuring that an organization understands and effectively handles risks."
+    },
+    {
+      "term": "service",
+      "definition": "A means of enabling value co-creation by facilitating outcomes that customers want to achieve, without the customer having to manage specific costs and risks."
+    },
+    {
+      "term": "service action",
+      "definition": "Any action required to deliver a service output to a user. Service actions may be performed by a service provider resource, by service users, or jointly."
+    },
+    {
+      "term": "service architecture",
+      "definition": "A view of all the services provided by an organization. It includes interactions between the services, and service models that describe the structure and dynamics of each service."
+    },
+    {
+      "term": "service catalogue",
+      "definition": "Structured information about all the services and service offerings of a service provider, relevant for a specific target audience."
+    },
+    {
+      "term": "service catalogue management practice",
+      "definition": "The practice of providing a single source of consistent information on all services and service offerings, and ensuring that it is available to the relevant audience."
+    },
+    {
+      "term": "service configuration management practice",
+      "definition": "The practice of ensuring that accurate and reliable information about the configuration of services, and the configuration items that support them, is available when and where needed."
+    },
+    {
+      "term": "service consumption",
+      "definition": "Activities performed by an organization to consume services. It includes the management of the consumer's resources needed to use the service, service actions performed by users, and the receiving (acquiring) of goods (if required)."
+    },
+    {
+      "term": "service continuity management practice",
+      "definition": "The practice of ensuring that service availability and performance are maintained at a sufficient level in case of a disaster."
+    },
+    {
+      "term": "service design practice",
+      "definition": "The practice of designing products and services that are fit for purpose, fit for use, and that can be delivered by the organization and its ecosystem."
+    },
+    {
+      "term": "service desk",
+      "definition": "The point of communication between the service provider and all its users."
+    },
+    {
+      "term": "service desk practice",
+      "definition": "The practice of capturing demand for incident resolution and service requests."
+    },
+    {
+      "term": "service financial management practice",
+      "definition": "The practice of supporting an organization's strategies and plans for service management by ensuring that the organization's financial resources and investments are being used effectively."
+    },
+    {
+      "term": "service level",
+      "definition": "One or more metrics that define expected or achieved service quality."
+    },
+    {
+      "term": "service level agreement (SLA)",
+      "definition": "A documented agreement between a service provider and a customer that identifies both services required and the expected level of service."
+    },
+    {
+      "term": "service level management practice",
+      "definition": "The practice of setting clear business-based targets for service performance so that the delivery of a service can be properly assessed, monitored, and managed against these targets."
+    },
+    {
+      "term": "service management",
+      "definition": "A set of specialized organizational capabilities for enabling value for customers in the form of services."
+    },
+    {
+      "term": "service offering",
+      "definition": "A formal description of one or more services, designed to address the needs of a target consumer group. A service offering may include goods, access to resources, and service actions."
+    },
+    {
+      "term": "service owner",
+      "definition": "A role that is accountable for the delivery of a specific service."
+    },
+    {
+      "term": "service portfolio",
+      "definition": "A complete set of products and services that are managed throughout their lifecycles by an organization."
+    },
+    {
+      "term": "service provider",
+      "definition": "A role performed by an organization in a service relationship to provide services to consumers."
+    },
+    {
+      "term": "service provision",
+      "definition": "Activities performed by an organization to provide services. It includes management of the provider's resources, configured to deliver the service; ensuring access to these resources for users; fulfilment of the agreed service actions; service level management; and continual improvement. It may also include the supply of goods."
+    },
+    {
+      "term": "service relationship",
+      "definition": "A cooperation between a service provider and service consumer. Service relationships include"
+    },
+    {
+      "term": "service provision,",
+      "definition": "service consumption, and service relationship management."
+    },
+    {
+      "term": "service relationship management",
+      "definition": "Joint activities performed by a service provider and a service consumer to ensure continual value co-creation based on agreed and available service offerings."
+    },
+    {
+      "term": "service request",
+      "definition": "A request from a user or a user's authorized representative that initiates a service action which has been agreed as a normal part of service delivery."
+    },
+    {
+      "term": "service request management practice",
+      "definition": "The practice of supporting the agreed quality of a service by handling all pre-defined, user- initiated service requests in an effective and user-friendly manner."
+    },
+    {
+      "term": "service validation and testing practice",
+      "definition": "The practice of ensuring that new or changed products and services meet defined requirements."
+    },
+    {
+      "term": "service value system (SVS)",
+      "definition": "A model representing how all the components and activities of an organization work together to facilitate value creation."
+    },
+    {
+      "term": "software development and management practice",
+      "definition": "The practice of ensuring that applications meet stakeholder needs in terms of functionality, reliability, maintainability, compliance, and auditability."
+    },
+    {
+      "term": "sourcing",
+      "definition": "The activity of planning and obtaining resources from a particular source type, which could be internal or external, centralized or distributed, and open or proprietary."
+    },
+    {
+      "term": "specification",
+      "definition": "A documented description of the properties of a product, service, or other configuration item."
+    },
+    {
+      "term": "sponsor",
+      "definition": "The role that authorizes budget for service consumption. Can also be used to describe an organization or individual that provides financial or other support for an initiative."
+    },
+    {
+      "term": "stakeholder",
+      "definition": "A person or organization that has an interest or involvement in an organization, product, service, practice, or other entity."
+    },
+    {
+      "term": "standard",
+      "definition": "A document, established by consensus and approved by a recognized body, that provides for common and repeated use, mandatory requirements, guidelines, or characteristics for its subject."
+    },
+    {
+      "term": "standard change",
+      "definition": "A low-risk, pre-authorized change that is well understood and fully documented, and which can be implemented without needing additional authorization."
+    },
+    {
+      "term": "status",
+      "definition": "A description of the specific states an entity can have at a given time."
+    },
+    {
+      "term": "strategy management practice",
+      "definition": "The practice of formulating the goals of an organization and adopting the courses of action and allocation of resources necessary for achieving those goals."
+    },
+    {
+      "term": "supplier",
+      "definition": "A stakeholder responsible for providing services that are used by an organization."
+    },
+    {
+      "term": "supplier management practice",
+      "definition": "The practice of ensuring that an organization's suppliers and their performance levels are managed appropriately to support the provision of seamless quality products and services."
+    },
+    {
+      "term": "support team",
+      "definition": "A team with the responsibility to maintain normal operations, address users' requests, and resolve incidents and problems related to specified products, services, or other configuration items."
+    },
+    {
+      "term": "system",
+      "definition": "A combination of interacting elements organized and maintained to achieve one or more stated purposes."
+    },
+    {
+      "term": "systems thinking",
+      "definition": "A holistic approach to analysis that focuses on the way that a system's constituent parts work, interrelate, and interact over time, and within the context of other systems."
+    },
+    {
+      "term": "technical debt",
+      "definition": "The total rework backlog accumulated by choosing workarounds instead of system solutions that would take longer."
+    },
+    {
+      "term": "test environment",
+      "definition": "A controlled environment established to test products, services, and other configuration items."
+    },
+    {
+      "term": "third party",
+      "definition": "A stakeholder external to an organization."
+    },
+    {
+      "term": "throughput",
+      "definition": "A measure of the amount of work performed by a product, service, or other system over a given period of time."
+    },
+    {
+      "term": "transaction",
+      "definition": "A unit of work consisting of an exchange between two or more participants or systems."
+    },
+    {
+      "term": "use case",
+      "definition": "A technique using realistic practical scenarios to define functional requirements and to design tests."
+    },
+    {
+      "term": "user",
+      "definition": "The role that uses services."
+    },
+    {
+      "term": "user experience (UX)",
+      "definition": "The sum of the functional and emotional interactions with a service and service provider as perceived by a user."
+    },
+    {
+      "term": "utility",
+      "definition": "The functionality offered by a product or service to meet a particular need. Utility can be summarized as 'what the service does' and can be used to determine whether a service is 'fit for purpose'. To have utility, a service must either support the performance of the consumer or remove constraints from the consumer. Many services do both."
+    },
+    {
+      "term": "utility requirements",
+      "definition": "Functional requirements which have been defined by the customer and are unique to a specific product."
+    },
+    {
+      "term": "validation",
+      "definition": "Confirmation that the system, product, service, or other entity meets the agreed specification."
+    },
+    {
+      "term": "value",
+      "definition": "The perceived benefits, usefulness, and importance of something."
+    },
+    {
+      "term": "value stream",
+      "definition": "A series of steps an organization undertakes to create and deliver products and services to consumers."
+    },
+    {
+      "term": "value streams and processes",
+      "definition": "One of the four dimensions of service management. It defines the activities, workflows, controls, and procedures needed to achieve the agreed objectives."
+    },
+    {
+      "term": "vision",
+      "definition": "A defined aspiration of what an organization would like to become in the future."
+    },
+    {
+      "term": "warranty",
+      "definition": "Assurance that a product or service will meet agreed requirements. Warranty can be summarized as 'how the service performs' and can be used to determine whether a service is 'fit for use'. Warranty often relates to service levels aligned with the needs of service consumers. This may be based on a formal agreement, or it may be a marketing message or brand image. Warranty typically addresses such areas as the availability of the service, its capacity, levels of security, and continuity. A service may be said to provide acceptable assurance, or 'warranty', if all defined and agreed conditions are met."
+    },
+    {
+      "term": "warranty requirements",
+      "definition": "Typically non-functional requirements captured as inputs from key stakeholders and other practices."
+    },
+    {
+      "term": "waterfall method",
+      "definition": "A development approach that is linear and sequential with distinct objectives for each phase of development."
+    },
+    {
+      "term": "work instruction",
+      "definition": "A detailed description to be followed in order to perform an activity."
+    },
+    {
+      "term": "workaround",
+      "definition": "A solution that reduces or eliminates the impact of an incident or problem for which a full resolution is not yet available. Some workarounds reduce the likelihood of incidents."
+    },
+    {
+      "term": "workforce and talent management practice",
+      "definition": "The practice of ensuring that an organization has the right people with the appropriate skills and knowledge and in the correct roles to support its business objectives."
+    }
   ],
   "questions": [
     {
-      "id": 1,
-      "q": "An IT department is implementing a change management process. They need to classify changes based on impact and urgency (e.g., a routine printer driver update vs. a major network infrastructure upgrade). Which of the following would BEST help categorize these items?",
-      "category": "Operational Procedures",
-      "correct": "Identifying the change type",
-      "distractors": [
-        "Performing a security audit",
-        "Conducting a cost-benefit analysis",
-        "Scheduling a maintenance window"
-      ],
-      "explain": "Identifying the change type categorizes changes by complexity, risk, and urgency — routine, standard, or emergency.",
-      "isBoss": false
-    },
-    {
-      "id": 2,
-      "q": "A small doctor's office wants the highest level of wireless security AND desktop authentication. They only use cloud-based SaaS apps. Which combination should you implement?",
-      "category": "Security",
-      "correct": "WPA2 + Multifactor Authentication",
-      "distractors": [
-        "WEP + WPS",
-        "WPA + Single-factor password",
-        "Open network + Biometrics only"
-      ],
-      "explain": "WPA2 uses AES with CCMP encryption. Multifactor requires 2+ factors (know / have / are / do). WEP is broken, WPS is brute-forceable.",
-      "isBoss": false
-    },
-    {
-      "id": 3,
-      "q": "David needs to see diagnostic information about an Android app and its network connections while debugging it on a tablet. Which of the following should he enable on the device?",
-      "category": "Software Troubleshooting",
-      "correct": "Developer mode",
-      "distractors": [
-        "Rooting",
-        "Safe mode",
-        "Factory reset"
-      ],
-      "explain": "Developer mode exposes diagnostic info for apps and network connections. Rooting grants admin rights but isn't needed just for diagnostics.",
-      "isBoss": false
-    },
-    {
-      "id": 4,
-      "q": "Which command is used in the Linux terminal to change the permissions of a file?",
-      "category": "Operating Systems",
-      "correct": "chmod",
-      "distractors": [
-        "chown",
-        "chgrp",
-        "chattr"
-      ],
-      "explain": "chmod = change mode (permissions). chown changes owner. chgrp changes group. chattr changes attributes.",
-      "isBoss": false
-    },
-    {
-      "id": 5,
-      "q": "Abagail's Microsoft Word crashes every time she opens one specific document. Other documents open fine, no recent changes. She needs the content. What's the BEST next step?",
-      "category": "Software Troubleshooting",
-      "correct": "Attempt to open the document in Safe Mode",
-      "distractors": [
-        "Replace the document with a new blank file",
-        "Reinstall Microsoft Office",
-        "Perform a Windows system restore"
-      ],
-      "explain": "Safe Mode bypasses add-ins and corrupt settings — often the quickest path to recovering the document's content.",
-      "isBoss": true
-    },
-    {
-      "id": 6,
-      "q": "Daily Linux server backups are saved to a local NAS. You need to ensure backups will actually work when needed for restoration. What should you recommend?",
-      "category": "Operational Procedures",
-      "correct": "Attempt to restore to a test server from one of the backup files",
-      "distractors": [
-        "Set up scripts to automatically reattempt failed backup jobs",
-        "Verify the file sizes of each backup match the source",
-        "Increase the frequency of backups to twice daily"
-      ],
-      "explain": "The ONLY way to be sure a backup is good is to actually restore from it. Size checks and retries don't prove recoverability.",
-      "isBoss": false
-    },
-    {
-      "id": 7,
-      "q": "Which section of the Control Panel should a technician use to edit the account profile related to a user's Microsoft Outlook client?",
-      "category": "Software Troubleshooting",
-      "correct": "Mail",
-      "distractors": [
-        "User Accounts",
-        "Programs and Features",
-        "Credential Manager"
-      ],
-      "explain": "The Mail applet is specifically for viewing, editing, and removing Outlook profile settings for the logged-in user.",
-      "isBoss": false
-    },
-    {
-      "id": 8,
-      "q": "A user logs into Windows 11 and sees a black screen with just a movable cursor — no icons, no taskbar. What's the BEST initial fix to try?",
-      "category": "Software Troubleshooting",
-      "correct": "Restart the Windows Explorer process using Task Manager",
-      "distractors": [
-        "Boot into Safe Mode and perform a system restore",
-        "Reinstall Windows",
-        "Check the monitor cables and display settings"
-      ],
-      "explain": "A black screen + cursor usually means explorer.exe didn't start. Restarting it is the least invasive fix and works most of the time.",
-      "isBoss": false
-    },
-    {
-      "id": 9,
-      "q": "The server room humidity is at 10%. Which of the following risks to the servers could occur due to this low humidity level?",
-      "category": "Operational Procedures",
-      "correct": "Accidental static discharge",
-      "distractors": [
-        "Corrosion of the servers",
-        "Overheating of the CPUs",
-        "Increased fire hazard"
-      ],
-      "explain": "Low humidity allows static buildup → discharge damages components. Corrosion is a HIGH-humidity problem. Target: 40-60% RH.",
-      "isBoss": false
-    },
-    {
-      "id": 10,
-      "q": "What type of structure is 'IF THEN ELSE' in scripting?",
-      "category": "Operating Systems",
-      "correct": "Branch",
-      "distractors": [
-        "Variable",
-        "Loop",
-        "Function"
-      ],
-      "explain": "A branch controls program flow based on a logic condition — classically IF / THEN / ELSE. Variables hold values; loops repeat; functions encapsulate.",
-      "isBoss": false
-    },
-    {
-      "id": 11,
-      "q": "Dion Training wants governance for password length, complexity, and expiration. Which policy should this be documented within?",
-      "category": "Security",
-      "correct": "Password policy",
-      "distractors": [
-        "Acceptable use policy",
-        "Remote access policy",
-        "Data retention policy"
-      ],
-      "explain": "Password policies define complexity, length, expiration, and protection rules for knowledge-based authentication. AUPs govern use of company resources.",
-      "isBoss": false
-    },
-    {
-      "id": 12,
-      "q": "An attacker is using a precomputed table of hash values to attempt to crack your Windows password. What type of password attack is this?",
-      "category": "Security",
-      "correct": "Rainbow table attack",
-      "distractors": [
-        "Brute-force attack",
-        "Dictionary attack",
-        "Phishing attack"
-      ],
-      "explain": "Rainbow tables precompute hashes for fast lookup. Brute-force tries combinations live. Dictionary uses word lists. Phishing tricks users.",
-      "isBoss": true
-    },
-    {
-      "id": 13,
-      "q": "A Windows 10 workstation won't boot. The technician needs to replace the OS files with a new copy of the SAME version, without touching user data or installed apps. Which type of installation should they use?",
-      "category": "Operating Systems",
-      "correct": "Repair installation",
-      "distractors": [
-        "In-place upgrade",
-        "Clean install",
-        "Reset this PC"
-      ],
-      "explain": "A repair install replaces system files of the same version while preserving data, settings, and apps. An in-place upgrade installs a NEW version.",
-      "isBoss": false
-    },
-    {
-      "id": 14,
-      "q": "You run 'ipconfig /all' and see your IP is 169.254.34.12. Why can't you reach the internet?",
-      "category": "Operating Systems",
-      "correct": "The workstation couldn't reach the DHCP server",
-      "distractors": [
-        "The workstation couldn't reach the DNS server",
-        "The default gateway is misconfigured",
-        "The subnet mask is wrong"
-      ],
-      "explain": "169.254.x.x is an APIPA address — assigned automatically when no DHCP server responds. DNS issues wouldn't give you an APIPA address.",
-      "isBoss": false
-    },
-    {
-      "id": 15,
-      "q": "Which security control would be the BEST way to prevent unauthorized users from booting a workstation from an external USB drive?",
-      "category": "Security",
-      "correct": "BIOS password required",
-      "distractors": [
-        "Full disk encryption",
-        "Antivirus software",
-        "A strong Windows login password"
-      ],
-      "explain": "A BIOS password prevents changing the boot order. Encryption protects data at rest but doesn't stop the boot itself. OS passwords are bypassed entirely if you boot from USB.",
-      "isBoss": false
-    },
-    {
-      "id": 16,
-      "q": "Your team is finalizing a change request to install 20 new APs for a college campus. Locations are documented. What's the MOST important thing to add to the scope of work before approval?",
-      "category": "Operational Procedures",
-      "correct": "Rollback plan",
-      "distractors": [
-        "Risk analysis",
-        "Budget approval document",
-        "Technician training schedule"
-      ],
-      "explain": "Every change needs a rollback plan so it can be reversed if it goes sideways. Risk analysis is important but the rollback is the critical safety net.",
-      "isBoss": false
-    },
-    {
-      "id": 17,
-      "q": "Edward can access his company email but cannot reach the network file share that hosted his shared inbox folders. He can reach other network shares. What's the MOST likely cause?",
-      "category": "Operating Systems",
-      "correct": "The network file share's permission has been modified",
-      "distractors": [
-        "The internet security options in his email client have been modified",
-        "The domain controller's DNS settings were changed",
-        "The OS update installed an incompatible email driver"
-      ],
-      "explain": "The file share's permissions have likely changed during Edward's vacation. Since he can still send/receive email, his account permissions are fine. Internet security options would affect sending/receiving, and OS updates wouldn't affect network file shares.",
-      "isBoss": false
-    },
-    {
-      "id": 18,
-      "q": "A technician needs to make a Windows computer visible to other PCs on a workgroup network. Which setting should be enabled?",
-      "category": "Operating Systems",
-      "correct": "Network discovery",
-      "distractors": [
-        "File and folder sharing",
-        "Printer sharing",
-        "Guest account access"
-      ],
-      "explain": "Network discovery allows Windows to find other computers on a network. File sharing is separate — it's about making your files accessible, not finding other PCs.",
-      "isBoss": false
-    },
-    {
-      "id": 19,
-      "q": "A file server must remain running during a power outage until the backup generator starts. Which device provides the needed buffer?",
-      "category": "Operational Procedures",
-      "correct": "An uninterruptible power supply (UPS)",
-      "distractors": [
-        "A line conditioner",
-        "A surge protector",
-        "A voltage regulator"
-      ],
-      "explain": "A UPS provides battery backup during power outages (until the generator kicks in). A line conditioner only adjusts voltage levels but can't keep the server running during a complete power failure.",
-      "isBoss": false
-    },
-    {
-      "id": 20,
-      "q": "A Linux administrator needs to change a user's password from the command line. Which command should they use?",
-      "category": "Operating Systems",
-      "correct": "passwd",
-      "distractors": [
-        "pwd",
-        "chpasswd",
-        "usermod"
-      ],
-      "explain": "passwd changes a user's password. pwd displays the present working directory.",
-      "isBoss": false
-    },
-    {
-      "id": 21,
-      "q": "An FTP server currently sits on the internal network. To improve security, where should it be placed?",
-      "category": "Operating Systems",
-      "correct": "Migrate the FTP server from the internal network to a screened subnet",
-      "distractors": [
-        "Add a deny rule to the firewall's ACL that blocks port 21 outbound",
-        "Place the FTP server in the same VLAN as the web server",
-        "Restrict FTP access to only the IT department"
-      ],
-      "explain": "A screened subnet (DMZ) isolates public-facing servers from the internal network. Blocking outbound port 21 wouldn't prevent exploitation of the FTP server itself.",
-      "isBoss": false
-    },
-    {
-      "id": 22,
-      "q": "Which file type can be executed on Linux, macOS, and Windows without modification?",
-      "category": "Operating Systems",
-      "correct": ".py",
-      "distractors": [
-        ".sh",
-        ".bat",
-        ".cmd"
-      ],
-      "explain": "Python (.py) scripts run on Linux, macOS, and Windows. Shell scripts (.sh) are Linux/macOS only.",
-      "isBoss": false
-    },
-    {
-      "id": 23,
-      "q": "A company uses Cisco infrastructure for AAA authentication. Which protocol was developed by Cisco for this purpose?",
-      "category": "Security",
-      "correct": "TACACS+",
-      "distractors": [
-        "RADIUS",
-        "Kerberos",
-        "LDAP"
-      ],
-      "explain": "TACACS+ was developed by Cisco as a proprietary protocol for AAA. RADIUS is a general protocol.",
-      "isBoss": false
-    },
-    {
-      "id": 24,
-      "q": "What is the most likely way a user's Android tablet could be compromised by a malicious actor?",
-      "category": "Security",
-      "correct": "Use social engineering to trick a user into opening a malicious APK",
-      "distractors": [
-        "Use a tool like ICSSPLOIT to target specific vulnerabilities",
-        "Exploit a known kernel vulnerability remotely",
-        "Install a malicious app from the Google Play Store"
-      ],
-      "explain": "Social engineering (malicious APK) is the most likely attack vector for Android devices.",
-      "isBoss": false
-    },
-    {
-      "id": 25,
-      "q": "How should a system administrator schedule a vulnerability scan to run automatically every Sunday at 2:00 AM?",
-      "category": "Operating Systems",
-      "correct": "Task scheduler",
-      "distractors": [
-        "Event viewer",
-        "Services console",
-        "Device Manager"
-      ],
-      "explain": "Task scheduler runs tasks automatically at specified times. Event viewer logs events.",
-      "isBoss": true
-    },
-    {
-      "id": 26,
-      "q": "A company wants to deploy Windows and Office settings across 500 devices in Active Directory. Which tool should they use?",
-      "category": "Operating Systems",
-      "correct": "GPO",
-      "distractors": [
-        "HIPS",
-        "MFA",
-        "DHCP"
-      ],
-      "explain": "Group Policy Objects (GPO) deploy settings across many devices in Active Directory.",
-      "isBoss": false
-    },
-    {
-      "id": 27,
-      "q": "Which Linux command installs software on an RPM-based distribution?",
-      "category": "Operating Systems",
-      "correct": "yum",
-      "distractors": [
-        "nano",
-        "apt-get",
-        "pacman"
-      ],
-      "explain": "yum installs software on RPM-based Linux. nano is a text editor.",
-      "isBoss": false
-    },
-    {
-      "id": 28,
-      "q": "A Linux administrator needs to edit a configuration file from the command line. Which command launches a text editor?",
-      "category": "Operating Systems",
-      "correct": "nano",
-      "distractors": [
-        "cat",
-        "ls",
-        "grep"
-      ],
-      "explain": "nano is a command-line text editor. cat creates/displays files but doesn't edit them.",
-      "isBoss": false
-    },
-    {
-      "id": 29,
-      "q": "A chat application has too many users in one conversation, making important messages hard to find. What's the BEST way to organize messages?",
-      "category": "Software Troubleshooting",
-      "correct": "Use dedicated channels to keep messages organized.",
-      "distractors": [
-        "Reduce the number of users in each conversation.",
-        "Enable read receipts for all users.",
-        "Increase the font size in the chat window."
-      ],
-      "explain": "Dedicated channels organize messages so important updates aren't lost.",
-      "isBoss": false
-    },
-    {
-      "id": 30,
-      "q": "A user reports sudden internet connectivity loss and a warning about high network traffic. What's the BEST first step?",
-      "category": "Software Troubleshooting",
-      "correct": "Investigate for malware and run a full security scan on the device",
-      "distractors": [
-        "Turn on airplane mode for a few seconds, then turn it back off",
-        "Reset the router to factory settings",
-        "Reinstall the network drivers"
-      ],
-      "explain": "Sudden connectivity loss + high traffic warning = possible malware.",
-      "isBoss": false
-    },
-    {
-      "id": 31,
-      "q": "Which Windows account type can install and remove programs, modify system files, and change permissions?",
-      "category": "Security",
-      "correct": "Administrator",
-      "distractors": [
-        "Power User",
-        "Standard User",
-        "Guest"
-      ],
-      "explain": "An Administrator can install/remove programs, modify system files, and change permissions.",
-      "isBoss": false
-    },
-    {
-      "id": 32,
-      "q": "A user's Google homepage is in a foreign language. They haven't changed their browser settings. What should you check first?",
-      "category": "Software Troubleshooting",
-      "correct": "Remove any proxy servers configured in their web browser",
-      "distractors": [
-        "Verify the user's date and time zone are correctly listed in Windows",
-        "Reinstall the web browser",
-        "Change the search engine to Bing"
-      ],
-      "explain": "A proxy in a foreign country would cause Google to display in that country's language.",
-      "isBoss": false
-    },
-    {
-      "id": 33,
-      "q": "After registering the Windows Update service's DLL files, what should a technician do next?",
-      "category": "Operating Systems",
-      "correct": "Reboot the computer",
-      "distractors": [
-        "Register the Windows Update service's DLL files",
-        "Uninstall the latest Windows update",
-        "Run a system restore"
-      ],
-      "explain": "After registering DLL files, reboot the computer for changes to take effect.",
-      "isBoss": false
-    },
-    {
-      "id": 34,
-      "q": "A Windows installation reports 'Operating System Not Found.' Which bootrec command rebuilds the Boot Configuration Data?",
-      "category": "Operating Systems",
-      "correct": "bootrec /rebuildbcd",
-      "distractors": [
-        "bootrec /fixmbr",
-        "bootrec /fixboot",
-        "bootrec /scanos"
-      ],
-      "explain": "bootrec /rebuildbcd rebuilds the Boot Configuration Data to detect Windows installations.",
-      "isBoss": false
-    },
-    {
-      "id": 35,
-      "q": "Which technical control BEST prevents virus outbreaks by closing known vulnerabilities?",
-      "category": "Security",
-      "correct": "Patch management",
-      "distractors": [
-        "Acceptable use policies",
-        "Antivirus software",
-        "Firewall rules"
-      ],
-      "explain": "Patch management is a technical control that prevents known vulnerabilities from being exploited.",
-      "isBoss": false
-    },
-    {
-      "id": 36,
-      "q": "After a security update, a workstation fails to boot. What should a technician do first?",
-      "category": "Operating Systems",
-      "correct": "Reboot the workstation into safe mode and roll back the recent security update",
-      "distractors": [
-        "Reboot the workstation into the BIOS and reconfigure boot options",
-        "Perform a clean installation of Windows",
-        "Replace the hard drive"
-      ],
-      "explain": "Roll back the problematic update via Safe Mode.",
-      "isBoss": false
-    },
-    {
-      "id": 37,
-      "q": "A company wants physical access control for its server room. Which device is designed for this purpose?",
-      "category": "Operational Procedures",
-      "correct": "Server lock",
-      "distractors": [
-        "Smart card",
-        "Biometric scanner",
-        "Door alarm system"
-      ],
-      "explain": "A server lock is a physical locking mechanism for server cabinets.",
-      "isBoss": false
-    },
-    {
-      "id": 38,
-      "q": "What security measure has the best ROI for reducing the risk of successful attacks against an organization?",
-      "category": "Security",
-      "correct": "User training and awareness",
-      "distractors": [
-        "Penetration testing",
-        "Firewall appliances",
-        "Intrusion detection systems"
-      ],
-      "explain": "End users are the most vulnerable attack vector; training has the best ROI.",
-      "isBoss": true
-    },
-    {
-      "id": 39,
-      "q": "Which statement about virtual machines and physical servers is TRUE regarding downtime?",
-      "category": "Operational Procedures",
-      "correct": "A virtual machine has less downtime than a physical server",
-      "distractors": [
-        "A virtual machine has more downtime than a physical server",
-        "They have equivalent downtime",
-        "Virtual machines cannot be restored after failure"
-      ],
-      "explain": "VMs can be restored much faster than physical servers.",
-      "isBoss": false
-    },
-    {
-      "id": 40,
-      "q": "Before granting remote access to a server, what is the MOST important security measure to implement?",
-      "category": "Security",
-      "correct": "Install the latest security updates and patches to the server",
-      "distractors": [
-        "Set the server's anti-virus software to automatically update itself and perform a full scan every Saturday night",
-        "Enable two-factor authentication on the admin account",
-        "Configure a firewall rule to allow only specific IP addresses"
-      ],
-      "explain": "Keeping the server patched is the most important security measure before granting remote access.",
-      "isBoss": false
-    },
-    {
-      "id": 41,
-      "q": "An AI tool is generating responses with incorrect or outdated information. What is this issue called?",
-      "category": "Software Troubleshooting",
-      "correct": "Inaccuracies",
-      "distractors": [
-        "Hallucination",
-        "Bias",
-        "Overfitting"
-      ],
-      "explain": "The issue involves incorrect/outdated AI-generated content, not fabrication of false details.",
-      "isBoss": false
-    },
-    {
-      "id": 42,
-      "q": "What are the BEST security measures to protect data on a smartphone that could be lost or stolen?",
-      "category": "Security",
-      "correct": "Configure the ability to perform a remote wipe, Enable full device encryption",
-      "distractors": [
-        "Require complex passwords, Enable a pattern lock",
-        "Install a VPN, Enable two-factor authentication",
-        "Enable a firewall, Update the operating system"
-      ],
-      "explain": "Full encryption protects data if the device is lost; remote wipe erases data before a thief can access it.",
-      "isBoss": false
-    },
-    {
-      "id": 43,
-      "q": "A single Android app crashes repeatedly. What's the least disruptive first step?",
-      "category": "Software Troubleshooting",
-      "correct": "Clear the application's cache and data",
-      "distractors": [
-        "Restart the smartphone to refresh the operating system",
-        "Factory reset the device",
-        "Reinstall the app from the Play Store"
-      ],
-      "explain": "Cache corruption is the most common cause of single-app crashes; clearing cache/data is the least disruptive first step.",
-      "isBoss": false
-    },
-    {
-      "id": 44,
-      "q": "Which two factors MOST commonly compromise wireless networks?",
-      "category": "Security",
-      "correct": "WPS enabled, Router with outdated firmware",
-      "distractors": [
-        "Default administrative login credentials, Router with outdated firmware",
-        "WEP encryption, Weak passwords",
-        "Open networks, Default SSIDs"
-      ],
-      "explain": "WPS PINs are vulnerable to brute force attacks; outdated firmware is another common vulnerability.",
-      "isBoss": false
-    },
-    {
-      "id": 45,
-      "q": "Which Windows 10 edition supports up to 4 physical CPUs and 6 TB of RAM?",
-      "category": "Operating Systems",
-      "correct": "Pro for Workstations",
-      "distractors": [
-        "Pro",
-        "Home",
-        "Enterprise"
-      ],
-      "explain": "Windows 10 Pro for Workstations supports up to 4 physical CPUs and 6 TB RAM.",
-      "isBoss": true
-    },
-    {
-      "id": 46,
-      "q": "A company wants to prevent USB-based malware attacks and password-based compromises. Which two measures should they implement?",
-      "category": "Security",
-      "correct": "Lockout the account after 3 failed login attempts, Change the default credentials on the servers",
-      "distractors": [
-        "Modify the AutoRun settings, Install the operating system security updates",
-        "Enable a firewall, Use complex passwords",
-        "Install antivirus, Enable full disk encryption"
-      ],
-      "explain": "AutoRun settings prevent USB attacks; account lockout and changing default credentials prevent password attacks.",
-      "isBoss": false
-    },
-    {
-      "id": 47,
-      "q": "Which type of data is regulated under privacy laws such as GDPR and PCI-DSS?",
-      "category": "Security",
-      "correct": "PII",
-      "distractors": [
-        "DRM",
-        "API keys",
-        "Source code"
-      ],
-      "explain": "PII (Personally Identifiable Information) is regulated data along with PCI, GDPR, and PHI.",
-      "isBoss": false
-    },
-    {
-      "id": 48,
-      "q": "An attacker uses a list of common passwords to try to crack a user's account. What type of attack is this?",
-      "category": "Security",
-      "correct": "Dictionary",
-      "distractors": [
-        "Brute-force",
-        "Rainbow table",
-        "Man-in-the-middle"
-      ],
-      "explain": "A dictionary attack uses a list of common passwords; brute-force tries all possible combinations.",
-      "isBoss": false
-    },
-    {
-      "id": 49,
-      "q": "Which type of network hides your computer and prevents file sharing?",
-      "category": "Operating Systems",
-      "correct": "Public",
-      "distractors": [
-        "Private",
-        "Workgroup",
-        "Domain"
-      ],
-      "explain": "A public network hides your computer and prevents file sharing.",
-      "isBoss": false
-    },
-    {
-      "id": 50,
-      "q": "An instructor wants only their IoT device to connect to a classroom wireless network while blocking students' devices. Which control should they use?",
-      "category": "Security",
-      "correct": "MAC filtering",
-      "distractors": [
-        "NAT",
-        "Port forwarding",
-        "QoS"
-      ],
-      "explain": "MAC filtering allows specific devices (instructors') while blocking others (students).",
-      "isBoss": false
-    },
-    {
-      "id": 51,
-      "q": "A Windows system administrator needs to scan for and restore corrupted system files. Which command should they use?",
-      "category": "Operating Systems",
-      "correct": "sfc",
-      "distractors": [
-        "chkdsk",
-        "defrag",
-        "diskpart"
-      ],
-      "explain": "sfc (System File Checker) scans for and restores corrupted Windows system files. chkdsk checks the file system.",
-      "isBoss": false
-    },
-    {
-      "id": 52,
-      "q": "An individual is setting up a new personal tablet. They want a screen lock method that balances good security with ease of recall. Which type of screen lock should they use?",
-      "category": "Security",
-      "correct": "PIN code",
-      "distractors": [
-        "Swipe",
-        "Fingerprint",
-        "Facial recognition"
-      ],
-      "explain": "A PIN code balances security with ease of recall. It is more secure than a swipe pattern and easier to remember than a complex password, while biometrics may be less convenient in some situations.",
-      "isBoss": false
-    },
-    {
-      "id": 53,
-      "q": "A company's security policy requires all internet traffic to pass through a central monitoring point. Which setting should be configured on employee workstations to comply with this policy?",
-      "category": "Operating Systems",
-      "correct": "Proxy server",
-      "distractors": [
-        "DHCP settings",
-        "DNS server",
-        "VPN connection"
-      ],
-      "explain": "A proxy server routes workstation internet traffic through a central point for monitoring and control. DNS and DHCP do not provide that traffic-control function, and a VPN is primarily for secure network access.",
-      "isBoss": false
-    },
-    {
-      "id": 54,
-      "q": "A computer engineer is explaining the advantages of using SRAM in a CPU's cache memory. What characteristic of SRAM makes it particularly suitable for this role?",
-      "category": "Operating Systems",
-      "correct": "Its faster access speed compared to DRAM",
-      "distractors": [
-        "Its high storage capacity",
-        "Its low power consumption",
-        "Its ability to store data without power"
-      ],
-      "explain": "SRAM is used for CPU cache because it can access data faster than DRAM. It is not nonvolatile and typically has lower storage density than DRAM.",
-      "isBoss": false
-    },
-    {
-      "id": 55,
-      "q": "A small business wants to consolidate various security functions, including firewall, antivirus, and intrusion prevention, into a single appliance. What type of device should they consider implementing?",
-      "category": "Security",
-      "correct": "UTM",
-      "distractors": [
-        "VNC",
-        "UPS",
-        "UTP"
-      ],
-      "explain": "A UTM, or Unified Threat Management device, combines multiple security functions such as firewall, antivirus, intrusion prevention, and related protections into one appliance.",
-      "isBoss": false
-    },
-    {
-      "id": 56,
-      "q": "A computer is experiencing issues with network connectivity. To use the built-in diagnostics and resolve the problem, which option should a user select in the Network and Sharing Center?",
-      "category": "Operating Systems",
-      "correct": "Troubleshoot problems",
-      "distractors": [
-        "Change adapter settings",
-        "Change advanced sharing settings",
-        "Set up a new connection or network"
-      ],
-      "explain": "Troubleshoot problems launches Windows Network Diagnostics to detect and attempt to resolve common network connectivity issues.",
-      "isBoss": false
-    },
-    {
-      "id": 57,
-      "q": "A user's operating system consistently fails to complete updates. What should be checked first to resolve this issue?",
-      "category": "Software Troubleshooting",
-      "correct": "Available storage space on the device",
-      "distractors": [
-        "The compatibility of installed applications with the new update",
-        "The speed of the internet connection",
-        "The accuracy of the system clock"
-      ],
-      "explain": "Failed operating system updates are commonly caused by insufficient free storage. Updates often need significant space to download, unpack, and install.",
-      "isBoss": false
-    },
-    {
-      "id": 58,
-      "q": "A small business owner is planning to upgrade the computers in her office. She requires an operating system that can handle advanced networking features and remote desktop access, but does not need advanced security features like device guard. Which edition of Windows 10 would be most suitable for her needs?",
-      "category": "Operating Systems",
-      "correct": "Windows 10 Pro",
-      "distractors": [
-        "Windows 10 Home",
-        "Windows 10 Enterprise",
-        "Windows 10 Pro for Workstations"
-      ],
-      "explain": "Windows 10 Pro supports small-business features such as domain join, Group Policy, and hosting Remote Desktop without requiring Enterprise-only security features.",
-      "isBoss": false
-    },
-    {
-      "id": 59,
-      "q": "A technician suspects that a computer is not connected to the network. To confirm network connectivity to the local router, which command should they execute?",
-      "category": "Operating Systems",
-      "correct": "ping [router IP address]",
-      "distractors": [
-        "netstat",
-        "nslookup",
-        "ipconfig"
-      ],
-      "explain": "Ping sends ICMP echo requests to a target such as the local router. A reply confirms basic network connectivity to that device.",
-      "isBoss": false
-    },
-    {
-      "id": 60,
-      "q": "A Windows 10 user wants to create a new profile in Microsoft Outlook. Which option within the Control Panel's Mail utility allows them to do this?",
-      "category": "Operating Systems",
-      "correct": "Show Profiles",
-      "distractors": [
-        "Data Files",
-        "Set as Default",
-        "Email Accounts"
-      ],
-      "explain": "Show Profiles in the Control Panel Mail utility lets users add, remove, or switch Outlook profiles.",
-      "isBoss": false
-    },
-    {
-      "id": 61,
-      "q": "When a user switches to a new mobile phone and wants to retain their existing phone number and service, what component should they transfer to the new device?",
-      "category": "Operating Systems",
-      "correct": "SIM",
-      "distractors": [
-        "SIMM",
-        "SATA",
-        "SCADA"
-      ],
-      "explain": "The SIM stores subscriber identity and network authorization information, allowing the user to keep the same phone number and mobile service on a compatible new phone.",
-      "isBoss": false
-    },
-    {
-      "id": 62,
-      "q": "A Windows 10 user wants to ensure their computer's time is always accurate, even after traveling to different time zones. Which setting in Time and Language should they enable?",
-      "category": "Operating Systems",
-      "correct": "Set time zone automatically",
-      "distractors": [
-        "Set time automatically",
-        "Sync now",
-        "Adjust for daylight saving time automatically"
-      ],
-      "explain": "Set time zone automatically lets Windows detect the current time zone and adjust the clock when traveling. Set time automatically only synchronizes the clock within the configured time zone.",
-      "isBoss": false
-    },
-    {
-      "id": 63,
-      "q": "A technician needs to check the processor type and speed, and the amount of installed RAM on a Windows 10 computer. Which tab in the System Information should they consult?",
-      "category": "Operating Systems",
-      "correct": "System Summary",
-      "distractors": [
-        "Hardware Resources",
-        "Components",
-        "Software Environment"
-      ],
-      "explain": "System Summary in System Information provides the main hardware overview, including processor details and installed RAM.",
-      "isBoss": false
-    },
-    {
-      "id": 64,
-      "q": "A user is setting up a new Windows 10 computer and is asked to create an account. They want an account that can be used to synchronize settings and files across multiple devices. Which type of account should they choose?",
-      "category": "Security",
-      "correct": "Microsoft account",
-      "distractors": [
-        "Guest user account",
-        "Power user account",
-        "Local account"
-      ],
-      "explain": "A Microsoft account links the user to Microsoft online services and can synchronize settings and files across devices. A local account is limited to one device.",
-      "isBoss": false
-    },
-    {
-      "id": 65,
-      "q": "An individual plans to sell their Mac and wants to completely erase all the data on the hard drive to prevent personal information from being recovered by the new owner. Which Disk Utility option should they use?",
-      "category": "Operating Systems",
-      "correct": "Erase",
-      "distractors": [
-        "RAID Assistant",
-        "First Aid",
-        "Partition"
-      ],
-      "explain": "The Erase option in Disk Utility removes the data from the selected drive, which is the appropriate step before selling or disposing of a Mac.",
-      "isBoss": false
-    },
-    {
-      "id": 66,
-      "q": "A user wants to organize their open applications and documents into separate workspaces to reduce clutter on their Mac. Which feature should they use?",
-      "category": "Operating Systems",
-      "correct": "Multiple Desktops",
-      "distractors": [
-        "Mission Control",
-        "Keychain",
-        "Spotlight"
-      ],
-      "explain": "Multiple Desktops, also known as Spaces, lets macOS users organize windows into separate workspaces to reduce clutter.",
-      "isBoss": false
-    },
-    {
-      "id": 67,
-      "q": "A network administrator wants to allow a specific application to communicate through the Windows Firewall. Which feature should they configure in the firewall settings?",
-      "category": "Operating Systems",
-      "correct": "Advanced settings > Inbound Rules > New Rule",
-      "distractors": [
-        "Advanced settings > Outbound Rules > New Rule",
-        "Inbound Rules",
-        "Outbound Rules"
-      ],
-      "explain": "To allow an application to receive network traffic through Windows Firewall, create a new inbound rule from Advanced settings.",
-      "isBoss": false
-    },
-    {
-      "id": 68,
-      "q": "What is the purpose of implementing Network Access Control (NAC) in a corporate network?",
-      "category": "Security",
-      "correct": "To control which devices are allowed to connect to the network",
-      "distractors": [
-        "To increase the storage capacity of the network",
-        "To translate network addresses",
-        "To encrypt the data transmitted over the network"
-      ],
-      "explain": "Network Access Control manages which devices are authorized and compliant enough to connect to corporate network resources.",
-      "isBoss": false
-    },
-    {
-      "id": 69,
-      "q": "Which of the following is a limitation of the Master Boot Record (MBR) partitioning scheme compared to the GUID Partition Table (GPT)?",
-      "category": "Operating Systems",
-      "correct": "MBR has a maximum disk size of 2TB",
-      "distractors": [
-        "MBR does not support booting from external drives",
-        "MBR can only be used on Windows operating systems",
-        "MBR supports a maximum of 128 primary partitions"
-      ],
-      "explain": "MBR supports a maximum disk size of 2TB and only four primary partitions. GPT supports much larger disks and many more partitions.",
-      "isBoss": false
-    },
-    {
-      "id": 70,
-      "q": "A technician needs to partition a 4TB hard drive for use as a data storage in a modern Windows system. Which partitioning style is most suitable for this purpose?",
-      "category": "Operating Systems",
-      "correct": "GPT",
-      "distractors": [
-        "MBR",
-        "FAT32",
-        "NTFS"
-      ],
-      "explain": "GPT is the correct partitioning style for a 4TB drive because it supports disks larger than 2TB. FAT32 and NTFS are file systems, not partitioning styles.",
-      "isBoss": false
-    },
-    {
-      "id": 71,
-      "q": "When setting up a wireless network, which encryption method is known for being the strongest and is used in WPA2 and WPA3 for securing Wi-Fi networks?",
-      "category": "Security",
-      "correct": "AES",
-      "distractors": [
-        "TKIP",
-        "WEP",
-        "RC4"
-      ],
-      "explain": "AES is the strongest common Wi-Fi encryption method and is used with WPA2 and WPA3. TKIP is older and weaker, while WEP is obsolete and insecure.",
-      "isBoss": false
-    },
-    {
-      "id": 72,
-      "q": "A Windows 10 user needs to adjust the transparency effects on their system for better visibility. Which section in Personalization allows them to modify this setting?",
-      "category": "Operating Systems",
-      "correct": "Colors",
-      "distractors": [
-        "Themes",
-        "Lock screen",
-        "Start"
-      ],
-      "explain": "Transparency effects are controlled from the Colors section in Windows Personalization settings.",
-      "isBoss": false
-    },
-    {
-      "id": 73,
-      "q": "What is the primary function of Network Address Translation (NAT) in a router?",
-      "category": "Operating Systems",
-      "correct": "To convert private IP addresses to public IP addresses for internet communication",
-      "distractors": [
-        "To control access to the network",
-        "To encrypt all traffic leaving the network",
-        "To assign MAC addresses to devices"
-      ],
-      "explain": "NAT translates private internal IP addresses to a public IP address so local devices can communicate over the internet.",
-      "isBoss": false
-    },
-    {
-      "id": 74,
-      "q": "An IT administrator implements Single Sign-On (SSO) for the company's various applications. What is the main advantage of SSO in this corporate environment?",
-      "category": "Security",
-      "correct": "It reduces the number of passwords users need to remember",
-      "distractors": [
-        "It increases the complexity of the login process",
-        "It requires a separate password for each application",
-        "It eliminates the need for account permissions"
-      ],
-      "explain": "SSO lets a user authenticate once and then access multiple applications, reducing password fatigue and simplifying the login experience.",
-      "isBoss": false
-    },
-    {
-      "id": 75,
-      "q": "A user is experiencing issues with their computer's file system. Which command-line tool should they use to check the integrity of the file system and fix logical file system errors?",
-      "category": "Software Troubleshooting",
-      "correct": "chkdsk",
-      "distractors": [
-        "sfc",
-        "diskpart",
-        "format"
-      ],
-      "explain": "chkdsk checks the disk and file system for logical errors and can repair them. sfc scans protected system files instead.",
-      "isBoss": false
-    },
-    {
-      "id": 76,
-      "q": "A law firm is considering implementing an advanced document management system. What should be the primary business consideration in this decision?",
-      "category": "Operational Procedures",
-      "correct": "The potential for improving document accessibility and security",
-      "distractors": [
-        "The compatibility of the system with existing hardware",
-        "The color scheme of the user interface",
-        "The popularity of the vendor on social media"
-      ],
-      "explain": "For a law firm, the key business issue is improving secure access to sensitive documents while protecting confidentiality.",
-      "isBoss": false
-    },
-    {
-      "id": 77,
-      "q": "A network administrator wants to write a script that will automatically install a set of applications on all new employee workstations. Which scripting use case does this scenario best represent?",
-      "category": "Operational Procedures",
-      "correct": "Installation of applications",
-      "distractors": [
-        "Basic automation",
-        "Remapping network drives",
-        "Restarting machines"
-      ],
-      "explain": "This script is specifically being used to automate application deployment on new workstations.",
-      "isBoss": false
-    },
-    {
-      "id": 78,
-      "q": "What is the keyboard shortcut to directly force quit an application on a Mac without opening the Force Quit window?",
-      "category": "Operating Systems",
-      "correct": "Command + Option + Shift + Esc (hold for 3 seconds)",
-      "distractors": [
-        "Option + Command + Esc",
-        "Command + Q",
-        "Control + Option + Esc"
-      ],
-      "explain": "Holding Command + Option + Shift + Esc for 3 seconds force quits the frontmost Mac application directly. Option + Command + Esc opens the Force Quit window instead.",
-      "isBoss": false
-    },
-    {
-      "id": 79,
-      "q": "In a company, an IT administrator needs to manage access to corporate resources on a Windows 10 device. Which option in the Accounts settings should they use?",
-      "category": "Operating Systems",
-      "correct": "Access work or school",
-      "distractors": [
-        "Email & accounts",
-        "Sync your settings",
-        "Your info"
-      ],
-      "explain": "Access work or school is the Accounts setting used to connect and manage organizational accounts and related resource access.",
-      "isBoss": false
-    },
-    {
-      "id": 80,
-      "q": "A power user wants to set up a RAID array to increase the storage capacity and reliability of their Mac. Which feature in Disk Utility should they use to configure this?",
-      "category": "Operating Systems",
-      "correct": "RAID Assistant",
-      "distractors": [
-        "Partition",
-        "Erase",
-        "First Aid"
-      ],
-      "explain": "RAID Assistant in Disk Utility is the correct tool for creating and managing RAID arrays on a Mac.",
-      "isBoss": false
-    },
-    {
-      "id": 81,
-      "q": "A computer is experiencing severe system issues and cannot boot properly. The user wants to restore the system to its factory settings without using external media. Which method should they use?",
-      "category": "Software Troubleshooting",
-      "correct": "Using the recovery partition",
-      "distractors": [
-        "Repair installation",
-        "Safe mode",
-        "System restore point"
-      ],
-      "explain": "A recovery partition contains the factory recovery image and allows the system to be restored without external installation media.",
-      "isBoss": false
-    },
-    {
-      "id": 82,
-      "q": "After multiple unsuccessful attempts to remove a severe malware infection, a technician decides that the best course of action is to start fresh. Which method should they use to completely remove the infection and restore the system to a known good state?",
-      "category": "Software Troubleshooting",
-      "correct": "OS reinstallation",
-      "distractors": [
-        "Recovery mode",
-        "System restore",
-        "Quarantine the files and continue normal use"
-      ],
-      "explain": "A full OS reinstallation provides the cleanest path back to a known good state when serious malware cannot be reliably removed any other way.",
-      "isBoss": false
-    },
-    {
-      "id": 83,
-      "q": "Why is it important for a business to ensure all its software licenses are valid and non-expired?",
-      "category": "Operational Procedures",
-      "correct": "To avoid legal and financial penalties from software audits",
-      "distractors": [
-        "To keep the software up to date with the latest features",
-        "To increase CPU performance",
-        "To reduce file fragmentation"
-      ],
-      "explain": "Maintaining valid licenses protects the business from legal exposure and fines during software compliance audits.",
-      "isBoss": false
-    },
-    {
-      "id": 84,
-      "q": "A technician is instructing a user on how to reset their File Explorer view settings to defaults. What is the correct step under the File Explorer Options?",
-      "category": "Operating Systems",
-      "correct": "Under the View tab, click Reset Folders",
-      "distractors": [
-        "Under the View tab, click Apply to Folders",
-        "Under the General tab, click Restore Defaults",
-        "Under the Search tab, click Reset Index"
-      ],
-      "explain": "Reset Folders returns File Explorer folder views to their default settings. Apply to Folders copies the current view to similar folders instead.",
-      "isBoss": false
-    },
-    {
-      "id": 85,
-      "q": "A user wishes to record their gameplay on a Windows 10 PC. Which built-in Windows feature allows them to do this without installing third-party software?",
-      "category": "Operating Systems",
-      "correct": "Game bar",
-      "distractors": [
-        "Game Mode",
-        "DirectX",
-        "Xbox Networking"
-      ],
-      "explain": "Game Bar is the built-in Windows feature used to capture gameplay, screenshots, and related recording tasks.",
-      "isBoss": false
-    },
-    {
-      "id": 86,
-      "q": "A company is setting up a system that allows employees to access their work desktop environments remotely. Which technology enables this remote access to desktop interfaces hosted on central servers?",
-      "category": "Operating Systems",
-      "correct": "VDI",
-      "distractors": [
-        "UTP",
-        "VPN",
-        "NAT"
-      ],
-      "explain": "VDI, or Virtual Desktop Infrastructure, hosts desktop environments on central servers so users can remotely access them from other devices.",
-      "isBoss": false
-    },
-    {
-      "id": 87,
-      "q": "In a large organization with many departments, an IT administrator needs to apply different security policies to different groups of users. What Active Directory structure should they use to organize users and computers for this purpose?",
-      "category": "Security",
-      "correct": "Organizational units",
-      "distractors": [
-        "Domains",
-        "Home folders",
-        "Folder redirection"
-      ],
-      "explain": "Organizational units let administrators group users and computers so different Group Policy settings can be applied to different departments.",
-      "isBoss": false
-    },
-    {
-      "id": 88,
-      "q": "An IT professional is tasked with choosing an operating system for a new high-performance computing environment that will be used for scientific simulations. The system requires resilient file system support, expanded hardware support, and faster file sharing capabilities. Which Windows 10 edition should the IT professional choose?",
-      "category": "Operating Systems",
-      "correct": "Windows 10 Pro for Workstations",
-      "distractors": [
-        "Windows 10 Pro",
-        "Windows 10 Home",
-        "Windows 10 Enterprise"
-      ],
-      "explain": "Windows 10 Pro for Workstations is designed for high-end hardware and adds capabilities such as ReFS support and SMB Direct for demanding workloads.",
-      "isBoss": false
-    },
-    {
-      "id": 89,
-      "q": "A company implements a policy to ensure all remote desktop connections to its computers are monitored and controlled. Which type of rule should be configured in the local OS firewall?",
-      "category": "Security",
-      "correct": "Inbound Rule for Remote Desktop",
-      "distractors": [
-        "Network Discovery",
-        "General firewall enable/disable setting",
-        "Outbound Rule for Remote Desktop"
-      ],
-      "explain": "To monitor and control remote desktop connections according to company policy, an inbound rule specific to Remote Desktop should be configured in the local OS firewall.",
-      "isBoss": false
-    },
-    {
-      "id": 90,
-      "q": "A user wants their Windows 10 laptop to save energy by not using the battery when it's not being actively used, but also wants to resume work quickly. Which Power Option feature should they use?",
-      "category": "Operating Systems",
-      "correct": "Sleep/Suspend",
-      "distractors": [
-        "Hibernate",
-        "Standby",
-        "Turn on fast startup"
-      ],
-      "explain": "Sleep or suspend saves power while keeping the current state in RAM, allowing the user to resume work quickly.",
-      "isBoss": false
-    },
-    {
-      "id": 91,
-      "q": "An IT administrator needs to segment a large office network to improve performance and increase security. What technology allows for creating separate broadcast domains within the same physical network?",
-      "category": "Security",
-      "correct": "VLAN",
-      "distractors": [
-        "VM",
-        "VNC",
-        "VGA"
-      ],
-      "explain": "VLANs create separate broadcast domains on the same physical network, which improves performance and helps isolate traffic for better security.",
-      "isBoss": false
-    },
-    {
-      "id": 92,
-      "q": "A company is upgrading its server storage and needs a solution that offers high performance and reliability for mission-critical applications. Which interface type is commonly used in enterprise environments for such requirements?",
-      "category": "Operating Systems",
-      "correct": "SAS",
-      "distractors": [
-        "SATA",
-        "SIMM",
-        "SDN"
-      ],
-      "explain": "SAS is commonly used for enterprise storage because it provides strong performance, reliability, and redundancy features for critical workloads.",
-      "isBoss": false
-    },
-    {
-      "id": 93,
-      "q": "An IT specialist is setting up a remote access connection for a user who needs to connect to the company network from home. Which protocol can be used to secure this remote connection?",
-      "category": "Security",
-      "correct": "PPP",
-      "distractors": [
-        "PXE",
-        "PKI",
-        "PoE"
-      ],
-      "explain": "PPP is used to establish direct remote access connections and supports authentication, encryption, and compression for secure communication.",
-      "isBoss": false
-    },
-    {
-      "id": 94,
-      "q": "An IT administrator wants to assign a personal storage space on the network for each user in the company, which is accessible from any computer within the domain. Which Active Directory feature allows them to accomplish this?",
-      "category": "Operating Systems",
-      "correct": "Home folder",
-      "distractors": [
-        "Folder redirection",
-        "Security groups",
-        "Login script"
-      ],
-      "explain": "A home folder gives each domain user a personal network storage location that follows them to any computer they log into.",
-      "isBoss": false
-    },
-    {
-      "id": 95,
-      "q": "A software application on a user's computer is not functioning correctly, potentially due to corrupted files. The user wants to fix the program without removing or altering its data. Which feature in Programs and Features should they use?",
-      "category": "Software Troubleshooting",
-      "correct": "Repair",
-      "distractors": [
-        "Uninstall",
-        "View installed updates",
-        "Change"
-      ],
-      "explain": "The Repair option is intended to fix damaged or missing program files without removing the application or its data.",
-      "isBoss": false
-    },
-    {
-      "id": 96,
-      "q": "An employee needs to access a file stored on a company server named \"Server01\" in a shared folder called \"Projects.\" Which of the following is the correct network path they should type into File Explorer to access this folder?",
-      "category": "Operating Systems",
-      "correct": "\\\\Server01\\Projects",
-      "distractors": [
-        "//Server01/Projects",
-        "C:\\Server01\\Projects",
-        "Server01://Projects"
-      ],
-      "explain": "Windows UNC paths use the format \\\\ServerName\\ShareName when accessing shared folders over the network.",
-      "isBoss": false
-    },
-    {
-      "id": 97,
-      "q": "A remote worker is setting up their home office for frequent video conferences. To ensure their voice is clearly heard by others, what equipment should they prioritize?",
-      "category": "Operational Procedures",
-      "correct": "Microphones",
-      "distractors": [
-        "Speakers",
-        "Smart devices",
-        "Webcams"
-      ],
-      "explain": "For clear communication in frequent video conferences, a good microphone is the most important accessory for transmitting the user's voice clearly.",
-      "isBoss": false
-    },
-    {
-      "id": 98,
-      "q": "What technology does a Liquid Crystal Display (LCD) primarily use to produce images?",
-      "category": "Operating Systems",
-      "correct": "Liquid crystals and backlight",
-      "distractors": [
-        "Electron beams striking a phosphorescent screen",
-        "Electroluminescent panels",
-        "Compressed air to create visual effects"
-      ],
-      "explain": "LCDs use liquid crystals to modulate a backlight and produce the final image.",
-      "isBoss": false
-    },
-    {
-      "id": 99,
-      "q": "After upgrading their computer's RAM from 4GB to 8GB, a user notices that the system still only recognizes 4GB of RAM. What are two likely causes of this issue?",
-      "category": "Operating Systems",
-      "correct": "The additional RAM is not compatible with the motherboard; The operating system is a 32-bit version",
-      "distractors": [
-        "The additional RAM is not compatible with the motherboard; The new RAM modules are faulty",
-        "The hard drive is full; The operating system is a 32-bit version",
-        "The new RAM modules are faulty; The power supply unit is inadequate"
-      ],
-      "explain": "A 32-bit operating system often cannot use more than about 4GB of RAM, and incompatible RAM may also prevent the full memory upgrade from being recognized.",
-      "isBoss": false
-    },
-    {
-      "id": 100,
-      "q": "A salesperson is traveling and needs to connect their laptop to the internet, but there is no Wi-Fi available. What are two viable options for them to access the internet?",
-      "category": "Operating Systems",
-      "correct": "Tether their smartphone to the laptop; Use a mobile hotspot device",
-      "distractors": [
-        "Connect to a public Wi-Fi network; Use a mobile hotspot device",
-        "Use a wired Ethernet connection; Upgrade the laptop's RAM",
-        "Connect to a public Wi-Fi network; Tether their smartphone to the laptop"
-      ],
-      "explain": "Without Wi-Fi, the practical mobile options are smartphone tethering or a dedicated mobile hotspot that uses cellular data.",
-      "isBoss": false
-    },
-    {
-      "id": 101,
-      "q": "A company's IT department is planning a strategy for software maintenance on its networked computers. What practice should they prioritize to maintain system security?",
-      "category": "Security",
-      "correct": "Regularly apply software updates and patches",
-      "distractors": [
-        "Limit internet access to reduce the risk of malware",
-        "Disconnect computers from the network when not in use",
-        "Manually check for software updates annually"
-      ],
-      "explain": "Regular patching closes known vulnerabilities and is one of the core practices for maintaining system security.",
-      "isBoss": false
-    },
-    {
-      "id": 102,
-      "q": "In order to improve the visual quality of games on a Windows 10 system, which setting under the Gaming section allows users to specify the preferred graphics performance for individual games?",
-      "category": "Operating Systems",
-      "correct": "Graphics settings",
-      "distractors": [
-        "Game bar",
-        "Game Mode",
-        "Xbox Game Pass"
-      ],
-      "explain": "Graphics settings lets Windows users choose graphics performance preferences for specific apps and games.",
-      "isBoss": false
-    },
-    {
-      "id": 103,
-      "q": "A user reports that a frequently used application on their Windows computer is suddenly crashing and displaying error messages. The IT technician suspects an issue with the application's configuration or corrupted files. What should be the technician's first step in troubleshooting this unexpected application behavior?",
-      "category": "Software Troubleshooting",
-      "correct": "Check for and apply any updates to the application",
-      "distractors": [
-        "Update the network drivers",
-        "Run the application in compatibility mode",
-        "Reinstall the operating system"
-      ],
-      "explain": "Checking for application updates is the least disruptive first step and often resolves crashes caused by known bugs or broken components.",
-      "isBoss": false
-    },
-    {
-      "id": 104,
-      "q": "An administrator needs to add, delete, and modify user accounts on a Windows computer. Which command should they use?",
-      "category": "Operating Systems",
-      "correct": "net user",
-      "distractors": [
-        "gpupdate",
-        "netstat",
-        "net use"
-      ],
-      "explain": "The net user command is specifically used to manage local user accounts from the Windows command line.",
-      "isBoss": false
-    },
-    {
-      "id": 105,
-      "q": "In a scenario where a user wants to change the size of text, apps, and other items on their Windows 10 display for easier viewing, which option in \"Personalization\" should they access?",
-      "category": "Operating Systems",
-      "correct": "Display settings",
-      "distractors": [
-        "Colors",
-        "Themes",
-        "Lock screen"
-      ],
-      "explain": "Display settings contains scale and layout controls for adjusting the size of text, apps, and other interface elements.",
-      "isBoss": false
-    },
-    {
-      "id": 106,
-      "q": "A small business is setting up a network for file and printer sharing among Windows computers. Which protocol is commonly used in such networks to facilitate this sharing?",
-      "category": "Operating Systems",
-      "correct": "SMB",
-      "distractors": [
-        "SMTP",
-        "SNMP",
-        "SPF"
-      ],
-      "explain": "SMB is the standard Windows network protocol used for file and printer sharing across local networks.",
-      "isBoss": false
-    },
-    {
-      "id": 107,
-      "q": "A company is concerned about the loss of mobile devices issued to its field workers. Besides implementing physical security measures, which feature should be enabled on these devices for additional security?",
-      "category": "Security",
-      "correct": "Locator applications",
-      "distractors": [
-        "Automatic OS updates",
-        "Screen lock using swipe patterns",
-        "Remote wipe capabilities"
-      ],
-      "explain": "Locator applications help recover lost mobile devices by providing tracking information, which directly addresses the device-loss concern.",
-      "isBoss": false
-    },
-    {
-      "id": 108,
-      "q": "A company needs to authenticate and authorize users connecting to its network remotely via VPN. Which authentication protocol is best suited for centralizing the authentication and authorization process for these remote connections?",
-      "category": "Security",
-      "correct": "Remote Authentication Dial-In User Service (RADIUS)",
-      "distractors": [
-        "Terminal Access Controller Access-Control System (TACACS+)",
-        "LDAP",
-        "Kerberos"
-      ],
-      "explain": "RADIUS is widely used to centralize authentication and authorization for remote access services such as VPN connections.",
-      "isBoss": false
-    },
-    {
-      "id": 109,
-      "q": "A user complains that their Windows 10 search is not returning results from documents stored in a newly added secondary drive. Which option in the \"Indexing Options\" utility should they modify to resolve this issue?",
-      "category": "Software Troubleshooting",
-      "correct": "Modify",
-      "distractors": [
-        "Pause",
-        "Rebuild",
-        "Advanced"
-      ],
-      "explain": "Modify lets the user choose which drives and folders are included in indexing, which is the direct fix for a newly added drive being omitted from search results.",
-      "isBoss": false
-    },
-    {
-      "id": 110,
-      "q": "In an older network infrastructure, a technician encounters a system that uses a protocol for allowing applications on different computers to communicate within a local area network. This protocol, primarily used in early Windows networks, is:",
-      "category": "Operating Systems",
-      "correct": "NetBIOS",
-      "distractors": [
-        "NFC",
-        "NDA",
-        "NAT"
-      ],
-      "explain": "NetBIOS was used in early Windows networking to let applications communicate and identify systems across a local network.",
-      "isBoss": false
-    },
-    {
-      "id": 111,
-      "q": "A user is experiencing issues with a network application after enabling the Windows Defender Firewall. The technician suspects that the firewall might be blocking the application. Which feature in the Windows Defender Firewall should the technician use to check if the application is being blocked?",
-      "category": "Software Troubleshooting",
-      "correct": "Advanced settings > Monitoring",
-      "distractors": [
-        "Allow an app or feature through Windows Defender Firewall",
-        "Firewall & network protection",
-        "Advanced settings > Inbound Rules"
-      ],
-      "explain": "The Monitoring section in Windows Defender Firewall with Advanced Security shows the active rules and connection status needed to see whether traffic is being blocked.",
-      "isBoss": false
-    },
-    {
-      "id": 112,
-      "q": "What is the most effective physical destruction method for completely destroying a variety of media, including paper documents, CDs, and hard drives, to ensure data cannot be recovered?",
-      "category": "Operational Procedures",
-      "correct": "Incinerating",
-      "distractors": [
-        "Shredding",
-        "Degaussing",
-        "Drilling"
-      ],
-      "explain": "Incineration destroys many different media types completely, making it the most universally effective physical destruction method in this scenario.",
-      "isBoss": false
-    },
-    {
-      "id": 113,
-      "q": "A large corporation is looking to upgrade its computer systems and requires an operating system with comprehensive security features including Windows Information Protection (WIP), Credential Guard, and Device Guard. Which Windows 10 edition should they opt for?",
-      "category": "Security",
-      "correct": "Windows 10 Enterprise",
-      "distractors": [
-        "Windows 10 Home",
-        "Windows 10 Pro for Workstations",
-        "Windows 10 Pro"
-      ],
-      "explain": "Windows 10 Enterprise includes advanced security features such as WIP, Credential Guard, and Device Guard that large organizations commonly require.",
-      "isBoss": false
-    },
-    {
-      "id": 114,
-      "q": "Jason has an old 2017 Dell Laptop that he uses to connect to his office network while traveling. The computer is slow and is running Windows 7. The laptop's screen was recently cracked and needs replacement. Jason brings the laptop to the computer store you work at and asks for your assistance. Which of the following do you recommend?",
-      "category": "Operational Procedures",
-      "correct": "Purchase a new laptop as the cost to repair might be more than a new laptop",
-      "distractors": [
-        "Sell him an external 15\" tablet/monitor to connect to the laptop as a workaround",
-        "Replace the display and contact the manufacturer for reimbursement",
-        "Replace the display and charge him for the parts/installation"
-      ],
-      "explain": "Recommend a new laptop. Given the age, slow performance, unsupported Windows 7 install, and cracked display, repair cost is likely to exceed the value of the device and a replacement will be faster, more secure, and longer lasting."
-    },
-    {
-      "id": 115,
-      "q": "Which of the following types of attacks is conducted against a database server by inserting code into an entry field on a web application form for execution to try and gain access to the contents of the database?",
-      "category": "Security",
-      "correct": "SQL injection",
-      "distractors": [
-        "Cross-site scripting",
-        "On-path attack",
-        "Zero-day attack"
-      ],
-      "explain": "SQL injection inserts malicious SQL statements into application input fields so the backend database executes them. That can expose, alter, or destroy data in the database."
-    },
-    {
-      "id": 116,
-      "q": "You are configuring a SOHO network and only denying specific IP addresses from accessing the network while allowing any IP addresses not found on the list. Which of the following should be implemented?",
-      "category": "Security",
-      "correct": "Blocklist",
-      "distractors": [
-        "MAC filtering",
-        "Allow list",
-        "Port forwarding"
-      ],
-      "explain": "A blocklist denies only the specifically listed items and allows everything else. An allow list does the opposite by permitting only listed entries and blocking all others."
-    },
-    {
-      "id": 117,
-      "q": "Which of the following commands is used on a Linux system to delete all the files and directories in a Linux system's filesystem?",
-      "category": "Operating Systems",
-      "correct": "rm -rf /",
-      "distractors": [
-        "rm *.*",
-        "rm -rf *.*",
-        "rm /"
-      ],
-      "explain": "The command rm -rf / starts at the root directory and recursively force-deletes files and folders throughout the filesystem. It is the classic catastrophic Linux deletion command."
-    },
-    {
-      "id": 118,
-      "q": "Which of the following types of backups generates the recovered files from a complete copy of a file created at some point in time and one or more partial backups created at later times to merge them into the recovered data?",
-      "category": "Operational Procedures",
-      "correct": "Synthetic",
-      "distractors": [
-        "Incremental",
-        "Differential",
-        "Full"
-      ],
-      "explain": "A synthetic backup is assembled from an earlier full backup plus later backup changes so the restored result is synthesized from multiple backup points rather than copied from one current file image."
-    },
-    {
-      "id": 119,
-      "q": "A technician removed malware from a Windows 10 laptop and wants to restore system files to defaults while preserving user data and Windows Store apps. User-installed applications may be deleted. Which installation type should be used?",
-      "category": "Operating Systems",
-      "correct": "Refresh installation",
-      "distractors": [
-        "Clean install",
-        "Repair installation",
-        "In-place upgrade"
-      ],
-      "explain": "A refresh installation resets Windows system files and many settings while preserving user data and Windows Store apps. Traditional desktop apps may be removed."
-    },
-    {
-      "id": 120,
-      "q": "Your IT administrator has proposed a new method for deploying security patches to company servers. Before the change is approved, another senior administrator is assigned to review the plan to ensure it follows best practices, minimizes risks, and aligns with company policies. Which of the following would BEST describe this step in the change management process?",
-      "category": "Operational Procedures",
-      "correct": "Peer review",
-      "distractors": [
+      "q": "What is the effect of increased automation on the 'service desk' practice?",
+      "category": "Detailed Practices",
+      "correct": "Greater ability to focus on customer experience when personal contact is needed",
+      "distractors": [
+        "Decrease in self-service incident logging and resolution",
+        "Increased ability to focus on fixing technology instead of supporting people",
+        "Elimination of the need to escalate incidents to support teams"
+      ],
+      "explain": "Official sample paper answer A: Greater ability to focus on customer experience when personal contact is needed.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-service-desk",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 1
+    },
+    {
+      "q": "Which term describes the functionality offered by a service?",
+      "category": "Key Concepts",
+      "correct": "Utility",
+      "distractors": [
+        "Cost",
+        "Warranty",
+        "Risk"
+      ],
+      "explain": "Official sample paper answer B: Utility.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 2
+    },
+    {
+      "q": "Which is the purpose of the 'monitoring and event management' practice?",
+      "category": "Detailed Practices",
+      "correct": "To systematically observe services and service components, and record and report selected changes of state",
+      "distractors": [
+        "To ensure that accurate and reliable information about the configuration of services is available when and where it is needed",
+        "To protect the information needed by the organization to conduct its business",
+        "To minimize the negative impact of incidents by restoring normal service operation as quickly as possible"
+      ],
+      "explain": "Official sample paper answer B: To systematically observe services and service components, and record and report selected changes of state.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 3
+    },
+    {
+      "q": "What should all 'continual improvement' decisions be based on?",
+      "category": "Key Concepts",
+      "correct": "Accurate and carefully analyzed data",
+      "distractors": [
+        "Details of how services are measured",
+        "An up-to-date balanced scorecard",
+        "A recent maturity assessment"
+      ],
+      "explain": "Official sample paper answer B: Accurate and carefully analyzed data.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-continual-improvement",
+        "focus-key-concepts",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 4
+    },
+    {
+      "q": "How do all value chain activities transform inputs to outputs?",
+      "category": "Service Value Chain",
+      "correct": "By using a combination of practices",
+      "distractors": [
+        "By determining service demand",
+        "By using a single functional team",
+        "By implementing process automation"
+      ],
+      "explain": "Official sample paper answer B: By using a combination of practices.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 5
+    },
+    {
+      "q": "How does customer engagement contribute to the 'service level management' practice? 1. It captures information that metrics can be based on 2. It ensures the organization meets defined service levels 3. It defines the workflows for service requests 4. It supports progress discussions",
+      "category": "Service Value Chain",
+      "correct": "1 and 4",
+      "distractors": [
+        "1 and 2",
+        "2 and 3",
+        "3 and 4"
+      ],
+      "explain": "Official sample paper answer D: 1 and 4.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-service-level-management",
+        "focus-service-request-management",
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 6
+    },
+    {
+      "q": "What is the starting point for optimization?",
+      "category": "Key Concepts",
+      "correct": "Understanding the vision and objectives of the organization",
+      "distractors": [
+        "Securing stakeholder engagement",
+        "Determining where the most positive impact would be",
+        "Standardizing practices and services"
+      ],
+      "explain": "Official sample paper answer B: Understanding the vision and objectives of the organization.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 7
+    },
+    {
+      "q": "Identify the missing words in the following sentence. The purpose of the [?] is to ensure that the organization continually co-creates value with all stakeholders in line with the organization's objectives.",
+      "category": "Service Value System",
+      "correct": "service value system",
+      "distractors": [
+        "'focus on value' guiding principle",
+        "four dimensions of service management",
+        "'service request management' practice"
+      ],
+      "explain": "Official sample paper answer C: service value system.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": true,
+      "instructorFocus": [
+        "focus-svs",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 8
+    },
+    {
+      "q": "Which practice provides support for managing feedback, compliments and complaints from users?",
+      "category": "Detailed Practices",
+      "correct": "Service request management",
+      "distractors": [
+        "Change enablement",
+        "Problem management",
+        "Incident management"
+      ],
+      "explain": "Official sample paper answer B: Service request management.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-service-request-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 9
+    },
+    {
+      "q": "Which joint activity performed by a service provider and service consumer ensures continual value co-creation?",
+      "category": "Detailed Practices",
+      "correct": "Service relationship management",
+      "distractors": [
+        "Service provision",
+        "Service consumption",
+        "Service offering"
+      ],
+      "explain": "Official sample paper answer D: Service relationship management.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 10
+    },
+    {
+      "q": "Which practice may involve the initiation of disaster recovery?",
+      "category": "Detailed Practices",
+      "correct": "Incident management",
+      "distractors": [
+        "Service request management",
+        "Service level management",
+        "IT asset management"
+      ],
+      "explain": "Official sample paper answer A: Incident management.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 11
+    },
+    {
+      "q": "What type of change is MOST likely to be managed by the 'service request management' practice?",
+      "category": "Detailed Practices",
+      "correct": "A standard change",
+      "distractors": [
+        "A normal change",
+        "An emergency change",
+        "An application change"
+      ],
+      "explain": "Official sample paper answer C: A standard change.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-change-enablement",
+        "focus-detailed-practices",
+        "focus-service-request-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 12
+    },
+    {
+      "q": "Which guiding principle emphasizes the need to understand the flow of work in progress, identify bottlenecks, and uncover waste?",
+      "category": "Guiding Principles",
+      "correct": "Collaborate and promote visibility",
+      "distractors": [
+        "Focus on value",
+        "Think and work holistically",
+        "Keep it simple and practical"
+      ],
+      "explain": "Official sample paper answer B: Collaborate and promote visibility.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 13
+    },
+    {
+      "q": "What is a means of enabling value co-creation by facilitating outcomes that customers want to achieve?",
+      "category": "Key Concepts",
+      "correct": "A service",
+      "distractors": [
+        "An output",
+        "A practice",
+        "Continual improvement"
+      ],
+      "explain": "Official sample paper answer A: A service.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 14
+    },
+    {
+      "q": "Which statement about change authorization is CORRECT?",
+      "category": "Key Concepts",
+      "correct": "A change authority should be assigned to each type of change and change model",
+      "distractors": [
+        "Centralizing change authorization to a single person is the most effective means of authorization",
+        "The authorization of normal changes should be expedited to ensure they can be implemented quickly",
+        "Standard changes are high risk and should be authorized by the highest level of change authority"
+      ],
+      "explain": "Official sample paper answer A: A change authority should be assigned to each type of change and change model.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-change-enablement",
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 15
+    },
+    {
+      "q": "Which dimension of service management considers governance, management, and communication?",
+      "category": "Four Dimensions",
+      "correct": "Organizations and people",
+      "distractors": [
+        "Information and technology",
+        "Partners and suppliers",
+        "Value streams and processes"
+      ],
+      "explain": "Official sample paper answer A: Organizations and people.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-four-dimensions",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 16
+    },
+    {
+      "q": "Identify the missing word in the following sentence. A known error is a problem that has been [?] and has not been resolved.",
+      "category": "Detailed Practices",
+      "correct": "analyzed",
+      "distractors": [
+        "logged",
+        "escalated",
+        "closed"
+      ],
+      "explain": "Official sample paper answer B: analyzed.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 17
+    },
+    {
+      "q": "Which statement about known errors and problems is CORRECT?",
+      "category": "Detailed Practices",
+      "correct": "Known error is the status assigned to a problem after it has been analyzed",
+      "distractors": [
+        "A known error is the cause of one or more problems",
+        "Known errors cause vulnerabilities, problems cause incidents",
+        "Known errors are managed by technical staff, problems are managed by service management staff"
+      ],
+      "explain": "Official sample paper answer A: Known error is the status assigned to a problem after it has been analyzed.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 18
+    },
+    {
+      "q": "What does the 'service request management' practice depend on for maximum efficiency?",
+      "category": "Detailed Practices",
+      "correct": "Processes and procedures",
+      "distractors": [
+        "Compliments and complaints",
+        "Self-service tools",
+        "Incident management"
+      ],
+      "explain": "Official sample paper answer C: Processes and procedures.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-service-request-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 19
+    },
+    {
+      "q": "Which statement about the 'service desk' practice is CORRECT?",
+      "category": "Detailed Practices",
+      "correct": "It needs a practical understanding of the business processes",
+      "distractors": [
+        "It provides a link with stakeholders at strategic and tactical levels",
+        "It carries out change assessment and authorization",
+        "It investigates the cause of incidents"
+      ],
+      "explain": "Official sample paper answer D: It needs a practical understanding of the business processes.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-service-desk",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 20
+    },
+    {
+      "q": "Which practice ensures that accurate and reliable information is available about configuration items and the relationships between them?",
+      "category": "Detailed Practices",
+      "correct": "Service configuration management",
+      "distractors": [
+        "Service desk",
+        "IT asset management",
+        "Monitoring and event management"
+      ],
+      "explain": "Official sample paper answer A: Service configuration management.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 21
+    },
+    {
+      "q": "Which practice has a purpose that includes restoring normal service operation as quickly as possible?",
+      "category": "Detailed Practices",
+      "correct": "Incident management",
+      "distractors": [
+        "Supplier management",
+        "Deployment management",
+        "Problem management"
+      ],
+      "explain": "Official sample paper answer D: Incident management.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": true,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 22
+    },
+    {
+      "q": "Identify the missing word in the following sentence. A customer is the role that defines the requirements for a service and takes responsibility for the [?] of service consumption.",
+      "category": "Key Concepts",
+      "correct": "outcomes",
+      "distractors": [
+        "outputs",
+        "costs",
+        "risks"
+      ],
+      "explain": "Official sample paper answer B: outcomes.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 23
+    },
+    {
+      "q": "Which guiding principle describes the importance of doing something, instead of spending a long time analyzing different options?",
+      "category": "Guiding Principles",
+      "correct": "Progress iteratively with feedback",
+      "distractors": [
+        "Optimize and automate",
+        "Start where you are",
+        "Focus on value"
+      ],
+      "explain": "Official sample paper answer D: Progress iteratively with feedback.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 24
+    },
+    {
+      "q": "What should be done for every problem?",
+      "category": "Detailed Practices",
+      "correct": "It should be prioritized based on its potential impact and probability",
+      "distractors": [
+        "It should be diagnosed to identify possible solutions",
+        "It should be resolved so that it can be closed",
+        "It should have a workaround to reduce the impact"
+      ],
+      "explain": "Official sample paper answer B: It should be prioritized based on its potential impact and probability.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 25
+    },
+    {
+      "q": "How should an organization include third-party suppliers in the continual improvement of services?",
+      "category": "Detailed Practices",
+      "correct": "Ensure suppliers include details of their approach to service improvement in contracts",
+      "distractors": [
+        "Require evidence that the supplier uses agile development methods",
+        "Require evidence that the supplier implements all improvements using project management practices",
+        "Ensure that all supplier problem management activities result in improvements"
+      ],
+      "explain": "Official sample paper answer A: Ensure suppliers include details of their approach to service improvement in contracts.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-continual-improvement",
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 26
+    },
+    {
+      "q": "What considerations influence the supplier strategy of an organization?",
+      "category": "Detailed Practices",
+      "correct": "Corporate culture of the organization",
+      "distractors": [
+        "Contracts and agreements",
+        "Type of cooperation with suppliers",
+        "Level of formality"
+      ],
+      "explain": "Official sample paper answer C: Corporate culture of the organization.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 27
+    },
+    {
+      "q": "What is a problem?",
+      "category": "Detailed Practices",
+      "correct": "A cause or potential cause of one or more incidents",
+      "distractors": [
+        "An addition or modification that could have an effect on services",
+        "Any change of state that has significance for the management of a configuration item",
+        "An unplanned reduction in the quality of a service"
+      ],
+      "explain": "Official sample paper answer C: A cause or potential cause of one or more incidents.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 28
+    },
+    {
+      "q": "What is the purpose of the 'relationship management' practice?",
+      "category": "Detailed Practices",
+      "correct": "To establish and nurture the links between the organization and its stakeholders at strategic and tactical levels",
+      "distractors": [
+        "To align the organization's practices and services with changing business needs",
+        "To reduce the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors",
+        "To minimize the negative impact of incidents by restoring normal service operation as quickly as possible"
+      ],
+      "explain": "Official sample paper answer B: To establish and nurture the links between the organization and its stakeholders at strategic and tactical levels.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 29
+    },
+    {
+      "q": "Which is intended to help an organization adopt and adapt ITIL guidance?",
+      "category": "Guiding Principles",
+      "correct": "The guiding principles",
+      "distractors": [
+        "The four dimensions of service management",
+        "The service value chain",
+        "Practices"
+      ],
+      "explain": "Official sample paper answer B: The guiding principles.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 30
+    },
+    {
+      "q": "What is an output?",
+      "category": "Key Concepts",
+      "correct": "Something created by carrying out an activity",
+      "distractors": [
+        "A change of state that has significance for the management of a configuration item",
+        "A possible event that could cause harm or loss",
+        "A result for a stakeholder"
+      ],
+      "explain": "Official sample paper answer D: Something created by carrying out an activity.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 31
+    },
+    {
+      "q": "What is the reason for using a balanced bundle of service metrics?",
+      "category": "Key Concepts",
+      "correct": "It provides an outcome-based view of services",
+      "distractors": [
+        "It reduces the number of metrics that need to be collected",
+        "It reports each service element separately",
+        "It facilitates the automatic collection of metrics"
+      ],
+      "explain": "Official sample paper answer C: It provides an outcome-based view of services.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 32
+    },
+    {
+      "q": "Why should incidents be prioritized?",
+      "category": "Detailed Practices",
+      "correct": "To ensure that incidents with the highest business impact are resolved first",
+      "distractors": [
+        "To help automated matching of incidents to problems or known errors",
+        "To identify which support team the incident should be escalated to",
+        "To encourage a high level of collaboration within and between teams"
+      ],
+      "explain": "Official sample paper answer C: To ensure that incidents with the highest business impact are resolved first.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 33
+    },
+    {
+      "q": "Which practice has a purpose that includes helping the organization to maximize value, control costs and manage risks?",
+      "category": "Detailed Practices",
+      "correct": "IT asset management",
+      "distractors": [
+        "Relationship management",
+        "Release management",
+        "Service desk"
+      ],
+      "explain": "Official sample paper answer B: IT asset management.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 34
+    },
+    {
+      "q": "Why should service desk staff detect recurring issues?",
+      "category": "Detailed Practices",
+      "correct": "To help identify problems",
+      "distractors": [
+        "To escalate incidents to the correct support team",
+        "To ensure effective handling of service requests",
+        "To engage the correct change authority"
+      ],
+      "explain": "Official sample paper answer A: To help identify problems.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-problem-management",
+        "focus-service-desk",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 35
+    },
+    {
+      "q": "Which value chain activity communicates the current status of all four dimensions of service management?",
+      "category": "Four Dimensions",
+      "correct": "Plan",
+      "distractors": [
+        "Improve",
+        "Engage",
+        "Obtain/build"
+      ],
+      "explain": "Official sample paper answer D: Plan.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-four-dimensions",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 36
+    },
+    {
+      "q": "Which guiding principle is PRIMARILY concerned with consumer's revenue and growth?",
+      "category": "Guiding Principles",
+      "correct": "Focus on value",
+      "distractors": [
+        "Keep it simple and practical",
+        "Optimize and automate",
+        "Progress iteratively with feedback"
+      ],
+      "explain": "Official sample paper answer D: Focus on value.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 37
+    },
+    {
+      "q": "Which practice provides visibility of the organization's services by capturing and reporting on service performance?",
+      "category": "Detailed Practices",
+      "correct": "Service level management",
+      "distractors": [
+        "Service desk",
+        "Service request management",
+        "Service configuration management"
+      ],
+      "explain": "Official sample paper answer B: Service level management.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-service-level-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 38
+    },
+    {
+      "q": "Which is the BEST example of an emergency change?",
+      "category": "Key Concepts",
+      "correct": "The implementation of a security patch to a critical software application",
+      "distractors": [
+        "The implementation of a planned new release of a software application",
+        "A low-risk computer upgrade implemented as a service request",
+        "A scheduled major hardware and software implementation"
+      ],
+      "explain": "Official sample paper answer C: The implementation of a security patch to a critical software application.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": true,
+      "instructorFocus": [
+        "focus-change-enablement",
+        "focus-key-concepts",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 39
+    },
+    {
+      "q": "Which guiding principle recommends assessing the current state and deciding what can be reused?",
+      "category": "Guiding Principles",
+      "correct": "Start where you are",
+      "distractors": [
+        "Focus on value",
+        "Collaborate and promote visibility",
+        "Progress iteratively with feedback"
+      ],
+      "explain": "Official sample paper answer B: Start where you are.",
+      "source": "Official ITIL 4 Foundation sample paper 2",
+      "type": "official-sample",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 40
+    },
+    {
+      "q": "In ITIL terms, what is a service?",
+      "category": "Key Concepts",
+      "correct": "A means of enabling value co-creation by facilitating outcomes customers want without the customer managing specific costs and risks",
+      "distractors": [
+        "A formal description of one or more services designed for a target consumer group",
+        "The assurance that a product or service will meet agreed requirements",
+        "The functionality offered by a product or service to meet a particular need"
+      ],
+      "explain": "A service helps customers achieve outcomes while the provider manages specific costs and risks.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 41
+    },
+    {
+      "q": "Which term means what a service does and whether it is fit for purpose?",
+      "category": "Key Concepts",
+      "correct": "Utility",
+      "distractors": [
+        "Warranty",
+        "Outcome",
+        "Service offering"
+      ],
+      "explain": "Utility is the functionality of the service: what it does.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 42
+    },
+    {
+      "q": "Which term means how a service performs and whether it is fit for use?",
+      "category": "Key Concepts",
+      "correct": "Warranty",
+      "distractors": [
+        "Utility",
+        "Service level agreement",
+        "Availability"
+      ],
+      "explain": "Warranty is assurance that agreed requirements such as availability, capacity, security, or continuity are met.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 43
+    },
+    {
+      "q": "A report is generated by a monitoring tool. In ITIL terms, what is the report?",
+      "category": "Key Concepts",
+      "correct": "Output",
+      "distractors": [
+        "Outcome",
+        "Deliverable",
+        "Value"
+      ],
+      "explain": "An output is a tangible or intangible deliverable of an activity.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 44
+    },
+    {
+      "q": "A sales team closes work faster because a CRM is available on mobile devices. What is this result?",
+      "category": "Key Concepts",
+      "correct": "Outcome",
+      "distractors": [
+        "Output",
+        "Value",
+        "Utility"
+      ],
+      "explain": "An outcome is a result for a stakeholder enabled by one or more outputs.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 45
+    },
+    {
+      "q": "Who defines requirements for a service and takes responsibility for the outcomes of service consumption?",
+      "category": "Key Concepts",
+      "correct": "Customer",
+      "distractors": [
+        "User",
+        "Sponsor",
+        "Service consumer"
+      ],
+      "explain": "The customer role defines requirements and owns outcomes.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 46
+    },
+    {
+      "q": "Who authorizes the budget for service consumption?",
+      "category": "Key Concepts",
+      "correct": "Sponsor",
+      "distractors": [
+        "Customer",
+        "User",
+        "Business relationship manager"
+      ],
+      "explain": "The sponsor authorizes budget for service consumption.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 47
+    },
+    {
+      "q": "What is value in ITIL?",
+      "category": "Key Concepts",
+      "correct": "The perceived benefits, usefulness, and importance of something",
+      "distractors": [
+        "The money spent on a resource",
+        "A deliverable created by an activity",
+        "A possible event that could cause harm"
+      ],
+      "explain": "Value is based on perception of benefits, usefulness, and importance.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 48
+    },
+    {
+      "q": "Which term means uncertainty of outcome?",
+      "category": "Key Concepts",
+      "correct": "Risk",
+      "distractors": [
+        "Cost",
+        "Issue",
+        "Control"
+      ],
+      "explain": "Risk is uncertainty of outcome and may cause harm or make objectives harder to achieve.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 49
+    },
+    {
+      "q": "A formal description of services designed for a target consumer group is a:",
+      "category": "Key Concepts",
+      "correct": "Service offering",
+      "distractors": [
+        "Service",
+        "Product",
+        "Service relationship"
+      ],
+      "explain": "A service offering may include goods, access to resources, and service actions.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 50
+    },
+    {
+      "q": "Which pair best distinguishes product and service offering?",
+      "category": "Key Concepts",
+      "correct": "A product is a configuration of resources; a service offering is a formal description presented to consumers",
+      "distractors": [
+        "A formal description of one or more services designed for a target consumer group",
+        "The assurance that a product or service will meet agreed requirements",
+        "The functionality offered by a product or service to meet a particular need"
+      ],
+      "explain": "Products are resource configurations. Offerings describe one or more services for a target group.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 51
+    },
+    {
+      "q": "Which statement best distinguishes customer and user?",
+      "category": "Key Concepts",
+      "correct": "The customer defines requirements and outcomes; the user uses the service",
+      "distractors": [
+        "A formal description of one or more services designed for a target consumer group",
+        "The assurance that a product or service will meet agreed requirements",
+        "The functionality offered by a product or service to meet a particular need"
+      ],
+      "explain": "Customer, user, and sponsor are separate service consumer roles.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-key-concepts",
+        "lessons-1-5"
+      ],
+      "id": 52
+    },
+    {
+      "q": "Which list contains all seven ITIL guiding principles?",
+      "category": "Guiding Principles",
+      "correct": "Focus on value; start where you are; progress iteratively with feedback; collaborate and promote visibility; think and work holistically; keep it simple and practical; optimize and automate",
+      "distractors": [
+        "Plan; improve; engage; design and transition; obtain/build; deliver and support; govern",
+        "Incident; problem; change; request; release; deployment; service desk",
+        "Organizations and people; information and technology; partners and suppliers; value streams and processes; governance; practices; continual improvement"
+      ],
+      "explain": "These seven recommendations guide decisions in all circumstances.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 53
+    },
+    {
+      "q": "A team wants to remove steps from a process that no longer create useful outcomes. Which guiding principle fits best?",
+      "category": "Guiding Principles",
+      "correct": "Keep it simple and practical",
+      "distractors": [
+        "Focus on value",
+        "Start where you are",
+        "Progress iteratively with feedback"
+      ],
+      "explain": "Keep it simple and practical eliminates unnecessary work and focuses on value.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": true,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 54
+    },
+    {
+      "q": "Before replacing a process, a manager observes the current process and identifies what can be reused. Which principle is this?",
+      "category": "Guiding Principles",
+      "correct": "Start where you are",
+      "distractors": [
+        "Focus on value",
+        "Progress iteratively with feedback",
+        "Collaborate and promote visibility"
+      ],
+      "explain": "Start where you are means assess and use what already exists when it is useful.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 55
+    },
+    {
+      "q": "A team releases a small improvement, checks results, and adjusts the next step. Which principle is this?",
+      "category": "Guiding Principles",
+      "correct": "Progress iteratively with feedback",
+      "distractors": [
+        "Focus on value",
+        "Start where you are",
+        "Collaborate and promote visibility"
+      ],
+      "explain": "Iterative progress uses small steps and feedback loops.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 56
+    },
+    {
+      "q": "A workflow improvement includes service desk, development, suppliers, and users so work is visible and understood. Which principle fits best?",
+      "category": "Guiding Principles",
+      "correct": "Collaborate and promote visibility",
+      "distractors": [
+        "Focus on value",
+        "Start where you are",
+        "Progress iteratively with feedback"
+      ],
+      "explain": "The principle emphasizes involving the right people and making work visible.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "focus-service-desk",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 57
+    },
+    {
+      "q": "A team reviews process, people, suppliers, and technology before changing a service. Which principle fits best?",
+      "category": "Guiding Principles",
+      "correct": "Think and work holistically",
+      "distractors": [
+        "Focus on value",
+        "Start where you are",
+        "Progress iteratively with feedback"
+      ],
+      "explain": "Holistic work considers the whole service system, not isolated parts.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 58
+    },
+    {
+      "q": "Which principle says automation should usually come after the work has been improved?",
+      "category": "Guiding Principles",
+      "correct": "Optimize and automate",
+      "distractors": [
+        "Focus on value",
+        "Start where you are",
+        "Progress iteratively with feedback"
+      ],
+      "explain": "Optimize first so automation does not lock in waste.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 59
+    },
+    {
+      "q": "A service team asks, 'How does this activity help the customer or organization?' Which guiding principle are they applying?",
+      "category": "Guiding Principles",
+      "correct": "Focus on value",
+      "distractors": [
+        "Start where you are",
+        "Progress iteratively with feedback",
+        "Collaborate and promote visibility"
+      ],
+      "explain": "Focus on value links activities directly or indirectly to value.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-guiding-principles",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 60
+    },
+    {
+      "q": "Which list names the four dimensions of service management?",
+      "category": "Four Dimensions",
+      "correct": "Organizations and people; information and technology; partners and suppliers; value streams and processes",
+      "distractors": [
+        "Plan; improve; engage; design and transition",
+        "Utility; warranty; cost; risk",
+        "Governance; practices; service value chain; continual improvement"
+      ],
+      "explain": "The four dimensions must be considered to support value creation.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-four-dimensions",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 61
+    },
+    {
+      "q": "A service design issue is mostly about roles, skills, communication, and culture. Which dimension is in focus?",
+      "category": "Four Dimensions",
+      "correct": "Organizations and people",
+      "distractors": [
+        "Information and technology",
+        "Partners and suppliers",
+        "Value streams and processes"
+      ],
+      "explain": "This dimension covers structure, responsibilities, culture, skills, and communication.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-four-dimensions",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 62
+    },
+    {
+      "q": "A team is selecting databases, monitoring tools, and knowledge repositories. Which dimension is in focus?",
+      "category": "Four Dimensions",
+      "correct": "Information and technology",
+      "distractors": [
+        "Organizations and people",
+        "Partners and suppliers",
+        "Value streams and processes"
+      ],
+      "explain": "This dimension covers information, knowledge, and technology used for services.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-four-dimensions",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 63
+    },
+    {
+      "q": "A service depends heavily on a cloud provider and a hardware vendor. Which dimension is most directly involved?",
+      "category": "Four Dimensions",
+      "correct": "Partners and suppliers",
+      "distractors": [
+        "Organizations and people",
+        "Information and technology",
+        "Value streams and processes"
+      ],
+      "explain": "This dimension covers relationships with external organizations involved in service delivery.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-four-dimensions",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 64
+    },
+    {
+      "q": "A team maps activities, handoffs, controls, and workflow bottlenecks. Which dimension is in focus?",
+      "category": "Four Dimensions",
+      "correct": "Value streams and processes",
+      "distractors": [
+        "Organizations and people",
+        "Information and technology",
+        "Partners and suppliers"
+      ],
+      "explain": "This dimension covers workflows, controls, activities, and procedures.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-four-dimensions",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 65
+    },
+    {
+      "q": "Why should all four dimensions be considered?",
+      "category": "Four Dimensions",
+      "correct": "Ignoring one can weaken the service and reduce value",
+      "distractors": [
+        "The dimension that covers roles, responsibilities, culture, skills, and communication",
+        "The dimension that covers information, knowledge, applications, and supporting technology",
+        "The dimension that covers relationships with external organizations involved in service delivery"
+      ],
+      "explain": "The dimensions work together; a weakness in one can affect the whole service.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-four-dimensions",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 66
+    },
+    {
+      "q": "What is the purpose of the Service Value System?",
+      "category": "Service Value System",
+      "correct": "To show how the organization's components and activities work together to create value",
+      "distractors": [
+        "The component that evaluates, directs, and monitors the organization",
+        "The central operating model that uses activities to respond to demand and create value",
+        "The component made of organizational resources designed for performing work"
+      ],
+      "explain": "The SVS is the high-level model for turning demand and opportunities into value.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svs",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 67
+    },
+    {
+      "q": "Which set lists the main components of the SVS?",
+      "category": "Service Value System",
+      "correct": "Guiding principles, governance, service value chain, practices, continual improvement",
+      "distractors": [
+        "Utility, warranty, cost, risk, output",
+        "Incident, problem, change, release, deployment",
+        "Plan, improve, engage, obtain/build, support"
+      ],
+      "explain": "These are the core SVS components in ITIL 4.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-continual-improvement",
+        "focus-svs",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 68
+    },
+    {
+      "q": "Which SVS component directs and controls the organization?",
+      "category": "Service Value System",
+      "correct": "Governance",
+      "distractors": [
+        "Guiding principles",
+        "Service value chain",
+        "Practices"
+      ],
+      "explain": "Governance evaluates, directs, and monitors the organization.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svs",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 69
+    },
+    {
+      "q": "Which SVS component is the operating model made of activities such as Plan and Engage?",
+      "category": "Service Value System",
+      "correct": "Service value chain",
+      "distractors": [
+        "Guiding principles",
+        "Governance",
+        "Practices"
+      ],
+      "explain": "The service value chain is the central operating model of the SVS.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svs",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 70
+    },
+    {
+      "q": "Which SVS component provides organizational resources designed for work or objectives?",
+      "category": "Service Value System",
+      "correct": "Practices",
+      "distractors": [
+        "Guiding principles",
+        "Governance",
+        "Service value chain"
+      ],
+      "explain": "Practices are sets of resources for performing work or accomplishing objectives.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": true,
+      "instructorFocus": [
+        "focus-svs",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 71
+    },
+    {
+      "q": "Which input to the SVS represents needs or possibilities from stakeholders?",
+      "category": "Service Value System",
+      "correct": "Demand and opportunity",
+      "distractors": [
+        "Warranty and utility",
+        "Known errors",
+        "Configuration records"
+      ],
+      "explain": "The SVS converts demand and opportunity into value.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svs",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 72
+    },
+    {
+      "q": "Which list contains all six service value chain activities?",
+      "category": "Service Value Chain",
+      "correct": "Plan; improve; engage; design and transition; obtain/build; deliver and support",
+      "distractors": [
+        "Focus; start; progress; collaborate; think; optimize",
+        "Incident; problem; change; request; release; deployment",
+        "Governance; practices; principles; dimensions; value; outcomes"
+      ],
+      "explain": "These six activities combine in different ways to form value streams.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 73
+    },
+    {
+      "q": "What is the main purpose of Engage?",
+      "category": "Service Value Chain",
+      "correct": "Provide a good understanding of stakeholder needs, transparency, continual engagement, and good relationships",
+      "distractors": [
+        "The activity that provides a shared understanding of vision, current status, and direction",
+        "The activity that provides stakeholder understanding, transparency, and good relationships",
+        "The activity that ensures service components are available when and where needed"
+      ],
+      "explain": "Engage focuses on stakeholders and relationships.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 74
+    },
+    {
+      "q": "Which activity ensures products and services meet expectations for quality, cost, and time to market?",
+      "category": "Service Value Chain",
+      "correct": "Design and transition",
+      "distractors": [
+        "Plan",
+        "Improve",
+        "Engage"
+      ],
+      "explain": "Design and transition moves products and services toward useful live operation.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 75
+    },
+    {
+      "q": "Which activity ensures service components are available when and where needed?",
+      "category": "Service Value Chain",
+      "correct": "Obtain/build",
+      "distractors": [
+        "Plan",
+        "Improve",
+        "Engage"
+      ],
+      "explain": "Obtain/build covers acquiring or building components that meet specifications.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 76
+    },
+    {
+      "q": "Which activity ensures services are delivered and supported according to agreed specifications?",
+      "category": "Service Value Chain",
+      "correct": "Deliver and support",
+      "distractors": [
+        "Plan",
+        "Improve",
+        "Engage"
+      ],
+      "explain": "Deliver and support handles actual delivery and support of services.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 77
+    },
+    {
+      "q": "Which activity gives a shared understanding of vision, current status, and improvement direction?",
+      "category": "Service Value Chain",
+      "correct": "Plan",
+      "distractors": [
+        "Improve",
+        "Engage",
+        "Design and transition"
+      ],
+      "explain": "Plan aligns direction across products, services, and dimensions.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 78
+    },
+    {
+      "q": "Which activity ensures continual improvement across all value chain activities?",
+      "category": "Service Value Chain",
+      "correct": "Improve",
+      "distractors": [
+        "Plan",
+        "Engage",
+        "Design and transition"
+      ],
+      "explain": "Improve applies across the value chain and practices.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-continual-improvement",
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 79
+    },
+    {
+      "q": "A value stream for a new service starts with understanding demand, designs the service, builds components, then supports it. Which activities are likely involved?",
+      "category": "Service Value Chain",
+      "correct": "Engage, design and transition, obtain/build, deliver and support",
+      "distractors": [
+        "Incident, problem, change, release",
+        "Focus, start, progress, optimize",
+        "Utility, warranty, output, outcome"
+      ],
+      "explain": "Value streams use value chain activities in combinations and sequences.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-svc",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 80
+    },
+    {
+      "q": "What is the purpose of information security management?",
+      "category": "Practice Purposes",
+      "correct": "Protect the information needed by the organization to conduct its business",
+      "distractors": [
+        "To align practices and services with changing business needs through ongoing improvement",
+        "To minimize the negative impact of incidents by restoring normal service operation quickly",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors"
+      ],
+      "explain": "Information security management protects confidentiality, integrity, and availability.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 81
+    },
+    {
+      "q": "What is the purpose of relationship management?",
+      "category": "Practice Purposes",
+      "correct": "Establish and nurture links between the organization and stakeholders at strategic and tactical levels",
+      "distractors": [
+        "To align practices and services with changing business needs through ongoing improvement",
+        "To minimize the negative impact of incidents by restoring normal service operation quickly",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors"
+      ],
+      "explain": "Relationship management focuses on stakeholder relationships.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 82
+    },
+    {
+      "q": "What is the purpose of supplier management?",
+      "category": "Practice Purposes",
+      "correct": "Ensure suppliers and their performance are managed appropriately",
+      "distractors": [
+        "Authorize changes based on risk",
+        "Handle user-initiated service requests",
+        "Manage the lifecycle of IT assets"
+      ],
+      "explain": "Supplier management supports quality supplier relationships and performance.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 83
+    },
+    {
+      "q": "What is the purpose of IT asset management?",
+      "category": "Practice Purposes",
+      "correct": "Plan and manage the full lifecycle of all IT assets",
+      "distractors": [
+        "Protect information used by the organization",
+        "Capture demand through a single point of contact",
+        "Move new service components to live environments"
+      ],
+      "explain": "IT asset management focuses on financially valuable components.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 84
+    },
+    {
+      "q": "What is the purpose of monitoring and event management?",
+      "category": "Practice Purposes",
+      "correct": "Systematically observe services and service components, then record and report selected changes of state",
+      "distractors": [
+        "To align practices and services with changing business needs through ongoing improvement",
+        "To minimize the negative impact of incidents by restoring normal service operation quickly",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors"
+      ],
+      "explain": "Monitoring and event management identifies meaningful events.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 85
+    },
+    {
+      "q": "What is the purpose of release management?",
+      "category": "Practice Purposes",
+      "correct": "Make new and changed services and features available for use",
+      "distractors": [
+        "To align practices and services with changing business needs through ongoing improvement",
+        "To minimize the negative impact of incidents by restoring normal service operation quickly",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors"
+      ],
+      "explain": "Release management makes features available; deployment moves components.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 86
+    },
+    {
+      "q": "What is the purpose of service configuration management?",
+      "category": "Practice Purposes",
+      "correct": "Ensure accurate and reliable information about services and configuration items is available when needed",
+      "distractors": [
+        "To align practices and services with changing business needs through ongoing improvement",
+        "To minimize the negative impact of incidents by restoring normal service operation quickly",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors"
+      ],
+      "explain": "Configuration management maintains information about CIs and relationships.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 87
+    },
+    {
+      "q": "What is the purpose of deployment management?",
+      "category": "Practice Purposes",
+      "correct": "Move new or changed hardware, software, documentation, processes, or other components to live environments",
+      "distractors": [
+        "To align practices and services with changing business needs through ongoing improvement",
+        "To minimize the negative impact of incidents by restoring normal service operation quickly",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors"
+      ],
+      "explain": "Deployment physically or logically moves components.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 88
+    },
+    {
+      "q": "A team needs to make a new version available to users. Which practice is most directly involved?",
+      "category": "Practice Purposes",
+      "correct": "Release management",
+      "distractors": [
+        "Deployment management",
+        "Change enablement",
+        "Service configuration management"
+      ],
+      "explain": "Release management makes new and changed services/features available.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": true,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 89
+    },
+    {
+      "q": "A team needs records showing which servers support a service and how they relate. Which practice fits?",
+      "category": "Practice Purposes",
+      "correct": "Service configuration management",
+      "distractors": [
+        "Information security management",
+        "Relationship management",
+        "Supplier management"
+      ],
+      "explain": "Configuration management provides reliable CI and service configuration information.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-practice-purposes",
+        "lessons-1-5",
+        "sections-3-5"
+      ],
+      "id": 90
+    },
+    {
+      "q": "What is the main goal of incident management?",
+      "category": "Detailed Practices",
+      "correct": "Restore normal service operation as quickly as possible and minimize negative impact",
+      "distractors": [
+        "To restore normal service operation as quickly as possible",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors",
+        "To handle predefined, user-initiated service requests effectively"
+      ],
+      "explain": "Incident management focuses on restoring service quickly.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 91
+    },
+    {
+      "q": "What is the main goal of problem management?",
+      "category": "Detailed Practices",
+      "correct": "Reduce the likelihood and impact of incidents by managing causes, workarounds, and known errors",
+      "distractors": [
+        "To restore normal service operation as quickly as possible",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors",
+        "To handle predefined, user-initiated service requests effectively"
+      ],
+      "explain": "Problem management focuses on causes and prevention.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 92
+    },
+    {
+      "q": "Which statement best compares incident and problem management?",
+      "category": "Detailed Practices",
+      "correct": "Incident management restores service; problem management manages causes and reduces future impact",
+      "distractors": [
+        "To restore normal service operation as quickly as possible",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors",
+        "To handle predefined, user-initiated service requests effectively"
+      ],
+      "explain": "Incident and problem management are related but have different goals.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 93
+    },
+    {
+      "q": "What is a known error?",
+      "category": "Detailed Practices",
+      "correct": "A problem that has been analyzed but has not been resolved",
+      "distractors": [
+        "A change that has been pre-authorized",
+        "An event that has no significance",
+        "A service request that failed validation"
+      ],
+      "explain": "Known errors are managed through error control in problem management.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 94
+    },
+    {
+      "q": "What is a workaround?",
+      "category": "Detailed Practices",
+      "correct": "A solution that reduces or eliminates the impact of an incident or problem where full resolution is not yet available",
+      "distractors": [
+        "To restore normal service operation as quickly as possible",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors",
+        "To handle predefined, user-initiated service requests effectively"
+      ],
+      "explain": "Workarounds reduce impact while a permanent solution is unavailable.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 95
+    },
+    {
+      "q": "Which change type is usually pre-authorized, low risk, and follows an established procedure?",
+      "category": "Detailed Practices",
+      "correct": "Standard change",
+      "distractors": [
+        "Normal change",
+        "Emergency change",
+        "Service request"
+      ],
+      "explain": "Standard changes are typically low risk and pre-authorized.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-change-enablement",
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 96
+    },
+    {
+      "q": "Which change type requires rapid action and may use a separate change authority?",
+      "category": "Detailed Practices",
+      "correct": "Emergency change",
+      "distractors": [
+        "Normal change",
         "Standard change",
-        "Implementation",
-        "Change freeze"
+        "Major incident"
       ],
-      "explain": "This is peer review: another qualified administrator evaluates the proposed change before approval to reduce risk and confirm that it follows process and best practice."
+      "explain": "Emergency changes are expedited because delay would increase risk or impact.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-change-enablement",
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 97
     },
     {
-      "id": 121,
-      "q": "Jonni is installing Windows 11 (64-bit) in a virtual machine on his Linux desktop. The installation is continually failing and producing an error. Jonni has configured the virtual machine with a dual-core 1.2 GHz processor, 4 GB of memory, a 32 GB hard drive, and a 1920 x 1080 screen resolution. Which item in the virtual machine should be increased to fix the installation issue experienced?",
-      "category": "Operating Systems",
-      "correct": "Amount of hard drive space",
+      "q": "A user asks for access to a standard application from an approved catalog. Which practice usually handles it?",
+      "category": "Detailed Practices",
+      "correct": "Service request management",
       "distractors": [
-        "Number of CPU cores",
-        "The screen resolution",
-        "Amount of memory"
+        "Service desk",
+        "Incident management",
+        "Change enablement"
       ],
-      "explain": "Windows 11 needs at least 64 GB of storage. The configured 32 GB drive is below the requirement, so increasing disk capacity is the needed fix."
+      "explain": "Service request management handles predefined, user-initiated requests.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-service-request-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 98
     },
     {
-      "id": 122,
-      "q": "A technician is troubleshooting a video conferencing application used by remote employees. Users report frequent lag, choppy video, and sudden disconnections, even though the application was installed correctly and worked during initial testing. The issue is occurring across multiple users in different locations. Which of the following is the most likely cause?",
-      "category": "Operating Systems",
-      "correct": "Insufficient internet bandwidth for high-quality video transmission.",
+      "q": "Which practice is the entry point and single point of contact for users?",
+      "category": "Detailed Practices",
+      "correct": "Service desk",
       "distractors": [
-        "Firewall restrictions blocking video data packets.",
-        "Video card incompatibility with the conferencing application.",
-        "Outdated network drivers on users' computers."
+        "Service request management",
+        "Incident management",
+        "Relationship management"
       ],
-      "explain": "Consistent lag, choppy video, and dropped sessions across multiple users points most strongly to insufficient bandwidth. Firewall blocks or hardware incompatibility would usually fail more abruptly or more selectively."
+      "explain": "The service desk captures demand for incident resolution and service requests.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "focus-service-desk",
+        "focus-service-request-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 99
     },
     {
-      "id": 123,
-      "q": "A laptop displays multiple pop-ups immediately when opening the browser. What action(s) should you take NEXT?",
-      "category": "Software Troubleshooting",
-      "correct": "Clear the browser's cookies and history, enable the pop-up blocker, and scan the system for malware",
+      "q": "Which practice sets clear business-based targets for service performance?",
+      "category": "Detailed Practices",
+      "correct": "Service level management",
       "distractors": [
-        "Document the pop-ups displayed and take a screenshot",
-        "Quarantine the machine and report it as infected to your company's cybersecurity department for investigation",
-        "Reinstall or reimage the operating system"
+        "Relationship management",
+        "Supplier management",
+        "Service desk"
       ],
-      "explain": "Browser pop-ups are commonly caused by adware, spyware, or malicious browser changes. The next step is remediation: clear browser data, enable the pop-up blocker, and run a malware scan."
+      "explain": "Service level management defines and manages service performance targets.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-service-level-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 100
     },
     {
-      "id": 124,
-      "q": "Which of the following is considered a trusted app source for APK files?",
-      "category": "Software Troubleshooting",
-      "correct": "Play Store",
+      "q": "A production outage affects many users and needs a special process and high visibility. What is this?",
+      "category": "Detailed Practices",
+      "correct": "Major incident",
       "distractors": [
-        "Android Central",
-        "App Store",
-        "Windows Store"
+        "Continual improvement",
+        "Change enablement",
+        "Incident management"
       ],
-      "explain": "For Android APK distribution, the Play Store is the official trusted source. The other options are unrelated platforms or third-party sources."
+      "explain": "Major incidents often require separate procedures and focused communication.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 101
     },
     {
-      "id": 125,
-      "q": "What information should be recorded on a chain of custody form during a forensic investigation?",
-      "category": "Operational Procedures",
-      "correct": "Any individual who worked with evidence during the investigation",
+      "q": "Which practice typically owns communication with users during incidents and requests?",
+      "category": "Detailed Practices",
+      "correct": "Service desk",
       "distractors": [
-        "The list of individuals who made contact with files leading to the investigation",
-        "The list of former owners/operators of the workstation involved in the investigation",
-        "The law enforcement agent who was first on the scene"
+        "Service request management",
+        "Incident management",
+        "Relationship management"
       ],
-      "explain": "A chain of custody records everyone who handled the evidence and what was done with it, preserving accountability and evidentiary integrity."
+      "explain": "The service desk is the user-facing communication point.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "focus-service-desk",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 102
     },
     {
-      "id": 126,
-      "q": "When Jason needs to log in to his bank, he must use a key fob to generate a random number code automatically synchronized to a code on the server for authentication. What type of device is Jason using to log in?",
-      "category": "Security",
-      "correct": "Hardware token",
+      "q": "A recurring login failure is restored each time by restarting a service, but the cause is unknown. Which practice should investigate the cause?",
+      "category": "Detailed Practices",
+      "correct": "Problem management",
       "distractors": [
-        "Smart card",
-        "PIV card",
-        "Biometric lock"
+        "Incident management",
+        "Continual improvement",
+        "Monitoring and event management"
       ],
-      "explain": "A key fob that generates synchronized one-time codes is a hardware token. Smart cards and PIV cards are also hardware tokens broadly, but the described device is specifically the token fob style used for OTP authentication."
+      "explain": "Repeated incidents often lead to problem management investigation.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-incident-management",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 103
     },
     {
-      "id": 127,
-      "q": "Eduardo is installing Windows 11 (64-bit) in a virtual machine on his macOS desktop. The installation is continually failing and producing an error. Eduardo has configured the virtual machine with a 2.2 GHz processor, 4 GB of memory, a 64 GB hard drive, and a 1280 x 720 screen resolution. Which item in the virtual machine should be increased to fix the installation issue experienced?",
-      "category": "Operating Systems",
-      "correct": "Number of CPU cores",
+      "q": "Which continual improvement step asks for the starting point?",
+      "category": "Detailed Practices",
+      "correct": "Where are we now?",
       "distractors": [
-        "The screen resolution",
-        "Amount of memory",
-        "Amount of hard drive space"
+        "What is the vision?",
+        "How do we keep the momentum going?",
+        "Did we get there?"
       ],
-      "explain": "Windows 11 requires a compatible 64-bit processor with at least two cores. The other listed specs already meet baseline requirements, so CPU cores are the missing piece."
+      "explain": "The improvement model establishes current state before planning movement.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-continual-improvement",
+        "focus-detailed-practices",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 104
     },
     {
-      "id": 128,
-      "q": "Dion Training wants to keep their wireless network open for students but prevent coffee shop customers next door from connecting. Which setting should be modified?",
-      "category": "Security",
-      "correct": "Signal strength or power level",
+      "q": "What should every problem be prioritized by?",
+      "category": "Detailed Practices",
+      "correct": "Potential impact and probability",
       "distractors": [
-        "Default SSID",
-        "Firewall",
-        "MAC filtering"
+        "To restore normal service operation as quickly as possible",
+        "To reduce the likelihood and impact of incidents by managing causes and known errors",
+        "To handle predefined, user-initiated service requests effectively"
       ],
-      "explain": "Reducing transmit power can keep the wireless coverage inside the intended physical area while still leaving the network open for authorized nearby users."
+      "explain": "Problem prioritization should reflect risk: potential impact and probability.",
+      "source": "ITIL 4 PDFs and study guide",
+      "type": "coach",
+      "includeInFullDeck": true,
+      "isBoss": false,
+      "instructorFocus": [
+        "focus-detailed-practices",
+        "focus-problem-management",
+        "lessons-1-5",
+        "sections-3-5",
+        "seven-practices"
+      ],
+      "id": 105
     },
     {
-      "id": 129,
-      "q": "A user's SOHO wireless network appears to have significantly slowed down today. Normally, they can download files at 900 Mbps or more, but today, they only averaged 23 Mbps when downloading. You check their wireless settings and see the following: Network SSID: DionTraining Security: WPA2 Password: diontraining Mode: AC ISP: Fiber1Gbps Which of the following is MOST likely the problem?",
-      "category": "Software Troubleshooting",
-      "correct": "Other users have connected to the WiFi due to a weak password",
+      "q": "Which ITIL glossary term fits this definition? A list of minimum requirements that a service or service component must meet for it to be acceptable to key stakeholders.",
+      "category": "Glossary Terms",
+      "correct": "acceptance criteria",
       "distractors": [
-        "WPA2 reduces download speeds and the user should switch to WPA3",
-        "Additional transmission power is needed for the wireless signal",
-        "The WAN type needs to be upgraded to DSL or cable"
+        "warranty requirements",
+        "service validation and testing practice",
+        "asset register"
       ],
-      "explain": "The weak and guessable WiFi password makes unauthorized access likely. Extra users consuming bandwidth is the most plausible explanation for the large throughput drop."
+      "explain": "acceptance criteria: A list of minimum requirements that a service or service component must meet for it to be acceptable to key stakeholders.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 106
     },
     {
-      "id": 130,
-      "q": "Your company has just installed a brand new email server, but you determined that the server cannot send emails to another server during your initial testing. You decide to check the firewall's ACL to see if the server's outgoing email is being blocked. Which of the following ports should you ensure is open and not blocked by the firewall?",
-      "category": "Operating Systems",
-      "correct": "25",
+      "q": "Which definition best matches 'Agile'?",
+      "category": "Glossary Terms",
+      "correct": "An umbrella term for a collection of frameworks and techniques that together enable teams and individuals to work in a way that is typified by collaboration, prioritization, iterative and incremental delivery, and timeboxing. There are several specific methods (or frameworks) that are classed as Agile, such as Scrum, Lean, and Kanban.",
       "distractors": [
-        "22",
-        "110",
-        "143"
+        "A role that is accountable for the delivery of a specific service.",
+        "A method for visualizing work, identifying potential blockages and resource conflicts, and managing work in progress.",
+        "A model representing how all the components and activities of an organization work together to facilitate value creation."
       ],
-      "explain": "SMTP uses TCP port 25 for sending email between servers. POP3 uses 110, IMAP uses 143, and SSH uses 22."
+      "explain": "Agile: An umbrella term for a collection of frameworks and techniques that together enable teams and individuals to work in a way that is typified by collaboration, prioritization, iterative and incremental delivery, and timeboxing. There are several specific methods (or frameworks) that are classed as Agile, such as Scrum, Lean, and Kanban.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 107
     },
     {
-      "id": 131,
-      "q": "Dion Training is concerned with the possibility of employees accessing another user's workstation in secured areas without their permission. Which of the following would BEST be able to prevent this from happening?",
-      "category": "Security",
-      "correct": "Require biometric identification for user logins",
+      "q": "This definition is describing which term? The practice of providing an understanding of all the different elements that make up an organization and how those elements relate to one another.",
+      "category": "Glossary Terms",
+      "correct": "architecture management practice",
       "distractors": [
-        "Require a username and a password for user logins",
-        "Enforce a policy that requires passwords to be changed every 30 days",
-        "Install security cameras in secure areas to monitor logins"
+        "service architecture",
+        "supplier",
+        "continual improvement practice"
       ],
-      "explain": "Biometric identification (fingerprint reader, retina scanner) ensures that even if a password is discovered, the attacker cannot log in without the employee's physical biometric. Passwords alone can be discovered and reused. Enforcing short password retention limits damage after disclosure but cannot prevent a login during the valid period. Security cameras are a detective or deterrent control, not a preventive one.",
-      "isBoss": false
+      "explain": "architecture management practice: The practice of providing an understanding of all the different elements that make up an organization and how those elements relate to one another.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 108
     },
     {
-      "id": 132,
-      "q": "A system administrator is assigned an approved change request with a change window of 120 minutes. After 90 minutes, the change is stuck on step five of a five-step change. The server manager decides to initiate a rollback. Which describes what the system administrator should do next?",
-      "category": "Operational Procedures",
-      "correct": "Return the system to the original state before the change",
+      "q": "In the glossary, 'asset register' means:",
+      "category": "Glossary Terms",
+      "correct": "A database or list of assets, capturing key attributes such as ownership and financial value.",
       "distractors": [
-        "Return the system to step four since this was the last working step",
-        "Leave the change as is and inform users of a workaround",
-        "Request additional time since the change is near completion"
+        "The practice of planning and managing the full lifecycle of all IT assets.",
+        "A list of minimum requirements that a service or service component must meet for it to be acceptable to key stakeholders.",
+        "An operating model for service providers that covers all the key activities required to effectively manage products and services."
       ],
-      "explain": "A rollback reverts everything to the last known good configuration before the change began — not just to the previous step. Every change should be accompanied by a rollback (backout) plan so it can be fully reversed if harmful or unforeseen consequences occur.",
-      "isBoss": false
+      "explain": "asset register: A database or list of assets, capturing key attributes such as ownership and financial value.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 109
     },
     {
-      "id": 133,
-      "q": "Which of the following is the BEST thing to use to uniquely identify the different workstations in use on the local area network?",
-      "category": "Operational Procedures",
-      "correct": "MAC address",
+      "q": "Which ITIL glossary term fits this definition? The ability of an IT service or other configuration item to perform its agreed function when required.",
+      "category": "Glossary Terms",
+      "correct": "availability",
       "distractors": [
-        "IP address",
-        "Domain name",
-        "RFID"
+        "reliability",
+        "live",
+        "operation"
       ],
-      "explain": "Each NIC has a unique MAC address assigned by the manufacturer, making it the best unique identifier on a LAN. IP addresses frequently change via DHCP. A domain name is shared by all clients on the domain. RFID physically tags devices but is not transmitted over the network.",
-      "isBoss": false
+      "explain": "availability: The ability of an IT service or other configuration item to perform its agreed function when required.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 110
     },
     {
-      "id": 134,
-      "q": "Which of the following types of attacks occurs when an attacker attempts to gain confidential information or login credentials by sending targeted emails to a specific set of recipients within an organization?",
-      "category": "Security",
-      "correct": "Spear phishing",
+      "q": "Which definition best matches 'availability management practice'?",
+      "category": "Glossary Terms",
+      "correct": "The practice of ensuring that services deliver agreed levels of availability to meet the needs of customers and users.",
       "distractors": [
-        "Phishing",
-        "Vishing",
-        "Whaling"
+        "The practice of ensuring that applications meet stakeholder needs in terms of functionality, reliability, maintainability, compliance, and auditability.",
+        "The practice of ensuring that services achieve agreed and expected performance levels, satisfying current and future demand in a cost-effective way.",
+        "The evolution of traditional business models to meet the needs of highly empowered customers, with technology playing an enabling role."
       ],
-      "explain": "Spear phishing targets a specific set of people with tailored emails — the key differentiator is the targeted recipients. Phishing casts a wide net to random recipients. Whaling targets senior executives or high-value individuals. Vishing uses phone calls or VoIP to extract information.",
-      "isBoss": false
+      "explain": "availability management practice: The practice of ensuring that services deliver agreed levels of availability to meet the needs of customers and users.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 111
     },
     {
-      "id": 135,
-      "q": "Regardless of what website Michelle types into her browser, she is being redirected to \"malwarescammers.com.\" What should Michelle do to fix this problem?",
-      "category": "Software Troubleshooting",
-      "correct": "Reset the web browser's proxy setting",
+      "q": "This definition is describing which term? A report or metric that serves as a starting point against which progress or change can be assessed.",
+      "category": "Glossary Terms",
+      "correct": "baseline",
       "distractors": [
-        "Rollback the application to the previous version",
-        "Update the anti-virus software and run a full system scan",
-        "Restart the network services"
+        "service level management practice",
+        "change enablement practice",
+        "standard change"
       ],
-      "explain": "A browser redirect for all sites typically means a malicious proxy has been injected into the browser's connection settings. Checking and clearing the proxy under Internet Options (Connections tab) is the correct first step. The hosts file should also be checked for single-site redirects. AV scans and network restarts do not address the proxy configuration directly.",
-      "isBoss": false
+      "explain": "baseline: A report or metric that serves as a starting point against which progress or change can be assessed.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 112
     },
     {
-      "id": 136,
-      "q": "Peter is attempting to print to his office printer, but nothing comes out. Yesterday, his printer was working just fine. Peter does not notice any errors on the taskbar's printer icon. Which of the following actions should Peter try FIRST to solve this issue?",
-      "category": "Software Troubleshooting",
-      "correct": "Check the status of the print server queue",
+      "q": "In the glossary, 'best practice' means:",
+      "category": "Glossary Terms",
+      "correct": "A way of working that has been proven to be successful by multiple organizations.",
       "distractors": [
-        "Check to ensure the printer selected is the default printer",
-        "Cancel all documents and print them again",
-        "Check that the printer is not offline"
+        "A problem that has been analysed but has not been resolved.",
+        "A request from a user or a user's authorized representative that initiates a service action which has been agreed as a normal part of service delivery.",
+        "A relationship between two organizations that involves working closely together to achieve common goals and objectives."
       ],
-      "explain": "When no error appears on the taskbar printer icon, the print job likely reached the queue but became stuck there. Opening and clearing the print queue is the correct first step. Offline status would typically surface as a visible error. Verifying the default printer and resubmitting are secondary steps.",
-      "isBoss": false
+      "explain": "best practice: A way of working that has been proven to be successful by multiple organizations.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 113
     },
     {
-      "id": 137,
-      "q": "An attacker has been collecting credit card details by calling victims and using false pretexts to trick them. Which of the following types of attack is being conducted?",
-      "category": "Security",
-      "correct": "Vishing",
+      "q": "Which ITIL glossary term fits this definition? The use of very large volumes of structured and unstructured data from a variety of sources to gain new insights.",
+      "category": "Glossary Terms",
+      "correct": "big data",
       "distractors": [
-        "Phishing",
-        "Spear phishing",
-        "Whaling"
+        "release management practice",
+        "dashboard",
+        "IT service"
       ],
-      "explain": "Vishing (voice phishing) extracts information through phone calls or VoIP. Phishing is email-based with a wide target pool. Spear phishing is a targeted email attack against a specific group. Whaling is email- or web-based phishing aimed at senior executives or high-value individuals.",
-      "isBoss": false
+      "explain": "big data: The use of very large volumes of structured and unstructured data from a variety of sources to gain new insights.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 114
     },
     {
-      "id": 138,
-      "q": "Which of the following data types would be used to store the number 3.14?",
-      "category": "Operational Procedures",
-      "correct": "Floating-point",
+      "q": "Which definition best matches 'business analysis practice'?",
+      "category": "Glossary Terms",
+      "correct": "The practice of analysing a business or some element of a business, defining its needs and recommending solutions to address these needs and/or solve a business problem, and create value for stakeholders.",
       "distractors": [
-        "String",
-        "Integer",
-        "Boolean"
+        "Input to the service value system based on opportunities and needs from internal and external stakeholders.",
+        "The value chain activity that provides a good understanding of stakeholder needs, transparency, continual engagement, and good relationships with all stakeholders.",
+        "A practical and human-centred approach used by product and service designers to solve complex problems and find practical and creative solutions that meet the needs of an organization and its customers."
       ],
-      "explain": "A floating-point type stores fractional/decimal numbers like 3.14 and consumes 4–8 bytes. An integer stores whole numbers. A boolean stores TRUE (1) or FALSE (0) in 1 bit. A string stores character sequences and would treat 3.14 as text, not a numeric value.",
-      "isBoss": false
+      "explain": "business analysis practice: The practice of analysing a business or some element of a business, defining its needs and recommending solutions to address these needs and/or solve a business problem, and create value for stakeholders.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 115
     },
     {
-      "id": 139,
-      "q": "A user reports their Windows 10 computer runs unusually slow after login. Task Manager shows >99% disk usage from a process named \"Antimalware Service Executable.\" What is the BEST way to resolve this?",
-      "category": "Software Troubleshooting",
-      "correct": "Update Windows Defender definitions and restart the system",
+      "q": "This definition is describing which term? A justification for expenditure of organizational resources, providing information about costs, benefits, options, risks, and issues.",
+      "category": "Glossary Terms",
+      "correct": "business case",
       "distractors": [
-        "Permanently disable the anti-malware program's real-time protection",
-        "Perform a full malware scan and schedule it for off-hours",
-        "Restart the computer in Safe Mode and disable startup programs"
+        "organizational velocity",
+        "cost centre",
+        "practice"
       ],
-      "explain": "High disk usage by Antimalware Service Executable is commonly caused by outdated virus definitions triggering continuous scanning. Updating definitions resolves the cause. Disabling real-time protection creates a security gap. Running a full scan during work hours worsens the slowdown. Safe Mode is reserved for more severe scenarios and is not the correct first step.",
-      "isBoss": false
+      "explain": "business case: A justification for expenditure of organizational resources, providing information about costs, benefits, options, risks, and issues.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 116
     },
     {
-      "id": 140,
-      "q": "You need to recycle 20 old company laptops for donation to a community center. Which data destruction method is MOST appropriate to fully destroy the data while keeping the drives reusable?",
-      "category": "Security",
-      "correct": "Low-level formatting of the HDDs",
+      "q": "In the glossary, 'business impact analysis (BIA)' means:",
+      "category": "Glossary Terms",
+      "correct": "A key activity in the practice of service continuity management that identifies vital business functions and their dependencies.",
       "distractors": [
-        "Degaussing of the HDDs",
-        "Standard formatting of the HDDs",
-        "Drill/hammer the HDD platters"
+        "An incident with significant business impact, requiring an immediate coordinated resolution.",
+        "The practice of analysing a business or some element of a business, defining its needs and recommending solutions to address these needs and/or solve a business problem, and create value for stakeholders.",
+        "A sudden unplanned event that causes great damage or serious loss to an organization. A disaster results in an organization failing to provide critical business functions for some predetermined minimum period of time."
       ],
-      "explain": "Low-level formatting overwrites all sectors, making data recovery essentially impossible while leaving the drive functional. Standard formatting only removes file system pointers, leaving data recoverable. Degaussing destroys the magnetic medium, rendering the drive unusable. Physically destroying the platters also makes the drives unusable — unsuitable for donation.",
-      "isBoss": false
+      "explain": "business impact analysis (BIA): A key activity in the practice of service continuity management that identifies vital business functions and their dependencies.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 117
     },
     {
-      "id": 141,
-      "q": "You need to provide remote access to a virtualized desktop on a Linux-based hypervisor. The solution must support audio, USB redirection, and high-quality video streaming. Which protocol BEST meets this requirement?",
-      "category": "Operational Procedures",
-      "correct": "SPICE",
+      "q": "Which ITIL glossary term fits this definition? A role responsible for maintaining good relationships with one or more customers.",
+      "category": "Glossary Terms",
+      "correct": "business relationship manager (BRM)",
       "distractors": [
-        "VNC",
-        "SSH",
-        "RDP"
+        "project",
+        "digital transformation",
+        "problem"
       ],
-      "explain": "SPICE (Simple Protocol for Independent Computing Environments) is designed for virtualized desktop access and natively supports audio, USB redirection, and high-quality video — commonly paired with Linux hypervisors like KVM. RDP is a Microsoft-proprietary protocol primarily for Windows. SSH provides command-line access, not a graphical desktop. VNC offers remote desktop access but lacks SPICE's multimedia and device-redirection features.",
-      "isBoss": false
+      "explain": "business relationship manager (BRM): A role responsible for maintaining good relationships with one or more customers.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 118
     },
     {
-      "id": 142,
-      "q": "Sarah is installing Windows 10 (64-bit) in a virtual machine configured with a dual-core 950 MHz processor, 4 GB of RAM, a 64 GB hard drive, and 1280×720 resolution. The installation keeps failing. Which component is insufficient?",
-      "category": "Operating Systems",
-      "correct": "The processor is insufficient",
+      "q": "Which definition best matches 'call'?",
+      "category": "Glossary Terms",
+      "correct": "An interaction (e.g. a telephone call) with the service desk. A call could result in an incident or a service request being logged.",
       "distractors": [
-        "The screen resolution is insufficient",
-        "The amount of storage space is insufficient",
-        "The amount of RAM is insufficient"
+        "The practice of capturing demand for incident resolution and service requests.",
+        "An unplanned interruption to a service or reduction in the quality of a service.",
+        "The action of solving an incident or problem."
       ],
-      "explain": "Windows 10 (64-bit) requires a minimum 1 GHz processor. At 950 MHz the CPU falls short. The 4 GB RAM exceeds the 2 GB minimum, the 64 GB drive exceeds the 20 GB minimum, and 1280×720 meets the display requirement. Windows 11 raises the RAM minimum to 4 GB and storage to 64 GB, but those thresholds are not relevant here.",
-      "isBoss": false
+      "explain": "call: An interaction (e.g. a telephone call) with the service desk. A call could result in an incident or a service request being logged.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 119
     },
     {
-      "id": 143,
-      "q": "A user's Windows 10 upgrade failed. Which log file in Event Viewer should you review to determine the cause?",
-      "category": "Software Troubleshooting",
-      "correct": "Setup log",
+      "q": "This definition is describing which term? An organization or business unit that handles large numbers of incoming and outgoing calls and other interactions.",
+      "category": "Glossary Terms",
+      "correct": "call/contact centre",
       "distractors": [
-        "Application log",
-        "Security log",
-        "System log"
+        "cost centre",
+        "risk management practice",
+        "external customer"
       ],
-      "explain": "The Setup log (setup.evtx) records all events from the Windows installation or upgrade process and is the correct source for upgrade failure details. The Application log tracks application errors. The System log covers driver, service, and hardware events. The Security log records audit and login events.",
-      "isBoss": false
+      "explain": "call/contact centre: An organization or business unit that handles large numbers of incoming and outgoing calls and other interactions.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 120
     },
     {
-      "id": 144,
-      "q": "Tom has finished installing and configuring a new domain server. What is the next step he should perform so that employees can access the server on the corporate domain?",
-      "category": "Security",
-      "correct": "Configure the user's account",
+      "q": "In the glossary, 'capability' means:",
+      "category": "Glossary Terms",
+      "correct": "The ability of an organization, person, process, application, configuration item, or IT service to carry out an activity.",
       "distractors": [
-        "Configure access to the file server",
-        "Install antivirus protection",
-        "Install an application"
+        "A documented way to carry out an activity or a process.",
+        "The ability of an IT service or other configuration item to perform its agreed function when required.",
+        "The ability of a product, service, or other configuration item to perform its intended function for a specified period of time or number of cycles."
       ],
-      "explain": "After the server is installed and configured, the administrator must create and configure user accounts — following least-privilege principles — before employees can log in. Installing antivirus, applications, and configuring file server access all come after accounts are set up.",
-      "isBoss": false
+      "explain": "capability: The ability of an organization, person, process, application, configuration item, or IT service to carry out an activity.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 121
     },
     {
-      "id": 145,
-      "q": "Under which environmental condition is electrostatic discharge (ESD) the greatest threat?",
-      "category": "Operational Procedures",
-      "correct": "When humidity is low",
+      "q": "Which ITIL glossary term fits this definition? The practice of ensuring that services achieve agreed and expected performance levels, satisfying current and future demand in a cost-effective way.",
+      "category": "Glossary Terms",
+      "correct": "capacity and performance management practice",
       "distractors": [
-        "When temperatures are high",
-        "When humidity is high",
-        "When temperatures are low"
+        "availability management practice",
+        "supplier management practice",
+        "capacity planning"
       ],
-      "explain": "Low humidity allows static charge to build up because there is little moisture in the air to dissipate it. High humidity actually reduces ESD risk because moisture conducts away static electricity. Server rooms should maintain 40–60% relative humidity to minimize ESD risk to components.",
-      "isBoss": false
+      "explain": "capacity and performance management practice: The practice of ensuring that services achieve agreed and expected performance levels, satisfying current and future demand in a cost-effective way.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 122
     },
     {
-      "id": 146,
-      "q": "Which Linux command is used to change the ownership of a file or directory?",
-      "category": "Operating Systems",
-      "correct": "chown",
+      "q": "Which definition best matches 'capacity planning'?",
+      "category": "Glossary Terms",
+      "correct": "The activity of creating a plan that manages resources to meet demand for services.",
       "distractors": [
-        "chmod",
-        "passwd",
-        "pwd"
+        "The practice of ensuring that services achieve agreed and expected performance levels, satisfying current and future demand in a cost-effective way.",
+        "The activity of planning and obtaining resources from a particular source type, which could be internal or external, centralized or distributed, and open or proprietary.",
+        "A model for enabling on-demand network access to a shared pool of configurable computing resources that can be rapidly provided with minimal management effort or provider interaction."
       ],
-      "explain": "chown changes the owning user or group of a file, directory, or link. chmod modifies the permission flags (read/write/execute) on files and directories. passwd changes user account passwords. pwd prints the current working directory path.",
-      "isBoss": false
+      "explain": "capacity planning: The activity of creating a plan that manages resources to meet demand for services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 123
     },
     {
-      "id": 147,
-      "q": "Which backup rotation scheme overwrites the oldest media with the current backup being performed?",
-      "category": "Operational Procedures",
-      "correct": "FIFO",
+      "q": "This definition is describing which term? The addition, modification, or removal of anything that could have a direct or indirect effect on services.",
+      "category": "Glossary Terms",
+      "correct": "change",
       "distractors": [
-        "3-2-1 backup",
-        "Grandfather-father-son",
-        "Tower of Hanoi"
+        "change authority",
+        "change model",
+        "emergency change"
       ],
-      "explain": "FIFO (First In, First Out) uses a fixed set of tapes and always overwrites the oldest one. Grandfather-father-son (GFS) combines daily incremental, weekly full, and monthly full backups stored at different retention levels. The 3-2-1 rule requires three copies on two media types with one off-site. Tower of Hanoi rotates sets on a mathematical schedule to minimize tape wear while retaining longer history.",
-      "isBoss": false
+      "explain": "change: The addition, modification, or removal of anything that could have a direct or indirect effect on services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 124
     },
     {
-      "id": 148,
-      "q": "You are configuring a SOHO network and only allowing specific IP addresses to access the network while blocking any IP addresses that are not on the list. Which of the following should be implemented?",
-      "category": "Security",
-      "correct": "Allow list",
+      "q": "In the glossary, 'change authority' means:",
+      "category": "Glossary Terms",
+      "correct": "A person or group responsible for authorizing a change.",
       "distractors": [
-        "MAC filtering",
-        "Port forwarding",
-        "Blocklist"
+        "A person or a group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives.",
+        "The practice of ensuring that risks are properly assessed, authorizing changes to proceed and managing a change schedule in order to maximize the number of successful service and product changes.",
+        "A repeatable approach to the management of a particular type of change."
       ],
-      "explain": "An allow list permits only explicitly approved IP addresses and blocks everything else by default. A blocklist blocks specified addresses but allows others, which is the opposite of this scenario.",
-      "isBoss": false
+      "explain": "change authority: A person or group responsible for authorizing a change.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 125
     },
     {
-      "id": 149,
-      "q": "Jack has asked you for a recommendation on which word processing software they should install. There are four different options available. Which license type would be the most cost-effective for a single home user?",
-      "category": "Operational Procedures",
-      "correct": "Personal",
+      "q": "Which ITIL glossary term fits this definition? The practice of ensuring that risks are properly assessed, authorizing changes to proceed and managing a change schedule in order to maximize the number of successful service and product changes.",
+      "category": "Glossary Terms",
+      "correct": "change enablement practice",
       "distractors": [
-        "Business",
-        "Open-source",
-        "Enterprise"
+        "organizational change management practice",
+        "change schedule",
+        "change authority"
       ],
-      "explain": "A personal license is designed and priced for individual home use. Business and enterprise licenses typically cost more and are intended for commercial or organizational use.",
-      "isBoss": false
+      "explain": "change enablement practice: The practice of ensuring that risks are properly assessed, authorizing changes to proceed and managing a change schedule in order to maximize the number of successful service and product changes.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 126
     },
     {
-      "id": 150,
-      "q": "Dion Training wants to implement a new wireless network using WPA3 in their offices. Which of the following features of WPA3 replaces the Pre-Shared Key (PSK) authentication used in WPA2?",
-      "category": "Security",
-      "correct": "SAE",
+      "q": "Which definition best matches 'change model'?",
+      "category": "Glossary Terms",
+      "correct": "A repeatable approach to the management of a particular type of change.",
       "distractors": [
-        "AES GCMP",
-        "Enhanced open",
-        "CCMP"
+        "The activity of planning and obtaining resources from a particular source type, which could be internal or external, centralized or distributed, and open or proprietary.",
+        "A person or group responsible for authorizing a change.",
+        "A change that must be introduced as soon as possible."
       ],
-      "explain": "SAE, or Simultaneous Authentication of Equals, replaces WPA2-PSK in WPA3 and provides stronger password-based authentication with protection against offline dictionary attacks.",
-      "isBoss": false
+      "explain": "change model: A repeatable approach to the management of a particular type of change.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 127
     },
     {
-      "id": 151,
-      "q": "A user reports their Windows 10 computer is running slowly and the hard drive light is constantly on. Which tool should the technician use first to identify the cause?",
-      "category": "Software Troubleshooting",
-      "correct": "Task Manager",
+      "q": "This definition is describing which term? A calendar that shows planned and historical changes.",
+      "category": "Glossary Terms",
+      "correct": "change schedule",
       "distractors": [
-        "Disk Cleanup",
-        "Event Viewer",
-        "System Restore"
+        "change enablement practice",
+        "organizational change management practice",
+        "change authority"
       ],
-      "explain": "Task Manager is the first tool to check for live performance bottlenecks because it shows CPU, memory, disk, and network usage by process in real time.",
-      "isBoss": false
+      "explain": "change schedule: A calendar that shows planned and historical changes.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 128
     },
     {
-      "id": 152,
-      "q": "A technician is troubleshooting a Windows PC that displays a \"Low Memory\" warning. After adding more RAM, the issue persists. What should the technician check next?",
-      "category": "Software Troubleshooting",
-      "correct": "Adjust the virtual memory (pagefile) settings",
+      "q": "In the glossary, 'charging' means:",
+      "category": "Glossary Terms",
+      "correct": "The activity that assigns a price for services.",
       "distractors": [
-        "Increase the display resolution",
-        "Reinstall the operating system",
-        "Run Disk Cleanup"
+        "The activity of creating a plan that manages resources to meet demand for services.",
+        "An organizational culture that aims to improve the flow of value to customers. DevOps focuses on culture, automation, Lean, measurement, and sharing (CALMS).",
+        "The practice of ensuring that services deliver agreed levels of availability to meet the needs of customers and users."
       ],
-      "explain": "Virtual memory uses disk space to supplement RAM. If pagefile settings are too small or misconfigured, low memory warnings can persist even after adding physical memory.",
-      "isBoss": false
+      "explain": "charging: The activity that assigns a price for services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 129
     },
     {
-      "id": 153,
-      "q": "A user's browser keeps redirecting to unknown websites and displaying excessive pop-up ads. What is the MOST likely cause?",
-      "category": "Software Troubleshooting",
-      "correct": "Malware/adware infection",
+      "q": "Which ITIL glossary term fits this definition? A model for enabling on-demand network access to a shared pool of configurable computing resources that can be rapidly provided with minimal management effort or provider interaction.",
+      "category": "Glossary Terms",
+      "correct": "cloud computing",
       "distractors": [
-        "Corrupt browser installation",
-        "Outdated browser version",
-        "DNS server misconfiguration"
+        "capacity planning",
+        "service provision",
+        "goods"
       ],
-      "explain": "Browser redirects and excessive pop-ups are classic symptoms of adware or malware infection. An outdated browser can increase risk, but it does not usually cause redirects by itself.",
-      "isBoss": false
+      "explain": "cloud computing: A model for enabling on-demand network access to a shared pool of configurable computing resources that can be rapidly provided with minimal management effort or provider interaction.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 130
     },
     {
-      "id": 154,
-      "q": "Which of the following is the BEST method to prevent ransomware from causing permanent data loss?",
-      "category": "Software Troubleshooting",
-      "correct": "Maintain regular offline backups",
+      "q": "Which definition best matches 'compliance'?",
+      "category": "Glossary Terms",
+      "correct": "The act of ensuring that a standard or set of guidelines is followed, or that proper, consistent accounting or other practices are being employed.",
       "distractors": [
-        "Install antivirus software",
-        "Enable Windows Firewall",
-        "Use strong passwords"
+        "The act of permanently withdrawing a product, service, or other configuration item from use.",
+        "The means of managing a risk, ensuring that a business objective is achieved, or that a process is followed.",
+        "The full set of stages, transitions, and associated statuses in the life of a service, product, practice, or other entity."
       ],
-      "explain": "Regular offline or offsite backups are the best protection against permanent ransomware data loss because they allow clean restoration if local files are encrypted.",
-      "isBoss": false
+      "explain": "compliance: The act of ensuring that a standard or set of guidelines is followed, or that proper, consistent accounting or other practices are being employed.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 131
     },
     {
-      "id": 155,
-      "q": "A user's Android phone apps keep crashing after a recent OS update. What should the technician try FIRST?",
-      "category": "Software Troubleshooting",
-      "correct": "Clear the app cache and data",
+      "q": "This definition is describing which term? A security objective that ensures information is not made available or disclosed to unauthorized entities.",
+      "category": "Glossary Terms",
+      "correct": "confidentiality",
       "distractors": [
-        "Factory reset the device",
-        "Uninstall and reinstall all apps",
-        "Roll back the OS update"
+        "integrity",
+        "information security management practice",
+        "information security policy"
       ],
-      "explain": "Clearing app cache and data is the least disruptive first step for app crashes after an OS update because stale or corrupt cached data often causes the issue.",
-      "isBoss": false
+      "explain": "confidentiality: A security objective that ensures information is not made available or disclosed to unauthorized entities.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 132
     },
     {
-      "id": 156,
-      "q": "A technician needs to remove a rootkit from an infected Windows machine. What is the MOST effective approach?",
-      "category": "Software Troubleshooting",
-      "correct": "Boot from external media and scan offline",
+      "q": "In the glossary, 'configuration' means:",
+      "category": "Glossary Terms",
+      "correct": "An arrangement of configuration items (CIs) or other resources that work together to deliver a product or service. Can also be used to describe the parameter settings for one or more CIs.",
       "distractors": [
-        "Run Windows Defender in normal mode",
-        "Use System Restore to a previous point",
-        "Uninstall recently added programs"
+        "The role that authorizes budget for service consumption. Can also be used to describe an organization or individual that provides financial or other support for an initiative.",
+        "The routine running and management of an activity, product, service, or other configuration item.",
+        "A configuration of an organization's resources designed to offer value for a consumer."
       ],
-      "explain": "Rootkits can hide from scanners running inside the infected OS. Booting from trusted external media lets the scanner inspect the drive while the rootkit is inactive.",
-      "isBoss": false
+      "explain": "configuration: An arrangement of configuration items (CIs) or other resources that work together to deliver a product or service. Can also be used to describe the parameter settings for one or more CIs.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 133
     },
     {
-      "id": 157,
-      "q": "A Windows PC shows a \"missing DLL\" error when launching an application. What is the BEST first step?",
-      "category": "Software Troubleshooting",
-      "correct": "Reinstall or repair the application",
+      "q": "Which ITIL glossary term fits this definition? Any component that needs to be managed in order to deliver an IT service.",
+      "category": "Glossary Terms",
+      "correct": "configuration item (CI)",
       "distractors": [
-        "Reinstall Windows",
-        "Delete and reinstall the DLL manually",
-        "Run sfc /scannow"
+        "event",
+        "deployment",
+        "live"
       ],
-      "explain": "A missing DLL error is commonly caused by a corrupt or incomplete application install. Repairing or reinstalling the application restores the proper DLL version safely.",
-      "isBoss": false
+      "explain": "configuration item (CI): Any component that needs to be managed in order to deliver an IT service.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 134
     },
     {
-      "id": 158,
-      "q": "A technician discovers that an employee has been using company equipment to run a personal side business. What should the technician do?",
-      "category": "Operational Procedures",
-      "correct": "Document the finding and report it to management",
+      "q": "Which definition best matches 'configuration management database (CMDB)'?",
+      "category": "Glossary Terms",
+      "correct": "A database used to store configuration records throughout their lifecycle. The CMDB also maintains the relationships between configuration records.",
       "distractors": [
-        "Confront the employee directly",
-        "Ignore it as it doesn't affect performance",
-        "Delete the personal business files immediately"
+        "A record containing the details of a configuration item (CI). Each configuration record documents the lifecycle of a single CI. Configuration records are stored in a configuration management database.",
+        "A cooperation between a service provider and service consumer. Service relationships include",
+        "An arrangement of configuration items (CIs) or other resources that work together to deliver a product or service. Can also be used to describe the parameter settings for one or more CIs."
       ],
-      "explain": "The professional response to an acceptable use policy violation is to document the finding and escalate it through management or the proper reporting channel.",
-      "isBoss": false
+      "explain": "configuration management database (CMDB): A database used to store configuration records throughout their lifecycle. The CMDB also maintains the relationships between configuration records.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 135
     },
     {
-      "id": 159,
-      "q": "After completing a system change, a technician notices unexpected behavior in a related system. What should they do according to change management procedures?",
-      "category": "Operational Procedures",
-      "correct": "Initiate a rollback and document the issue",
+      "q": "This definition is describing which term? A set of tools, data, and information that is used to support service configuration management.",
+      "category": "Glossary Terms",
+      "correct": "configuration management system (CMS)",
       "distractors": [
-        "Continue monitoring and wait for it to resolve",
-        "Document it and move on",
-        "Immediately call the vendor"
+        "service configuration management practice",
+        "information and technology",
+        "continuous integration/continuous delivery"
       ],
-      "explain": "When a change causes unexpected side effects, change management best practice is to roll back to the last known good state and document the issue for review.",
-      "isBoss": false
+      "explain": "configuration management system (CMS): A set of tools, data, and information that is used to support service configuration management.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 136
     },
     {
-      "id": 160,
-      "q": "After replacing a security device protecting a screened subnet, external users can no longer access a remotely accessible application. Which device was MOST likely misconfigured?",
-      "category": "Security",
-      "correct": "Firewall",
+      "q": "In the glossary, 'configuration record' means:",
+      "category": "Glossary Terms",
+      "correct": "A record containing the details of a configuration item (CI). Each configuration record documents the lifecycle of a single CI. Configuration records are stored in a configuration management database.",
       "distractors": [
-        "DHCP",
-        "Content filter",
-        "DNS"
+        "A database used to store configuration records throughout their lifecycle. The CMDB also maintains the relationships between configuration records.",
+        "Refers to a service or other configuration item operating in the live environment.",
+        "The routine running and management of an activity, product, service, or other configuration item."
       ],
-      "explain": "A firewall is an integral part of creating a screened subnet. If the firewall ruleset was not configured to allow external users to access the application remotely, the default condition is to deny by default. Content filtering denies traffic based on content, not server access. DHCP (port 67) assigns IP addresses and is unrelated to access control. DNS (port 53) handles name resolution, not access control.",
-      "isBoss": false
+      "explain": "configuration record: A record containing the details of a configuration item (CI). Each configuration record documents the lifecycle of a single CI. Configuration records are stored in a configuration management database.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 137
     },
     {
-      "id": 161,
-      "q": "You are troubleshooting an issue with a Windows desktop and need to display the machine's active TCP connections. Which of the following commands should you use?",
-      "category": "Operating Systems",
-      "correct": "netstat",
+      "q": "Which ITIL glossary term fits this definition? The practice of aligning an organization's practices and services with changing business needs through the ongoing identification and improvement of all elements involved in the effective management of products and services.",
+      "category": "Glossary Terms",
+      "correct": "continual improvement practice",
       "distractors": [
-        "net use",
-        "ping",
-        "nslookup"
+        "improve",
+        "plan",
+        "partners and suppliers"
       ],
-      "explain": "netstat displays active TCP/UDP connections, listening ports, and network statistics. nslookup queries DNS servers to resolve hostnames. net use manages network drive connections. ping tests reachability. For active TCP connections, netstat (or netstat -a) is the correct tool.",
-      "isBoss": false
+      "explain": "continual improvement practice: The practice of aligning an organization's practices and services with changing business needs through the ongoing identification and improvement of all elements involved in the effective management of products and services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 138
     },
     {
-      "id": 162,
-      "q": "A user cannot install a printer and wants to check if a printer driver is already installed. Which Control Panel utility should you use?",
-      "category": "Operating Systems",
-      "correct": "Device Manager",
+      "q": "Which definition best matches 'continuous deployment'?",
+      "category": "Glossary Terms",
+      "correct": "An integrated set of practices and tools used to deploy software changes into the production environment. These software changes have already passed pre-defined automated tests.",
       "distractors": [
-        "System",
-        "Programs and Features",
-        "Devices and Printers"
+        "An integrated set of practices and tools used to merge developers' code, build and test the resulting software, and package it so that it is ready for deployment.",
+        "A set of tools, data, and information that is used to support service configuration management.",
+        "See live environment."
       ],
-      "explain": "Device Manager shows all hardware drivers installed, including printer drivers, and highlights issues with yellow exclamation marks. Programs and Features manages installed software applications. Devices and Printers manages connected devices but doesn't show driver details. System shows OS and hardware info.",
-      "isBoss": false
+      "explain": "continuous deployment: An integrated set of practices and tools used to deploy software changes into the production environment. These software changes have already passed pre-defined automated tests.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 139
     },
     {
-      "id": 163,
-      "q": "A user reports their workstation's CPU spikes to 95-100% and Microsoft Word is behaving strangely. What is the MOST likely cause?",
-      "category": "Software Troubleshooting",
-      "correct": "The computer has become a zombie",
+      "q": "This definition is describing which term? An integrated set of practices and tools used to merge developers' code, build and test the resulting software, and package it so that it is ready for deployment.",
+      "category": "Glossary Terms",
+      "correct": "continuous integration/continuous delivery",
       "distractors": [
-        "The computer is the victim of a DoS attack",
-        "Word has a corrupt installation",
-        "The hard drive is failing"
+        "continuous deployment",
+        "configuration management system (CMS)",
+        "live environment"
       ],
-      "explain": "A zombie workstation runs unauthorized software directing it to participate in DDoS attacks as part of a botnet — using CPU and network resources heavily. Botnets can spread via macros in Office documents. A DoS attack targets the machine from outside as a victim receiving traffic, not generating it.",
-      "isBoss": false
+      "explain": "continuous integration/continuous delivery: An integrated set of practices and tools used to merge developers' code, build and test the resulting software, and package it so that it is ready for deployment.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 140
     },
     {
-      "id": 164,
-      "q": "A user cannot access shared network drives after a recent security update and sees unexpected system notifications. Other users in the same department have no issues. What should you do FIRST?",
-      "category": "Software Troubleshooting",
-      "correct": "Check for unauthorized software and scan for malware",
+      "q": "In the glossary, 'control' means:",
+      "category": "Glossary Terms",
+      "correct": "The means of managing a risk, ensuring that a business objective is achieved, or that a process is followed.",
       "distractors": [
-        "Verify network settings and reconnect to network drives",
-        "Disable the recent security update and reattempt the connection",
-        "Reimage the workstation"
+        "The practice of ensuring that changes in an organization are smoothly and successfully implemented and that lasting benefits are achieved by managing the human aspects of the changes.",
+        "The practice of ensuring that an organization understands and effectively handles risks.",
+        "The act of ensuring that a standard or set of guidelines is followed, or that proper, consistent accounting or other practices are being employed."
       ],
-      "explain": "Unexpected notifications plus inability to access resources (while others can) is a classic malware symptom. Scan for malware first before doing network troubleshooting. Disabling security updates exposes the system to vulnerabilities. Reimaging is a last resort.",
-      "isBoss": false
+      "explain": "control: The means of managing a risk, ensuring that a business objective is achieved, or that a process is followed.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 141
     },
     {
-      "id": 165,
-      "q": "You submitted an RFC to install a security patch on some Windows 2019 servers. Which change request document describes which servers will receive the patch?",
-      "category": "Operational Procedures",
-      "correct": "Scope",
+      "q": "Which ITIL glossary term fits this definition? The amount of money spent on a specific activity or resource.",
+      "category": "Glossary Terms",
+      "correct": "cost",
       "distractors": [
-        "Purpose",
-        "Risk analysis",
-        "Plan"
+        "Risk",
+        "Value",
+        "Warranty"
       ],
-      "explain": "Scope defines the area, number, size, or scale of the change — which systems are affected. Plan describes HOW the change occurs. Purpose defines WHY. Risk analysis covers likelihood and impact. When a question asks \"which systems are included,\" that's always Scope.",
-      "isBoss": false
+      "explain": "cost: The amount of money spent on a specific activity or resource.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 142
     },
     {
-      "id": 166,
-      "q": "An employee emailed themselves customer data including names, account numbers, and credit card limits to work from home. Which logical security concept prevents trusted insiders from stealing corporate data?",
-      "category": "Security",
-      "correct": "DLP",
+      "q": "Which definition best matches 'cost centre'?",
+      "category": "Glossary Terms",
+      "correct": "A business unit or project to which costs are assigned.",
       "distractors": [
-        "Strong passwords",
-        "MDM",
-        "Firewall"
+        "An organization or business unit that handles large numbers of incoming and outgoing calls and other interactions.",
+        "A justification for expenditure of organizational resources, providing information about costs, benefits, options, risks, and issues.",
+        "A temporary structure that is created for the purpose of delivering one or more outputs (or products) according to an agreed business case."
       ],
-      "explain": "Data Loss Prevention (DLP) detects and prevents data exfiltration by monitoring sensitive data in use, in motion, and at rest. Since the user was an authorized insider, passwords, firewalls, and MDM don't address this threat. DLP is specifically designed to stop insider data theft.",
-      "isBoss": false
+      "explain": "cost centre: A business unit or project to which costs are assigned.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 143
     },
     {
-      "id": 167,
-      "q": "A company must continue using an end-of-life (EOL) OS for a legacy application. Which is the BEST mitigation strategy?",
-      "category": "Operating Systems",
-      "correct": "Implement network segmentation and restrict internet access",
+      "q": "This definition is describing which term? A necessary precondition for the achievement of intended results.",
+      "category": "Glossary Terms",
+      "correct": "critical success factor (CSF)",
       "distractors": [
-        "Upgrade the application to the latest version",
-        "Replace the outdated hardware",
-        "Continue using the system but enable all available security updates"
+        "disaster",
+        "record",
+        "management system"
       ],
-      "explain": "For EOL systems, isolation is the best security mitigation — network segmentation and restricting internet access prevents cyberattacks while the system still functions. Upgrading may not be possible. Security updates are not available for EOL systems. Hardware replacement doesn't solve the OS vulnerability.",
-      "isBoss": false
+      "explain": "critical success factor (CSF): A necessary precondition for the achievement of intended results.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 144
     },
     {
-      "id": 168,
-      "q": "Which utility would you use to view startup items, disable services, and modify boot parameters on Windows?",
-      "category": "Software Troubleshooting",
-      "correct": "System Configuration (msconfig)",
+      "q": "In the glossary, 'culture' means:",
+      "category": "Glossary Terms",
+      "correct": "A set of values that is shared by a group of people, including expectations about how people should behave, ideas, beliefs, and practices.",
       "distractors": [
-        "PerfMon",
-        "Resource Monitor",
-        "System Information (msinfo32)"
+        "A person or a group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives.",
+        "The act of ensuring that a standard or set of guidelines is followed, or that proper, consistent accounting or other practices are being employed.",
+        "An integrated set of practices and tools used to merge developers' code, build and test the resulting software, and package it so that it is ready for deployment."
       ],
-      "explain": "MSConfig manages startup processes, services, drivers, and boot parameters. PerfMon monitors CPU/memory performance. Resource Monitor displays real-time hardware/software resource usage. MSinfo32 gathers system info for diagnostics but cannot manage startup items.",
-      "isBoss": false
+      "explain": "culture: A set of values that is shared by a group of people, including expectations about how people should behave, ideas, beliefs, and practices.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 145
     },
     {
-      "id": 169,
-      "q": "An IT admin receives an email from legal instructing them not to delete any emails or files related to a specific project. What is the MOST likely reason?",
-      "category": "Operational Procedures",
-      "correct": "A notice of a legal hold",
+      "q": "Which ITIL glossary term fits this definition? The role that defines the requirements for a service and takes responsibility for the outcomes of service consumption.",
+      "category": "Glossary Terms",
+      "correct": "customer",
       "distractors": [
-        "A data transport request",
-        "A chain of custody breach",
-        "The process of discovery"
+        "User",
+        "Sponsor",
+        "Service consumer"
       ],
-      "explain": "A legal hold (litigation hold) instructs staff to preserve all relevant data in anticipation of litigation. It precedes discovery. Discovery is the legal process of exchanging evidence — the hold comes first to ensure data is preserved before discovery begins. Chain of custody relates to evidence handling, not preservation notices.",
-      "isBoss": false
+      "explain": "customer: The role that defines the requirements for a service and takes responsibility for the outcomes of service consumption.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 146
     },
     {
-      "id": 170,
-      "q": "You need a document that legally defines service expectations, uptime guarantees, and penalties if a third-party cloud provider fails to meet agreed terms. Which document should you request?",
-      "category": "Operational Procedures",
-      "correct": "SLA",
+      "q": "Which definition best matches 'customer experience (CX)'?",
+      "category": "Glossary Terms",
+      "correct": "The sum of functional and emotional interactions with a service and service provider as perceived by a service customer.",
       "distractors": [
-        "BCP",
-        "EULA",
-        "SLO"
+        "The sum of the functional and emotional interactions with a service and service provider as perceived by a user.",
+        "A customer who works for the same organization as the service provider.",
+        "A customer who works for an organization other than the service provider."
       ],
-      "explain": "A Service Level Agreement (SLA) is legally binding and defines expectations, uptime, response times, and penalties. An SLO (Service Level Objective) outlines performance goals but is not legally enforceable. A BCP focuses on maintaining operations during disruptions. An EULA governs software usage rights, not provider performance.",
-      "isBoss": false
+      "explain": "customer experience (CX): The sum of functional and emotional interactions with a service and service provider as perceived by a service customer.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 147
     },
     {
-      "id": 171,
-      "q": "You need the BEST encryption for APs connecting two company buildings to maximize wireless security. Which should you choose?",
-      "category": "Security",
-      "correct": "WPA3",
+      "q": "This definition is describing which term? A real-time graphical representation of data.",
+      "category": "Glossary Terms",
+      "correct": "dashboard",
       "distractors": [
-        "WEP",
-        "WPA",
-        "WPA2 (AES)"
+        "configuration management system (CMS)",
+        "mean time to restore service (MTRS)",
+        "status"
       ],
-      "explain": "WPA3 is the latest and most secure standard, using SAE (Simultaneous Authentication of Equals) instead of PSK and offering 192-bit encryption for enterprise. WPA2/AES is still strong but WPA3 supersedes it. WEP and WPA are obsolete. When \"maximize security\" is stated and WPA3 is an option, always choose WPA3.",
-      "isBoss": false
+      "explain": "dashboard: A real-time graphical representation of data.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 148
     },
     {
-      "id": 172,
-      "q": "A user installed a third-party email client on their smartphone. After resetting their password, they still get 'Invalid credentials.' What is the MOST appropriate solution?",
-      "category": "Software Troubleshooting",
-      "correct": "Reconfigure the email client with the new credentials",
+      "q": "In the glossary, 'deliver and support' means:",
+      "category": "Glossary Terms",
+      "correct": "The value chain activity that ensures services are delivered and supported according to agreed specifications and stakeholders' expectations.",
       "distractors": [
-        "Disable the recent security update",
-        "Verify network settings",
-        "Update the email client to the latest version"
+        "The value chain activity that ensures service components are available when and where they are needed, and that they meet agreed specifications.",
+        "The value chain activity that ensures products and services continually meet stakeholder expectations for quality, costs, and time to market.",
+        "The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management."
       ],
-      "explain": "After a password reset, third-party apps don't auto-update stored credentials — the user must manually update the password in the app settings. An invalid credentials error after a password change is a credential issue, not a network or update issue.",
-      "isBoss": false
+      "explain": "deliver and support: The value chain activity that ensures services are delivered and supported according to agreed specifications and stakeholders' expectations.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 149
     },
     {
-      "id": 173,
-      "q": "In a PBQ authentication-factor matching task, which mapping is correct?",
-      "category": "Security",
-      "correct": "Something you know = passwords/PINs; something you have = smart cards/tokens/phones/badges; something you are = biometrics; somewhere you are = geolocation",
+      "q": "Which ITIL glossary term fits this definition? Input to the service value system based on opportunities and needs from internal and external stakeholders.",
+      "category": "Glossary Terms",
+      "correct": "demand",
       "distractors": [
-        "Something you know = smart cards; something you have = fingerprints; something you are = passwords; somewhere you are = badges",
-        "Something you know = geolocation; something you have = PINs; something you are = tokens; somewhere you are = biometrics",
-        "Something you know = phones; something you have = security questions; something you are = location; somewhere you are = fingerprints"
+        "engage",
+        "business analysis practice",
+        "deliver and support"
       ],
-      "explain": "Authentication factors are grouped by type: know = passwords, PINs, and security questions; have = smart cards, tokens, phones, and badges; are = biometrics such as fingerprint, retina, or face; where = location-based authentication. MFA requires two or more different factor types.",
-      "isBoss": false
+      "explain": "demand: Input to the service value system based on opportunities and needs from internal and external stakeholders.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 150
     },
     {
-      "id": 174,
-      "q": "During malware remediation, what step would allow malware to reinfect the system if skipped?",
-      "category": "Software Troubleshooting",
-      "correct": "Disabling System Restore and removing previous restore points",
+      "q": "Which definition best matches 'deployment'?",
+      "category": "Glossary Terms",
+      "correct": "The movement of any service component into any environment.",
       "distractors": [
-        "Performing a data wipe on the USB thumb drive",
-        "Updating antivirus definitions before scanning",
-        "Running the scan in Safe Mode"
+        "The practice of moving new or changed hardware, software, documentation, processes, or any other service component to live environments.",
+        "Any component that needs to be managed in order to deliver an IT service.",
+        "Any financially valuable component that can contribute to the delivery of an IT product or service."
       ],
-      "explain": "Malware can embed itself in System Restore restore points — if you don't disable System Restore and purge old restore points BEFORE scanning, the malware reinfects the system when restore points are accessed. This is a required step in CompTIA's malware remediation process: disable System Restore first, then scan, then re-enable.",
-      "isBoss": false
+      "explain": "deployment: The movement of any service component into any environment.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 151
     },
     {
-      "id": 175,
-      "q": "Bob is building a workstation for his son to write school reports. It has an Intel x86 processor, 3 GB RAM, and 256 GB SSD. Which Windows edition is MOST appropriate?",
-      "category": "Operating Systems",
-      "correct": "Windows 10 Home",
+      "q": "This definition is describing which term? The practice of moving new or changed hardware, software, documentation, processes, or any other service component to live environments.",
+      "category": "Glossary Terms",
+      "correct": "deployment management practice",
       "distractors": [
-        "Windows 11 Home",
-        "Windows 10 Pro",
-        "Enterprise"
+        "deployment",
+        "live",
+        "release management practice"
       ],
-      "explain": "An x86 (32-bit) processor with 3 GB RAM cannot run Windows 11 (requires 64-bit CPU, 4 GB RAM, TPM 2.0). Windows 10 Home supports x86/32-bit, runs on 3 GB RAM, and is correct for a personal student workstation. Pro and Enterprise include domain/business features unnecessary for home use.",
-      "isBoss": false
+      "explain": "deployment management practice: The practice of moving new or changed hardware, software, documentation, processes, or any other service component to live environments.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 152
     },
     {
-      "id": 176,
-      "q": "You need to manage user accounts and reset passwords on a local Windows machine without domain access. Which tool should you use?",
-      "category": "Operating Systems",
-      "correct": "Local Users and Groups",
+      "q": "In the glossary, 'design and transition' means:",
+      "category": "Glossary Terms",
+      "correct": "The value chain activity that ensures products and services continually meet stakeholder expectations for quality, costs, and time to market.",
       "distractors": [
-        "System Configuration",
-        "System Information",
-        "Device Manager"
+        "The value chain activity that ensures services are delivered and supported according to agreed specifications and stakeholders' expectations.",
+        "The value chain activity that ensures service components are available when and where they are needed, and that they meet agreed specifications.",
+        "The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management."
       ],
-      "explain": "Local Users and Groups (lusrmgr.msc) creates, modifies, and deletes local user accounts and resets passwords. System Configuration manages startup. System Information (msinfo32) displays hardware/software info. Device Manager manages hardware drivers. For local account management = lusrmgr.msc.",
-      "isBoss": false
+      "explain": "design and transition: The value chain activity that ensures products and services continually meet stakeholder expectations for quality, costs, and time to market.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 153
     },
     {
-      "id": 177,
-      "q": "A user wants their laptop to save the session to disk and power off completely to save battery, resuming exactly where they left off. Which power setting should be configured?",
-      "category": "Operating Systems",
-      "correct": "Hibernate",
+      "q": "Which ITIL glossary term fits this definition? A practical and human-centred approach used by product and service designers to solve complex problems and find practical and creative solutions that meet the needs of an organization and its customers.",
+      "category": "Glossary Terms",
+      "correct": "design thinking",
       "distractors": [
-        "Standby",
-        "Sleep",
-        "Lock"
+        "availability management practice",
+        "infrastructure and platform management practice",
+        "digital transformation"
       ],
-      "explain": "Hibernate saves the entire RAM contents to disk (hiberfil.sys) then powers off completely — enabling full session restoration even after a full power loss. Sleep keeps RAM powered (uses battery). Standby is an older term for Sleep. Lock secures the screen but keeps the system running. Hibernate = full power-off + session preservation.",
-      "isBoss": false
+      "explain": "design thinking: A practical and human-centred approach used by product and service designers to solve complex problems and find practical and creative solutions that meet the needs of an organization and its customers.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 154
     },
     {
-      "id": 178,
-      "q": "A company needs daily backups kept for one week, weekly backups kept for one month, and monthly backups kept for one year. Which rotation scheme BEST meets this?",
-      "category": "Operational Procedures",
-      "correct": "Grandfather-Father-Son (GFS)",
+      "q": "Which definition best matches 'development environment'?",
+      "category": "Glossary Terms",
+      "correct": "An environment used to create or modify IT services or applications.",
       "distractors": [
-        "3-2-1 backup strategy",
-        "Synthetic full backup",
-        "Off-site backup storage"
+        "A controlled environment used in the delivery of IT services to service consumers.",
+        "The practice of ensuring that applications meet stakeholder needs in terms of functionality, reliability, maintainability, compliance, and auditability.",
+        "See live environment."
       ],
-      "explain": "GFS is a hierarchical retention scheme: Son = daily (kept ~1 week), Father = weekly (kept ~1 month), Grandfather = monthly (kept 1 year+). The 3-2-1 strategy defines redundancy (3 copies, 2 media types, 1 offsite) — not a rotation schedule. Synthetic full is a backup creation method. Off-site is a location strategy.",
-      "isBoss": false
+      "explain": "development environment: An environment used to create or modify IT services or applications.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 155
     },
     {
-      "id": 179,
-      "q": "After a Windows update, a user's display driver is causing system instability. What is the BEST first step?",
-      "category": "Software Troubleshooting",
-      "correct": "Rollback the driver to the previous version",
+      "q": "This definition is describing which term? An organizational culture that aims to improve the flow of value to customers. DevOps focuses on culture, automation, Lean, measurement, and sharing (CALMS).",
+      "category": "Glossary Terms",
+      "correct": "DevOps",
       "distractors": [
-        "Reinstall Windows",
-        "Downgrade the PC to a previous patch level",
-        "Disable the display adapter"
+        "service management",
+        "Lean",
+        "four dimensions of service management"
       ],
-      "explain": "Rolling back a driver to the previous version via Device Manager is the quickest, least disruptive fix when a driver update causes instability. Reinstalling Windows is excessive. Downgrading patch level introduces security vulnerabilities. Disabling the adapter removes display functionality entirely. Driver rollback is always the first step after an update breaks hardware.",
-      "isBoss": false
+      "explain": "DevOps: An organizational culture that aims to improve the flow of value to customers. DevOps focuses on culture, automation, Lean, measurement, and sharing (CALMS).",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 156
+    },
+    {
+      "q": "In the glossary, 'digital transformation' means:",
+      "category": "Glossary Terms",
+      "correct": "The evolution of traditional business models to meet the needs of highly empowered customers, with technology playing an enabling role.",
+      "distractors": [
+        "The practice of ensuring that services deliver agreed levels of availability to meet the needs of customers and users.",
+        "A role responsible for maintaining good relationships with one or more customers.",
+        "A practical and human-centred approach used by product and service designers to solve complex problems and find practical and creative solutions that meet the needs of an organization and its customers."
+      ],
+      "explain": "digital transformation: The evolution of traditional business models to meet the needs of highly empowered customers, with technology playing an enabling role.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 157
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A sudden unplanned event that causes great damage or serious loss to an organization. A disaster results in an organization failing to provide critical business functions for some predetermined minimum period of time.",
+      "category": "Glossary Terms",
+      "correct": "disaster",
+      "distractors": [
+        "recovery time objective (RTO)",
+        "quick win",
+        "service provider"
+      ],
+      "explain": "disaster: A sudden unplanned event that causes great damage or serious loss to an organization. A disaster results in an organization failing to provide critical business functions for some predetermined minimum period of time.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 158
+    },
+    {
+      "q": "Which definition best matches 'disaster recovery plans'?",
+      "category": "Glossary Terms",
+      "correct": "A set of clearly defined plans related to how an organization will recover from a disaster as well as return to a pre-disaster condition, considering the four dimensions of service management.",
+      "distractors": [
+        "One of the four dimensions of service management. It ensures that the way an organization is structured and managed, as well as its roles, responsibilities, and systems of authority and communication, is well defined and supports its overall strategy and operating model.",
+        "A set of related projects and activities, and an organization structure created to direct and oversee them.",
+        "The value chain activity that ensures a shared understanding of the vision, current status, and improvement direction for all four dimensions and all products and services across an organization."
+      ],
+      "explain": "disaster recovery plans: A set of clearly defined plans related to how an organization will recover from a disaster as well as return to a pre-disaster condition, considering the four dimensions of service management.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 159
+    },
+    {
+      "q": "This definition is describing which term? Something that influences strategy, objectives, or requirements.",
+      "category": "Glossary Terms",
+      "correct": "driver",
+      "distractors": [
+        "value",
+        "effectiveness",
+        "customer"
+      ],
+      "explain": "driver: Something that influences strategy, objectives, or requirements.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 160
+    },
+    {
+      "q": "In the glossary, 'effectiveness' means:",
+      "category": "Glossary Terms",
+      "correct": "A measure of whether the objectives of a practice, service or activity have been achieved.",
+      "distractors": [
+        "A measure of whether the right amount of resources have been used by a practice, service, or activity.",
+        "A measure of the reliability, efficiency and effectiveness of an organization, practice, or process.",
+        "A measure of what is achieved or delivered by a system, person, team, practice, or service."
+      ],
+      "explain": "effectiveness: A measure of whether the objectives of a practice, service or activity have been achieved.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 161
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A measure of whether the right amount of resources have been used by a practice, service, or activity.",
+      "category": "Glossary Terms",
+      "correct": "efficiency",
+      "distractors": [
+        "effectiveness",
+        "maturity",
+        "utility requirements"
+      ],
+      "explain": "efficiency: A measure of whether the right amount of resources have been used by a practice, service, or activity.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 162
+    },
+    {
+      "q": "Which definition best matches 'emergency change'?",
+      "category": "Glossary Terms",
+      "correct": "A change that must be introduced as soon as possible.",
+      "distractors": [
+        "A person or group responsible for authorizing a change.",
+        "A repeatable approach to the management of a particular type of change.",
+        "A calendar that shows planned and historical changes."
+      ],
+      "explain": "emergency change: A change that must be introduced as soon as possible.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 163
+    },
+    {
+      "q": "This definition is describing which term? The value chain activity that provides a good understanding of stakeholder needs, transparency, continual engagement, and good relationships with all stakeholders.",
+      "category": "Glossary Terms",
+      "correct": "engage",
+      "distractors": [
+        "improve",
+        "plan",
+        "demand"
+      ],
+      "explain": "engage: The value chain activity that provides a good understanding of stakeholder needs, transparency, continual engagement, and good relationships with all stakeholders.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 164
+    },
+    {
+      "q": "In the glossary, 'environment' means:",
+      "category": "Glossary Terms",
+      "correct": "A subset of the IT infrastructure that is used for a particular purpose, for example a live environment or test environment. Can also mean the external conditions that influence or affect something.",
+      "distractors": [
+        "A controlled environment used in the delivery of IT services to service consumers.",
+        "A test implementation of a service with a limited scope in a live environment.",
+        "See live environment."
+      ],
+      "explain": "environment: A subset of the IT infrastructure that is used for a particular purpose, for example a live environment or test environment. Can also mean the external conditions that influence or affect something.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 165
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A flaw or vulnerability that may cause incidents.",
+      "category": "Glossary Terms",
+      "correct": "error",
+      "distractors": [
+        "problem",
+        "error control",
+        "known error"
+      ],
+      "explain": "error: A flaw or vulnerability that may cause incidents.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 166
+    },
+    {
+      "q": "Which definition best matches 'error control'?",
+      "category": "Glossary Terms",
+      "correct": "Problem management activities used to manage known errors.",
+      "distractors": [
+        "A problem that has been analysed but has not been resolved.",
+        "The practice of reducing the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors.",
+        "Formally documented management expectations and intentions, used to direct decisions and activities."
+      ],
+      "explain": "error control: Problem management activities used to manage known errors.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 167
+    },
+    {
+      "q": "This definition is describing which term? The act of sharing awareness or transferring ownership of an issue or work item.",
+      "category": "Glossary Terms",
+      "correct": "escalation",
+      "distractors": [
+        "retire",
+        "live",
+        "operation"
+      ],
+      "explain": "escalation: The act of sharing awareness or transferring ownership of an issue or work item.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 168
+    },
+    {
+      "q": "In the glossary, 'event' means:",
+      "category": "Glossary Terms",
+      "correct": "Any change of state that has significance for the management of a service or other configuration item.",
+      "distractors": [
+        "Refers to a service or other configuration item operating in the live environment.",
+        "The routine running and management of an activity, product, service, or other configuration item.",
+        "Any component that needs to be managed in order to deliver an IT service."
+      ],
+      "explain": "event: Any change of state that has significance for the management of a service or other configuration item.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 169
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A customer who works for an organization other than the service provider.",
+      "category": "Glossary Terms",
+      "correct": "external customer",
+      "distractors": [
+        "internal customer",
+        "third party",
+        "service provider"
+      ],
+      "explain": "external customer: A customer who works for an organization other than the service provider.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 170
+    },
+    {
+      "q": "Which definition best matches 'failure'?",
+      "category": "Glossary Terms",
+      "correct": "A loss of ability to operate to specification, or to deliver the required output or outcome.",
+      "distractors": [
+        "Any action required to deliver a service output to a user. Service actions may be performed by a service provider resource, by service users, or jointly.",
+        "The ability of an IT service or other configuration item to perform its agreed function when required.",
+        "All of the hardware, software, networks, and facilities that are required to develop, test, deliver, monitor, manage, and support IT services."
+      ],
+      "explain": "failure: A loss of ability to operate to specification, or to deliver the required output or outcome.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 171
+    },
+    {
+      "q": "This definition is describing which term? A technique whereby the outputs of one part of a system are used as inputs to the same part of the system.",
+      "category": "Glossary Terms",
+      "correct": "feedback loop",
+      "distractors": [
+        "information and technology",
+        "outcome",
+        "configuration management system (CMS)"
+      ],
+      "explain": "feedback loop: A technique whereby the outputs of one part of a system are used as inputs to the same part of the system.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 172
+    },
+    {
+      "q": "In the glossary, 'four dimensions of service management' means:",
+      "category": "Glossary Terms",
+      "correct": "The four perspectives that are critical to the effective and efficient facilitation of value for customers and other stakeholders in the form of products and services.",
+      "distractors": [
+        "The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management.",
+        "A set of specialized organizational capabilities for enabling value for customers in the form of services.",
+        "The value chain activity that ensures a shared understanding of the vision, current status, and improvement direction for all four dimensions and all products and services across an organization."
+      ],
+      "explain": "four dimensions of service management: The four perspectives that are critical to the effective and efficient facilitation of value for customers and other stakeholders in the form of products and services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 173
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? Tangible resources that are transferred or available for transfer from a service provider to a service consumer, together with ownership and associated rights and responsibilities.",
+      "category": "Glossary Terms",
+      "correct": "goods",
+      "distractors": [
+        "service relationship management",
+        "service consumption",
+        "service offering"
+      ],
+      "explain": "goods: Tangible resources that are transferred or available for transfer from a service provider to a service consumer, together with ownership and associated rights and responsibilities.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 174
+    },
+    {
+      "q": "Which definition best matches 'governance'?",
+      "category": "Glossary Terms",
+      "correct": "The means by which an organization is directed and controlled.",
+      "distractors": [
+        "A stakeholder external to an organization.",
+        "The policy that governs an organization's approach to information security management.",
+        "A controlled environment used in the delivery of IT services to service consumers."
+      ],
+      "explain": "governance: The means by which an organization is directed and controlled.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 175
+    },
+    {
+      "q": "This definition is describing which term? A unique name that is used to identify and grant system access rights to a user, person, or role.",
+      "category": "Glossary Terms",
+      "correct": "identity",
+      "distractors": [
+        "user",
+        "performance",
+        "configuration management system (CMS)"
+      ],
+      "explain": "identity: A unique name that is used to identify and grant system access rights to a user, person, or role.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 176
+    },
+    {
+      "q": "In the glossary, 'improve' means:",
+      "category": "Glossary Terms",
+      "correct": "The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management.",
+      "distractors": [
+        "The value chain activity that ensures a shared understanding of the vision, current status, and improvement direction for all four dimensions and all products and services across an organization.",
+        "An operating model for service providers that covers all the key activities required to effectively manage products and services.",
+        "The practice of aligning an organization's practices and services with changing business needs through the ongoing identification and improvement of all elements involved in the effective management of products and services."
+      ],
+      "explain": "improve: The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 177
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? An unplanned interruption to a service or reduction in the quality of a service.",
+      "category": "Glossary Terms",
+      "correct": "incident",
+      "distractors": [
+        "resolution",
+        "service desk practice",
+        "service level"
+      ],
+      "explain": "incident: An unplanned interruption to a service or reduction in the quality of a service.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 178
+    },
+    {
+      "q": "Which definition best matches 'incident management'?",
+      "category": "Glossary Terms",
+      "correct": "The practice of minimizing the negative impact of incidents by restoring normal service operation as quickly as possible.",
+      "distractors": [
+        "The activity of returning a configuration item to normal operation after a failure.",
+        "A solution that reduces or eliminates the impact of an incident or problem for which a full resolution is not yet available. Some workarounds reduce the likelihood of incidents.",
+        "An incident with significant business impact, requiring an immediate coordinated resolution."
+      ],
+      "explain": "incident management: The practice of minimizing the negative impact of incidents by restoring normal service operation as quickly as possible.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 179
+    },
+    {
+      "q": "This definition is describing which term? One of the four dimensions of service management. It includes the information and knowledge used to deliver services, and the information and technologies used to manage all aspects of the service value system.",
+      "category": "Glossary Terms",
+      "correct": "information and technology",
+      "distractors": [
+        "improve",
+        "value streams and processes",
+        "configuration management system (CMS)"
+      ],
+      "explain": "information and technology: One of the four dimensions of service management. It includes the information and knowledge used to deliver services, and the information and technologies used to manage all aspects of the service value system.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 180
+    },
+    {
+      "q": "In the glossary, 'information security management practice' means:",
+      "category": "Glossary Terms",
+      "correct": "The practice of protecting an organization by understanding and managing risks to the confidentiality, integrity, and availability of information.",
+      "distractors": [
+        "The policy that governs an organization's approach to information security management.",
+        "A security objective that ensures information is only modified by authorized personnel and activities.",
+        "A security objective that ensures information is not made available or disclosed to unauthorized entities."
+      ],
+      "explain": "information security management practice: The practice of protecting an organization by understanding and managing risks to the confidentiality, integrity, and availability of information.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 181
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The policy that governs an organization's approach to information security management.",
+      "category": "Glossary Terms",
+      "correct": "information security policy",
+      "distractors": [
+        "information security management practice",
+        "integrity",
+        "knowledge management practice"
+      ],
+      "explain": "information security policy: The policy that governs an organization's approach to information security management.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 182
+    },
+    {
+      "q": "Which definition best matches 'infrastructure and platform management practice'?",
+      "category": "Glossary Terms",
+      "correct": "The practice of overseeing the infrastructure and platforms used by an organization. This enables the monitoring of technology solutions available, including solutions from third parties.",
+      "distractors": [
+        "A stakeholder external to an organization.",
+        "A stakeholder responsible for providing services that are used by an organization.",
+        "A practical and human-centred approach used by product and service designers to solve complex problems and find practical and creative solutions that meet the needs of an organization and its customers."
+      ],
+      "explain": "infrastructure and platform management practice: The practice of overseeing the infrastructure and platforms used by an organization. This enables the monitoring of technology solutions available, including solutions from third parties.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 183
+    },
+    {
+      "q": "This definition is describing which term? A security objective that ensures information is only modified by authorized personnel and activities.",
+      "category": "Glossary Terms",
+      "correct": "integrity",
+      "distractors": [
+        "confidentiality",
+        "information security management practice",
+        "information security policy"
+      ],
+      "explain": "integrity: A security objective that ensures information is only modified by authorized personnel and activities.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 184
+    },
+    {
+      "q": "In the glossary, 'internal customer' means:",
+      "category": "Glossary Terms",
+      "correct": "A customer who works for the same organization as the service provider.",
+      "distractors": [
+        "A customer who works for an organization other than the service provider.",
+        "A role performed by an organization in a service relationship to provide services to consumers.",
+        "The sum of functional and emotional interactions with a service and service provider as perceived by a service customer."
+      ],
+      "explain": "internal customer: A customer who works for the same organization as the service provider.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 185
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The interconnection of devices via the internet that were not traditionally thought of as IT assets, but now include embedded computing capability and network connectivity.",
+      "category": "Glossary Terms",
+      "correct": "Internet of Things",
+      "distractors": [
+        "known error",
+        "cloud computing",
+        "IT asset management practice"
+      ],
+      "explain": "Internet of Things: The interconnection of devices via the internet that were not traditionally thought of as IT assets, but now include embedded computing capability and network connectivity.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 186
+    },
+    {
+      "q": "Which definition best matches 'IT asset'?",
+      "category": "Glossary Terms",
+      "correct": "Any financially valuable component that can contribute to the delivery of an IT product or service.",
+      "distractors": [
+        "The movement of any service component into any environment.",
+        "Any component that needs to be managed in order to deliver an IT service.",
+        "The practice of moving new or changed hardware, software, documentation, processes, or any other service component to live environments."
+      ],
+      "explain": "IT asset: Any financially valuable component that can contribute to the delivery of an IT product or service.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 187
+    },
+    {
+      "q": "This definition is describing which term? The practice of planning and managing the full lifecycle of all IT assets.",
+      "category": "Glossary Terms",
+      "correct": "IT asset management practice",
+      "distractors": [
+        "lifecycle",
+        "asset register",
+        "project management practice"
+      ],
+      "explain": "IT asset management practice: The practice of planning and managing the full lifecycle of all IT assets.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 188
+    },
+    {
+      "q": "In the glossary, 'IT infrastructure' means:",
+      "category": "Glossary Terms",
+      "correct": "All of the hardware, software, networks, and facilities that are required to develop, test, deliver, monitor, manage, and support IT services.",
+      "distractors": [
+        "An operating model for service providers that covers all the key activities required to effectively manage products and services.",
+        "One of the four dimensions of service management. It includes the information and knowledge used to deliver services, and the information and technologies used to manage all aspects of the service value system.",
+        "A loss of ability to operate to specification, or to deliver the required output or outcome."
+      ],
+      "explain": "IT infrastructure: All of the hardware, software, networks, and facilities that are required to develop, test, deliver, monitor, manage, and support IT services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 189
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A service based on the use of information technology. Best-practice guidance for IT service management.",
+      "category": "Glossary Terms",
+      "correct": "IT service",
+      "distractors": [
+        "knowledge management practice",
+        "information and technology",
+        "information security policy"
+      ],
+      "explain": "IT service: A service based on the use of information technology. Best-practice guidance for IT service management.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 190
+    },
+    {
+      "q": "Which definition best matches 'ITIL guiding principles'?",
+      "category": "Glossary Terms",
+      "correct": "Recommendations that can guide an organization in all circumstances, regardless of changes in its goals, strategies, type of work, or management structure.",
+      "distractors": [
+        "A view of all the services provided by an organization. It includes interactions between the services, and service models that describe the structure and dynamics of each service.",
+        "A model representing how all the components and activities of an organization work together to facilitate value creation.",
+        "A step of the value chain that an organization takes in the creation of value."
+      ],
+      "explain": "ITIL guiding principles: Recommendations that can guide an organization in all circumstances, regardless of changes in its goals, strategies, type of work, or management structure.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 191
+    },
+    {
+      "q": "This definition is describing which term? An operating model for service providers that covers all the key activities required to effectively manage products and services.",
+      "category": "Glossary Terms",
+      "correct": "ITIL service value chain",
+      "distractors": [
+        "improve",
+        "service value system (SVS)",
+        "ITIL value chain activity"
+      ],
+      "explain": "ITIL service value chain: An operating model for service providers that covers all the key activities required to effectively manage products and services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 192
+    },
+    {
+      "q": "In the glossary, 'ITIL value chain activity' means:",
+      "category": "Glossary Terms",
+      "correct": "A step of the value chain that an organization takes in the creation of value.",
+      "distractors": [
+        "A model representing how all the components and activities of an organization work together to facilitate value creation.",
+        "An operating model for service providers that covers all the key activities required to effectively manage products and services.",
+        "A configuration of an organization's resources designed to offer value for a consumer."
+      ],
+      "explain": "ITIL value chain activity: A step of the value chain that an organization takes in the creation of value.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 193
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A method for visualizing work, identifying potential blockages and resource conflicts, and managing work in progress.",
+      "category": "Glossary Terms",
+      "correct": "Kanban",
+      "distractors": [
+        "problem management practice",
+        "cost",
+        "problem"
+      ],
+      "explain": "Kanban: A method for visualizing work, identifying potential blockages and resource conflicts, and managing work in progress.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 194
+    },
+    {
+      "q": "Which definition best matches 'key performance indicator (KPI)'?",
+      "category": "Glossary Terms",
+      "correct": "An important metric used to evaluate the success in meeting an objective.",
+      "distractors": [
+        "A review after the implementation of a change, to evaluate success and identify opportunities for improvement.",
+        "The point to which information used by an activity must be restored to enable the activity to operate on resumption.",
+        "Personnel, material, finance, or other entity that is required for the execution of an activity or the achievement of an objective. Resources used by an organization may be owned by the organization or used according to an agreement with the resource owner."
+      ],
+      "explain": "key performance indicator (KPI): An important metric used to evaluate the success in meeting an objective.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 195
+    },
+    {
+      "q": "This definition is describing which term? The practice of maintaining and improving the effective, efficient, and convenient use of information and knowledge across an organization.",
+      "category": "Glossary Terms",
+      "correct": "knowledge management practice",
+      "distractors": [
+        "information security policy",
+        "IT service",
+        "information security management practice"
+      ],
+      "explain": "knowledge management practice: The practice of maintaining and improving the effective, efficient, and convenient use of information and knowledge across an organization.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 196
+    },
+    {
+      "q": "In the glossary, 'known error' means:",
+      "category": "Glossary Terms",
+      "correct": "A problem that has been analysed but has not been resolved.",
+      "distractors": [
+        "Problem management activities used to manage known errors.",
+        "A way of working that has been proven to be successful by multiple organizations.",
+        "A request from a user or a user's authorized representative that initiates a service action which has been agreed as a normal part of service delivery."
+      ],
+      "explain": "known error: A problem that has been analysed but has not been resolved.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 197
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? An approach that focuses on improving workflows by maximizing value through the elimination of waste.",
+      "category": "Glossary Terms",
+      "correct": "Lean",
+      "distractors": [
+        "DevOps",
+        "value streams and processes",
+        "systems thinking"
+      ],
+      "explain": "Lean: An approach that focuses on improving workflows by maximizing value through the elimination of waste.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 198
+    },
+    {
+      "q": "Which definition best matches 'lifecycle'?",
+      "category": "Glossary Terms",
+      "correct": "The full set of stages, transitions, and associated statuses in the life of a service, product, practice, or other entity.",
+      "distractors": [
+        "A person or organization that has an interest or involvement in an organization, product, service, practice, or other entity.",
+        "Confirmation that the system, product, service, or other entity meets the agreed specification.",
+        "The practice of planning and managing the full lifecycle of all IT assets."
+      ],
+      "explain": "lifecycle: The full set of stages, transitions, and associated statuses in the life of a service, product, practice, or other entity.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 199
+    },
+    {
+      "q": "This definition is describing which term? Refers to a service or other configuration item operating in the live environment.",
+      "category": "Glossary Terms",
+      "correct": "live",
+      "distractors": [
+        "operation",
+        "specification",
+        "test environment"
+      ],
+      "explain": "live: Refers to a service or other configuration item operating in the live environment.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 200
+    },
+    {
+      "q": "In the glossary, 'live environment' means:",
+      "category": "Glossary Terms",
+      "correct": "A controlled environment used in the delivery of IT services to service consumers.",
+      "distractors": [
+        "See live environment.",
+        "An environment used to create or modify IT services or applications.",
+        "Refers to a service or other configuration item operating in the live environment."
+      ],
+      "explain": "live environment: A controlled environment used in the delivery of IT services to service consumers.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 201
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The ease with which a service or other entity can be repaired or modified.",
+      "category": "Glossary Terms",
+      "correct": "maintainability",
+      "distractors": [
+        "stakeholder",
+        "status",
+        "validation"
+      ],
+      "explain": "maintainability: The ease with which a service or other entity can be repaired or modified.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 202
+    },
+    {
+      "q": "Which definition best matches 'major incident'?",
+      "category": "Glossary Terms",
+      "correct": "An incident with significant business impact, requiring an immediate coordinated resolution.",
+      "distractors": [
+        "The action of solving an incident or problem.",
+        "The practice of capturing demand for incident resolution and service requests.",
+        "A solution that reduces or eliminates the impact of an incident or problem for which a full resolution is not yet available. Some workarounds reduce the likelihood of incidents."
+      ],
+      "explain": "major incident: An incident with significant business impact, requiring an immediate coordinated resolution.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 203
+    },
+    {
+      "q": "This definition is describing which term? Interrelated or interacting elements that establish policy and objectives and enable the achievement of those objectives.",
+      "category": "Glossary Terms",
+      "correct": "management system",
+      "distractors": [
+        "system",
+        "architecture management practice",
+        "process"
+      ],
+      "explain": "management system: Interrelated or interacting elements that establish policy and objectives and enable the achievement of those objectives.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 204
+    },
+    {
+      "q": "In the glossary, 'maturity' means:",
+      "category": "Glossary Terms",
+      "correct": "A measure of the reliability, efficiency and effectiveness of an organization, practice, or process.",
+      "distractors": [
+        "A measure of whether the objectives of a practice, service or activity have been achieved.",
+        "The speed, effectiveness, and efficiency with which an organization operates. Organizational velocity influences time to market, quality, safety, costs, and risks.",
+        "A measure of whether the right amount of resources have been used by a practice, service, or activity."
+      ],
+      "explain": "maturity: A measure of the reliability, efficiency and effectiveness of an organization, practice, or process.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 205
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A metric of how frequently a service or other configuration item fails.",
+      "category": "Glossary Terms",
+      "correct": "mean time between failures (MTBF)",
+      "distractors": [
+        "live",
+        "operation",
+        "reliability"
+      ],
+      "explain": "mean time between failures (MTBF): A metric of how frequently a service or other configuration item fails.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 206
+    },
+    {
+      "q": "Which definition best matches 'mean time to restore service (MTRS)'?",
+      "category": "Glossary Terms",
+      "correct": "A metric of how quickly a service is restored after a failure.",
+      "distractors": [
+        "A metric of how frequently a service or other configuration item fails.",
+        "The activity of returning a configuration item to normal operation after a failure.",
+        "A real-time graphical representation of data."
+      ],
+      "explain": "mean time to restore service (MTRS): A metric of how quickly a service is restored after a failure.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 207
+    },
+    {
+      "q": "This definition is describing which term? The practice of supporting good decision- making and continual improvement by decreasing levels of uncertainty.",
+      "category": "Glossary Terms",
+      "correct": "measurement and reporting",
+      "distractors": [
+        "metric",
+        "improve",
+        "engage"
+      ],
+      "explain": "measurement and reporting: The practice of supporting good decision- making and continual improvement by decreasing levels of uncertainty.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 208
+    },
+    {
+      "q": "In the glossary, 'metric' means:",
+      "category": "Glossary Terms",
+      "correct": "A measurement or calculation that is monitored or reported for management and improvement.",
+      "distractors": [
+        "The practice of supporting good decision- making and continual improvement by decreasing levels of uncertainty.",
+        "A metric of how quickly a service is restored after a failure.",
+        "A report or metric that serves as a starting point against which progress or change can be assessed."
+      ],
+      "explain": "metric: A measurement or calculation that is monitored or reported for management and improvement.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 209
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A product with just enough features to satisfy early customers, and to provide feedback for future product development.",
+      "category": "Glossary Terms",
+      "correct": "minimum viable product (MVP)",
+      "distractors": [
+        "design thinking",
+        "disaster",
+        "development environment"
+      ],
+      "explain": "minimum viable product (MVP): A product with just enough features to satisfy early customers, and to provide feedback for future product development.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 210
+    },
+    {
+      "q": "Which definition best matches 'mission'?",
+      "category": "Glossary Terms",
+      "correct": "A short but complete description of the overall purpose and intentions of an organization",
+      "distractors": [
+        "A complete set of products and services that are managed throughout their lifecycles by an organization.",
+        "The practice of designing products and services that are fit for purpose, fit for use, and that can be delivered by the organization and its ecosystem.",
+        "The means by which an organization is directed and controlled."
+      ],
+      "explain": "mission: A short but complete description of the overall purpose and intentions of an organization",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 211
+    },
+    {
+      "q": "This definition is describing which term? A representation of a system, practice, process, service, or other entity that is used to understand and predict its behaviour and relationships.",
+      "category": "Glossary Terms",
+      "correct": "model",
+      "distractors": [
+        "monitoring",
+        "validation",
+        "maintainability"
+      ],
+      "explain": "model: A representation of a system, practice, process, service, or other entity that is used to understand and predict its behaviour and relationships.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 212
+    },
+    {
+      "q": "In the glossary, 'modelling' means:",
+      "category": "Glossary Terms",
+      "correct": "The activity of creating, maintaining, and utilizing models.",
+      "distractors": [
+        "The activity of creating a plan that manages resources to meet demand for services.",
+        "The practice of maintaining and improving the effective, efficient, and convenient use of information and knowledge across an organization.",
+        "A role responsible for maintaining good relationships with one or more customers."
+      ],
+      "explain": "modelling: The activity of creating, maintaining, and utilizing models.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 213
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? Repeated observation of a system, practice, process, service, or other entity to detect events and to ensure that the current status is known.",
+      "category": "Glossary Terms",
+      "correct": "monitoring",
+      "distractors": [
+        "model",
+        "validation",
+        "maintainability"
+      ],
+      "explain": "monitoring: Repeated observation of a system, practice, process, service, or other entity to detect events and to ensure that the current status is known.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 214
+    },
+    {
+      "q": "Which definition best matches 'monitoring and event management practice'?",
+      "category": "Glossary Terms",
+      "correct": "The practice of systematically observing services and service components, and recording and reporting selected changes of state identified as events.",
+      "distractors": [
+        "Any change of state that has significance for the management of a service or other configuration item.",
+        "Repeated observation of a system, practice, process, service, or other entity to detect events and to ensure that the current status is known.",
+        "The hardware and software solutions that detect or cause changes in physical processes through direct monitoring and/or control of physical devices such as valves, pumps, etc."
+      ],
+      "explain": "monitoring and event management practice: The practice of systematically observing services and service components, and recording and reporting selected changes of state identified as events.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 215
+    },
+    {
+      "q": "This definition is describing which term? The value chain activity that ensures service components are available when and where they are needed, and that they meet agreed specifications.",
+      "category": "Glossary Terms",
+      "correct": "obtain/build",
+      "distractors": [
+        "deliver and support",
+        "design and transition",
+        "improve"
+      ],
+      "explain": "obtain/build: The value chain activity that ensures service components are available when and where they are needed, and that they meet agreed specifications.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 216
+    },
+    {
+      "q": "In the glossary, 'operation' means:",
+      "category": "Glossary Terms",
+      "correct": "The routine running and management of an activity, product, service, or other configuration item.",
+      "distractors": [
+        "A documented description of the properties of a product, service, or other configuration item.",
+        "The act of permanently withdrawing a product, service, or other configuration item from use.",
+        "Refers to a service or other configuration item operating in the live environment."
+      ],
+      "explain": "operation: The routine running and management of an activity, product, service, or other configuration item.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 217
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The hardware and software solutions that detect or cause changes in physical processes through direct monitoring and/or control of physical devices such as valves, pumps, etc.",
+      "category": "Glossary Terms",
+      "correct": "operational technology",
+      "distractors": [
+        "deployment management practice",
+        "infrastructure and platform management practice",
+        "monitoring and event management practice"
+      ],
+      "explain": "operational technology: The hardware and software solutions that detect or cause changes in physical processes through direct monitoring and/or control of physical devices such as valves, pumps, etc.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 218
+    },
+    {
+      "q": "Which definition best matches 'organization'?",
+      "category": "Glossary Terms",
+      "correct": "A person or a group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives.",
+      "distractors": [
+        "The practice of ensuring that an organization has the right people with the appropriate skills and knowledge and in the correct roles to support its business objectives.",
+        "A person or organization that has an interest or involvement in an organization, product, service, practice, or other entity.",
+        "A person or group responsible for authorizing a change."
+      ],
+      "explain": "organization: A person or a group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 219
+    },
+    {
+      "q": "This definition is describing which term? The practice of ensuring that changes in an organization are smoothly and successfully implemented and that lasting benefits are achieved by managing the human aspects of the changes.",
+      "category": "Glossary Terms",
+      "correct": "organizational change management practice",
+      "distractors": [
+        "project management practice",
+        "change enablement practice",
+        "control"
+      ],
+      "explain": "organizational change management practice: The practice of ensuring that changes in an organization are smoothly and successfully implemented and that lasting benefits are achieved by managing the human aspects of the changes.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 220
+    },
+    {
+      "q": "In the glossary, 'organizational resilience' means:",
+      "category": "Glossary Terms",
+      "correct": "The ability of an organization to anticipate, prepare for, respond to, and adapt to unplanned external influences.",
+      "distractors": [
+        "A stakeholder external to an organization.",
+        "The speed, effectiveness, and efficiency with which an organization operates. Organizational velocity influences time to market, quality, safety, costs, and risks.",
+        "A customer who works for an organization other than the service provider."
+      ],
+      "explain": "organizational resilience: The ability of an organization to anticipate, prepare for, respond to, and adapt to unplanned external influences.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 221
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The speed, effectiveness, and efficiency with which an organization operates. Organizational velocity influences time to market, quality, safety, costs, and risks.",
+      "category": "Glossary Terms",
+      "correct": "organizational velocity",
+      "distractors": [
+        "design and transition",
+        "maturity",
+        "organizational resilience"
+      ],
+      "explain": "organizational velocity: The speed, effectiveness, and efficiency with which an organization operates. Organizational velocity influences time to market, quality, safety, costs, and risks.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 222
+    },
+    {
+      "q": "Which definition best matches 'organizations and people'?",
+      "category": "Glossary Terms",
+      "correct": "One of the four dimensions of service management. It ensures that the way an organization is structured and managed, as well as its roles, responsibilities, and systems of authority and communication, is well defined and supports its overall strategy and operating model.",
+      "distractors": [
+        "A set of clearly defined plans related to how an organization will recover from a disaster as well as return to a pre-disaster condition, considering the four dimensions of service management.",
+        "One of the four dimensions of service management. It encompasses the relationships an organization has with other organizations that are involved in the design, development, deployment, delivery, support, and/or continual improvement of services.",
+        "The value chain activity that ensures a shared understanding of the vision, current status, and improvement direction for all four dimensions and all products and services across an organization."
+      ],
+      "explain": "organizations and people: One of the four dimensions of service management. It ensures that the way an organization is structured and managed, as well as its roles, responsibilities, and systems of authority and communication, is well defined and supports its overall strategy and operating model.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 223
+    },
+    {
+      "q": "This definition is describing which term? A result for a stakeholder enabled by one or more outputs.",
+      "category": "Glossary Terms",
+      "correct": "outcome",
+      "distractors": [
+        "Output",
+        "Value",
+        "Utility"
+      ],
+      "explain": "outcome: A result for a stakeholder enabled by one or more outputs.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 224
+    },
+    {
+      "q": "In the glossary, 'output' means:",
+      "category": "Glossary Terms",
+      "correct": "A tangible or intangible deliverable of an activity.",
+      "distractors": [
+        "A loss of ability to operate to specification, or to deliver the required output or outcome.",
+        "Tangible resources that are transferred or available for transfer from a service provider to a service consumer, together with ownership and associated rights and responsibilities.",
+        "Any action required to deliver a service output to a user. Service actions may be performed by a service provider resource, by service users, or jointly."
+      ],
+      "explain": "output: A tangible or intangible deliverable of an activity.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 225
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The process of having external suppliers provide products and services that were previously provided internally.",
+      "category": "Glossary Terms",
+      "correct": "outsourcing",
+      "distractors": [
+        "supplier management practice",
+        "third party",
+        "procedure"
+      ],
+      "explain": "outsourcing: The process of having external suppliers provide products and services that were previously provided internally.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 226
+    },
+    {
+      "q": "Which definition best matches 'partners and suppliers'?",
+      "category": "Glossary Terms",
+      "correct": "One of the four dimensions of service management. It encompasses the relationships an organization has with other organizations that are involved in the design, development, deployment, delivery, support, and/or continual improvement of services.",
+      "distractors": [
+        "The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management.",
+        "One of the four dimensions of service management. It ensures that the way an organization is structured and managed, as well as its roles, responsibilities, and systems of authority and communication, is well defined and supports its overall strategy and operating model.",
+        "The practice of aligning an organization's practices and services with changing business needs through the ongoing identification and improvement of all elements involved in the effective management of products and services."
+      ],
+      "explain": "partners and suppliers: One of the four dimensions of service management. It encompasses the relationships an organization has with other organizations that are involved in the design, development, deployment, delivery, support, and/or continual improvement of services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 227
+    },
+    {
+      "q": "This definition is describing which term? A relationship between two organizations that involves working closely together to achieve common goals and objectives.",
+      "category": "Glossary Terms",
+      "correct": "partnership",
+      "distractors": [
+        "service relationship",
+        "best practice",
+        "relationship management practice"
+      ],
+      "explain": "partnership: A relationship between two organizations that involves working closely together to achieve common goals and objectives.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 228
+    },
+    {
+      "q": "In the glossary, 'performance' means:",
+      "category": "Glossary Terms",
+      "correct": "A measure of what is achieved or delivered by a system, person, team, practice, or service.",
+      "distractors": [
+        "A measure of whether the objectives of a practice, service or activity have been achieved.",
+        "A unique name that is used to identify and grant system access rights to a user, person, or role.",
+        "A measure of the amount of work performed by a product, service, or other system over a given period of time."
+      ],
+      "explain": "performance: A measure of what is achieved or delivered by a system, person, team, practice, or service.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 229
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A test implementation of a service with a limited scope in a live environment.",
+      "category": "Glossary Terms",
+      "correct": "pilot",
+      "distractors": [
+        "production environment",
+        "live environment",
+        "live"
+      ],
+      "explain": "pilot: A test implementation of a service with a limited scope in a live environment.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 230
+    },
+    {
+      "q": "Which definition best matches 'plan'?",
+      "category": "Glossary Terms",
+      "correct": "The value chain activity that ensures a shared understanding of the vision, current status, and improvement direction for all four dimensions and all products and services across an organization.",
+      "distractors": [
+        "The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management.",
+        "The four perspectives that are critical to the effective and efficient facilitation of value for customers and other stakeholders in the form of products and services.",
+        "The value chain activity that ensures products and services continually meet stakeholder expectations for quality, costs, and time to market."
+      ],
+      "explain": "plan: The value chain activity that ensures a shared understanding of the vision, current status, and improvement direction for all four dimensions and all products and services across an organization.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 231
+    },
+    {
+      "q": "This definition is describing which term? Formally documented management expectations and intentions, used to direct decisions and activities.",
+      "category": "Glossary Terms",
+      "correct": "policy",
+      "distractors": [
+        "error control",
+        "programme",
+        "development environment"
+      ],
+      "explain": "policy: Formally documented management expectations and intentions, used to direct decisions and activities.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 232
+    },
+    {
+      "q": "In the glossary, 'portfolio management practice' means:",
+      "category": "Glossary Terms",
+      "correct": "The practice of ensuring that an organization has the right mix of programmes, projects, products, and services to execute its strategy within its funding and resource constraints.",
+      "distractors": [
+        "The practice of ensuring that an organization has the right people with the appropriate skills and knowledge and in the correct roles to support its business objectives.",
+        "A complete set of products and services that are managed throughout their lifecycles by an organization.",
+        "The practice of ensuring that an organization's suppliers and their performance levels are managed appropriately to support the provision of seamless quality products and services."
+      ],
+      "explain": "portfolio management practice: The practice of ensuring that an organization has the right mix of programmes, projects, products, and services to execute its strategy within its funding and resource constraints.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 233
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A review after the implementation of a change, to evaluate success and identify opportunities for improvement.",
+      "category": "Glossary Terms",
+      "correct": "post-implementation review (PIR)",
+      "distractors": [
+        "risk assessment",
+        "key performance indicator (KPI)",
+        "change authority"
+      ],
+      "explain": "post-implementation review (PIR): A review after the implementation of a change, to evaluate success and identify opportunities for improvement.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 234
+    },
+    {
+      "q": "Which definition best matches 'practice'?",
+      "category": "Glossary Terms",
+      "correct": "A set of organizational resources designed for performing work or accomplishing an objective.",
+      "distractors": [
+        "A configuration of an organization's resources designed to offer value for a consumer.",
+        "A set of specialized organizational capabilities for enabling value for customers in the form of services.",
+        "A justification for expenditure of organizational resources, providing information about costs, benefits, options, risks, and issues."
+      ],
+      "explain": "practice: A set of organizational resources designed for performing work or accomplishing an objective.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 235
+    },
+    {
+      "q": "This definition is describing which term? A cause, or potential cause, of one or more incidents.",
+      "category": "Glossary Terms",
+      "correct": "problem",
+      "distractors": [
+        "error",
+        "problem management practice",
+        "outcome"
+      ],
+      "explain": "problem: A cause, or potential cause, of one or more incidents.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 236
+    },
+    {
+      "q": "In the glossary, 'problem management practice' means:",
+      "category": "Glossary Terms",
+      "correct": "The practice of reducing the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors.",
+      "distractors": [
+        "A solution that reduces or eliminates the impact of an incident or problem for which a full resolution is not yet available. Some workarounds reduce the likelihood of incidents.",
+        "A cause, or potential cause, of one or more incidents.",
+        "Problem management activities used to manage known errors."
+      ],
+      "explain": "problem management practice: The practice of reducing the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 237
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A documented way to carry out an activity or a process.",
+      "category": "Glossary Terms",
+      "correct": "procedure",
+      "distractors": [
+        "capability",
+        "maturity",
+        "specification"
+      ],
+      "explain": "procedure: A documented way to carry out an activity or a process.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 238
+    },
+    {
+      "q": "Which definition best matches 'process'?",
+      "category": "Glossary Terms",
+      "correct": "A set of interrelated or interacting activities that transform inputs into outputs. Processes define the sequence of activities and their dependencies.",
+      "distractors": [
+        "Interrelated or interacting elements that establish policy and objectives and enable the achievement of those objectives.",
+        "A technique whereby the outputs of one part of a system are used as inputs to the same part of the system.",
+        "A set of related projects and activities, and an organization structure created to direct and oversee them."
+      ],
+      "explain": "process: A set of interrelated or interacting activities that transform inputs into outputs. Processes define the sequence of activities and their dependencies.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 239
+    },
+    {
+      "q": "This definition is describing which term? A configuration of an organization's resources designed to offer value for a consumer.",
+      "category": "Glossary Terms",
+      "correct": "product",
+      "distractors": [
+        "Service",
+        "Service offering",
+        "Output"
+      ],
+      "explain": "product: A configuration of an organization's resources designed to offer value for a consumer.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 240
+    },
+    {
+      "q": "In the glossary, 'production environment' means:",
+      "category": "Glossary Terms",
+      "correct": "See live environment.",
+      "distractors": [
+        "A controlled environment used in the delivery of IT services to service consumers.",
+        "Refers to a service or other configuration item operating in the live environment.",
+        "A test implementation of a service with a limited scope in a live environment."
+      ],
+      "explain": "production environment: See live environment.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 241
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A set of related projects and activities, and an organization structure created to direct and oversee them.",
+      "category": "Glossary Terms",
+      "correct": "programme",
+      "distractors": [
+        "disaster recovery plans",
+        "service portfolio",
+        "policy"
+      ],
+      "explain": "programme: A set of related projects and activities, and an organization structure created to direct and oversee them.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 242
+    },
+    {
+      "q": "Which definition best matches 'project'?",
+      "category": "Glossary Terms",
+      "correct": "A temporary structure that is created for the purpose of delivering one or more outputs (or products) according to an agreed business case.",
+      "distractors": [
+        "A result for a stakeholder enabled by one or more outputs.",
+        "A role responsible for maintaining good relationships with one or more customers.",
+        "A cause, or potential cause, of one or more incidents."
+      ],
+      "explain": "project: A temporary structure that is created for the purpose of delivering one or more outputs (or products) according to an agreed business case.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 243
+    },
+    {
+      "q": "This definition is describing which term? The practice of ensuring that all an organization's proects are successfully delivered.",
+      "category": "Glossary Terms",
+      "correct": "project management practice",
+      "distractors": [
+        "organizational change management practice",
+        "risk management practice",
+        "service design practice"
+      ],
+      "explain": "project management practice: The practice of ensuring that all an organization's proects are successfully delivered.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 244
+    },
+    {
+      "q": "In the glossary, 'quick win' means:",
+      "category": "Glossary Terms",
+      "correct": "An improvement that is expected to provide a return on investment in a short period of time with relatively small cost and effort.",
+      "distractors": [
+        "A sudden unplanned event that causes great damage or serious loss to an organization. A disaster results in an organization failing to provide critical business functions for some predetermined minimum period of time.",
+        "A measure of the amount of work performed by a product, service, or other system over a given period of time.",
+        "The practice of ensuring that services achieve agreed and expected performance levels, satisfying current and future demand in a cost-effective way."
+      ],
+      "explain": "quick win: An improvement that is expected to provide a return on investment in a short period of time with relatively small cost and effort.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 245
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A document stating results achieved and providing evidence of activities performed.",
+      "category": "Glossary Terms",
+      "correct": "record",
+      "distractors": [
+        "service relationship management",
+        "service consumption",
+        "supplier"
+      ],
+      "explain": "record: A document stating results achieved and providing evidence of activities performed.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 246
+    },
+    {
+      "q": "Which definition best matches 'recovery'?",
+      "category": "Glossary Terms",
+      "correct": "The activity of returning a configuration item to normal operation after a failure.",
+      "distractors": [
+        "The routine running and management of an activity, product, service, or other configuration item.",
+        "Refers to a service or other configuration item operating in the live environment.",
+        "Any component that needs to be managed in order to deliver an IT service."
+      ],
+      "explain": "recovery: The activity of returning a configuration item to normal operation after a failure.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 247
+    },
+    {
+      "q": "This definition is describing which term? The point to which information used by an activity must be restored to enable the activity to operate on resumption.",
+      "category": "Glossary Terms",
+      "correct": "recovery point objective (RPO)",
+      "distractors": [
+        "configuration management system (CMS)",
+        "integrity",
+        "confidentiality"
+      ],
+      "explain": "recovery point objective (RPO): The point to which information used by an activity must be restored to enable the activity to operate on resumption.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 248
+    },
+    {
+      "q": "In the glossary, 'recovery time objective (RTO)' means:",
+      "category": "Glossary Terms",
+      "correct": "The maximum acceptable period of time following a service disruption that can elapse before the lack of business functionality severely impacts the organization.",
+      "distractors": [
+        "A sudden unplanned event that causes great damage or serious loss to an organization. A disaster results in an organization failing to provide critical business functions for some predetermined minimum period of time.",
+        "A description of the specific states an entity can have at a given time.",
+        "The means of managing a risk, ensuring that a business objective is achieved, or that a process is followed."
+      ],
+      "explain": "recovery time objective (RTO): The maximum acceptable period of time following a service disruption that can elapse before the lack of business functionality severely impacts the organization.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 249
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The practice of establishing and nurturing links between an organization and its stakeholders at strategic and tactical levels.",
+      "category": "Glossary Terms",
+      "correct": "relationship management practice",
+      "distractors": [
+        "service provider",
+        "service relationship",
+        "partnership"
+      ],
+      "explain": "relationship management practice: The practice of establishing and nurturing links between an organization and its stakeholders at strategic and tactical levels.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 250
+    },
+    {
+      "q": "Which definition best matches 'release'?",
+      "category": "Glossary Terms",
+      "correct": "A version of a service or other configuration item, or a collection of configuration items, that is made available for use.",
+      "distractors": [
+        "The act of permanently withdrawing a product, service, or other configuration item from use.",
+        "Refers to a service or other configuration item operating in the live environment.",
+        "The routine running and management of an activity, product, service, or other configuration item."
+      ],
+      "explain": "release: A version of a service or other configuration item, or a collection of configuration items, that is made available for use.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 251
+    },
+    {
+      "q": "This definition is describing which term? The practice of making new and changed services and features available for use.",
+      "category": "Glossary Terms",
+      "correct": "release management practice",
+      "distractors": [
+        "release",
+        "service validation and testing practice",
+        "request catalogue"
+      ],
+      "explain": "release management practice: The practice of making new and changed services and features available for use.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 252
+    },
+    {
+      "q": "In the glossary, 'reliability' means:",
+      "category": "Glossary Terms",
+      "correct": "The ability of a product, service, or other configuration item to perform its intended function for a specified period of time or number of cycles.",
+      "distractors": [
+        "The ability of an IT service or other configuration item to perform its agreed function when required.",
+        "The routine running and management of an activity, product, service, or other configuration item.",
+        "A documented description of the properties of a product, service, or other configuration item."
+      ],
+      "explain": "reliability: The ability of a product, service, or other configuration item to perform its intended function for a specified period of time or number of cycles.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 253
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A view of the service catalogue, providing details on service requests for existing and new services, which is made available for the user.",
+      "category": "Glossary Terms",
+      "correct": "request catalogue",
+      "distractors": [
+        "service catalogue management practice",
+        "service request management practice",
+        "release management practice"
+      ],
+      "explain": "request catalogue: A view of the service catalogue, providing details on service requests for existing and new services, which is made available for the user.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 254
+    },
+    {
+      "q": "Which definition best matches 'request for change (RFC)'?",
+      "category": "Glossary Terms",
+      "correct": "A description of a proposed change used to initiate change enablement.",
+      "distractors": [
+        "The practice of ensuring that risks are properly assessed, authorizing changes to proceed and managing a change schedule in order to maximize the number of successful service and product changes.",
+        "A person or group responsible for authorizing a change.",
+        "A repeatable approach to the management of a particular type of change."
+      ],
+      "explain": "request for change (RFC): A description of a proposed change used to initiate change enablement.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 255
+    },
+    {
+      "q": "This definition is describing which term? The action of solving an incident or problem.",
+      "category": "Glossary Terms",
+      "correct": "resolution",
+      "distractors": [
+        "service desk practice",
+        "major incident",
+        "workaround"
+      ],
+      "explain": "resolution: The action of solving an incident or problem.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 256
+    },
+    {
+      "q": "In the glossary, 'resource' means:",
+      "category": "Glossary Terms",
+      "correct": "Personnel, material, finance, or other entity that is required for the execution of an activity or the achievement of an objective. Resources used by an organization may be owned by the organization or used according to an agreement with the resource owner.",
+      "distractors": [
+        "A person or organization that has an interest or involvement in an organization, product, service, practice, or other entity.",
+        "A representation of a system, practice, process, service, or other entity that is used to understand and predict its behaviour and relationships.",
+        "The practice of supporting an organization's strategies and plans for service management by ensuring that the organization's financial resources and investments are being used effectively."
+      ],
+      "explain": "resource: Personnel, material, finance, or other entity that is required for the execution of an activity or the achievement of an objective. Resources used by an organization may be owned by the organization or used according to an agreement with the resource owner.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 257
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The act of permanently withdrawing a product, service, or other configuration item from use.",
+      "category": "Glossary Terms",
+      "correct": "retire",
+      "distractors": [
+        "operation",
+        "specification",
+        "release"
+      ],
+      "explain": "retire: The act of permanently withdrawing a product, service, or other configuration item from use.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 258
+    },
+    {
+      "q": "Which definition best matches 'risk'?",
+      "category": "Glossary Terms",
+      "correct": "A possible event that could cause harm or loss, or make it more difficult to achieve objectives. Can also be defined as uncertainty of outcome, and can be used in the context of measuring the probability of positive outcomes as well as negative outcomes.",
+      "distractors": [
+        "An arrangement of configuration items (CIs) or other resources that work together to deliver a product or service. Can also be used to describe the parameter settings for one or more CIs.",
+        "The role that authorizes budget for service consumption. Can also be used to describe an organization or individual that provides financial or other support for an initiative.",
+        "A low-risk, pre-authorized change that is well understood and fully documented, and which can be implemented without needing additional authorization."
+      ],
+      "explain": "risk: A possible event that could cause harm or loss, or make it more difficult to achieve objectives. Can also be defined as uncertainty of outcome, and can be used in the context of measuring the probability of positive outcomes as well as negative outcomes.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 259
+    },
+    {
+      "q": "This definition is describing which term? An activity to identify, analyse, and evaluate risks.",
+      "category": "Glossary Terms",
+      "correct": "risk assessment",
+      "distractors": [
+        "risk management practice",
+        "post-implementation review (PIR)",
+        "control"
+      ],
+      "explain": "risk assessment: An activity to identify, analyse, and evaluate risks.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 260
+    },
+    {
+      "q": "In the glossary, 'risk management practice' means:",
+      "category": "Glossary Terms",
+      "correct": "The practice of ensuring that an organization understands and effectively handles risks.",
+      "distractors": [
+        "The practice of supporting an organization's strategies and plans for service management by ensuring that the organization's financial resources and investments are being used effectively.",
+        "An activity to identify, analyse, and evaluate risks.",
+        "The practice of ensuring that all an organization's proects are successfully delivered."
+      ],
+      "explain": "risk management practice: The practice of ensuring that an organization understands and effectively handles risks.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 261
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A means of enabling value co-creation by facilitating outcomes that customers want to achieve, without the customer having to manage specific costs and risks.",
+      "category": "Glossary Terms",
+      "correct": "service",
+      "distractors": [
+        "Product",
+        "Service offering",
+        "Service relationship"
+      ],
+      "explain": "service: A means of enabling value co-creation by facilitating outcomes that customers want to achieve, without the customer having to manage specific costs and risks.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 262
+    },
+    {
+      "q": "Which definition best matches 'service action'?",
+      "category": "Glossary Terms",
+      "correct": "Any action required to deliver a service output to a user. Service actions may be performed by a service provider resource, by service users, or jointly.",
+      "distractors": [
+        "Activities performed by an organization to provide services. It includes management of the provider's resources, configured to deliver the service; ensuring access to these resources for users; fulfilment of the agreed service actions; service level management; and continual improvement. It may also include the supply of goods.",
+        "Activities performed by an organization to consume services. It includes the management of the consumer's resources needed to use the service, service actions performed by users, and the receiving (acquiring) of goods (if required).",
+        "A loss of ability to operate to specification, or to deliver the required output or outcome."
+      ],
+      "explain": "service action: Any action required to deliver a service output to a user. Service actions may be performed by a service provider resource, by service users, or jointly.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 263
+    },
+    {
+      "q": "This definition is describing which term? A view of all the services provided by an organization. It includes interactions between the services, and service models that describe the structure and dynamics of each service.",
+      "category": "Glossary Terms",
+      "correct": "service architecture",
+      "distractors": [
+        "architecture management practice",
+        "ITIL guiding principles",
+        "project management practice"
+      ],
+      "explain": "service architecture: A view of all the services provided by an organization. It includes interactions between the services, and service models that describe the structure and dynamics of each service.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 264
+    },
+    {
+      "q": "In the glossary, 'service catalogue' means:",
+      "category": "Glossary Terms",
+      "correct": "Structured information about all the services and service offerings of a service provider, relevant for a specific target audience.",
+      "distractors": [
+        "The practice of providing a single source of consistent information on all services and service offerings, and ensuring that it is available to the relevant audience.",
+        "The point of communication between the service provider and all its users.",
+        "The practice of ensuring that accurate and reliable information about the configuration of services, and the configuration items that support them, is available when and where needed."
+      ],
+      "explain": "service catalogue: Structured information about all the services and service offerings of a service provider, relevant for a specific target audience.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 265
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The practice of providing a single source of consistent information on all services and service offerings, and ensuring that it is available to the relevant audience.",
+      "category": "Glossary Terms",
+      "correct": "service catalogue management practice",
+      "distractors": [
+        "service catalogue",
+        "request catalogue",
+        "service configuration management practice"
+      ],
+      "explain": "service catalogue management practice: The practice of providing a single source of consistent information on all services and service offerings, and ensuring that it is available to the relevant audience.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 266
+    },
+    {
+      "q": "Which definition best matches 'service configuration management practice'?",
+      "category": "Glossary Terms",
+      "correct": "The practice of ensuring that accurate and reliable information about the configuration of services, and the configuration items that support them, is available when and where needed.",
+      "distractors": [
+        "A set of tools, data, and information that is used to support service configuration management.",
+        "A version of a service or other configuration item, or a collection of configuration items, that is made available for use.",
+        "The practice of providing a single source of consistent information on all services and service offerings, and ensuring that it is available to the relevant audience."
+      ],
+      "explain": "service configuration management practice: The practice of ensuring that accurate and reliable information about the configuration of services, and the configuration items that support them, is available when and where needed.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 267
+    },
+    {
+      "q": "This definition is describing which term? Activities performed by an organization to consume services. It includes the management of the consumer's resources needed to use the service, service actions performed by users, and the receiving (acquiring) of goods (if required).",
+      "category": "Glossary Terms",
+      "correct": "service consumption",
+      "distractors": [
+        "service provision",
+        "service action",
+        "product"
+      ],
+      "explain": "service consumption: Activities performed by an organization to consume services. It includes the management of the consumer's resources needed to use the service, service actions performed by users, and the receiving (acquiring) of goods (if required).",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 268
+    },
+    {
+      "q": "In the glossary, 'service continuity management practice' means:",
+      "category": "Glossary Terms",
+      "correct": "The practice of ensuring that service availability and performance are maintained at a sufficient level in case of a disaster.",
+      "distractors": [
+        "The practice of ensuring that services deliver agreed levels of availability to meet the needs of customers and users.",
+        "The practice of ensuring that an organization's suppliers and their performance levels are managed appropriately to support the provision of seamless quality products and services.",
+        "The practice of ensuring that services achieve agreed and expected performance levels, satisfying current and future demand in a cost-effective way."
+      ],
+      "explain": "service continuity management practice: The practice of ensuring that service availability and performance are maintained at a sufficient level in case of a disaster.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 269
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The practice of designing products and services that are fit for purpose, fit for use, and that can be delivered by the organization and its ecosystem.",
+      "category": "Glossary Terms",
+      "correct": "service design practice",
+      "distractors": [
+        "project management practice",
+        "service portfolio",
+        "mission"
+      ],
+      "explain": "service design practice: The practice of designing products and services that are fit for purpose, fit for use, and that can be delivered by the organization and its ecosystem.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 270
+    },
+    {
+      "q": "Which definition best matches 'service desk'?",
+      "category": "Glossary Terms",
+      "correct": "The point of communication between the service provider and all its users.",
+      "distractors": [
+        "A cooperation between a service provider and service consumer. Service relationships include",
+        "Structured information about all the services and service offerings of a service provider, relevant for a specific target audience.",
+        "A documented agreement between a service provider and a customer that identifies both services required and the expected level of service."
+      ],
+      "explain": "service desk: The point of communication between the service provider and all its users.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 271
+    },
+    {
+      "q": "This definition is describing which term? The practice of capturing demand for incident resolution and service requests.",
+      "category": "Glossary Terms",
+      "correct": "service desk practice",
+      "distractors": [
+        "resolution",
+        "major incident",
+        "call"
+      ],
+      "explain": "service desk practice: The practice of capturing demand for incident resolution and service requests.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 272
+    },
+    {
+      "q": "In the glossary, 'service financial management practice' means:",
+      "category": "Glossary Terms",
+      "correct": "The practice of supporting an organization's strategies and plans for service management by ensuring that the organization's financial resources and investments are being used effectively.",
+      "distractors": [
+        "The practice of ensuring that an organization understands and effectively handles risks.",
+        "A stakeholder responsible for providing services that are used by an organization.",
+        "The practice of ensuring that all an organization's proects are successfully delivered."
+      ],
+      "explain": "service financial management practice: The practice of supporting an organization's strategies and plans for service management by ensuring that the organization's financial resources and investments are being used effectively.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 273
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? One or more metrics that define expected or achieved service quality.",
+      "category": "Glossary Terms",
+      "correct": "service level",
+      "distractors": [
+        "problem",
+        "outcome",
+        "service level agreement (SLA)"
+      ],
+      "explain": "service level: One or more metrics that define expected or achieved service quality.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 274
+    },
+    {
+      "q": "Which definition best matches 'service level agreement (SLA)'?",
+      "category": "Glossary Terms",
+      "correct": "A documented agreement between a service provider and a customer that identifies both services required and the expected level of service.",
+      "distractors": [
+        "A customer who works for the same organization as the service provider.",
+        "The point of communication between the service provider and all its users.",
+        "A cooperation between a service provider and service consumer. Service relationships include"
+      ],
+      "explain": "service level agreement (SLA): A documented agreement between a service provider and a customer that identifies both services required and the expected level of service.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 275
+    },
+    {
+      "q": "This definition is describing which term? The practice of setting clear business-based targets for service performance so that the delivery of a service can be properly assessed, monitored, and managed against these targets.",
+      "category": "Glossary Terms",
+      "correct": "service level management practice",
+      "distractors": [
+        "baseline",
+        "IT asset",
+        "service continuity management practice"
+      ],
+      "explain": "service level management practice: The practice of setting clear business-based targets for service performance so that the delivery of a service can be properly assessed, monitored, and managed against these targets.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 276
+    },
+    {
+      "q": "In the glossary, 'service management' means:",
+      "category": "Glossary Terms",
+      "correct": "A set of specialized organizational capabilities for enabling value for customers in the form of services.",
+      "distractors": [
+        "The four perspectives that are critical to the effective and efficient facilitation of value for customers and other stakeholders in the form of products and services.",
+        "An organizational culture that aims to improve the flow of value to customers. DevOps focuses on culture, automation, Lean, measurement, and sharing (CALMS).",
+        "A set of organizational resources designed for performing work or accomplishing an objective."
+      ],
+      "explain": "service management: A set of specialized organizational capabilities for enabling value for customers in the form of services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 277
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A formal description of one or more services, designed to address the needs of a target consumer group. A service offering may include goods, access to resources, and service actions.",
+      "category": "Glossary Terms",
+      "correct": "service offering",
+      "distractors": [
+        "Service",
+        "Product",
+        "Service relationship"
+      ],
+      "explain": "service offering: A formal description of one or more services, designed to address the needs of a target consumer group. A service offering may include goods, access to resources, and service actions.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 278
+    },
+    {
+      "q": "Which definition best matches 'service owner'?",
+      "category": "Glossary Terms",
+      "correct": "A role that is accountable for the delivery of a specific service.",
+      "distractors": [
+        "The role that uses services.",
+        "The amount of money spent on a specific activity or resource.",
+        "A controlled environment used in the delivery of IT services to service consumers."
+      ],
+      "explain": "service owner: A role that is accountable for the delivery of a specific service.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 279
+    },
+    {
+      "q": "This definition is describing which term? A complete set of products and services that are managed throughout their lifecycles by an organization.",
+      "category": "Glossary Terms",
+      "correct": "service portfolio",
+      "distractors": [
+        "supplier management practice",
+        "portfolio management practice",
+        "mission"
+      ],
+      "explain": "service portfolio: A complete set of products and services that are managed throughout their lifecycles by an organization.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 280
+    },
+    {
+      "q": "In the glossary, 'service provider' means:",
+      "category": "Glossary Terms",
+      "correct": "A role performed by an organization in a service relationship to provide services to consumers.",
+      "distractors": [
+        "A customer who works for the same organization as the service provider.",
+        "A cooperation between a service provider and service consumer. Service relationships include",
+        "Joint activities performed by a service provider and a service consumer to ensure continual value co-creation based on agreed and available service offerings."
+      ],
+      "explain": "service provider: A role performed by an organization in a service relationship to provide services to consumers.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 281
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? Activities performed by an organization to provide services. It includes management of the provider's resources, configured to deliver the service; ensuring access to these resources for users; fulfilment of the agreed service actions; service level management; and continual improvement. It may also include the supply of goods.",
+      "category": "Glossary Terms",
+      "correct": "service provision",
+      "distractors": [
+        "service consumption",
+        "service action",
+        "service offering"
+      ],
+      "explain": "service provision: Activities performed by an organization to provide services. It includes management of the provider's resources, configured to deliver the service; ensuring access to these resources for users; fulfilment of the agreed service actions; service level management; and continual improvement. It may also include the supply of goods.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 282
+    },
+    {
+      "q": "Which definition best matches 'service relationship'?",
+      "category": "Glossary Terms",
+      "correct": "A cooperation between a service provider and service consumer. Service relationships include",
+      "distractors": [
+        "The point of communication between the service provider and all its users.",
+        "A role performed by an organization in a service relationship to provide services to consumers.",
+        "Joint activities performed by a service provider and a service consumer to ensure continual value co-creation based on agreed and available service offerings."
+      ],
+      "explain": "service relationship: A cooperation between a service provider and service consumer. Service relationships include",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 283
+    },
+    {
+      "q": "This definition is describing which term? service consumption, and service relationship management.",
+      "category": "Glossary Terms",
+      "correct": "service provision,",
+      "distractors": [
+        "service provider",
+        "service relationship",
+        "customer"
+      ],
+      "explain": "service provision,: service consumption, and service relationship management.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 284
+    },
+    {
+      "q": "In the glossary, 'service relationship management' means:",
+      "category": "Glossary Terms",
+      "correct": "Joint activities performed by a service provider and a service consumer to ensure continual value co-creation based on agreed and available service offerings.",
+      "distractors": [
+        "A role performed by an organization in a service relationship to provide services to consumers.",
+        "A cooperation between a service provider and service consumer. Service relationships include",
+        "Activities performed by an organization to provide services. It includes management of the provider's resources, configured to deliver the service; ensuring access to these resources for users; fulfilment of the agreed service actions; service level management; and continual improvement. It may also include the supply of goods."
+      ],
+      "explain": "service relationship management: Joint activities performed by a service provider and a service consumer to ensure continual value co-creation based on agreed and available service offerings.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 285
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A request from a user or a user's authorized representative that initiates a service action which has been agreed as a normal part of service delivery.",
+      "category": "Glossary Terms",
+      "correct": "service request",
+      "distractors": [
+        "service request management practice",
+        "best practice",
+        "known error"
+      ],
+      "explain": "service request: A request from a user or a user's authorized representative that initiates a service action which has been agreed as a normal part of service delivery.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 286
+    },
+    {
+      "q": "Which definition best matches 'service request management practice'?",
+      "category": "Glossary Terms",
+      "correct": "The practice of supporting the agreed quality of a service by handling all pre-defined, user- initiated service requests in an effective and user-friendly manner.",
+      "distractors": [
+        "A view of the service catalogue, providing details on service requests for existing and new services, which is made available for the user.",
+        "A request from a user or a user's authorized representative that initiates a service action which has been agreed as a normal part of service delivery.",
+        "The practice of ensuring that services achieve agreed and expected performance levels, satisfying current and future demand in a cost-effective way."
+      ],
+      "explain": "service request management practice: The practice of supporting the agreed quality of a service by handling all pre-defined, user- initiated service requests in an effective and user-friendly manner.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 287
+    },
+    {
+      "q": "This definition is describing which term? The practice of ensuring that new or changed products and services meet defined requirements.",
+      "category": "Glossary Terms",
+      "correct": "service validation and testing practice",
+      "distractors": [
+        "release management practice",
+        "availability management practice",
+        "utility requirements"
+      ],
+      "explain": "service validation and testing practice: The practice of ensuring that new or changed products and services meet defined requirements.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 288
+    },
+    {
+      "q": "In the glossary, 'service value system (SVS)' means:",
+      "category": "Glossary Terms",
+      "correct": "A model representing how all the components and activities of an organization work together to facilitate value creation.",
+      "distractors": [
+        "A step of the value chain that an organization takes in the creation of value.",
+        "An operating model for service providers that covers all the key activities required to effectively manage products and services.",
+        "The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management."
+      ],
+      "explain": "service value system (SVS): A model representing how all the components and activities of an organization work together to facilitate value creation.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 289
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The practice of ensuring that applications meet stakeholder needs in terms of functionality, reliability, maintainability, compliance, and auditability.",
+      "category": "Glossary Terms",
+      "correct": "software development and management practice",
+      "distractors": [
+        "availability management practice",
+        "development environment",
+        "service validation and testing practice"
+      ],
+      "explain": "software development and management practice: The practice of ensuring that applications meet stakeholder needs in terms of functionality, reliability, maintainability, compliance, and auditability.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 290
+    },
+    {
+      "q": "Which definition best matches 'sourcing'?",
+      "category": "Glossary Terms",
+      "correct": "The activity of planning and obtaining resources from a particular source type, which could be internal or external, centralized or distributed, and open or proprietary.",
+      "distractors": [
+        "A repeatable approach to the management of a particular type of change.",
+        "The activity of creating a plan that manages resources to meet demand for services.",
+        "Input to the service value system based on opportunities and needs from internal and external stakeholders."
+      ],
+      "explain": "sourcing: The activity of planning and obtaining resources from a particular source type, which could be internal or external, centralized or distributed, and open or proprietary.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 291
+    },
+    {
+      "q": "This definition is describing which term? A documented description of the properties of a product, service, or other configuration item.",
+      "category": "Glossary Terms",
+      "correct": "specification",
+      "distractors": [
+        "operation",
+        "retire",
+        "live"
+      ],
+      "explain": "specification: A documented description of the properties of a product, service, or other configuration item.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 292
+    },
+    {
+      "q": "In the glossary, 'sponsor' means:",
+      "category": "Glossary Terms",
+      "correct": "The role that authorizes budget for service consumption. Can also be used to describe an organization or individual that provides financial or other support for an initiative.",
+      "distractors": [
+        "An arrangement of configuration items (CIs) or other resources that work together to deliver a product or service. Can also be used to describe the parameter settings for one or more CIs.",
+        "The practice of supporting an organization's strategies and plans for service management by ensuring that the organization's financial resources and investments are being used effectively.",
+        "A subset of the IT infrastructure that is used for a particular purpose, for example a live environment or test environment. Can also mean the external conditions that influence or affect something."
+      ],
+      "explain": "sponsor: The role that authorizes budget for service consumption. Can also be used to describe an organization or individual that provides financial or other support for an initiative.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 293
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A person or organization that has an interest or involvement in an organization, product, service, practice, or other entity.",
+      "category": "Glossary Terms",
+      "correct": "stakeholder",
+      "distractors": [
+        "validation",
+        "lifecycle",
+        "organization"
+      ],
+      "explain": "stakeholder: A person or organization that has an interest or involvement in an organization, product, service, practice, or other entity.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 294
+    },
+    {
+      "q": "Which definition best matches 'standard'?",
+      "category": "Glossary Terms",
+      "correct": "A document, established by consensus and approved by a recognized body, that provides for common and repeated use, mandatory requirements, guidelines, or characteristics for its subject.",
+      "distractors": [
+        "A technique using realistic practical scenarios to define functional requirements and to design tests.",
+        "The act of ensuring that a standard or set of guidelines is followed, or that proper, consistent accounting or other practices are being employed.",
+        "Something that influences strategy, objectives, or requirements."
+      ],
+      "explain": "standard: A document, established by consensus and approved by a recognized body, that provides for common and repeated use, mandatory requirements, guidelines, or characteristics for its subject.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 295
+    },
+    {
+      "q": "This definition is describing which term? A low-risk, pre-authorized change that is well understood and fully documented, and which can be implemented without needing additional authorization.",
+      "category": "Glossary Terms",
+      "correct": "standard change",
+      "distractors": [
+        "Normal change",
+        "Emergency change",
+        "Service request"
+      ],
+      "explain": "standard change: A low-risk, pre-authorized change that is well understood and fully documented, and which can be implemented without needing additional authorization.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 296
+    },
+    {
+      "q": "In the glossary, 'status' means:",
+      "category": "Glossary Terms",
+      "correct": "A description of the specific states an entity can have at a given time.",
+      "distractors": [
+        "The ease with which a service or other entity can be repaired or modified.",
+        "Functional requirements which have been defined by the customer and are unique to a specific product.",
+        "A measure of the amount of work performed by a product, service, or other system over a given period of time."
+      ],
+      "explain": "status: A description of the specific states an entity can have at a given time.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 297
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The practice of formulating the goals of an organization and adopting the courses of action and allocation of resources necessary for achieving those goals.",
+      "category": "Glossary Terms",
+      "correct": "strategy management practice",
+      "distractors": [
+        "product",
+        "service financial management practice",
+        "architecture management practice"
+      ],
+      "explain": "strategy management practice: The practice of formulating the goals of an organization and adopting the courses of action and allocation of resources necessary for achieving those goals.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 298
+    },
+    {
+      "q": "Which definition best matches 'supplier'?",
+      "category": "Glossary Terms",
+      "correct": "A stakeholder responsible for providing services that are used by an organization.",
+      "distractors": [
+        "A stakeholder external to an organization.",
+        "A person or organization that has an interest or involvement in an organization, product, service, practice, or other entity.",
+        "The practice of supporting an organization's strategies and plans for service management by ensuring that the organization's financial resources and investments are being used effectively."
+      ],
+      "explain": "supplier: A stakeholder responsible for providing services that are used by an organization.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 299
+    },
+    {
+      "q": "This definition is describing which term? The practice of ensuring that an organization's suppliers and their performance levels are managed appropriately to support the provision of seamless quality products and services.",
+      "category": "Glossary Terms",
+      "correct": "supplier management practice",
+      "distractors": [
+        "service portfolio",
+        "capacity and performance management practice",
+        "portfolio management practice"
+      ],
+      "explain": "supplier management practice: The practice of ensuring that an organization's suppliers and their performance levels are managed appropriately to support the provision of seamless quality products and services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 300
+    },
+    {
+      "q": "In the glossary, 'support team' means:",
+      "category": "Glossary Terms",
+      "correct": "A team with the responsibility to maintain normal operations, address users' requests, and resolve incidents and problems related to specified products, services, or other configuration items.",
+      "distractors": [
+        "A controlled environment established to test products, services, and other configuration items.",
+        "A version of a service or other configuration item, or a collection of configuration items, that is made available for use.",
+        "The practice of ensuring that accurate and reliable information about the configuration of services, and the configuration items that support them, is available when and where needed."
+      ],
+      "explain": "support team: A team with the responsibility to maintain normal operations, address users' requests, and resolve incidents and problems related to specified products, services, or other configuration items.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 301
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A combination of interacting elements organized and maintained to achieve one or more stated purposes.",
+      "category": "Glossary Terms",
+      "correct": "system",
+      "distractors": [
+        "management system",
+        "problem",
+        "outcome"
+      ],
+      "explain": "system: A combination of interacting elements organized and maintained to achieve one or more stated purposes.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 302
+    },
+    {
+      "q": "Which definition best matches 'systems thinking'?",
+      "category": "Glossary Terms",
+      "correct": "A holistic approach to analysis that focuses on the way that a system's constituent parts work, interrelate, and interact over time, and within the context of other systems.",
+      "distractors": [
+        "A measure of the amount of work performed by a product, service, or other system over a given period of time.",
+        "Confirmation that the system, product, service, or other entity meets the agreed specification.",
+        "An approach that focuses on improving workflows by maximizing value through the elimination of waste."
+      ],
+      "explain": "systems thinking: A holistic approach to analysis that focuses on the way that a system's constituent parts work, interrelate, and interact over time, and within the context of other systems.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 303
+    },
+    {
+      "q": "This definition is describing which term? The total rework backlog accumulated by choosing workarounds instead of system solutions that would take longer.",
+      "category": "Glossary Terms",
+      "correct": "technical debt",
+      "distractors": [
+        "performance",
+        "vision",
+        "configuration management system (CMS)"
+      ],
+      "explain": "technical debt: The total rework backlog accumulated by choosing workarounds instead of system solutions that would take longer.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 304
+    },
+    {
+      "q": "In the glossary, 'test environment' means:",
+      "category": "Glossary Terms",
+      "correct": "A controlled environment established to test products, services, and other configuration items.",
+      "distractors": [
+        "Refers to a service or other configuration item operating in the live environment.",
+        "A version of a service or other configuration item, or a collection of configuration items, that is made available for use.",
+        "A team with the responsibility to maintain normal operations, address users' requests, and resolve incidents and problems related to specified products, services, or other configuration items."
+      ],
+      "explain": "test environment: A controlled environment established to test products, services, and other configuration items.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 305
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A stakeholder external to an organization.",
+      "category": "Glossary Terms",
+      "correct": "third party",
+      "distractors": [
+        "supplier",
+        "external customer",
+        "stakeholder"
+      ],
+      "explain": "third party: A stakeholder external to an organization.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 306
+    },
+    {
+      "q": "Which definition best matches 'throughput'?",
+      "category": "Glossary Terms",
+      "correct": "A measure of the amount of work performed by a product, service, or other system over a given period of time.",
+      "distractors": [
+        "A holistic approach to analysis that focuses on the way that a system's constituent parts work, interrelate, and interact over time, and within the context of other systems.",
+        "The ability of a product, service, or other configuration item to perform its intended function for a specified period of time or number of cycles.",
+        "Confirmation that the system, product, service, or other entity meets the agreed specification."
+      ],
+      "explain": "throughput: A measure of the amount of work performed by a product, service, or other system over a given period of time.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 307
+    },
+    {
+      "q": "This definition is describing which term? A unit of work consisting of an exchange between two or more participants or systems.",
+      "category": "Glossary Terms",
+      "correct": "transaction",
+      "distractors": [
+        "partnership",
+        "configuration",
+        "systems thinking"
+      ],
+      "explain": "transaction: A unit of work consisting of an exchange between two or more participants or systems.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 308
+    },
+    {
+      "q": "In the glossary, 'use case' means:",
+      "category": "Glossary Terms",
+      "correct": "A technique using realistic practical scenarios to define functional requirements and to design tests.",
+      "distractors": [
+        "The practice of designing products and services that are fit for purpose, fit for use, and that can be delivered by the organization and its ecosystem.",
+        "Functional requirements which have been defined by the customer and are unique to a specific product.",
+        "Typically non-functional requirements captured as inputs from key stakeholders and other practices."
+      ],
+      "explain": "use case: A technique using realistic practical scenarios to define functional requirements and to design tests.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 309
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? The role that uses services.",
+      "category": "Glossary Terms",
+      "correct": "user",
+      "distractors": [
+        "Customer",
+        "Sponsor",
+        "Service provider"
+      ],
+      "explain": "user: The role that uses services.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 310
+    },
+    {
+      "q": "Which definition best matches 'user experience (UX)'?",
+      "category": "Glossary Terms",
+      "correct": "The sum of the functional and emotional interactions with a service and service provider as perceived by a user.",
+      "distractors": [
+        "The sum of functional and emotional interactions with a service and service provider as perceived by a service customer.",
+        "Any action required to deliver a service output to a user. Service actions may be performed by a service provider resource, by service users, or jointly.",
+        "The role that uses services."
+      ],
+      "explain": "user experience (UX): The sum of the functional and emotional interactions with a service and service provider as perceived by a user.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 311
+    },
+    {
+      "q": "This definition is describing which term? The functionality offered by a product or service to meet a particular need. Utility can be summarized as 'what the service does' and can be used to determine whether a service is 'fit for purpose'. To have utility, a service must either support the performance of the consumer or remove constraints from the consumer. Many services do both.",
+      "category": "Glossary Terms",
+      "correct": "utility",
+      "distractors": [
+        "Warranty",
+        "Outcome",
+        "Service offering"
+      ],
+      "explain": "utility: The functionality offered by a product or service to meet a particular need. Utility can be summarized as 'what the service does' and can be used to determine whether a service is 'fit for purpose'. To have utility, a service must either support the performance of the consumer or remove constraints from the consumer. Many services do both.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 312
+    },
+    {
+      "q": "In the glossary, 'utility requirements' means:",
+      "category": "Glossary Terms",
+      "correct": "Functional requirements which have been defined by the customer and are unique to a specific product.",
+      "distractors": [
+        "A measure of whether the objectives of a practice, service or activity have been achieved.",
+        "The role that defines the requirements for a service and takes responsibility for the outcomes of service consumption.",
+        "The sum of functional and emotional interactions with a service and service provider as perceived by a service customer."
+      ],
+      "explain": "utility requirements: Functional requirements which have been defined by the customer and are unique to a specific product.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 313
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? Confirmation that the system, product, service, or other entity meets the agreed specification.",
+      "category": "Glossary Terms",
+      "correct": "validation",
+      "distractors": [
+        "specification",
+        "stakeholder",
+        "lifecycle"
+      ],
+      "explain": "validation: Confirmation that the system, product, service, or other entity meets the agreed specification.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 314
+    },
+    {
+      "q": "Which definition best matches 'value'?",
+      "category": "Glossary Terms",
+      "correct": "The perceived benefits, usefulness, and importance of something.",
+      "distractors": [
+        "Something that influences strategy, objectives, or requirements.",
+        "A step of the value chain that an organization takes in the creation of value.",
+        "The sum of functional and emotional interactions with a service and service provider as perceived by a service customer."
+      ],
+      "explain": "value: The perceived benefits, usefulness, and importance of something.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 315
+    },
+    {
+      "q": "This definition is describing which term? A series of steps an organization undertakes to create and deliver products and services to consumers.",
+      "category": "Glossary Terms",
+      "correct": "value stream",
+      "distractors": [
+        "ITIL value chain activity",
+        "service provider",
+        "plan"
+      ],
+      "explain": "value stream: A series of steps an organization undertakes to create and deliver products and services to consumers.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 316
+    },
+    {
+      "q": "In the glossary, 'value streams and processes' means:",
+      "category": "Glossary Terms",
+      "correct": "One of the four dimensions of service management. It defines the activities, workflows, controls, and procedures needed to achieve the agreed objectives.",
+      "distractors": [
+        "The value chain activity that ensures continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management.",
+        "One of the four dimensions of service management. It includes the information and knowledge used to deliver services, and the information and technologies used to manage all aspects of the service value system.",
+        "The value chain activity that ensures service components are available when and where they are needed, and that they meet agreed specifications."
+      ],
+      "explain": "value streams and processes: One of the four dimensions of service management. It defines the activities, workflows, controls, and procedures needed to achieve the agreed objectives.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 317
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A defined aspiration of what an organization would like to become in the future.",
+      "category": "Glossary Terms",
+      "correct": "vision",
+      "distractors": [
+        "disaster recovery plans",
+        "plan",
+        "governance"
+      ],
+      "explain": "vision: A defined aspiration of what an organization would like to become in the future.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 318
+    },
+    {
+      "q": "Which definition best matches 'warranty'?",
+      "category": "Glossary Terms",
+      "correct": "Assurance that a product or service will meet agreed requirements. Warranty can be summarized as 'how the service performs' and can be used to determine whether a service is 'fit for use'. Warranty often relates to service levels aligned with the needs of service consumers. This may be based on a formal agreement, or it may be a marketing message or brand image. Warranty typically addresses such areas as the availability of the service, its capacity, levels of security, and continuity. A service may be said to provide acceptable assurance, or 'warranty', if all defined and agreed conditions are met.",
+      "distractors": [
+        "The functionality offered by a product or service to meet a particular need. Utility can be summarized as 'what the service does' and can be used to determine whether a service is 'fit for purpose'. To have utility, a service must either support the performance of the consumer or remove constraints from the consumer. Many services do both.",
+        "The practice of ensuring that services deliver agreed levels of availability to meet the needs of customers and users.",
+        "A practical and human-centred approach used by product and service designers to solve complex problems and find practical and creative solutions that meet the needs of an organization and its customers."
+      ],
+      "explain": "warranty: Assurance that a product or service will meet agreed requirements. Warranty can be summarized as 'how the service performs' and can be used to determine whether a service is 'fit for use'. Warranty often relates to service levels aligned with the needs of service consumers. This may be based on a formal agreement, or it may be a marketing message or brand image. Warranty typically addresses such areas as the availability of the service, its capacity, levels of security, and continuity. A service may be said to provide acceptable assurance, or 'warranty', if all defined and agreed conditions are met.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 319
+    },
+    {
+      "q": "This definition is describing which term? Typically non-functional requirements captured as inputs from key stakeholders and other practices.",
+      "category": "Glossary Terms",
+      "correct": "warranty requirements",
+      "distractors": [
+        "acceptance criteria",
+        "utility requirements",
+        "use case"
+      ],
+      "explain": "warranty requirements: Typically non-functional requirements captured as inputs from key stakeholders and other practices.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 320
+    },
+    {
+      "q": "In the glossary, 'waterfall method' means:",
+      "category": "Glossary Terms",
+      "correct": "A development approach that is linear and sequential with distinct objectives for each phase of development.",
+      "distractors": [
+        "A repeatable approach to the management of a particular type of change.",
+        "An environment used to create or modify IT services or applications.",
+        "Something that influences strategy, objectives, or requirements."
+      ],
+      "explain": "waterfall method: A development approach that is linear and sequential with distinct objectives for each phase of development.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 321
+    },
+    {
+      "q": "Which ITIL glossary term fits this definition? A detailed description to be followed in order to perform an activity.",
+      "category": "Glossary Terms",
+      "correct": "work instruction",
+      "distractors": [
+        "configuration item (CI)",
+        "practice",
+        "request for change (RFC)"
+      ],
+      "explain": "work instruction: A detailed description to be followed in order to perform an activity.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 322
+    },
+    {
+      "q": "Which definition best matches 'workaround'?",
+      "category": "Glossary Terms",
+      "correct": "A solution that reduces or eliminates the impact of an incident or problem for which a full resolution is not yet available. Some workarounds reduce the likelihood of incidents.",
+      "distractors": [
+        "The practice of reducing the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors.",
+        "The action of solving an incident or problem.",
+        "An incident with significant business impact, requiring an immediate coordinated resolution."
+      ],
+      "explain": "workaround: A solution that reduces or eliminates the impact of an incident or problem for which a full resolution is not yet available. Some workarounds reduce the likelihood of incidents.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-definition",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 323
+    },
+    {
+      "q": "This definition is describing which term? The practice of ensuring that an organization has the right people with the appropriate skills and knowledge and in the correct roles to support its business objectives.",
+      "category": "Glossary Terms",
+      "correct": "workforce and talent management practice",
+      "distractors": [
+        "organization",
+        "portfolio management practice",
+        "supplier management practice"
+      ],
+      "explain": "workforce and talent management practice: The practice of ensuring that an organization has the right people with the appropriate skills and knowledge and in the correct roles to support its business objectives.",
+      "source": "ITIL 4 Foundation glossary PDF",
+      "type": "glossary-term",
+      "includeInFullDeck": false,
+      "isBoss": false,
+      "instructorFocus": [
+        "glossary"
+      ],
+      "id": 324
     }
   ]
 };

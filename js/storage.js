@@ -129,8 +129,9 @@ const Storage = window.storage = {
       const r = await this.get('settings', 'hiscore_v1');
       if (r && r.value) {
         const hiScore = parseInt(r.value) || 0;
-        const existing = await this.get('perCourse', 'comptia');
-        const courseData = existing || { courseId: 'comptia', questionsAnswered: 0, questionsCorrect: 0, bestScore: 0, bestGrade: null, runsCompleted: 0 };
+        const courseId = (window.Core && Core.state && Core.state.courseId) || 'itil4';
+        const existing = await this.get('perCourse', courseId);
+        const courseData = existing || { courseId, questionsAnswered: 0, questionsCorrect: 0, bestScore: 0, bestGrade: null, runsCompleted: 0 };
         courseData.bestScore = Math.max(courseData.bestScore || 0, hiScore);
         await this.put('perCourse', courseData);
         console.log('[storage] Migrated legacy high score:', hiScore);

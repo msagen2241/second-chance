@@ -6,8 +6,8 @@ const Core = {
   autoAdvanceTimer: null,
   state: {
     screen: 'start',
-    mode: 'normal',   // 'normal' | 'study' | 'streak' | 'review' | 'interleave' | 'redflag' | 'confidence' | 'pretest' | 'quickfire'
-    courseId: 'comptia',
+    mode: 'normal',   // 'normal' | 'study' | 'streak' | 'review' | 'interleave' | 'redflag' | 'confidence' | 'pretest' | 'quickfire' | 'shortmix' | 'glossary' | 'instructor'
+    courseId: 'itil4',
     deck: [],         // [{ id, question, isRetry }]
     idx: 0,
     score: 0,
@@ -21,6 +21,7 @@ const Core = {
     missed: [],
     categoryStats: {},  // { "Operating Systems": { correct: 0, missed: 0 }, ... }
     studyCategory: null,
+    instructorFocus: null,
     awaitingConfidence: false,
     confidenceChoice: null,
     pretestPhase: null,
@@ -34,7 +35,7 @@ const Core = {
   },
 
   isInfiniteMode(mode = this.state.mode) {
-    return ['study', 'review', 'confidence', 'interleave', 'redflag', 'pretest', 'quickfire'].includes(mode);
+    return ['study', 'review', 'confidence', 'interleave', 'redflag', 'pretest', 'quickfire', 'shortmix', 'glossary', 'instructor'].includes(mode);
   },
 
   modeBanner(mode = this.state.mode) {
@@ -59,6 +60,15 @@ const Core = {
     if (mode === 'quickfire') {
       return `<span style="color: var(--red); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">QUICKFIRE MODE</span>`;
     }
+    if (mode === 'shortmix') {
+      return `<span style="color: var(--cyan); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">SHORT MIX</span>`;
+    }
+    if (mode === 'glossary') {
+      return `<span style="color: var(--green); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">GLOSSARY DRILL</span>`;
+    }
+    if (mode === 'instructor') {
+      return `<span style="color: var(--yellow); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">INSTRUCTOR FOCUS</span>`;
+    }
     if (mode === 'review') {
       return `<span style="color: var(--cyan); font-family: 'VT323', monospace; font-size: 22px; letter-spacing: 2px;">REVIEW MODE</span>`;
     }
@@ -74,9 +84,13 @@ const Core = {
       .sort((a, b) => a.pct - b.pct)
       .slice(0, 2)
       .map(c => c.name);
-    const filterCats = categories.length > 0 ? categories : Courses.getCategories();
+    const filterCats = categories.length > 0
+      ? categories.filter(name => name !== 'Glossary Terms')
+      : this.fullDeckCategories();
     const questions = Courses.getQuestions();
-    return questions.map((q, i) => filterCats.includes(q.category) ? i : -1).filter(i => i >= 0);
+    return questions
+      .map((q, i) => q.includeInFullDeck !== false && filterCats.includes(q.category) ? i : -1)
+      .filter(i => i >= 0);
   },
 
   // Start a new game run
@@ -93,12 +107,46 @@ const Core = {
     // Start analytics session
     Analytics.startSession(this.state.courseId);
 
-    const questions = Courses.getQuestions();
-    const questionIds = questions.map((_, i) => i);
+    const questionIds = this.fullDeckQuestionIds();
     this.state.deck = this.buildDeck(questionIds);
     this.state.idx = 0;
     this.state.score = 0;
     this.state.lives = this.isInfiniteMode() || this.state.mode === 'streak' ? 999 : 3;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.awaitingConfidence = false;
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = null;
+    this.state.pretestSourceIds = null;
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  async startShortMix() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const pool = this.fullDeckQuestionIds();
+    const size = Math.min(Courses.current?.shortStudySize || 25, pool.length);
+    const questionIds = this.shuffle(pool).slice(0, size);
+
+    this.state.mode = 'shortmix';
+    this.state.studyCategory = 'Short Mix';
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999;
     this.state.streak = 0;
     this.state.correctCount = 0;
     this.state.answered = null;
@@ -152,6 +200,11 @@ const Core = {
 
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
+
+    if (category === 'Glossary Terms') {
+      await this.startGlossaryDrill();
+      return;
+    }
 
     const questions = Courses.getQuestions();
     const questionIds = questions.map((q, i) => q.category === category ? i : -1).filter(i => i >= 0);
@@ -277,8 +330,7 @@ const Core = {
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
 
-    const questions = Courses.getQuestions();
-    const questionIds = questions.map((_, i) => i);
+    const questionIds = this.fullDeckQuestionIds();
     this.state.mode = 'confidence';
     this.state.deck = this.buildDeck(questionIds);
     this.state.idx = 0;
@@ -308,8 +360,7 @@ const Core = {
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
 
-    const questions = Courses.getQuestions();
-    const questionIds = questions.map((_, i) => i);
+    const questionIds = this.fullDeckQuestionIds();
     this.state.mode = 'pretest';
     this.state.deck = this.buildDeck(questionIds);
     this.state.idx = 0;
@@ -342,7 +393,7 @@ const Core = {
     Analytics.startSession(this.state.courseId);
 
     const mostMissed = await ErrorLog.getMostMissed(this.state.courseId, 30);
-    const questionIds = mostMissed.length > 0 ? mostMissed : Courses.getQuestions().map((_, i) => i);
+    const questionIds = mostMissed.length > 0 ? mostMissed : this.fullDeckQuestionIds();
 
     this.state.mode = 'cram';
     this.state.deck = this.buildDeck(questionIds);
@@ -402,9 +453,80 @@ const Core = {
     Gameplay.init();
     Analytics.startSession(this.state.courseId);
 
-    const questions = Courses.getQuestions();
-    const questionIds = questions.map((_, i) => i);
+    const questionIds = this.fullDeckQuestionIds();
     this.state.mode = 'quickfire';
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.awaitingConfidence = false;
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = null;
+    this.state.pretestSourceIds = null;
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  async startGlossaryDrill() {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const questions = Courses.getQuestions();
+    const glossaryIds = questions
+      .map((q, i) => q.category === 'Glossary Terms' ? i : -1)
+      .filter(i => i >= 0);
+    const size = Math.min(Courses.current?.glossaryDrillSize || 25, glossaryIds.length);
+    const questionIds = this.shuffle(glossaryIds).slice(0, size);
+
+    this.state.mode = 'glossary';
+    this.state.studyCategory = 'Glossary Terms';
+    this.state.deck = this.buildDeck(questionIds);
+    this.state.idx = 0;
+    this.state.score = 0;
+    this.state.lives = 999;
+    this.state.streak = 0;
+    this.state.correctCount = 0;
+    this.state.answered = null;
+    this.state.newHi = false;
+    this.state.missed = [];
+    this.state.categoryStats = this.emptyCategoryStats();
+    this.state.awaitingConfidence = false;
+    this.state.confidenceChoice = null;
+    this.state.pretestPhase = null;
+    this.state.pretestSourceIds = null;
+    this.state.currentOptions = this.buildOptions(this.state.deck[0].question);
+    this.state.screen = 'game';
+    this.render();
+  },
+
+  async startInstructorFocus(focusId) {
+    await Audio.ensure();
+    Audio.sfx('click');
+    Audio.stopMusic();
+    await this.clearSavedSession(true);
+    this.clearAutoAdvance();
+
+    Gameplay.init();
+    Analytics.startSession(this.state.courseId);
+
+    const questionIds = this.buildInstructorFocusIds(focusId);
+    if (!questionIds.length) return;
+    this.state.mode = 'instructor';
+    this.state.instructorFocus = focusId;
+    this.state.studyCategory = this.instructorFocusLabel(focusId);
     this.state.deck = this.buildDeck(questionIds);
     this.state.idx = 0;
     this.state.score = 0;
@@ -451,7 +573,7 @@ const Core = {
 
   startPretestStudyPass() {
     this.clearAutoAdvance();
-    const questionIds = this.state.pretestSourceIds || Courses.getQuestions().map((_, i) => i);
+    const questionIds = this.state.pretestSourceIds || this.fullDeckQuestionIds();
     this.state.deck = this.buildDeck(questionIds);
     this.state.idx = 0;
     this.state.score = 0;
@@ -483,7 +605,10 @@ const Core = {
       confidence: 'Confidence',
       redflag: 'Red Flag',
       pretest: 'Pretest',
-      quickfire: 'Quickfire'
+      quickfire: 'Quickfire',
+      shortmix: 'Short Mix',
+      glossary: 'Glossary Drill',
+      instructor: this.state.instructorFocus ? `Instructor Focus: ${this.instructorFocusLabel(this.state.instructorFocus)}` : 'Instructor Focus'
     };
     return labels[mode] || 'Study';
   },
@@ -543,6 +668,7 @@ const Core = {
       missed: [...this.state.missed],
       categoryStats: JSON.parse(JSON.stringify(this.state.categoryStats || {})),
       studyCategory: this.state.studyCategory,
+      instructorFocus: this.state.instructorFocus,
       confidenceChoice: null,
       pretestPhase: this.state.pretestPhase,
       pretestSourceIds: this.state.pretestSourceIds ? [...this.state.pretestSourceIds] : null
@@ -652,6 +778,7 @@ const Core = {
     this.state.missed = Array.isArray(session.missed) ? [...session.missed] : [];
     this.state.categoryStats = session.categoryStats || this.emptyCategoryStats();
     this.state.studyCategory = session.studyCategory || null;
+    this.state.instructorFocus = session.instructorFocus || null;
     this.state.confidenceChoice = session.confidenceChoice || null;
     this.state.pretestPhase = session.pretestPhase || null;
     this.state.pretestSourceIds = Array.isArray(session.pretestSourceIds) ? [...session.pretestSourceIds] : null;
@@ -691,6 +818,15 @@ const Core = {
         return;
       case 'quickfire':
         await this.startQuickfire();
+        return;
+      case 'shortmix':
+        await this.startShortMix();
+        return;
+      case 'glossary':
+        await this.startGlossaryDrill();
+        return;
+      case 'instructor':
+        await this.startInstructorFocus(this.state.instructorFocus || 'sections-3-5');
         return;
       default:
         await this.startGame();
@@ -1054,12 +1190,20 @@ const Core = {
       const isPretest = this.state.mode === 'pretest';
       const isCategory = this.state.mode === 'category';
       const isQuickfire = this.state.mode === 'quickfire';
+      const isShortMix = this.state.mode === 'shortmix';
+      const isGlossary = this.state.mode === 'glossary';
+      const isInstructor = this.state.mode === 'instructor';
 
       // Get due count for spaced repetition
       const reviewStatus = await Spaced.getReviewStatus(this.state.courseId);
       const dueCount = reviewStatus.dueCount;
-      const categories = Courses.getCategories();
-      const questionCount = Courses.getQuestions().length;
+      const categories = this.fullDeckCategories();
+      const categoryCounts = this.categoryCounts();
+      const focusDecks = this.instructorFocusDecks();
+      const focusCounts = this.instructorFocusCounts();
+      const questionCount = this.fullDeckQuestionIds().length;
+      const shortMixSize = Math.min(Courses.current?.shortStudySize || 25, questionCount);
+      const glossaryCount = Courses.getQuestions().filter(q => q.category === 'Glossary Terms').length;
       const savedSession = await this.loadSavedSessionRecord();
       const savedSummary = this.getSavedSessionSummary(savedSession);
 
@@ -1067,17 +1211,18 @@ const Core = {
       <div class="start">
         <div class="logo-top">// INITIALIZE</div>
         <h1 class="logo-main">SECOND<br>CHANCE</h1>
-        <div class="logo-sub">CompTIA Redemption Run</div>
+        <div class="logo-sub">ITIL 4 Redemption Run</div>
 
         <div class="mode-picker">
-          <button class="mode-btn ${!isStreak && !isStudy && !isCategory && !isConfidence && !isInterleave && !isRedFlag && !isPretest ? 'active' : ''}" id="modeNormal">NORMAL</button>
+          <button class="mode-btn ${!isStreak && !isStudy && !isCategory && !isConfidence && !isInterleave && !isRedFlag && !isPretest && !isQuickfire && !isShortMix && !isGlossary && !isInstructor ? 'active' : ''}" id="modeNormal">NORMAL</button>
           <button class="mode-btn ${isStudy ? 'active' : ''}" id="modeStudy">STUDY</button>
           <button class="mode-btn ${isStreak ? 'active' : ''}" id="modeStreak">STREAK</button>
         </div>
 
         <div class="stat-row">
           <div class="stat-chip"><b>${questionCount}</b>QUESTIONS</div>
-          <div class="stat-chip">${(isStreak || isStudy || isConfidence || isInterleave || isRedFlag || isPretest || isQuickfire) ? '<b>∞</b>NO LIVES' : '<b>3</b>LIVES'}</div>
+          <div class="stat-chip"><b>${glossaryCount}</b>GLOSSARY</div>
+          <div class="stat-chip">${(isStreak || isStudy || isConfidence || isInterleave || isRedFlag || isPretest || isQuickfire || isShortMix || isGlossary || isInstructor) ? '<b>∞</b>NO LIVES' : '<b>3</b>LIVES'}</div>
           <div class="stat-chip"><b>∞</b>STREAK BONUS</div>
         </div>
 
@@ -1113,7 +1258,11 @@ const Core = {
             </button>
             <button class="btn-tool" id="btnCategory">
               <span class="tool-icon">📂</span>
-              <span class="tool-copy"><span class="tool-label">By Category</span><span class="tool-hint">Drill one CompTIA domain</span></span>
+              <span class="tool-copy"><span class="tool-label">Topic Tests</span><span class="tool-hint">Pick concepts, principles, dimensions, chain, or practices</span></span>
+            </button>
+            <button class="btn-tool" id="btnInstructor">
+              <span class="tool-icon">▣</span>
+              <span class="tool-copy"><span class="tool-label">Instructor Focus</span><span class="tool-hint">Lessons 1-5, Sections 3-5, 7 practices, or 40Q mock</span></span>
             </button>
             <button class="btn-tool" id="btnInterleave">
               <span class="tool-icon">🔀</span>
@@ -1135,6 +1284,15 @@ const Core = {
               <span class="tool-icon">⚡</span>
               <span class="tool-copy"><span class="tool-label">Quickfire</span><span class="tool-hint">Instant right/wrong, auto next</span></span>
             </button>
+            <button class="btn-tool" id="btnShortMix">
+              <span class="tool-icon">25</span>
+              <span class="tool-copy"><span class="tool-label">Short Mix</span><span class="tool-hint">${shortMixSize} random exam-pool questions</span></span>
+            </button>
+            <button class="btn-tool" id="btnGlossary">
+              <span class="tool-icon">⌁</span>
+              <span class="tool-copy"><span class="tool-label">Glossary Drill</span><span class="tool-hint">25 random terms from the full glossary</span></span>
+              <span class="tool-muted">${glossaryCount}</span>
+            </button>
           </div>
         </div>
 
@@ -1151,21 +1309,38 @@ const Core = {
             <div class="mode-guide-row"><span class="mode-guide-name">CONFIDENCE</span><span class="mode-guide-desc">After each answer, rate how sure you were. Low-confidence answers get reinforced.</span></div>
             <div class="mode-guide-row"><span class="mode-guide-name">RED FLAG</span><span class="mode-guide-desc">Targets the questions you miss most and the ones with weakest retention.</span></div>
             <div class="mode-guide-row"><span class="mode-guide-name">PRETEST</span><span class="mode-guide-desc">First pass without explanations, then an automatic full study pass on the same set.</span></div>
-            <div class="mode-guide-row"><span class="mode-guide-name">CATEGORY</span><span class="mode-guide-desc">Lets you drill one CompTIA domain at a time.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">CATEGORY</span><span class="mode-guide-desc">Lets you drill one ITIL topic at a time.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">FOCUS</span><span class="mode-guide-desc">Uses the instructor note: Lessons 1-5, Sections 3-5, and the seven high-weight practices.</span></div>
             <div class="mode-guide-row"><span class="mode-guide-name">QUICKFIRE</span><span class="mode-guide-desc">Instant right or wrong feedback, then auto-advance to the next question.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">SHORT MIX</span><span class="mode-guide-desc">Pulls ${shortMixSize} random questions from the full exam pool for a shorter study session.</span></div>
+            <div class="mode-guide-row"><span class="mode-guide-name">GLOSSARY</span><span class="mode-guide-desc">Samples terms from the full glossary so terminology stays quick and focused.</span></div>
           </div>
         </div>
 
         <!-- Category Picker (hidden by default) -->
         <div class="category-picker" id="categoryPicker" style="display:none;">
-          <div class="category-picker-title">CHOOSE CATEGORY</div>
+          <div class="category-picker-title">CHOOSE EXAM TOPIC</div>
           ${categories.map(cat => `
             <button class="btn-category" data-cat="${cat}">
               <span class="cat-dot" style="background: ${this.categoryColor(cat)}"></span>
-              ${cat}
+              <span class="cat-label">${cat}</span>
+              <span class="cat-count">${cat === 'Glossary Terms' ? `${glossaryCount} TERMS` : `${categoryCounts[cat] || 0} Q`}</span>
             </button>
           `).join('')}
           <button class="btn-secondary btn-back-category">BACK</button>
+        </div>
+
+        <div class="category-picker" id="focusPicker" style="display:none;">
+          <div class="category-picker-title">INSTRUCTOR FOCUS</div>
+          ${focusDecks.map((deck, index) => `
+            ${index === 0 || deck.group !== focusDecks[index - 1].group ? `<div class="focus-group-title">${deck.group || 'Focus Drills'}</div>` : ''}
+            <button class="btn-category btn-focus" data-focus="${deck.id}">
+              <span class="cat-dot" style="background: ${this.categoryColor(deck.id)}"></span>
+              <span class="cat-label">${deck.label}<small>${deck.hint}</small></span>
+              <span class="cat-count">${focusCounts[deck.id] || 0} Q</span>
+            </button>
+          `).join('')}
+          <button class="btn-secondary btn-back-focus">BACK</button>
         </div>
 
         <button class="btn-secondary" id="statsBtn">📊 STATS</button>
@@ -1225,6 +1400,16 @@ const Core = {
       await Audio.ensure();
       Audio.sfx('click');
       document.getElementById('categoryPicker').style.display = 'block';
+      document.getElementById('focusPicker').style.display = 'none';
+      document.getElementById('startBtn').style.display = 'none';
+      document.querySelector('.mode-picker').style.display = 'none';
+      document.querySelector('.stat-row').style.display = 'none';
+    });
+    document.getElementById('btnInstructor').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      document.getElementById('focusPicker').style.display = 'block';
+      document.getElementById('categoryPicker').style.display = 'none';
       document.getElementById('startBtn').style.display = 'none';
       document.querySelector('.mode-picker').style.display = 'none';
       document.querySelector('.stat-row').style.display = 'none';
@@ -1254,10 +1439,21 @@ const Core = {
       Audio.sfx('click');
       await this.startQuickfire();
     });
+    document.getElementById('btnShortMix').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.startShortMix();
+    });
+    document.getElementById('btnGlossary').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      await this.startGlossaryDrill();
+    });
 
     // Category buttons
     document.querySelectorAll('.btn-category').forEach(btn => {
       btn.addEventListener('click', async () => {
+        if (!btn.dataset.cat) return;
         await Audio.ensure();
         Audio.sfx('click');
         const cat = btn.dataset.cat;
@@ -1267,8 +1463,21 @@ const Core = {
       });
     });
 
+    document.querySelectorAll('.btn-focus').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        await Audio.ensure();
+        Audio.sfx('click');
+        await this.startInstructorFocus(btn.dataset.focus);
+      });
+    });
+
     // Back from category picker
     document.querySelector('.btn-back-category').addEventListener('click', async () => {
+      await Audio.ensure();
+      Audio.sfx('click');
+      this.renderStart();
+    });
+    document.querySelector('.btn-back-focus').addEventListener('click', async () => {
       await Audio.ensure();
       Audio.sfx('click');
       this.renderStart();
@@ -1428,8 +1637,8 @@ const Core = {
       title = this.state.streak === 0 ? 'FIRST BLOOD' : 'STREAK BROKEN';
       sub = `STREAK: ${this.state.streak} CORRECT${this.state.streak > 0 ? ' · SCORE: ' + this.state.score.toLocaleString() : ''}`;
       showGrade = false;
-    } else if (['study', 'interleave', 'redflag', 'confidence', 'quickfire'].includes(this.state.mode)) {
-      title = 'STUDY COMPLETE';
+    } else if (['study', 'interleave', 'redflag', 'confidence', 'quickfire', 'shortmix', 'glossary', 'instructor'].includes(this.state.mode)) {
+      title = this.state.mode === 'instructor' ? 'FOCUS COMPLETE' : 'STUDY COMPLETE';
       sub = `${this.state.correctCount}/${this.state.deck.length} CORRECT`;
       showGrade = false;
     } else if (this.state.mode === 'pretest') {
@@ -1450,7 +1659,7 @@ const Core = {
       ? `<div class="end-stat"><div class="l">STREAK</div><div class="v">${this.state.streak}</div></div>
          <div class="end-stat"><div class="l">SCORE</div><div class="v">${this.state.score.toLocaleString()}</div></div>
          <div class="end-stat"><div class="l">ATTEMPTED</div><div class="v">${this.state.correctCount + (this.state.mode === 'streak' ? 1 : 0)}</div></div>`
-      : ['study', 'interleave', 'redflag', 'confidence', 'pretest', 'quickfire'].includes(this.state.mode)
+      : ['study', 'interleave', 'redflag', 'confidence', 'pretest', 'quickfire', 'shortmix', 'glossary', 'instructor'].includes(this.state.mode)
         ? `<div class="end-stat"><div class="l">CORRECT</div><div class="v">${this.state.correctCount}/${this.state.deck.length}</div></div>
            <div class="end-stat"><div class="l">STREAK</div><div class="v">${this.state.streak}</div></div>
            <div class="end-stat"><div class="l">SCORE</div><div class="v">${this.state.score.toLocaleString()}</div></div>`
@@ -1489,6 +1698,7 @@ const Core = {
 
     // Build category breakdown rows, sorted by lowest accuracy first
     const catRows = Object.entries(this.state.categoryStats || {})
+      .filter(([, stats]) => stats.correct + stats.missed > 0)
       .sort((a, b) => {
         const pctA = a[1].correct / (a[1].correct + a[1].missed) || 0;
         const pctB = b[1].correct / (b[1].correct + b[1].missed) || 0;
@@ -1507,7 +1717,7 @@ const Core = {
         `;
       }).join('');
 
-    const catBreakdown = Object.keys(this.state.categoryStats || {}).length > 0 ? `
+    const catBreakdown = catRows ? `
         <div class="category-breakdown">
           <div class="cat-title">CATEGORY BREAKDOWN</div>
           ${catRows}
@@ -1555,10 +1765,28 @@ const Core = {
   // Helper: category color
   categoryColor(name) {
     const colors = {
-      "Operating Systems": "var(--cyan)",
-      "Security": "var(--pink)",
-      "Software Troubleshooting": "var(--green)",
-      "Operational Procedures": "var(--yellow)"
+      "Key Concepts": "var(--cyan)",
+      "Guiding Principles": "var(--pink)",
+      "Four Dimensions": "var(--green)",
+      "Service Value System": "var(--yellow)",
+      "Service Value Chain": "var(--cyan)",
+      "Practice Purposes": "var(--pink)",
+      "Detailed Practices": "var(--green)",
+      "Glossary Terms": "var(--yellow)",
+      "focus-key-concepts": "var(--cyan)",
+      "focus-guiding-principles": "var(--pink)",
+      "focus-four-dimensions": "var(--green)",
+      "focus-svs": "var(--yellow)",
+      "focus-svc": "var(--cyan)",
+      "focus-practice-purposes": "var(--pink)",
+      "focus-continual-improvement": "var(--yellow)",
+      "focus-change-enablement": "var(--pink)",
+      "focus-incident-management": "var(--cyan)",
+      "focus-problem-management": "var(--green)",
+      "focus-service-request-management": "var(--pink)",
+      "focus-service-desk": "var(--cyan)",
+      "focus-service-level-management": "var(--yellow)",
+      "mock-40": "var(--yellow)"
     };
     return colors[name] || 'var(--ink)';
   },
@@ -1605,6 +1833,79 @@ const Core = {
       isRetry: false,
       isBoss: questions[id].isBoss || false
     }));
+  },
+
+  fullDeckQuestionIds() {
+    const questions = Courses.getQuestions();
+    return questions
+      .map((question, i) => question.includeInFullDeck === false ? -1 : i)
+      .filter(i => i >= 0);
+  },
+
+  fullDeckCategories() {
+    if (Courses.current && Array.isArray(Courses.current.fullDeckCategories)) {
+      return Courses.current.fullDeckCategories;
+    }
+    return Courses.getCategories().filter(name => name !== 'Glossary Terms');
+  },
+
+  categoryCounts() {
+    const counts = {};
+    Courses.getQuestions().forEach(question => {
+      if (question.category === 'Glossary Terms') return;
+      if (question.includeInFullDeck === false) return;
+      counts[question.category] = (counts[question.category] || 0) + 1;
+    });
+    return counts;
+  },
+
+  instructorFocusDecks() {
+    return Courses.current && Array.isArray(Courses.current.instructorFocusDecks)
+      ? Courses.current.instructorFocusDecks
+      : [];
+  },
+
+  instructorFocusLabel(focusId) {
+    const deck = this.instructorFocusDecks().find(item => item.id === focusId);
+    return deck ? deck.label : 'Instructor Focus';
+  },
+
+  idsByInstructorFocus(focusId) {
+    return Courses.getQuestions()
+      .map((question, i) => {
+        if (question.includeInFullDeck === false) return -1;
+        return Array.isArray(question.instructorFocus) && question.instructorFocus.includes(focusId) ? i : -1;
+      })
+      .filter(i => i >= 0);
+  },
+
+  buildInstructorFocusIds(focusId) {
+    if (focusId !== 'mock-40') {
+      return this.idsByInstructorFocus(focusId);
+    }
+
+    const seven = this.shuffle(this.idsByInstructorFocus('seven-practices'));
+    const sectionSet = new Set(this.idsByInstructorFocus('sections-3-5'));
+    const sevenSet = new Set(seven);
+    const sections = this.shuffle([...sectionSet].filter(id => !sevenSet.has(id)));
+    const fullSet = new Set(this.fullDeckQuestionIds());
+    const foundations = this.shuffle([...fullSet].filter(id => !sectionSet.has(id)));
+    const selected = [
+      ...seven.slice(0, 17),
+      ...sections.slice(0, 13),
+      ...foundations.slice(0, 10)
+    ];
+    const selectedSet = new Set(selected);
+    const fill = this.shuffle([...fullSet].filter(id => !selectedSet.has(id)));
+    return [...selected, ...fill].slice(0, 40);
+  },
+
+  instructorFocusCounts() {
+    const counts = {};
+    for (const deck of this.instructorFocusDecks()) {
+      counts[deck.id] = this.buildInstructorFocusIds(deck.id).length;
+    }
+    return counts;
   },
 
   _getRecentIds() {

@@ -59,13 +59,13 @@ async function init() {
   Core.init();
 
   // Load course
-  await Courses.load('comptia');
+  await Courses.load('itil4');
 
   // Load progression
   await Progression.load();
 
   // Initialize spaced repetition data
-  await Spaced.initCourse('comptia');
+  await Spaced.initCourse('itil4');
 
   // Initialize juice effects
   Juice.init();

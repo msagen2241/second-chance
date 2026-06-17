@@ -1,0 +1,45 @@
+{
+  "sources": [
+    {
+      "source": "PDFs/Books/ITIL 4 STUDY GUIDE.md",
+      "textFile": "rag/sources/PDFs_Books_ITIL_4_STUDY_GUIDE_md.txt",
+      "chars": 13567
+    },
+    {
+      "source": "PDFs/Books/ITIL Book in PDF.pdf",
+      "textFile": "rag/sources/PDFs_Books_ITIL_Book_in_PDF_pdf.txt",
+      "chars": 506944
+    },
+    {
+      "source": "PDFs/Study/ITIL 4 Cram Card.pdf",
+      "textFile": "rag/sources/PDFs_Study_ITIL_4_Cram_Card_pdf.txt",
+      "chars": 13085
+    },
+    {
+      "source": "PDFs/Study/ITIL 4 Question Bank Rationale.pdf",
+      "textFile": "rag/sources/PDFs_Study_ITIL_4_Question_Bank_Rationale_pdf.txt",
+      "chars": 45326
+    },
+    {
+      "source": "PDFs/Study/ITIL 4 Question Bank.pdf",
+      "textFile": "rag/sources/PDFs_Study_ITIL_4_Question_Bank_pdf.txt",
+      "chars": 14788
+    },
+    {
+      "source": "PDFs/Study/ITIL 4 Study Guide.pdf",
+      "textFile": "rag/sources/PDFs_Study_ITIL_4_Study_Guide_pdf.txt",
+      "chars": 66741
+    },
+    {
+      "source": "PDFs/Study/ITIL-4-Foundation_Glossary_Digital.pdf",
+      "textFile": "rag/sources/PDFs_Study_ITIL_4_Foundation_Glossary_Digital_pdf.txt",
+      "chars": 32861
+    },
+    {
+      "source": "PDFs/Study/ITIL_Foundation_Essentials_ITIL_4_Edition_-_the_Ul....pdf",
+      "textFile": "rag/sources/PDFs_Study_ITIL_Foundation_Essentials_ITIL_4_Edition_the_Ul_pdf.txt",
+      "chars": 97770
+    }
+  ],
+  "chunkCount": 763
+}
